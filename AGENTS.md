@@ -8,8 +8,8 @@ FateCat 是命理分析仓库，定位为：
 
 - `assets/`：静态资产真相源
 - `runtime/`：运行态数据
-- `services/fate_core/`：纯命理分析内核
-- `services/telegram/`：Telegram / API 交付层
+- `modules/fate_core/`：纯命理分析内核
+- `modules/telegram/`：Telegram / API 交付层
 
 本仓库已经移除旧的 `libs/`、顶层 `docs/`、顶层 `deploy/` 组织方式。
 
@@ -33,7 +33,7 @@ fatecat/
 ├── runtime/
 │   ├── AGENTS.md
 │   └── database/                  # SQLite 实库等运行态数据
-├── services/
+├── modules/
 │   ├── fate_core/                 # 纯分析内核
 │   └── telegram/
 │       ├── src/
@@ -74,11 +74,11 @@ FATE_SERVICE_PORT=8001
 
 ### 强制规则
 
-- ❌ 禁止在仓库根目录或 `services/telegram/` 下创建 `.env`
+- ❌ 禁止在仓库根目录或 `modules/telegram/` 下创建 `.env`
 - ❌ 禁止硬编码绝对路径
 - ❌ 禁止把运行态 `.db` 放回 `assets/database/`
 - ❌ 禁止修改 `assets/vendor/` 下外部库源码
-- ✅ 所有路径统一经由 `services/telegram/src/_paths.py`
+- ✅ 所有路径统一经由 `modules/telegram/src/_paths.py`
 
 ---
 
@@ -100,13 +100,13 @@ FATE_SERVICE_PORT=8001
 - 当前主要内容是 `runtime/database/bazi/bazi.db`
 - 不放文档、脚本、配置模板
 
-### `services/fate_core/`
+### `modules/fate_core/`
 
 - 负责纯命理分析能力
 - 允许依赖 `assets/fate/` 中的字段 profile
 - 禁止依赖 Telegram / FastAPI / Bot UI
 
-### `services/telegram/`
+### `modules/telegram/`
 
 - 负责 Bot / API / 报告交付
 - 允许调用 `fate_core` 与外部成熟仓库
@@ -146,13 +146,13 @@ sys.path.insert(0, "/path/to/project/libs")
 
 - schema：`assets/database/bazi/schema_v2.sql`
 - 实库：`runtime/database/bazi/bazi.db`
-- 访问层：`services/telegram/src/db_v2.py`
+- 访问层：`modules/telegram/src/db_v2.py`
 
 这三个位置职责必须分离：
 
 1. schema 属于静态资产
 2. `.db` 属于运行态
-3. Python 访问层属于服务代码
+3. Python 访问层属于模块代码
 
 ---
 
@@ -160,9 +160,9 @@ sys.path.insert(0, "/path/to/project/libs")
 
 ### 允许修改
 
-- `services/fate_core/`
-- `services/telegram/src/`
-- `services/telegram/scripts/`
+- `modules/fate_core/`
+- `modules/telegram/src/`
+- `modules/telegram/scripts/`
 - `assets/fate/`
 - `assets/docs/`
 - `assets/deploy/`
@@ -177,8 +177,8 @@ sys.path.insert(0, "/path/to/project/libs")
 
 ### 新功能落点
 
-- 纯命理分析：优先进入 `services/fate_core/`
-- 交付层接口：进入 `services/telegram/`
+- 纯命理分析：优先进入 `modules/fate_core/`
+- 交付层接口：进入 `modules/telegram/`
 - 输出字段配置：先改 `assets/fate/`
 - 部署变更：改 `assets/deploy/`
 
@@ -217,8 +217,8 @@ make status
 日志位置：
 
 ```bash
-tail -f services/telegram/output/logs/bot.log
-cat services/telegram/output/logs/nohup.out
+tail -f modules/telegram/output/logs/bot.log
+cat modules/telegram/output/logs/nohup.out
 ```
 
 ---

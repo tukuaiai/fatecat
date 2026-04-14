@@ -3,11 +3,11 @@ set -e
 
 echo "Running all tests..."
 
-for service in services/*/; do
-    if [ -d "$service/tests" ]; then
-        name=$(basename "$service")
+for module in modules/*/; do
+    if [ -d "$module/tests" ]; then
+        name=$(basename "$module")
         echo "Testing $name..."
-        cd "$service"
+        cd "$module"
         python -m pytest tests/ -v
         cd - > /dev/null
     fi

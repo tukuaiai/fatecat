@@ -16,12 +16,12 @@ FateCat 不再沿用旧的 `libs/ + docs/ + deploy/` 平铺结构。
 
 - `assets/`：静态资产与配置真相源
 - `runtime/`：运行期状态与数据库文件
-- `services/`：纯分析内核与交付服务代码
+- `modules/`：纯分析内核与交付模块代码
 
 核心设计原则：
 
 1. 外部成熟仓库只做只读依赖，不在本仓库重写底层算法。
-2. 纯命理分析优先沉淀到 `services/fate_core/`。
+2. 纯命理分析优先沉淀到 `modules/fate_core/`。
 3. Telegram / FastAPI 只负责交付、编排和适配。
 4. 配置、数据、schema、文档统一归入 `assets/`。
 5. SQLite 实库、日志、队列等运行态内容统一归入 `runtime/` 或服务输出目录。
@@ -42,7 +42,7 @@ fatecat/
 │   └── vendor/          # 外部成熟仓库与网页资源，只读
 ├── runtime/
 │   └── database/        # SQLite 实库与其他运行态数据
-├── services/
+├── modules/
 │   ├── fate_core/       # 纯命理分析内核
 │   └── telegram/        # Telegram Bot / FastAPI 交付层
 ├── scripts/             # 仓库级脚本
@@ -62,7 +62,7 @@ fatecat/
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -r services/telegram/requirements.txt
+.venv/bin/pip install -r modules/telegram/requirements.txt
 ```
 
 或直接：
@@ -95,7 +95,7 @@ make status
 或直接：
 
 ```bash
-cd services/telegram
+cd modules/telegram
 ../../.venv/bin/python start.py bot
 ```
 
@@ -116,10 +116,10 @@ cd services/telegram
 - `runtime/database/`：SQLite 实库
 - 只放运行态产物，不放 schema、文档、脚本
 
-### `services/`
+### `modules/`
 
-- `services/fate_core/`：纯命理分析用例、contracts、providers、adapters
-- `services/telegram/`：Telegram Bot、FastAPI、报告生成、兼容旧能力
+- `modules/fate_core/`：纯命理分析用例、contracts、providers、adapters
+- `modules/telegram/`：Telegram Bot、FastAPI、报告生成、兼容旧能力
 
 ## 外部依赖
 
@@ -175,7 +175,7 @@ sqlite3 runtime/database/bazi/bazi.db ".tables"
 ### 查看日志
 
 ```bash
-tail -f services/telegram/output/logs/bot.log
+tail -f modules/telegram/output/logs/bot.log
 ```
 
 ## 开发约束
@@ -183,7 +183,7 @@ tail -f services/telegram/output/logs/bot.log
 - 不在仓库根目录或服务目录新增 `.env`
 - 不修改 `assets/vendor/` 下外部仓库源码
 - 不把运行态数据库重新放回 `assets/`
-- 新增输出字段时，先改 `assets/fate/` 的 profile，再改 `services/fate_core/`
+- 新增输出字段时，先改 `assets/fate/` 的 profile，再改 `modules/fate_core/`
 
 ## 许可证
 

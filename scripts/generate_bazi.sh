@@ -16,8 +16,8 @@ OUTPUT_BASE="output_${TIMESTAMP}"
 
 # 项目路径
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SERVICE_DIR="${PROJECT_DIR}/services/telegram/src"
-OUTPUT_DIR="${PROJECT_DIR}/services/telegram/output"
+SERVICE_DIR="${PROJECT_DIR}/modules/telegram/src"
+OUTPUT_DIR="${PROJECT_DIR}/modules/telegram/output"
 
 # 创建输出目录
 mkdir -p "$OUTPUT_DIR"

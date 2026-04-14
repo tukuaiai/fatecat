@@ -2,12 +2,12 @@
 
 ## 目录用途
 
-`services/fate_core/` 是命理胶水层内核：负责字段契约、profile、adapter、pipeline 与 usecase，不承载 Telegram / FastAPI 交付逻辑。
+`modules/fate_core/` 是命理胶水层内核：负责字段契约、profile、adapter、pipeline 与 usecase，不承载 Telegram / FastAPI 交付逻辑。
 
 ## 目录结构
 
 ```text
-services/fate_core/
+modules/fate_core/
 ├── AGENTS.md
 └── src/fate_core/
     ├── adapters/

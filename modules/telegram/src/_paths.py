@@ -28,7 +28,7 @@ RUNTIME_DIR = REPO_ROOT / "runtime"
 RUNTIME_DATABASE_DIR = RUNTIME_DIR / "database"
 
 # ==================== 核心模块路径 ====================
-FATE_CORE_ROOT = REPO_ROOT / "services" / "fate_core"
+FATE_CORE_ROOT = REPO_ROOT / "modules" / "fate_core"
 FATE_CORE_SRC_DIR = FATE_CORE_ROOT / "src"
 
 # ==================== 服务内部路径 ====================

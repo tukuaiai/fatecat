@@ -8,7 +8,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ENV_FILE="${ENV_FILE:-$ROOT/assets/config/.env}"
-SERVICE_DIR="$ROOT/services/telegram"
+SERVICE_DIR="$ROOT/modules/telegram"
 LOG_DIR="$SERVICE_DIR/output/logs"
 
 echo "==> 切换到项目根目录: $ROOT"

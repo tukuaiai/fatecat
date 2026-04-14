@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Deploying services..."
+echo "Deploying modules..."
 
 # Build images
 ./scripts/build_all.sh

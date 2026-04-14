@@ -3,7 +3,7 @@
 
 import sys
 import os
-sys.path.append('services/telegram/src')
+sys.path.append('modules/telegram/src')
 from datetime import datetime
 from bazi_calculator import BaziCalculator
 

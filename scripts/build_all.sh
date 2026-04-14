@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-echo "Building all services..."
+echo "Building all modules..."
 
-for service in services/*/; do
-    if [ -f "$service/Dockerfile" ]; then
-        name=$(basename "$service")
+for module in modules/*/; do
+    if [ -f "$module/Dockerfile" ]; then
+        name=$(basename "$module")
         echo "Building $name..."
-        docker build -t "$name:latest" "$service"
+        docker build -t "$name:latest" "$module"
     fi
 done
 

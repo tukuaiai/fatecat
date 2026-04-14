@@ -70,7 +70,7 @@ fi
 
 # 4. 创建Python绑定
 echo "🐍 4. 创建Python绑定..."
-cd "$ROOT/services/telegram"
+cd "$ROOT/modules/telegram"
 if [ -x "$ROOT/.venv/bin/pip" ]; then
     "$ROOT/.venv/bin/pip" install nodejs cffi pycparser
 else

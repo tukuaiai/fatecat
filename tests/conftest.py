@@ -1,6 +1,6 @@
 """Pytest configuration for fatecat tests.
 
-Note: Main test files are in services/telegram/tests/
+Note: Main test files are in modules/telegram/tests/
 This conftest.py provides shared fixtures for all tests.
 """
 
@@ -9,13 +9,13 @@ from pathlib import Path
 
 import pytest
 
-# Add service paths to sys.path for imports
+# Add module paths to sys.path for imports
 REPO_ROOT = Path(__file__).parent.parent
-TELEGRAM_SERVICE_ROOT = REPO_ROOT / "services" / "telegram"
-FATE_CORE_SRC = REPO_ROOT / "services" / "fate_core" / "src"
+TELEGRAM_MODULE_ROOT = REPO_ROOT / "modules" / "telegram"
+FATE_CORE_SRC = REPO_ROOT / "modules" / "fate_core" / "src"
 
-if str(TELEGRAM_SERVICE_ROOT / "src") not in sys.path:
-    sys.path.insert(0, str(TELEGRAM_SERVICE_ROOT / "src"))
+if str(TELEGRAM_MODULE_ROOT / "src") not in sys.path:
+    sys.path.insert(0, str(TELEGRAM_MODULE_ROOT / "src"))
 
 if str(FATE_CORE_SRC) not in sys.path:
     sys.path.insert(0, str(FATE_CORE_SRC))

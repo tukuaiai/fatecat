@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "services" / "fate_core" / "src"))
+sys.path.insert(0, str(ROOT / "modules" / "fate_core" / "src"))
 
 from fate_core.contracts import get_profile_fields
 

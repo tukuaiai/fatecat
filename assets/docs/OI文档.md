@@ -44,7 +44,7 @@ Fate-Engine 八字排盘系统 API 接口规范，基于当前 `bazi_calculator.
 
 ### Bot 产物（Telegram）
 - 说明消息：Markdown 代码块列出两个文件名，附常用 AI 链接，内联按钮「🎲 重新排盘」。
-- 附件：`services/telegram/output/txt/` 下两份 TXT 作为 media group 发送（无 caption，避免 Markdown 解析错误）。
+- 附件：`modules/telegram/output/txt/` 下两份 TXT 作为 media group 发送（无 caption，避免 Markdown 解析错误）。
 - 文件命名：`YYYY-MM-DD-HH:MM-地点-姓名-性别.txt` 与同名 `-ai分析版.txt`（前者纯报告，后者在首部拼接 `src/prompts/完整版.md`）。
 
 ### API / 内部调用返回

@@ -17,4 +17,4 @@ assets/fate/
 
 - `profiles/`：定义某个输出 profile 允许返回哪些字段。
 - 这里不放算法代码，不依赖 Telegram / FastAPI / 数据库。
-- 新增字段时，先更新这里的 profile，再更新 `services/fate_core/` 的 provider / usecase。
+- 新增字段时，先更新这里的 profile，再更新 `modules/fate_core/` 的 provider / usecase。

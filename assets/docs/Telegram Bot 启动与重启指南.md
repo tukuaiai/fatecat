@@ -2,7 +2,7 @@
 
 ## 环境前提
 - 项目根：仓库根目录
-- 依赖：已按 `services/telegram/requirements.txt` 安装
+- 依赖：已按 `modules/telegram/requirements.txt` 安装
 - 环境变量优先放在 `assets/config/.env`
   - `FATE_BOT_TOKEN`（必需）
   - `FATE_ADMIN_USER_IDS`（可选，管理员 Telegram ID）
@@ -10,31 +10,31 @@
 ## 单实例启动（推荐）
 1) 先清理旧进程，避免多实例冲突  
 ```bash
-pgrep -f "services/telegram/src/bot.py" | xargs -r kill
+pgrep -f "modules/telegram/src/bot.py" | xargs -r kill
 ```
 2) 前台启动（便于观察输出）  
 ```bash
-cd services/telegram
+cd modules/telegram
 ../../.venv/bin/python start.py bot
 ```
 看到 “🤖 启动 Telegram Bot...” 即开始运行，`Ctrl+C` 结束。
 
 ## 后台守护启动
 ```bash
-cd services/telegram
+cd modules/telegram
 nohup ../../.venv/bin/python start.py bot > output/logs/nohup.out 2>&1 &
-pgrep -f "services/telegram/src/bot.py"
+pgrep -f "modules/telegram/src/bot.py"
 ```
 记下输出的 PID，后续停止/重启使用。
 
 ## 停止 / 重启
-- 停止：`pgrep -f "services/telegram/src/bot.py" | xargs -r kill`
+- 停止：`pgrep -f "modules/telegram/src/bot.py" | xargs -r kill`
 - 强制：`... | xargs -r kill -9`
 - 重启：按“停止”→“后台守护启动”顺序。
 
 ## 日志查看
 ```bash
-tail -f services/telegram/output/logs/bot.log
+tail -f modules/telegram/output/logs/bot.log
 ```
 若使用 nohup，可同时查看 `output/logs/nohup.out`。
 

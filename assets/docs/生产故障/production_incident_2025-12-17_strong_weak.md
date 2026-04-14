@@ -9,7 +9,7 @@
   - 本地自写简化算法 `_calc_strength`（仅按三柱生克计数）。  
   报告同时展示两者，口径不一致。  
 - **处置**：移除本地 `_calc_strength` 使用，统一以外部库 weak 判定为唯一来源；报告口径随之统一。  
-- **代码变更**：`services/telegram/src/bazi_calculator.py`  
+- **代码变更**：`modules/telegram/src/bazi_calculator.py`
   - `strength` 仅取 `wx_scores['weakStrong']`；删除 `_calc_strength` 调用与实现。  
 - **后续动作**：  
   1. 回归测试：随机 10 份排盘确认强弱口径唯一且与 bazi-1 原输出一致。  

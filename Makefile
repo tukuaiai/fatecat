@@ -44,7 +44,7 @@ venv:
 
 install: venv
 	@echo "安装依赖..."
-	$(PIP) install -q -r services/telegram/requirements.txt
+	$(PIP) install -q -r modules/telegram/requirements.txt
 	@echo "✅ 依赖安装完成"
 
 install-dev: install
@@ -67,7 +67,7 @@ reset: clean
 	rm -rf .venv
 	python3 -m venv .venv
 	$(PIP) install -q --upgrade pip
-	$(PIP) install -q -r services/telegram/requirements.txt
+	$(PIP) install -q -r modules/telegram/requirements.txt
 	@echo "✅ 虚拟环境重建完成"
 
 lock:
@@ -78,36 +78,36 @@ lock:
 
 lint:
 	@if [ -f "$(RUFF)" ]; then \
-		$(RUFF) check services/ tests/ 2>/dev/null || $(RUFF) check services/; \
+		$(RUFF) check modules/ tests/ 2>/dev/null || $(RUFF) check modules/; \
 	else \
 		echo "⚠️  ruff 未安装，运行 make install-dev"; \
 	fi
 
 format:
 	@if [ -f "$(RUFF)" ]; then \
-		$(RUFF) format services/ tests/ 2>/dev/null || $(RUFF) format services/; \
-		$(RUFF) check --fix services/ tests/ 2>/dev/null || $(RUFF) check --fix services/; \
+		$(RUFF) format modules/ tests/ 2>/dev/null || $(RUFF) format modules/; \
+		$(RUFF) check --fix modules/ tests/ 2>/dev/null || $(RUFF) check --fix modules/; \
 	else \
 		echo "⚠️  ruff 未安装，运行 make install-dev"; \
 	fi
 
 test:
 	@if [ -f "$(PYTEST)" ]; then \
-		$(PYTEST) tests/ services/telegram/tests/ -v; \
+		$(PYTEST) tests/ modules/telegram/tests/ -v; \
 	else \
 		echo "⚠️  pytest 未安装，运行 make install-dev"; \
 	fi
 
 test-cov:
 	@if [ -f "$(PYTEST)" ]; then \
-		$(PYTEST) tests/ services/telegram/tests/ -v --cov=services --cov-report=term-missing; \
+		$(PYTEST) tests/ modules/telegram/tests/ -v --cov=modules --cov-report=term-missing; \
 	else \
 		echo "⚠️  pytest 未安装，运行 make install-dev"; \
 	fi
 
 typecheck:
 	@if [ -f ".venv/bin/mypy" ]; then \
-		.venv/bin/mypy services/; \
+		.venv/bin/mypy modules/; \
 	else \
 		echo "⚠️  mypy 未安装，运行 make install-dev"; \
 	fi
@@ -116,22 +116,22 @@ check: lint test
 	@echo "✅ 检查完成"
 
 syntax:
-	$(PYTHON) -m py_compile services/telegram/src/bot.py
+	$(PYTHON) -m py_compile modules/telegram/src/bot.py
 	@echo "✅ 语法检查通过"
 
 # ==================== 运行服务 ====================
 
 run: install
-	cd services/telegram && $(PYTHON) start.py
+	cd modules/telegram && $(PYTHON) start.py
 
 start:
-	./services/telegram/scripts/start.sh start
+	./modules/telegram/scripts/start.sh start
 
 stop:
-	./services/telegram/scripts/start.sh stop
+	./modules/telegram/scripts/start.sh stop
 
 status:
-	./services/telegram/scripts/start.sh status
+	./modules/telegram/scripts/start.sh status
 
 restart:
-	./services/telegram/scripts/start.sh restart
+	./modules/telegram/scripts/start.sh restart

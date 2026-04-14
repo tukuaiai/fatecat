@@ -1,10 +1,10 @@
 """
-Fate Service - Telegram Bot entry point.
+FateCat Telegram module entry point.
 
 Usage:
-    python -m services.telegram.src bot   # Start Telegram Bot
-    python -m services.telegram.src api   # Start FastAPI server
-    python -m services.telegram.src both  # Start both
+    python -m modules.telegram.src bot   # Start Telegram Bot
+    python -m modules.telegram.src api   # Start FastAPI server
+    python -m modules.telegram.src both  # Start both
 """
 import sys
 from pathlib import Path

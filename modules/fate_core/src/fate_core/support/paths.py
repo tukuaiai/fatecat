@@ -14,4 +14,4 @@ def _find_repo_root() -> Path:
 FATE_REPO_ROOT = _find_repo_root()
 FATE_ASSETS_DIR = FATE_REPO_ROOT / "assets" / "fate"
 FATE_PROFILE_DIR = FATE_ASSETS_DIR / "profiles"
-TELEGRAM_SRC_DIR = FATE_REPO_ROOT / "services" / "telegram" / "src"
+TELEGRAM_SRC_DIR = FATE_REPO_ROOT / "modules" / "telegram" / "src"

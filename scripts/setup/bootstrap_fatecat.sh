@@ -16,7 +16,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-SERVICE_DIR="$ROOT/services/telegram"
+SERVICE_DIR="$ROOT/modules/telegram"
 VENV="$ROOT/.venv"
 
 PY_REQ="$SERVICE_DIR/requirements.txt"

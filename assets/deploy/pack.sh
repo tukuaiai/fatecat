@@ -18,7 +18,7 @@ cp "$ROOT/AGENTS.md" "$OUT/"
 cp "$ROOT/Makefile" "$OUT/"
 cp "$ROOT/pyproject.toml" "$OUT/"
 cp "$ROOT/requirements-dev.txt" "$OUT/" 2>/dev/null || true
-cp -r "$ROOT/services" "$OUT/"
+cp -r "$ROOT/modules" "$OUT/"
 cp -r "$ROOT/scripts" "$OUT/"
 cp -r "$ROOT/assets" "$OUT/"
 mkdir -p "$OUT/runtime/database/bazi"
@@ -51,7 +51,7 @@ echo "==> 创建 Python 虚拟环境"
 cd "$DEPLOY_DIR"
 python3 -m venv .venv
 "$DEPLOY_DIR/.venv/bin/pip" install --upgrade pip
-"$DEPLOY_DIR/.venv/bin/pip" install -r services/telegram/requirements.txt
+"$DEPLOY_DIR/.venv/bin/pip" install -r modules/telegram/requirements.txt
 
 echo "==> 构建 Node.js 依赖"
 cd "$DEPLOY_DIR/assets/vendor/github/dantalion-master/packages/dantalion-core" 2>/dev/null && npm install && npm run build || echo "dantalion 跳过"
@@ -75,7 +75,7 @@ After=network.target
 [Service]
 Type=simple
 User=$USER
-WorkingDirectory=$DEPLOY_DIR/services/telegram
+WorkingDirectory=$DEPLOY_DIR/modules/telegram
 Environment="PATH=$DEPLOY_DIR/.venv/bin:/usr/bin"
 EnvironmentFile=-$CONFIG_ENV
 ExecStart=$DEPLOY_DIR/.venv/bin/python start.py bot

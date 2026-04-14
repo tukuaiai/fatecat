@@ -2,12 +2,12 @@
 
 ## 目录用途
 
-`services/fate_core/src/fate_core/providers/` 负责把纯命理输出拆成可组合的字段组装器；每个文件只关心一组字段，不直接承载 HTTP / Bot 交付。
+`modules/fate_core/src/fate_core/providers/` 负责把纯命理输出拆成可组合的字段组装器；每个文件只关心一组字段，不直接承载 HTTP / Bot 交付。
 
 ## 目录结构
 
 ```text
-services/fate_core/src/fate_core/providers/
+modules/fate_core/src/fate_core/providers/
 ├── AGENTS.md
 ├── __init__.py
 ├── base_chart.py

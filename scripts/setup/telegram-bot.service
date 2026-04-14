@@ -8,7 +8,7 @@ StartLimitBurst=5
 [Service]
 Type=simple
 User=fatecat
-WorkingDirectory=/srv/fatecat/services/telegram
+WorkingDirectory=/srv/fatecat/modules/telegram
 Environment="PYTHONUNBUFFERED=1"
 EnvironmentFile=/etc/fatecat/fatecat.env
 ExecStart=/bin/bash -lc 'source /srv/fatecat/.venv/bin/activate && python start.py bot'
