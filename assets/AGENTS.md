@@ -15,6 +15,7 @@ assets/
 ├── deploy/
 ├── docs/
 ├── fate/
+├── tasks/
 └── vendor/
 ```
 
@@ -26,6 +27,7 @@ assets/
 - `deploy/`：打包与部署脚本。
 - `docs/`：文档、记录、结构说明。
 - `fate/`：命理字段 profile 与输出配置真相源。
+- `tasks/`：执行教训、任务记忆与过程资产。
 - `vendor/`：外部成熟仓库，只读。
 
 ## 开发规则
