@@ -1,1 +1,1 @@
-"""Fate Service - Telegram Bot source code."""
+"""FateCat Telegram module source code."""

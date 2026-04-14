@@ -49,8 +49,7 @@ from utils.timezone import now_cn, fmt_cn, ensure_cn, CN_TZ
 
 # 外部库路径 (统一使用 _paths 模块)
 from _paths import (
-    LUNAR_PYTHON_DIR, BAZI_1_DIR, DANTALION_DIR, SRC_DIR,
-    FATE_SERVICE_ROOT as _root
+    LUNAR_PYTHON_DIR, BAZI_1_DIR, DANTALION_DIR, SRC_DIR
 )
 sys.path.insert(0, str(LUNAR_PYTHON_DIR))
 sys.path.insert(0, str(BAZI_1_DIR))

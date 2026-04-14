@@ -10,7 +10,7 @@ PYTEST := .venv/bin/pytest
 .PHONY: help venv install install-dev clean lint format test check run start stop status
 
 help:
-	@echo "Fate Service 常用命令:"
+	@echo "FateCat 常用命令:"
 	@echo ""
 	@echo "  环境管理:"
 	@echo "    make venv        - 创建虚拟环境"
@@ -25,7 +25,7 @@ help:
 	@echo "    make test        - 运行测试 (pytest)"
 	@echo "    make check       - 完整检查 (lint + test)"
 	@echo ""
-	@echo "  运行服务:"
+	@echo "  运行模块:"
 	@echo "    make run         - 前台运行（调试用）"
 	@echo "    make start       - 后台启动"
 	@echo "    make stop        - 停止服务"
@@ -119,7 +119,7 @@ syntax:
 	$(PYTHON) -m py_compile modules/telegram/src/bot.py
 	@echo "✅ 语法检查通过"
 
-# ==================== 运行服务 ====================
+# ==================== 运行模块 ====================
 
 run: install
 	cd modules/telegram && $(PYTHON) start.py

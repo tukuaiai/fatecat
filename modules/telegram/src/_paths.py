@@ -1,14 +1,15 @@
 """
 FateCat 路径管理模块
-统一管理仓库内静态资产、运行时数据与服务路径，避免路径继续带旧项目影子。
+统一管理仓库内静态资产、运行时数据与模块路径，避免路径继续带旧项目影子。
 """
 from pathlib import Path
 
-# ==================== 仓库与服务根路径 ====================
-SERVICE_ROOT = Path(__file__).resolve().parent.parent
-REPO_ROOT = SERVICE_ROOT.parent.parent
+# ==================== 仓库与模块根路径 ====================
+MODULE_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = MODULE_ROOT.parent.parent
 
 # 兼容旧命名，避免大面积改动
+SERVICE_ROOT = MODULE_ROOT
 FATE_SERVICE_ROOT = REPO_ROOT
 PROJECT_ROOT = REPO_ROOT
 
@@ -31,10 +32,10 @@ RUNTIME_DATABASE_DIR = RUNTIME_DIR / "database"
 FATE_CORE_ROOT = REPO_ROOT / "modules" / "fate_core"
 FATE_CORE_SRC_DIR = FATE_CORE_ROOT / "src"
 
-# ==================== 服务内部路径 ====================
-SRC_DIR = SERVICE_ROOT / "src"
-SCRIPTS_DIR = SERVICE_ROOT / "scripts"
-OUTPUT_DIR = SERVICE_ROOT / "output"
+# ==================== 模块内部路径 ====================
+SRC_DIR = MODULE_ROOT / "src"
+SCRIPTS_DIR = MODULE_ROOT / "scripts"
+OUTPUT_DIR = MODULE_ROOT / "output"
 LOGS_DIR = OUTPUT_DIR / "logs"
 TXT_DIR = OUTPUT_DIR / "txt"
 QUEUE_DIR = OUTPUT_DIR / "queue"
