@@ -1,6 +1,6 @@
 [Unit]
-# 示例 systemd 服务，请按部署环境调整 User / WorkingDirectory / EnvironmentFile
-Description=Fate-Engine Telegram Bot
+# 示例 systemd 单元，请按部署环境调整 User / WorkingDirectory / EnvironmentFile
+Description=FateCat Telegram Bot
 After=network.target
 StartLimitIntervalSec=60
 StartLimitBurst=5

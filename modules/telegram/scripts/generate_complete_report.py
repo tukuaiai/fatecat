@@ -26,7 +26,7 @@ def generate_complete_report():
         }
     }
     
-    print("# Fate-Engine 全量功能计算与极致完整报告")
+    print("# FateCat 全量功能计算与极致完整报告")
     print()
     
     # 1) 输入回显
@@ -146,7 +146,7 @@ def generate_complete_report():
         print()
         print("### 系统元信息")
         print("- **规格版本**: OI文档 v1.0")
-        print("- **计算引擎**: Fate-Engine v2.0")
+        print("- **计算引擎**: FateCat v2.0")
         print("- **核心依赖**: lunar-python")
         print("- **扩展库**: 55个开源命理库")
         print("- **数据精度**: 分钟级")

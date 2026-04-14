@@ -24,7 +24,7 @@ def generate_full_report():
     
     # 标题
     report.append("═" * 80)
-    report.append("                        Fate-Engine 全量功能完整报告")
+    report.append("                        FateCat 全量功能完整报告")
     report.append("                           66个字段完整输出")
     report.append("═" * 80)
     report.append("")
@@ -170,13 +170,13 @@ def generate_full_report():
     
     # 报告尾部
     report.append("═" * 80)
-    report.append("                  Fate-Engine - 功能最完整的开源命理引擎")
+    report.append("                  FateCat - 功能最完整的开源命理引擎")
     report.append("                    66个功能字段 | 5,405行代码 | 95%+完成度")
     report.append("                        生成时间：2025-12-15 14:42")
     report.append("═" * 80)
     
     # 写入文件
-    output_file = 'Fate-Engine全量66字段完整报告.txt'
+    output_file = 'FateCat全量66字段完整报告.txt'
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(report))
     

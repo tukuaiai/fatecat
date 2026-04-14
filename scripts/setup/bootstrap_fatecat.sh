@@ -16,10 +16,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-SERVICE_DIR="$ROOT/modules/telegram"
+MODULE_DIR="$ROOT/modules/telegram"
 VENV="$ROOT/.venv"
 
-PY_REQ="$SERVICE_DIR/requirements.txt"
+PY_REQ="$MODULE_DIR/requirements.txt"
 NODE_REPOS=(
   "$ROOT/assets/vendor/github/sxwnl-master"
   "$ROOT/assets/vendor/github/iztro-main"
@@ -75,10 +75,10 @@ setup_node_all() {
   done
 }
 
-start_service() {
+start_module() {
   local mode="$1"
-  pushd "$SERVICE_DIR" >/dev/null
-  log "启动服务: $mode"
+  pushd "$MODULE_DIR" >/dev/null
+  log "启动模块: $mode"
   python3 start.py "$mode"
   popd >/dev/null
 }
@@ -91,10 +91,10 @@ main() {
 
   case "$action" in
     deps)
-      log "依赖安装完成（未启动服务）"
+      log "依赖安装完成（未启动模块）"
       ;;
     bot|api|both)
-      start_service "$action"
+      start_module "$action"
       ;;
     *)
       err "未知参数：$action（可选 bot|api|both|deps）"

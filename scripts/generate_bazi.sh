@@ -16,14 +16,14 @@ OUTPUT_BASE="output_${TIMESTAMP}"
 
 # 项目路径
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SERVICE_DIR="${PROJECT_DIR}/modules/telegram/src"
+MODULE_DIR="${PROJECT_DIR}/modules/telegram/src"
 OUTPUT_DIR="${PROJECT_DIR}/modules/telegram/output"
 
 # 创建输出目录
 mkdir -p "$OUTPUT_DIR"
 
 # 激活虚拟环境并执行
-cd "$SERVICE_DIR"
+cd "$MODULE_DIR"
 source "${PROJECT_DIR}/.venv/bin/activate"
 
 python3 << EOF

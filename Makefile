@@ -28,8 +28,8 @@ help:
 	@echo "  运行模块:"
 	@echo "    make run         - 前台运行（调试用）"
 	@echo "    make start       - 后台启动"
-	@echo "    make stop        - 停止服务"
-	@echo "    make status      - 查看状态"
+	@echo "    make stop        - 停止后台进程"
+	@echo "    make status      - 查看运行状态"
 
 # ==================== 环境管理 ====================
 

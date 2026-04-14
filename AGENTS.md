@@ -210,7 +210,7 @@ make status
 | 问题 | 原因 | 解决方案 |
 |------|------|----------|
 | `未设置 FATE_BOT_TOKEN` | 配置缺失 | 编辑 `assets/config/.env` |
-| `no such table: records` | 数据库未初始化 | 启动服务或执行 `db.ensure_db()` |
+| `no such table: records` | 数据库未初始化 | 启动模块或执行 `db.ensure_db()` |
 | `配置文件不存在` | `.env` 缺失 | `cp assets/config/.env.example assets/config/.env` |
 | `缺少必需依赖` | 外部库不完整 | 检查 `assets/vendor/github/` |
 

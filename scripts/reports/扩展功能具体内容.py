@@ -5,7 +5,7 @@ def show_extended_functions():
     """展示专业扩展功能和传统命理功能的具体内容"""
     
     print("═" * 100)
-    print("                        Fate-Engine 扩展功能具体内容展示")
+    print("                        FateCat 扩展功能具体内容展示")
     print("═" * 100)
     print()
     

@@ -1,10 +1,10 @@
-# Fate-Engine API / Bot 文档
+# FateCat API / Bot 文档
 
 > 最后更新: 2025-12-16 07:05
 
 ## 概述
 
-Fate-Engine 八字排盘系统 API 接口规范，基于当前 `bazi_calculator.py` (65,793行) 实现。
+FateCat 八字排盘系统 API 接口规范，基于当前 `bazi_calculator.py` (65,793行) 实现。
 
 ### 🎯 当前状态
 - **总字段**: 66（核心25 + 扩展41），计算全量保留。

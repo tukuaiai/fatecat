@@ -11,7 +11,7 @@ import json
 def analyze_all_fields():
     """分析所有模块的完整字段输出"""
     
-    print("# Fate-Engine 完整功能字段分析报告")
+    print("# FateCat 完整功能字段分析报告")
     print()
     
     # 1. 核心八字计算器
@@ -199,5 +199,5 @@ def analyze_all_fields():
 if __name__ == "__main__":
     stats = analyze_all_fields()
     print()
-    print(f"**Fate-Engine 已成为功能最完整的开源命理引擎！**")
+    print(f"**FateCat 已成为功能最完整的开源命理引擎！**")
     print(f"**总计: {stats['total_fields']}个功能字段，{stats['total_lines']:,}行代码**")

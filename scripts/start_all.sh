@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 一键启动 Fate-Engine Telegram 全量服务（含清理旧进程）
+# 一键启动 FateCat Telegram 全量模块（含清理旧进程）
 # - 杀掉遗留 bot/api 进程
 # - 预加载外部 .env
 # - 后台启动 bot（含 API，如需单 bot 请改为 start.py bot）
@@ -8,8 +8,8 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ENV_FILE="${ENV_FILE:-$ROOT/assets/config/.env}"
-SERVICE_DIR="$ROOT/modules/telegram"
-LOG_DIR="$SERVICE_DIR/output/logs"
+MODULE_DIR="$ROOT/modules/telegram"
+LOG_DIR="$MODULE_DIR/output/logs"
 
 echo "==> 切换到项目根目录: $ROOT"
 cd "$ROOT"
@@ -26,8 +26,8 @@ fi
 
 echo "==> 清理遗留进程..."
 PIDS=$({
-  pgrep -f "$SERVICE_DIR/src/bot.py" || true
-  pgrep -f "$SERVICE_DIR/src/main.py" || true
+  pgrep -f "$MODULE_DIR/src/bot.py" || true
+  pgrep -f "$MODULE_DIR/src/main.py" || true
   # start.py 是调度父进程（start.py both），需一并清理避免多实例并存
   pgrep -f "start.py both" || true
 } | sort -u | tr '\n' ' ')
@@ -36,8 +36,8 @@ if [[ -n "$PIDS" ]]; then
   sleep 1
   # 如有顽固进程，再强杀
   REMAIN=$({
-    pgrep -f "$SERVICE_DIR/src/bot.py" || true
-    pgrep -f "$SERVICE_DIR/src/main.py" || true
+    pgrep -f "$MODULE_DIR/src/bot.py" || true
+    pgrep -f "$MODULE_DIR/src/main.py" || true
     pgrep -f "start.py both" || true
   } | sort -u | tr '\n' ' ')
   if [[ -n "$REMAIN" ]]; then
@@ -56,7 +56,7 @@ if [[ ! -x "$PY_BIN" ]]; then
 fi
 
 echo "==> 后台启动 Bot + API（start.py both）..."
-cd "$SERVICE_DIR"
+cd "$MODULE_DIR"
 nohup "$PY_BIN" start.py both > "$LOG_DIR/nohup.out" 2>&1 &
 BOT_PID=$!
 echo "$BOT_PID" > "$LOG_DIR/bot.pid"

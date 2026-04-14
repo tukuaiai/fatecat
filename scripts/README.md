@@ -12,7 +12,7 @@
 ### 🔧 setup/
 环境配置脚本
 - `setup_external_env.sh` - 外部环境依赖自动配置脚本
-- `bootstrap_fatecat.sh` - 一键安装依赖并启动 FateCat 服务
+- `bootstrap_fatecat.sh` - 一键安装依赖并启动 FateCat 模块
 
 ## 🚀 使用方法
 

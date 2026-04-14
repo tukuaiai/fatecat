@@ -24,7 +24,7 @@ FateCat 不再沿用旧的 `libs/ + docs/ + deploy/` 平铺结构。
 2. 纯命理分析优先沉淀到 `modules/fate_core/`。
 3. Telegram / FastAPI 只负责交付、编排和适配。
 4. 配置、数据、schema、文档统一归入 `assets/`。
-5. SQLite 实库、日志、队列等运行态内容统一归入 `runtime/` 或服务输出目录。
+5. SQLite 实库、日志、队列等运行态内容统一归入 `runtime/` 或模块输出目录。
 
 ## 当前目录结构
 
@@ -85,7 +85,7 @@ FATE_BOT_TOKEN=your_bot_token_here
 FATE_ADMIN_USER_IDS=123456789
 ```
 
-### 4. 启动服务
+### 4. 启动模块
 
 ```bash
 make start
@@ -180,7 +180,7 @@ tail -f modules/telegram/output/logs/bot.log
 
 ## 开发约束
 
-- 不在仓库根目录或服务目录新增 `.env`
+- 不在仓库根目录或模块目录新增 `.env`
 - 不修改 `assets/vendor/` 下外部仓库源码
 - 不把运行态数据库重新放回 `assets/`
 - 新增输出字段时，先改 `assets/fate/` 的 profile，再改 `modules/fate_core/`

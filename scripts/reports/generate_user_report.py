@@ -210,7 +210,7 @@ def generate_user_report():
     
     # 报告尾部
     report.append("═" * 60)
-    report.append("                  Fate-Engine 八字排盘系统")
+    report.append("                  FateCat 八字排盘系统")
     report.append("                    生成时间：2025-12-15 14:41")
     report.append("═" * 60)
     

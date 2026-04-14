@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fate-Engine Telegram Service 启动脚本"""
+"""FateCat Telegram 模块启动脚本"""
 import sys
 import subprocess
 from pathlib import Path
@@ -8,8 +8,8 @@ def main():
     if len(sys.argv) < 2:
         print("用法:")
         print("  python start.py bot     # 启动 Telegram Bot")
-        print("  python start.py api     # 启动 FastAPI 服务")
-        print("  python start.py both    # 同时启动两个服务")
+        print("  python start.py api     # 启动 FastAPI 接口")
+        print("  python start.py both    # 同时启动 Bot 和 API")
         return
     
     mode = sys.argv[1]
@@ -20,11 +20,11 @@ def main():
         subprocess.run([sys.executable, str(src_dir / "bot.py")])
     
     elif mode == "api":
-        print("🚀 启动 FastAPI 服务...")
+        print("🚀 启动 FastAPI 接口...")
         subprocess.run([sys.executable, str(src_dir / "main.py")])
     
     elif mode == "both":
-        print("🚀 同时启动 Bot 和 API 服务...")
+        print("🚀 同时启动 Bot 和 API...")
         import threading
         
         def run_bot():

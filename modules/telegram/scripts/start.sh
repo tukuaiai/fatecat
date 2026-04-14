@@ -5,10 +5,10 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SERVICE_DIR="$(dirname "$SCRIPT_DIR")"
-REPO_ROOT="$(dirname "$(dirname "$SERVICE_DIR")")"
+MODULE_DIR="$(dirname "$SCRIPT_DIR")"
+REPO_ROOT="$(dirname "$(dirname "$MODULE_DIR")")"
 CONFIG_ENV="$REPO_ROOT/assets/config/.env"
-LOG_DIR="$SERVICE_DIR/output/logs"
+LOG_DIR="$MODULE_DIR/output/logs"
 PID_FILE="$LOG_DIR/bot.pid"
 
 # 安全加载 .env（禁止 source 执行文件内容）
@@ -53,8 +53,8 @@ load_env() {
 }
 
 get_python() {
-  if [[ -x "$SERVICE_DIR/.venv/bin/python" ]]; then
-    echo "$SERVICE_DIR/.venv/bin/python"
+  if [[ -x "$MODULE_DIR/.venv/bin/python" ]]; then
+    echo "$MODULE_DIR/.venv/bin/python"
   elif [[ -x "$REPO_ROOT/.venv/bin/python" ]]; then
     echo "$REPO_ROOT/.venv/bin/python"
   else
@@ -69,14 +69,14 @@ start() {
   if [[ -f "$PID_FILE" ]]; then
     OLD_PID=$(cat "$PID_FILE")
     if kill -0 "$OLD_PID" 2>/dev/null; then
-      echo "服务已在运行 (PID: $OLD_PID)"
+      echo "后台进程已在运行 (PID: $OLD_PID)"
       return 0
     fi
   fi
 
   PY_BIN=$(get_python)
   echo "==> 启动 FateCat Bot..."
-  cd "$SERVICE_DIR"
+  cd "$MODULE_DIR"
   setsid bash -c "exec \"$PY_BIN\" start.py bot" > "$LOG_DIR/nohup.out" 2>&1 < /dev/null &
   BOT_PID=$!
   echo "$BOT_PID" > "$PID_FILE"
@@ -89,20 +89,20 @@ stop() {
   if [[ -f "$PID_FILE" ]]; then
     PID=$(cat "$PID_FILE")
     if kill -0 "$PID" 2>/dev/null; then
-      echo "==> 停止服务 (PID: $PID)..."
+      echo "==> 停止后台进程 (PID: $PID)..."
       kill "$PID"
       sleep 2
       if kill -0 "$PID" 2>/dev/null; then
         kill -9 "$PID"
       fi
       rm -f "$PID_FILE"
-      echo "✅ 服务已停止"
+      echo "✅ 后台进程已停止"
     else
-      echo "服务未运行"
+      echo "后台进程未运行"
       rm -f "$PID_FILE"
     fi
   else
-    echo "服务未运行"
+    echo "后台进程未运行"
   fi
 }
 
@@ -110,11 +110,11 @@ status() {
   if [[ -f "$PID_FILE" ]]; then
     PID=$(cat "$PID_FILE")
     if kill -0 "$PID" 2>/dev/null; then
-      echo "✅ 服务运行中 (PID: $PID)"
+      echo "✅ 后台进程运行中 (PID: $PID)"
       return 0
     fi
   fi
-  echo "❌ 服务未运行"
+  echo "❌ 后台进程未运行"
   return 1
 }
 

@@ -21,7 +21,7 @@ def generate_complete_output():
     
     # 生成完整输出文档
     output = []
-    output.append('# Fate-Engine 完整输出测试文档')
+    output.append('# FateCat 完整输出测试文档')
     output.append('# 测试时间: 2025-12-15 14:40')
     output.append('# 输入参数: 1990-05-15 14:30 深圳 男性')
     output.append('')

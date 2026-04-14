@@ -37,7 +37,7 @@ set -euo pipefail
 DEPLOY_DIR="$HOME/.projects/fatecat"
 CONFIG_ENV="$DEPLOY_DIR/assets/config/.env"
 ENV_EXAMPLE="$DEPLOY_DIR/assets/config/.env.example"
-SERVICE_NAME="fatecat-telegram"
+UNIT_NAME="fatecat-telegram"
 
 echo "==> 安装系统依赖"
 sudo apt update
@@ -66,8 +66,8 @@ if [ ! -f "$CONFIG_ENV" ]; then
   echo "FATE_BOT_TOKEN=你的token" > "$CONFIG_ENV"
 fi
 
-echo "==> 安装 systemd 服务"
-sudo tee "/etc/systemd/system/${SERVICE_NAME}.service" > /dev/null << SYSTEMD
+echo "==> 安装 systemd 单元"
+sudo tee "/etc/systemd/system/${UNIT_NAME}.service" > /dev/null << SYSTEMD
 [Unit]
 Description=FateCat Telegram Bot
 After=network.target
@@ -87,14 +87,14 @@ WantedBy=multi-user.target
 SYSTEMD
 
 sudo systemctl daemon-reload
-sudo systemctl enable "$SERVICE_NAME"
+sudo systemctl enable "$UNIT_NAME"
 
 echo ""
 echo "✅ 部署完成"
 echo "1. 编辑配置: nano $CONFIG_ENV"
-echo "2. 启动服务: sudo systemctl start $SERVICE_NAME"
-echo "3. 查看状态: sudo systemctl status $SERVICE_NAME"
-echo "4. 查看日志: journalctl -u $SERVICE_NAME -f"
+echo "2. 启动单元: sudo systemctl start $UNIT_NAME"
+echo "3. 查看状态: sudo systemctl status $UNIT_NAME"
+echo "4. 查看日志: journalctl -u $UNIT_NAME -f"
 EOF
 chmod +x "$OUT/install.sh"
 

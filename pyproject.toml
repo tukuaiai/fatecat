@@ -1,7 +1,7 @@
 [project]
 name = "fatecat"
 version = "0.1.0"
-description = "FateCat 命理分析与交付服务"
+description = "FateCat 命理分析与交付模块"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
