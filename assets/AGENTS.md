@@ -1,0 +1,36 @@
+# AGENTS.md - assets 目录说明
+
+## 目录用途
+
+`assets/` 是 FateCat 的静态资产真相源，承载配置模板、静态数据、schema、部署脚本、文档、字段 profile 与外部依赖快照。
+
+## 目录结构
+
+```text
+assets/
+├── AGENTS.md
+├── config/
+├── data/
+├── database/
+├── deploy/
+├── docs/
+├── fate/
+└── vendor/
+```
+
+## 职责边界
+
+- `config/`：配置模板与配置文件入口；不放业务代码。
+- `data/`：静态数据文件；不放运行时生成的数据。
+- `database/`：数据库 schema 与静态定义；不放 `.db` 实库。
+- `deploy/`：打包与部署脚本。
+- `docs/`：文档、记录、结构说明。
+- `fate/`：命理字段 profile 与输出配置真相源。
+- `vendor/`：外部成熟仓库，只读。
+
+## 开发规则
+
+- 修改输出字段前，先检查 `assets/fate/`。
+- 修改数据库结构前，先改 `assets/database/` 中的 schema。
+- 文档落地统一写入 `assets/docs/`。
+- 禁止把运行时文件重新放入 `assets/`。

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# 全量依赖编译 + 启动脚本（生产/一键启动）
+# FateCat 全量依赖编译 + 启动脚本（生产/一键启动）
 # 作用：
 # 1) 创建/复用 Python 虚拟环境并安装后端依赖
 # 2) 为 Node/TS 外部仓库安装依赖并尝试构建（仅在存在 build 脚本时）
 # 3) 可选启动 Telegram Bot / FastAPI / both
 #
 # 用法：
-#   chmod +x scripts/setup/bootstrap_fate_engine.sh
-#   scripts/setup/bootstrap_fate_engine.sh bot   # 仅 Bot
-#   scripts/setup/bootstrap_fate_engine.sh api   # 仅 API
-#   scripts/setup/bootstrap_fate_engine.sh both  # Bot+API
-#   scripts/setup/bootstrap_fate_engine.sh deps  # 只装依赖不启动
+#   chmod +x scripts/setup/bootstrap_fatecat.sh
+#   scripts/setup/bootstrap_fatecat.sh bot   # 仅 Bot
+#   scripts/setup/bootstrap_fatecat.sh api   # 仅 API
+#   scripts/setup/bootstrap_fatecat.sh both  # Bot+API
+#   scripts/setup/bootstrap_fatecat.sh deps  # 只装依赖不启动
 #
 # 依赖：python3、node、npm
 set -euo pipefail
@@ -21,10 +21,10 @@ VENV="$ROOT/.venv"
 
 PY_REQ="$SERVICE_DIR/requirements.txt"
 NODE_REPOS=(
-  "$ROOT/libs/external/github/sxwnl-master"
-  "$ROOT/libs/external/github/iztro-main"
-  "$ROOT/libs/external/github/fortel-ziweidoushu-main"
-  "$ROOT/libs/external/github/js_astro-master"
+  "$ROOT/assets/vendor/github/sxwnl-master"
+  "$ROOT/assets/vendor/github/iztro-main"
+  "$ROOT/assets/vendor/github/fortel-ziweidoushu-main"
+  "$ROOT/assets/vendor/github/js_astro-master"
 )
 
 log() { printf "\033[1;32m[BOOT]\033[0m %s\n" "$*"; }

@@ -4,7 +4,7 @@
 择日算法计算器 - 基于lunar-python
 
 外部库依赖注入 (相对路径从项目根目录):
-└── libs/external/github/lunar-python-master/  # 历法支持
+└── assets/vendor/github/lunar-python-master/  # 历法支持
 
 纯净性声明: 强制调用原生算法，失败即抛异常终止
 """

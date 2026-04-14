@@ -4,7 +4,7 @@
 完整真太阳时计算器 - 基于paipan-master天文算法
 
 外部库依赖注入 (相对路径从项目根目录):
-└── libs/external/github/paipan-master/
+└── assets/vendor/github/paipan-master/
     └── 真太阳时计算、均时差算法、早晚子时判断
 
 算法来源: 天文学均时差公式 (Equation of Time)

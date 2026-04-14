@@ -1,13 +1,18 @@
 #!/bin/bash
-# Fate-Engine 外部环境搭建脚本
-# 用于搭建Node.js、Rust等外部依赖环境
+# FateCat 外部环境搭建脚本
+# 用于搭建 Node.js、Rust 等外部依赖环境
 
-echo "🚀 Fate-Engine 外部环境搭建开始"
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+VENDOR_GITHUB_DIR="$ROOT/assets/vendor/github"
+
+echo "🚀 FateCat 外部环境搭建开始"
 echo "═══════════════════════════════════════════════════════════════"
 
 # 1. 安装Node.js依赖包
 echo "📦 1. 安装Node.js依赖包..."
-cd libs/external/github/sxwnl-master
+cd "$VENDOR_GITHUB_DIR/sxwnl-master"
 if [ -f "package.json" ]; then
     npm install
     echo "✅ 寿星万年历Node.js依赖安装完成"
@@ -65,8 +70,12 @@ fi
 
 # 4. 创建Python绑定
 echo "🐍 4. 创建Python绑定..."
-cd ../../../../services/telegram
-pip install nodejs cffi pycparser
+cd "$ROOT/services/telegram"
+if [ -x "$ROOT/.venv/bin/pip" ]; then
+    "$ROOT/.venv/bin/pip" install nodejs cffi pycparser
+else
+    pip install nodejs cffi pycparser
+fi
 
 # 5. 测试环境
 echo "🧪 5. 测试外部环境..."
@@ -93,7 +102,7 @@ print(f'✅ Python: {sys.version.split()[0]}')
 "
 
 echo "═══════════════════════════════════════════════════════════════"
-echo "🎉 Fate-Engine 外部环境搭建完成！"
+echo "🎉 FateCat 外部环境搭建完成！"
 echo "   Node.js: ✅ 寿星万年历支持"
 echo "   Rust: ✅ 风水罗盘支持"  
 echo "   Python: ✅ 主计算引擎"

@@ -4,7 +4,7 @@
 寿星万年历集成器 - 强制使用原生库，失败即报错
 
 外部库依赖注入 (相对路径从项目根目录):
-└── libs/external/github/sxwnl-master/
+└── assets/vendor/github/sxwnl-master/
     ├── sxwnl_interface.js  # 接口文件
     └── 源程序/
         ├── lunar.js    # 核心历法算法

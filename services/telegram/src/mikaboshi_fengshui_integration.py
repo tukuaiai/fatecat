@@ -4,7 +4,7 @@
 风水罗盘集成器 - 原生Python实现
 
 外部库依赖注入 (相对路径从项目根目录):
-└── libs/external/github/mikaboshi-main/  # 参考算法
+└── assets/vendor/github/mikaboshi-main/  # 参考算法
 
 纯净性声明: 原生算法实现，失败即抛异常终止
 """

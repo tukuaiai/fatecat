@@ -1,10 +1,12 @@
 """数据库操作模块"""
-import sqlite3
 import json
-from pathlib import Path
+import sqlite3
 from typing import Optional, Dict, List
 
-DB_PATH = Path(__file__).parent / "bazi.db"
+from _paths import BAZI_DB_PATH, BAZI_SCHEMA_PATH
+
+DB_PATH = BAZI_DB_PATH
+SCHEMA_PATH = BAZI_SCHEMA_PATH
 _initialized = False
 
 
@@ -17,7 +19,7 @@ def get_conn():
 def init_db():
     """初始化数据库表结构"""
     conn = get_conn()
-    conn.executescript(open(Path(__file__).parent / "schema_v2.sql").read())
+    conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
     conn.commit()
     conn.close()
 

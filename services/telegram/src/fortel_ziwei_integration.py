@@ -4,8 +4,8 @@
 专业紫微斗数集成器 - 强制使用原生库，失败即报错
 
 外部库依赖注入 (相对路径从项目根目录):
-├── libs/external/github/fortel-ziweidoushu-main/  # 专业紫微斗数
-└── libs/external/github/iztro-main/lib/index.js   # iztro核心算法
+├── assets/vendor/github/fortel-ziweidoushu-main/  # 专业紫微斗数
+└── assets/vendor/github/iztro-main/lib/index.js   # iztro核心算法
 
 运行环境: Node.js 18+
 纯净性声明: 强制调用原生TypeScript算法，失败即抛异常终止

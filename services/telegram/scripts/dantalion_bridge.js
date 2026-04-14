@@ -23,7 +23,7 @@ function parseArgs() {
 
 function main() {
   const { birth } = parseArgs();
-  const corePath = path.resolve(__dirname, '../../../libs/external/github/dantalion-master/packages/dantalion-core/dist/index.js');
+  const corePath = path.resolve(__dirname, '../../../assets/vendor/github/dantalion-master/packages/dantalion-core/dist/index.js');
   const core = require(corePath);
   if (!core.getPersonality) {
     throw new Error('dantalion-core getPersonality not found');

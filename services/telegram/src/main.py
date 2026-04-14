@@ -6,11 +6,11 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from zoneinfo import ZoneInfo
 
-from _paths import BAZI_DB_DIR, FATE_CORE_SRC_DIR
+from _paths import FATE_CORE_SRC_DIR
 from utils.timezone import now_cn
 
-sys.path.insert(0, str(BAZI_DB_DIR))
-sys.path.insert(0, str(FATE_CORE_SRC_DIR))
+if str(FATE_CORE_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(FATE_CORE_SRC_DIR))
 
 from models import (
     BaziRequest,

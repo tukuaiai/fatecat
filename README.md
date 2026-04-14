@@ -1,6 +1,6 @@
-# Fate Service
+# FateCat
 
-> 专业级八字排盘服务 | TradeCat 微服务之一
+> 命理胶水层仓库：外部成熟命理库 + 纯分析内核 + Telegram / API 交付层
 
 ## 赞助商
 
@@ -8,206 +8,183 @@
   - 本项目由交易猫赞助与支持。
   - CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
 
-## 项目简介
+## 项目定位
 
-Fate Service 是 TradeCat 项目的命理服务模块，提供专业的八字排盘、紫微斗数、择日等功能。
+FateCat 不再沿用旧的 `libs/ + docs/ + deploy/` 平铺结构。
+
+当前仓库按职责拆成三层：
+
+- `assets/`：静态资产与配置真相源
+- `runtime/`：运行期状态与数据库文件
+- `services/`：纯分析内核与交付服务代码
+
+核心设计原则：
+
+1. 外部成熟仓库只做只读依赖，不在本仓库重写底层算法。
+2. 纯命理分析优先沉淀到 `services/fate_core/`。
+3. Telegram / FastAPI 只负责交付、编排和适配。
+4. 配置、数据、schema、文档统一归入 `assets/`。
+5. SQLite 实库、日志、队列等运行态内容统一归入 `runtime/` 或服务输出目录。
+
+## 当前目录结构
+
+```text
+fatecat/
+├── Makefile
+├── pyproject.toml
+├── assets/
+│   ├── config/          # 环境变量模板与配置文件
+│   ├── data/            # 静态数据，如城市坐标
+│   ├── database/        # 数据库 schema 等静态定义
+│   ├── deploy/          # 打包与部署脚本
+│   ├── docs/            # 项目文档与历史记录
+│   ├── fate/            # 命理字段 profile 与配置真相源
+│   └── vendor/          # 外部成熟仓库与网页资源，只读
+├── runtime/
+│   └── database/        # SQLite 实库与其他运行态数据
+├── services/
+│   ├── fate_core/       # 纯命理分析内核
+│   └── telegram/        # Telegram Bot / FastAPI 交付层
+├── scripts/             # 仓库级脚本
+└── tests/               # 测试
+```
+
+目录重构说明见 `assets/docs/当前目录结构.md`。
 
 ## 快速开始
 
 ### 1. 环境要求
 
 - Python 3.12+
-- Node.js 18+ (寿星万年历支持)
+- Node.js 18+
 
 ### 2. 安装依赖
 
 ```bash
-cd plugins/fate
-
-# 创建虚拟环境并安装依赖
-make install
-
-# 或手动安装
 python3 -m venv .venv
 .venv/bin/pip install -r services/telegram/requirements.txt
 ```
 
-### 3. 配置
-
-fate-service 使用 TradeCat 统一配置文件 `assets/config/.env`：
+或直接：
 
 ```bash
-# 复制配置模板（如果还没有）
-cp assets/config/.env.example assets/config/.env
+make install
+```
 
-# 编辑配置，填入 fate-service 专用配置
+### 3. 初始化配置
+
+```bash
+cp assets/config/.env.example assets/config/.env
 vim assets/config/.env
 ```
 
-需要配置的变量：
+最少需要：
 
 ```env
-# fate-service 配置（独立 Bot）
-FATE_BOT_TOKEN=your_bot_token_here      # 从 @BotFather 获取
-FATE_ADMIN_USER_IDS=123456789           # 管理员 Telegram ID
+FATE_BOT_TOKEN=your_bot_token_here
+FATE_ADMIN_USER_IDS=123456789
 ```
 
 ### 4. 启动服务
 
 ```bash
-# 方式一：使用 Makefile（推荐）
-make start          # 后台启动
-make stop           # 停止服务
-make status         # 查看状态
-make run            # 前台运行（调试用）
-
-# 方式二：使用启动脚本
-./services/telegram/scripts/start.sh start
-
-# 方式三：直接运行
-cd services/telegram
-.venv/bin/python start.py bot     # 启动 Telegram Bot
-.venv/bin/python start.py api     # 启动 FastAPI 服务
-.venv/bin/python start.py both    # 同时启动
+make start
+make status
 ```
 
-### 5. 验证运行
+或直接：
 
 ```bash
-# 查看状态
-make status
-
-# 查看日志
-tail -f services/telegram/output/logs/bot.log
+cd services/telegram
+../../.venv/bin/python start.py bot
 ```
 
-## 自动化特性
+## 关键目录说明
 
-服务启动时会自动执行以下检查：
+### `assets/`
 
-1. **目录检查** - 自动创建 logs、output、database 目录
-2. **依赖检查** - 验证外部库和配置文件是否存在
-3. **数据库初始化** - 自动创建数据库表（如不存在）
-4. **配置验证** - 检查 FATE_BOT_TOKEN 是否配置
+- `assets/config/`：统一配置入口，只允许放模板与配置文件
+- `assets/data/`：静态业务数据
+- `assets/database/`：数据库 schema，不放运行态 `.db`
+- `assets/deploy/`：部署与打包脚本
+- `assets/docs/`：说明文档、记录、结构图
+- `assets/fate/`：输出字段 profile，例如 `pure_analysis.json`
+- `assets/vendor/`：外部仓库快照与网页资源，默认只读
 
-如果检查失败，服务会输出详细错误信息并拒绝启动。
+### `runtime/`
 
-## 项目结构
+- `runtime/database/`：SQLite 实库
+- 只放运行态产物，不放 schema、文档、脚本
 
-```
-fate-service/
-├── Makefile                    # 常用命令
-├── .venv/                      # Python 虚拟环境
-├── services/
-│   └── telegram/       # Telegram Bot 服务
-│       ├── src/
-│       │   ├── bot.py          # Bot 主程序
-│       │   ├── _paths.py       # 统一路径管理
-│       │   ├── bazi_calculator.py  # 八字计算核心
-│       │   ├── liuyao_factors/ # 六爻量化因子模块
-│       │   └── ...
-│       ├── output/
-│       │   ├── logs/           # 日志目录
-│       │   └── txt/            # 报告输出
-│       ├── scripts/
-│       │   └── start.sh        # 启动脚本
-│       └── start.py            # 启动入口
-├── libs/
-│   ├── data/                   # 数据文件（城市坐标等）
-│   ├── database/bazi/          # SQLite 数据库
-│   └── external/               # 外部依赖（来自 GitHub 开源项目）
-│       ├── github/             # GitHub 克隆的命理库
-│       └── web/                # 网页资源
-└── docs/                       # 文档
-```
+### `services/`
 
-## 外部依赖库
+- `services/fate_core/`：纯命理分析用例、contracts、providers、adapters
+- `services/telegram/`：Telegram Bot、FastAPI、报告生成、兼容旧能力
 
-本项目依赖多个 GitHub 开源命理库，已克隆到 `libs/external/github/` 目录：
+## 外部依赖
 
-### 必需依赖
+外部成熟仓库存放在 `assets/vendor/github/`。
 
-| 库名 | GitHub 来源 | 用途 |
-|------|-------------|------|
-| lunar-python | [6tail/lunar-python](https://github.com/6tail/lunar-python) | 核心历法计算 |
-| bazi-1 | [bazi-1/bazi](https://github.com/nicktaobo/bazi-1) | 八字神煞格局 |
-| sxwnl | [sxwnl/sxwnl](https://github.com/nicktaobo/sxwnl) | 寿星万年历 |
+必需依赖：
 
-### 可选依赖
+| 库名 | 目录 | 用途 |
+|------|------|------|
+| lunar-python | `assets/vendor/github/lunar-python-master` | 核心历法计算 |
+| bazi-1 | `assets/vendor/github/bazi-1-master` | 八字神煞格局 |
+| sxwnl | `assets/vendor/github/sxwnl-master` | 寿星万年历 |
 
-| 库名 | GitHub 来源 | 用途 |
-|------|-------------|------|
-| fortel-ziweidoushu | [fortelzhao/fortel-ziweidoushu](https://github.com/nicktaobo/fortel-ziweidoushu) | 紫微斗数 |
-| iztro | [SylarLong/iztro](https://github.com/SylarLong/iztro) | 紫微斗数 |
-| dantalion | [nicktaobo/dantalion](https://github.com/nicktaobo/dantalion) | 现代八字分析 |
-| mikaboshi | [nicktaobo/mikaboshi](https://github.com/nicktaobo/mikaboshi) | 风水罗盘 |
-| Chinese-Divination | GitHub | 六爻/梅花易数 |
-| Iching | GitHub | 易经系统 |
+可选依赖：
 
-> 详细说明见 `libs/external/README.md`
+| 库名 | 目录 | 用途 |
+|------|------|------|
+| fortel-ziweidoushu | `assets/vendor/github/fortel-ziweidoushu-main` | 紫微斗数 |
+| iztro | `assets/vendor/github/iztro-main` | 紫微斗数 |
+| dantalion | `assets/vendor/github/dantalion-master` | 现代八字分析 |
+| mikaboshi | `assets/vendor/github/mikaboshi-main` | 风水罗盘 |
+| paipan | `assets/vendor/github/paipan-master` | 真太阳时 |
+
+详细说明见 `assets/vendor/README.md`。
 
 ## 常用命令
 
 ```bash
-make help       # 查看所有命令
-make install    # 安装依赖
-make start      # 后台启动
-make stop       # 停止服务
-make status     # 查看状态
-make restart    # 重启服务
-make run        # 前台运行
-make lint       # 代码检查
-make test       # 运行测试
-make clean      # 清理缓存
-make reset      # 重建虚拟环境
+make help
+make install
+make lint
+make test
+make start
+make stop
+make status
+make restart
 ```
-
-## 功能特性
-
-### 核心功能
-- 八字排盘（四柱、藏干、十神、神煞、格局）
-- 大运流年分析
-- 真太阳时计算
-- 地点模糊匹配（3199+ 城市）
-
-### 扩展功能
-- 紫微斗数
-- 择日算法
-- 合婚分析
-- 姓名学
-
-## 配置说明
-
-所有配置集中在 `tradecat/assets/config/.env`：
-
-| 变量 | 必填 | 说明 |
-|------|------|------|
-| `FATE_BOT_TOKEN` | ✅ | fate-service 专用 Bot Token |
-| `FATE_ADMIN_USER_IDS` | ❌ | 管理员 ID（逗号分隔） |
-| `FATE_SERVICE_HOST` | ❌ | API 服务地址（默认 0.0.0.0） |
-| `FATE_SERVICE_PORT` | ❌ | API 服务端口（默认 8001） |
 
 ## 故障排查
 
-### Bot 无响应
-
-1. 检查配置：`grep FATE_BOT_TOKEN assets/config/.env`
-2. 检查网络/代理
-3. 确认只有一个 Bot 实例运行
-
-### 排盘失败
-
-1. 检查日志：`tail -f services/telegram/output/logs/bot.log`
-2. 验证数据库：`sqlite3 libs/database/bazi/bazi.db ".tables"`
-
-### 依赖缺失
+### 配置缺失
 
 ```bash
-# 重新安装依赖
-make reset
-make install
+grep FATE_BOT_TOKEN assets/config/.env
 ```
+
+### 数据库检查
+
+```bash
+sqlite3 runtime/database/bazi/bazi.db ".tables"
+```
+
+### 查看日志
+
+```bash
+tail -f services/telegram/output/logs/bot.log
+```
+
+## 开发约束
+
+- 不在仓库根目录或服务目录新增 `.env`
+- 不修改 `assets/vendor/` 下外部仓库源码
+- 不把运行态数据库重新放回 `assets/`
+- 新增输出字段时，先改 `assets/fate/` 的 profile，再改 `services/fate_core/`
 
 ## 许可证
 
-MIT License
+MIT

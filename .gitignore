@@ -17,8 +17,8 @@ backups/
 .vscode/
 *.swp
 *.swo
-# libs/external/github/  # 外部库需要提交
-# libs/external/web      # 外部资源需要提交
+# assets/vendor/github/  # 外部库需要提交
+# assets/vendor/web      # 外部资源需要提交
 *.gz
 *.zip
 .history/
@@ -42,10 +42,10 @@ Thumbs.db
 
 # Node
 node_modules/
-libs/external/**/node_modules/
-libs/external/**/.vs/
-libs/external/**/Debug/
-libs/external/**/Release/
+assets/vendor/**/node_modules/
+assets/vendor/**/.vs/
+assets/vendor/**/Debug/
+assets/vendor/**/Release/
 *.pdb
 *.ilk
 *.pch
@@ -60,17 +60,16 @@ htmlcov/
 *.tfstate.*
 .terraform/
 
-services/telegram-service/output
 # 敏感数据
-libs/database/bazi/bazi.db
+runtime/database/bazi/bazi.db
 *.db
 *.sqlite
 services/telegram-service/output/
 backups/
-docs/Sublime-Text.txt
-docs/1.json
+assets/docs/Sublime-Text.txt
+assets/docs/1.json
 complete_result.json
 complete_integration_result.json
-docs/complete_integration_result.json
+assets/docs/complete_integration_result.json
 services/telegram/complete_result.json
 services/telegram/complete_integration_result.json

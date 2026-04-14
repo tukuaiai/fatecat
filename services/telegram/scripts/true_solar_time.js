@@ -11,7 +11,7 @@ const vm = require('vm');
 function loadPaipan() {
   const code = fs.readFileSync(
     // 从 scripts/ 回到仓库根：../../../
-    path.resolve(__dirname, '../../../libs/external/github/paipan-master/js/paipan.js'),
+    path.resolve(__dirname, '../../../assets/vendor/github/paipan-master/js/paipan.js'),
     'utf-8'
   );
   const sandbox = { window: {}, console };

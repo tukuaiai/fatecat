@@ -1,4 +1,4 @@
-# Fate Service Makefile
+# FateCat Makefile
 # 用法: make <target>
 
 SHELL := /bin/bash
@@ -78,15 +78,15 @@ lock:
 
 lint:
 	@if [ -f "$(RUFF)" ]; then \
-		$(RUFF) check services/ libs/ tests/ 2>/dev/null || $(RUFF) check services/; \
+		$(RUFF) check services/ tests/ 2>/dev/null || $(RUFF) check services/; \
 	else \
 		echo "⚠️  ruff 未安装，运行 make install-dev"; \
 	fi
 
 format:
 	@if [ -f "$(RUFF)" ]; then \
-		$(RUFF) format services/ libs/ tests/ 2>/dev/null || $(RUFF) format services/; \
-		$(RUFF) check --fix services/ libs/ tests/ 2>/dev/null || $(RUFF) check --fix services/; \
+		$(RUFF) format services/ tests/ 2>/dev/null || $(RUFF) format services/; \
+		$(RUFF) check --fix services/ tests/ 2>/dev/null || $(RUFF) check --fix services/; \
 	else \
 		echo "⚠️  ruff 未安装，运行 make install-dev"; \
 	fi

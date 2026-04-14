@@ -18,17 +18,16 @@ from telegram.ext import (Application, CommandHandler, CallbackQueryHandler,
 from dotenv import load_dotenv
 from utils.timezone import now_cn, fmt_cn
 from _paths import (
-    get_env_file, BAZI_DB_DIR, LOGS_DIR, TXT_DIR, QUEUE_DIR, PROMPTS_DIR, 
+    get_env_file, LOGS_DIR, TXT_DIR, QUEUE_DIR, PROMPTS_DIR,
     ensure_dirs, startup_check
 )
 
 # 启动检查（目录、依赖、配置）
 startup_check()
 
-# 统一从 tradecat/assets/config/.env 加载配置
+# 统一从仓库内 assets/config/.env 加载配置
 load_dotenv(get_env_file())
 ADMIN_CHAT_ID = (os.getenv("FATE_ADMIN_USER_IDS") or "").split(",")[0] or None
-sys.path.insert(0, str(BAZI_DB_DIR))
 
 from bazi_calculator import BaziCalculator
 from report_generator import generate_full_report

@@ -1,12 +1,12 @@
 [project]
-name = "fate-service"
+name = "fatecat"
 version = "0.1.0"
-description = "Fate calculation and analysis service for TradeCat - Chinese astrology and fortune telling"
+description = "FateCat 命理分析与交付服务"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "TradeCat Team" }]
-keywords = ["fate", "bazi", "astrology", "chinese-calendar"]
+keywords = ["fatecat", "bazi", "astrology", "chinese-calendar"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -37,13 +37,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["services", "libs"]
+packages = ["services"]
 
 # ==================== Ruff ====================
 [tool.ruff]
 target-version = "py312"
 line-length = 120
-src = ["services", "libs", "tests"]
+src = ["services", "tests"]
 
 [tool.ruff.lint]
 select = [
@@ -61,7 +61,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["services", "libs"]
+known-first-party = ["services"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -80,7 +80,7 @@ markers = [
 
 # ==================== Coverage ====================
 [tool.coverage.run]
-source = ["services", "libs"]
+source = ["services"]
 branch = true
 omit = ["tests/*", "*/__pycache__/*"]
 

@@ -4,9 +4,9 @@
 增强易经系统集成器 - 完全依赖外部成熟库实现
 
 外部库依赖注入 (相对路径从项目根目录):
-├── libs/external/github/Iching-master/
+├── assets/vendor/github/Iching-master/
 │   └── 64卦完整系统、爻辞卦辞数据库
-└── libs/external/github/Chinese-Divination-master/
+└── assets/vendor/github/Chinese-Divination-master/
     └── 多种起卦方法、易经哲学分析
 
 纯净性声明: 强制调用原生算法，失败即抛异常终止

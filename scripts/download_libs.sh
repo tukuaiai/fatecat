@@ -1,10 +1,12 @@
 #!/bin/bash
-# 下载八字排盘相关开源库到 libs/external/
+# 下载八字排盘相关开源库到 assets/vendor/github/
 
 set -e
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "$ROOT/libs/external"
+TARGET_DIR="$ROOT/assets/vendor/github"
+mkdir -p "$TARGET_DIR"
+cd "$TARGET_DIR"
 
 download_repo() {
     local repo=$1

@@ -2,16 +2,16 @@
 完整八字排盘计算器 - 100%原生算法驱动
 
 外部库依赖注入 (相对路径从项目根目录):
-├── libs/external/github/lunar-python-master     # 核心历法库 (强制依赖)
-├── libs/external/github/bazi-1-master           # 五行量化、神煞数据
-├── libs/external/github/sxwnl-master            # 寿星万年历 (Node.js)
-├── libs/external/github/iztro-main              # 紫微斗数 (TypeScript)
-├── libs/external/github/fortel-ziweidoushu-main # 专业紫微斗数
-├── libs/external/github/mikaboshi-main          # 风水罗盘 (Rust)
-├── libs/external/github/Chinese-Divination-master # 六爻/梅花/奇门
-├── libs/external/github/Iching-master           # 易经系统
-├── libs/external/github/holiday-and-chinese-almanac-calendar-main # 节假日历法
-└── libs/external/github/chinese-calendar-master # 中国历法
+├── assets/vendor/github/lunar-python-master     # 核心历法库 (强制依赖)
+├── assets/vendor/github/bazi-1-master           # 五行量化、神煞数据
+├── assets/vendor/github/sxwnl-master            # 寿星万年历 (Node.js)
+├── assets/vendor/github/iztro-main              # 紫微斗数 (TypeScript)
+├── assets/vendor/github/fortel-ziweidoushu-main # 专业紫微斗数
+├── assets/vendor/github/mikaboshi-main          # 风水罗盘 (Rust)
+├── assets/vendor/github/Chinese-Divination-master # 六爻/梅花/奇门
+├── assets/vendor/github/Iching-master           # 易经系统
+├── assets/vendor/github/holiday-and-chinese-almanac-calendar-main # 节假日历法
+└── assets/vendor/github/chinese-calendar-master # 中国历法
 
 本地模块调用 (相对路径从src目录):
 ├── sxwnl_integration.py          -> sxwnl-master
@@ -49,7 +49,7 @@ from utils.timezone import now_cn, fmt_cn, ensure_cn, CN_TZ
 
 # 外部库路径 (统一使用 _paths 模块)
 from _paths import (
-    LUNAR_PYTHON_DIR, BAZI_1_DIR, SRC_DIR,
+    LUNAR_PYTHON_DIR, BAZI_1_DIR, DANTALION_DIR, SRC_DIR,
     FATE_SERVICE_ROOT as _root
 )
 sys.path.insert(0, str(LUNAR_PYTHON_DIR))
@@ -424,7 +424,7 @@ class BaziCalculator:
 
             if not hide.get("system", False):
                 # 现代化八字（强制依赖外部 dantalion-master；缺失即终止）
-                dantalion_repo = _root / "libs/external/github/dantalion-master"
+                dantalion_repo = DANTALION_DIR
                 dist_js = dantalion_repo / "packages/dantalion-core/dist/index.js"
                 if not dist_js.exists():
                     raise RuntimeError("dantalion-core 未构建（缺少 dist/index.js），请先在 dantalion-master 目录执行构建再重试")
@@ -1414,15 +1414,15 @@ class BaziCalculator:
         dt = self.true_solar_time
         hour = int(dt.strftime("%H"))
 
-        bazi_py = _root / "libs/external/github/bazi-1-master/bazi.py"
+        bazi_py = BAZI_1_DIR / "bazi.py"
         if not bazi_py.exists():
             raise RuntimeError("温湿度/拱神计算失败: 缺少 bazi-1-master/bazi.py")
 
         env = dict(**os.environ)
         # bazi.py 依赖本仓库的 local checkout（避免系统 pip 环境不一致）
         env["PYTHONPATH"] = ":".join([
-            str(_root / "libs/external/github/bazi-1-master"),
-            str(_root / "libs/external/github/lunar-python-master"),
+            str(BAZI_1_DIR),
+            str(LUNAR_PYTHON_DIR),
             env.get("PYTHONPATH", ""),
         ])
         # 固定 TZ，避免跨环境输出口径漂移
@@ -1968,7 +1968,7 @@ class BaziCalculator:
         - 数据来源: bazi-1-master/datas.py -> jianchus
         """
         try:
-            data_path = _root / "libs/external/github/bazi-1-master/datas.py"
+            data_path = BAZI_1_DIR / "datas.py"
             text = data_path.read_text(encoding="utf-8")
             start = text.find("jianchus")
             if start == -1:
