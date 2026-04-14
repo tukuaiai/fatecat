@@ -12,18 +12,42 @@ pure_analysis_module = importlib.import_module("fate_core.usecases.calculate_pur
 
 
 def test_calculate_pure_analysis_projects_profile(monkeypatch):
-    def fake_calculate_raw(_payload):
+    class FakeCalculator:
+        def _translate_to_chinese(self, value):
+            return value
+
+        def _json_safe(self, value):
+            return value
+
+    def fake_build_runtime(_payload):
+        class Runtime:
+            calculator = FakeCalculator()
+
+        return Runtime()
+
+    def fake_build_base(_runtime):
         return {
             "input": {"name": "测试"},
             "meta": {"calculateTime": "2026-04-14 00:00:00"},
             "fourPillars": {"day": {"fullName": "甲子"}},
+        }
+
+    def fake_build_fortune(_runtime):
+        return {
             "majorFortune": {"pillars": []},
+        }
+
+    def fake_build_classical(_runtime):
+        return {
             "yongShen": {"note": "测试"},
             "ziweiChart": {"should": "drop"},
             "liuyaoHexagram": {"should": "drop"},
         }
 
-    monkeypatch.setattr(pure_analysis_module, "calculate_pure_analysis_raw", fake_calculate_raw)
+    monkeypatch.setattr(pure_analysis_module, "build_pure_analysis_runtime", fake_build_runtime)
+    monkeypatch.setattr(pure_analysis_module, "build_base_chart_section", fake_build_base)
+    monkeypatch.setattr(pure_analysis_module, "build_fortune_section", fake_build_fortune)
+    monkeypatch.setattr(pure_analysis_module, "build_classical_section", fake_build_classical)
 
     result = calculate_pure_analysis(
         PureAnalysisInput(

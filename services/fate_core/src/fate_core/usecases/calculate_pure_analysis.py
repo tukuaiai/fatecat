@@ -4,8 +4,14 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
-from fate_core.adapters import LegacyBaziInput, calculate_pure_analysis_raw
+from fate_core.adapters import LegacyBaziInput
 from fate_core.kernel import project_by_profile
+from fate_core.providers import (
+    build_base_chart_section,
+    build_classical_section,
+    build_fortune_section,
+    build_pure_analysis_runtime,
+)
 
 
 @dataclass(frozen=True)
@@ -23,7 +29,7 @@ class PureAnalysisInput:
 
 def calculate_pure_analysis(payload: PureAnalysisInput) -> dict[str, Any]:
     """计算纯命理分析字段集合。"""
-    raw = calculate_pure_analysis_raw(
+    runtime = build_pure_analysis_runtime(
         LegacyBaziInput(
             birth_dt=payload.birth_dt,
             gender=payload.gender,
@@ -34,4 +40,10 @@ def calculate_pure_analysis(payload: PureAnalysisInput) -> dict[str, Any]:
             use_true_solar_time=payload.use_true_solar_time,
         )
     )
-    return project_by_profile(raw, "pure_analysis")
+    raw = {}
+    raw.update(build_base_chart_section(runtime))
+    raw.update(build_fortune_section(runtime))
+    raw.update(build_classical_section(runtime))
+    projected = project_by_profile(raw, "pure_analysis")
+    translated = runtime.calculator._translate_to_chinese(projected)
+    return runtime.calculator._json_safe(translated)
