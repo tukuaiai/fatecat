@@ -1,0 +1,26 @@
+layer: "library"
+language: "typescript"
+
+tasks:
+  dev:
+    deps:
+      - "^:build"
+    command: "vite dev"
+    inputs:
+      - "src/**/*"
+      - "vite.config.ts"
+      - "tsconfig.json"
+    outputs:
+      - "dist"
+    local: true
+
+  build:
+    deps:
+      - "^:build"
+    command: "rslib build"
+    inputs:
+      - "src/**/*"
+      - "rslib.config.ts"
+      - "tsconfig.json"
+    outputs:
+      - "dist"

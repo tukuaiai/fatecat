@@ -1,0 +1,7 @@
+coverage/
+src/
+/.*
+*.config.?s
+*.config.d.ts
+*.tgz
+tsconfig.*

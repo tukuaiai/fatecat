@@ -1,0 +1,78 @@
+{
+  "name": "@ziweijs/core",
+  "version": "0.3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "专业级北派紫微斗数排盘工具库",
+  "keywords": [
+    "紫微斗数",
+    "Ziwei",
+    "Ziwei-Doushu",
+    "命理学",
+    "命盘",
+    "排盘",
+    "北派紫微斗数",
+    "紫微星盘",
+    "八字命理",
+    "工具库",
+    "JavaScript",
+    "TypeScript",
+    "占星",
+    "占卜",
+    "星盘工具",
+    "命理工具",
+    "天干地支",
+    "五行",
+    "四化飞星",
+    "专业紫微",
+    "ziwei.js",
+    "Ziwei.js",
+    "紫微斗数工具",
+    "命理排盘",
+    "命理算法",
+    "紫微算法",
+    "现代命理",
+    "Chinese astrology",
+    "astrology",
+    "fengshui",
+    "ziwei-doushu-library",
+    "ziwei-doushu-calculator"
+  ],
+  "homepage": "https://github.com/lzm0x219/ziwei/tree/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/lzm0x219/ziwei/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzm0x219/ziwei.git",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "lzm0x219",
+    "email": "lzm0x219@gmail.com"
+  },
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@ziweijs/i18n": "workspace:*",
+    "remeda": "2.32.0",
+    "tyme4ts": "catalog:"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "catalog:",
+    "@rslib/core": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "catalog:"
+  }
+}

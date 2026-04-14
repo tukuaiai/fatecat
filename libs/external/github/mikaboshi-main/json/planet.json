@@ -1,0 +1,101 @@
+[
+  {
+    "name": {
+      "en": "earth",
+      "zh_cn": ["地球", "dì qiú"],
+      "zh_tw": ["地球", "dì qiú"],
+      "ja": ["ちきゅう", "chikyu"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "moon",
+      "zh_cn": ["月", ""],
+      "zh_tw": ["月", ""],
+      "ja": ["つき", "tsuki"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "mercury",
+      "zh_cn": ["水星", "shuǐ xīng"],
+      "zh_tw": ["水星", "shuǐ xīng"],
+      "ja": ["すいせい", "suisei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "venus",
+      "zh_cn": ["金星", "jīn xīng"],
+      "zh_tw": ["金星", "jīn xīng"],
+      "ja": ["きんせい", "kinsei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "sun",
+      "zh_cn": ["太陽", ""],
+      "zh_tw": ["太陽", ""],
+      "ja": ["たいよう", "taiyo"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "mars",
+      "zh_cn": ["火星", "huǒ xīng"],
+      "zh_tw": ["火星", "huǒ xīng"],
+      "ja": ["かせい", "kasei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "jupiter",
+      "zh_cn": ["木星", "mù xīng"],
+      "zh_tw": ["木星", "mù xīng"],
+      "ja": ["もくせい", "mokusei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "saturn",
+      "zh_cn": ["土星", "tǔ xīng"],
+      "zh_tw": ["土星", "tǔ xīng"],
+      "ja": ["どせい", "dosei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "uranus",
+      "zh_cn": ["天王星", "tiānwáng xīng"],
+      "zh_tw": ["天王星", "tiānwáng xīng"],
+      "ja": ["てんのうせい", ""],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "neptune",
+      "zh_cn": ["海王星", "hǎiwáng xīng"],
+      "zh_tw": ["海王星", "hǎiwáng xīng"],
+      "ja": ["かいおうせい", "kaiosei"],
+      "vi": []
+    }
+  },
+  {
+    "name": {
+      "en": "pluto",
+      "zh_cn": ["冥王星", "míngwáng xīng"],
+      "zh_tw": ["冥王星", "míngwáng xīng"],
+      "ja": ["めいおうせい", "meiosei"],
+      "vi": []
+    }
+  }
+]

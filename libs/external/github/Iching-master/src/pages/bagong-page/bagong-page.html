@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>八宫</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>上爻</ion-label>
+      <ion-select [(ngModel)]="upper_yao" (ngModelChange)="updateSelectedValue($event)">
+        <ion-option *ngFor="let item of items" value={{item.title}}>{{item.title}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>下爻</ion-label>
+      <ion-select [(ngModel)]="lower_yao" (ngModelChange)="updateSelectedValue($event)">
+        <ion-option *ngFor="let item of items" value={{item.title}}>{{item.title}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-card *ngFor="let gua_info of gua_infos">
+    <ion-card-header>
+    <h1>{{gua_info.title}}</h1>
+    </ion-card-header>
+    <ion-card-content>
+    {{gua_info.name}}, {{gua_info.gong}}宫 属{{gua_info.wuxing}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

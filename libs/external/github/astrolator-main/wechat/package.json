@@ -1,0 +1,15 @@
+{
+    "name": "Astrolator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "dependencies": {
+        "@miniprogram-component-plus/index-list": "^1.0.0",
+        "@miniprogram-component-plus/tabs": "^1.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+}

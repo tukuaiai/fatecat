@@ -1,0 +1,128 @@
+[
+  {
+    "num": 1,
+    "direction": "n",
+    "name": {
+      "en": "1 White",
+      "zh_cn": ["一白水星", "yī bái shuǐ xīng"],
+      "zh_tw": ["一白水星", "yī bái shuǐ xīng"],
+      "ja": ["いっぱくすいせい", "ippaku suisei"],
+      "vi": []
+    },
+    "color": "white",
+    "element": 4,
+    "planet": 2
+  },
+  {
+    "num": 2,
+    "direction": "sw",
+    "name": {
+      "en": "2 Black",
+      "zh_cn": ["二黒土星", "èr hēi tǔ xīng"],
+      "zh_tw": ["二黒土星", "èr hēi tǔ xīng"],
+      "ja": ["じこくどせい", "jikoku dosei"],
+      "vi": []
+    },
+    "color": "black",
+    "element": 2,
+    "planet": 7
+  },
+  {
+    "num": 3,
+    "direction": "e",
+    "name": {
+      "en": "3 Jade",
+      "zh_cn": ["三碧木星", "sān bì mù xīng"],
+      "zh_tw": ["三碧木星", "sān bì mù xīng"],
+      "ja": ["さんぺきもくせい", "sanpeki mokusei"],
+      "vi": []
+    },
+    "color": "jade",
+    "element": 0,
+    "planet": 6
+  },
+  {
+    "num": 4,
+    "direction": "se",
+    "name": {
+      "en": "4 Green",
+      "zh_cn": ["四緑木星", "sì lǜ mù xīng"],
+      "zh_tw": ["四緑木星", "sì lǜ mù xīng"],
+      "ja": ["しろくもくせい", "shiroku mokusei"],
+      "vi": []
+    },
+    "color": "jade",
+    "element": 0,
+    "planet": 6
+  },
+  {
+    "num": 5,
+    "direction": "",
+    "name": {
+      "en": "5 Green",
+      "zh_cn": ["五黄土星", "wǔ huáng tǔ xīng"],
+      "zh_tw": ["五黄土星", "wǔ huáng tǔ xīng"],
+      "ja": ["ごおうどせい", "go-ou dosei"],
+      "vi": []
+    },
+    "color": "yellow",
+    "element": 2,
+    "planet": 7
+  },
+  {
+    "num": 6,
+    "direction": "nw",
+    "name": {
+      "en": "6 White",
+      "zh_cn": ["六白金星", "liù bái jīn xīng"],
+      "zh_tw": ["六白金星", "liù bái jīn xīng"],
+      "ja": ["ろっぱくきんせい", "roppaku kinsei"],
+      "vi": []
+    },
+    "color": "white",
+    "element": 3,
+    "planet": 3
+  },
+  {
+    "num": 7,
+    "direction": "w",
+    "name": {
+      "en": "7 Red",
+      "zh_cn": ["七赤金星", "qī chì jīn xīng"],
+      "zh_tw": ["七赤金星", "qī chì jīn xīng"],
+      "ja": ["しちせききんせい", "shichiseki kinsei"],
+      "vi": []
+    },
+    "color": "red",
+    "element": 3,
+    "planet": 3
+  },
+  {
+    "num": 8,
+    "direction": "ne",
+    "name": {
+      "en": "8 White",
+      "zh_cn": ["八白土星", "bā bái tǔ xīng"],
+      "zh_tw": ["八白土星", "bā bái tǔ xīng"],
+      "ja": ["はっぱくどせい", "happaku dosei"],
+      "vi": []
+    },
+    "color": "white",
+    "element": 2,
+    "planet": 7
+  },
+  {
+    "num": 9,
+    "direction": "s",
+    "name": {
+      "en": "9 Purple",
+      "zh_cn": ["九紫火星", "Jiǔ Zǐ"],
+      "zh_tw": ["九紫火星", "Jiǔ Zǐ"],
+      "ja": ["きゅうしかせい", "kyushi kasei"],
+      "vi": []
+    },
+    "color": "purple",
+    "element": 1,
+    "planet": 5
+  }
+]

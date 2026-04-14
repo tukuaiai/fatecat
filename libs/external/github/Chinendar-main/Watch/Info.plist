@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LSHasLocalizedDisplayName</key>
+	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>CircularIntent</string>
+		<string>CurveIntent</string>
+		<string>RectIntent</string>
+		<string>SingleLineIntent</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceHanSansKR-Heavy.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+</dict>
+</plist>

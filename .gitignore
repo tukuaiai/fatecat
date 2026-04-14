@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+.venv/
+*.egg
+backups/archive
+backups/gz
+backups/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+# libs/external/github/  # 外部库需要提交
+# libs/external/web      # 外部资源需要提交
+*.gz
+*.zip
+.history/
+
+# Environment
+.env
+.env.local
+*.local
+
+# Logs
+*.log
+logs/
+services/telegram/output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Node
+node_modules/
+libs/external/**/node_modules/
+libs/external/**/.vs/
+libs/external/**/Debug/
+libs/external/**/Release/
+*.pdb
+*.ilk
+*.pch
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+services/telegram-service/output
+# 敏感数据
+libs/database/bazi/bazi.db
+*.db
+*.sqlite
+services/telegram-service/output/
+backups/
+docs/Sublime-Text.txt
+docs/1.json
+complete_result.json
+complete_integration_result.json
+docs/complete_integration_result.json
+services/telegram/complete_result.json
+services/telegram/complete_integration_result.json

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta charset="UTF-8" />
+<meta name="keywords" content="中國曆法, 農曆, 大統曆, 曆法計算, 南明, 明鄭" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+<title>南明和明鄭曆法的朔閏</title>
+<link rel="stylesheet" href="calendar_chinese.css">
+<style>
+    body {
+      counter-reset:sec-counter;
+    }
+    @counter-style chinese_num {
+            system: fixed;
+            symbols: 一 二 三 四 五 六;
+    }
+    @counter-style stems {
+        system: fixed;
+        symbols: 甲 乙 丙 丁 戊 己;
+    }
+    sect {
+        font-size: 24px;
+        font-weight:bold;
+        margin:1em 0 1em 0;
+        line-height: 26px;
+        counter-reset: subsec-counter;
+        letter-spacing: 4px;
+    }
+    sect::before {
+      counter-increment: sec-counter 1;
+      content: counter(sec-counter, chinese_num) ". ";
+    }
+    sect::after{
+        content: '\a \a';
+        white-space:pre;
+    }
+    subsect {
+        font-size: 20px;
+        font-weight:bold;
+        margin-left: 0px;
+        margin-top:5px;
+        margin-bottom:5px;
+        letter-spacing: 4px;
+    }
+    subsect::before {
+        counter-increment: subsec-counter 1;
+        content: counter(subsec-counter, stems) ". ";
+    }    
+    subsect::after{
+        content: '\a \a';
+        white-space:pre;
+    }
+</style>
+<script src="header.js"></script>
+</head>
+    
+<body>
+<div id="wrap" style="display:none;max-width:800px;margin:auto;">
+<div id="menu"></div>
+<div id="language"></div>
+    
+<h1>南 明 和 明 鄭 曆 法 的 朔 閏</h1>
+    
+<p>初稿: 2022年4月</p>
+    <br />
+
+<sect id="introduction">引言</sect>
+
+<p>崇禎十七年(1644年)三月，崇禎帝自縊而死，明朝滅亡，北京先後被李自成和清朝佔領，明朝宗室與官員在中國南方相繼成立政權抗清，史稱「南明」。頒佈曆法一向是帝皇宣示統治的象徵，南明繼承明朝，曆法自然根據明朝大統曆編製，然而南明皇帝流離失所，南明各派系又鬥爭不絕，頒行的曆法不像明朝那樣由同一批曆官編製，於是出現了不同版本的大統曆。弘光、隆武和永曆被視為繼承明室正統，他們都有頒行曆法，但與永曆帝同一時期的魯王朱以海在浙東自稱「監國」，頒行「魯監國大統曆」。此外，鄭成功在閩海一帶抗清，鄭氏奉南明正朔，但因戰亂南明大統曆書往往無法及時送到鄭氏轄區，於是鄭氏命官員依明大統曆權宜編製及頒行大統曆書。永曆帝於永曆十五年底(1662年初)被緬甸人送至清軍營，南明滅亡。永曆十五年鄭成功北伐失敗，轉攻臺灣，次年驅逐了佔臺的荷蘭人，在臺灣建立明鄭政權，又稱東寧王國。雖然南明已亡，但是鄭氏建立的明鄭政權仍然奉明正朔，繼續使用永曆年號，頒行的大統曆書仍註明「皇曆未至，本藩權依大統曆法命官考正刊行，俾中興臣子咸知正朔，用是為識」。由於南明已亡，南明大統曆已絕，鄭氏權宜頒行的大統曆變相成為明鄭正統的大統曆書。明鄭直到永曆三十七年(1683年)閏六月鄭克塽投降清朝才宣告滅亡。</p>
+
+<p>由此可見，大統曆在南明和明鄭時期至少有五至六種版本。明朝曆官皆世業，明亡後，估計這些曆官大部分留在北京，成為清朝欽天監的曆官。由此估計南明大統曆的編製者未有編算明朝曆書的經驗，而且當時忙於抗清，編算曆書並不是首要任務，估計編曆者無暇詳細研究明朝大統曆的算法，只會用他們對大統曆的理解編算曆書，所以算出的曆日與依明朝欽天監正統算法算出的有差異，而且不同版本的南明大統曆朔閏有時也有差異。雖然如此，這些曆書畢竟以大統曆為依據編算，雖有差異但仍是大同小異。</p>
+
+<p>南明和明鄭的大統曆資料在清傅以禮著的《殘明大統曆》(收錄在《二十五史補編》中)有完整紀錄，南明的史料也有一些南明大統曆的曆日資料。然而史料所記的曆日多有歧誤，除了是因雜用各版本的南明大統曆外，有時還雜用明曆和清曆。目前似乎不見南明大統曆書的存世刊本，明鄭頒行的大統曆書在英國圖書館卻存有幾部，都是永曆二十五年、三十年和三十一年頒行的曆書，這些曆書是英國東印度公司商人與明鄭政權商討通商時獲得的贈品之一，後來被帶到了英國。目前藏於英國圖書館的其中四本曆書已數碼化，而且可免費查閱及下載:藏於<a href="https://digital.bodleian.ox.ac.uk/objects/4bf51966-7567-40a6-a348-c3a620294ab5/" target="_blank">Bodleian圖書館</a>和<a href="https://digital.bodleian.ox.ac.uk/objects/3b2320cb-6005-430a-81f3-ff37efc13e92/surfaces/5c00fa81-4e3f-4700-963b-ad461249966d/" target="_blank">牛津Christ Church</a>的永曆二十五年大統曆、藏於St John's College 圖書館的<a href="https://cudl.lib.cam.ac.uk/view/PR-SJC-S-00014/1" target="_blank">永曆三十年大統曆</a>及藏於Bodleian圖書館的<a href="https://digital.bodleian.ox.ac.uk/inquire/p/e10965b3-8895-4379-adef-5db9f4549b6a" target="_blank">永曆三十一年大統曆</a>。本網站遵照圖片的版本條款轉載對訂正曆日有用的若干圖片，並將圖片中的文字抄下:<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>、<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>、<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>。這三部大統曆書除了有這三年的曆日資料外，書末的紀年表還載有至頒曆年份為止的南明和明鄭時期的閏月，對考證南明和明鄭曆法很有價值。</p>
+
+<p>本網站的南明曆法數據主要根據傅以禮《殘明大統曆》的資料，但有兩個曆日根據存世的明鄭大統曆訂正。以下以明朝大統曆的正統算法比較《殘明大統曆》、明鄭大統曆及其他史料的南明及明鄭曆日資料。</p>
+
+    <br />
+<sect id="comparison1">《殘明大統曆》及明鄭大統曆的朔閏</sect>
+    
+<p>明朝《大統曆》基本上沿襲元朝《授時曆》的法數和推步方法。《授時曆》的日月推步方法在李勇和張培瑜於1996年和李勇及張承志於1998年發表的兩篇文章(<a href="SouthernMingCalendar_chinese.html#LiZhang1996"></a>和<a href="SouthernMingCalendar_chinese.html#LiZhang1998"></a>)有介紹，李勇在「明嘉靖六年《大统历》历书的气朔推步精度」<sup><a href="SouthernMingCalendar_chinese.html#Li2011"></a></sup> 一文說明了大統曆的氣朔推步法，並根據嘉靖六年大統曆書驗證了算出的節氣時刻完全符合曆書給出的數據。</p>
+
+<p>其實明朝的節氣是平氣，是時間的線性函數，計算十分簡單。考察明鄭<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>、<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>和<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>，發現所載節氣時刻亦完全符合大統曆的推步。再考察《殘明大統曆》列出的南明及明鄭三十九年間九百三十七個節氣日期，發現只有兩個日期不符合大統曆的推算:《殘明大統曆》記永曆十七年白露在八月初四，依大統曆推算當在八月初五;《殘明大統曆》記永曆三十年冬至在十一月十六，依大統曆推算則在十一月十七。恰巧<a href="N1676_Zheng_chinese.html">永曆三十年大統曆書</a>仍有存世刊本，得知當年冬至在十一月十七，符合大統曆推算，《殘明大統曆》錯了。正是因為大統曆節氣計算十分簡單，算錯機會很小，可以假設所有版本的南明大統曆算出的節氣絕大多數都符合大統曆的正統算法。</p>
+
+<p>大統曆的合朔算法因涉及日行盈縮和月行遲疾而比較複雜，李勇在<a href="SouthernMingCalendar_chinese.html#Li2011"></a>文中提出兩種算法:D1(遲疾限行度)及D2(定限度)算法，他認為大統曆是用D1算法，我在拙文<a href="MingCalendar_chinese.html">明朝 《大統曆》的定朔計算及曆表朔日訂正</a>證實了李勇的D1算法確實完全符合幾部明朝大統曆書給出的合朔時刻，所以李勇的D1算法就是大統曆合朔的正統算法。比較《殘明大統曆》及存世的幾本明鄭大統曆書的朔日數據，發現在這三十九年間四百八十三個朔日中有七個與李勇D1算法算出的朔日不符，這七個朔日差異全部都在明鄭的永曆二十五年(1671年)及以後。下表將這七個朔日差異列出。從這些朔日差異可知明鄭大統曆算出的合朔時刻與大統曆推步相差可達二小時。</p>
+  <br />
+<table>
+<caption style="text-align:left;"><p>殘明大統曆/明鄭大統曆與大統曆推步(李勇的D1算法)的朔日差異。大統曆推步的合朔時刻在括號內列出以供參考，時刻用明朝的辰刻制表示，詳情請參閱李勇「明嘉靖六年《大统历》历书的气朔推步精度」<sup><a href="SouthernMingCalendar_chinese.html#Li2011"></a></sup>或拙文<a href="MingCalendar_chinese.html">明朝 《大統曆》的定朔計算及曆表朔日訂正</a>。</p></caption>
+<tr><th rowspan="2">年 份</th> <th rowspan="2">月 份</th> <th colspan="2">朔 日 干 支</th></tr>
+    <tr><th>殘 明 大 統 曆/<br />明 鄭 大 統 曆</th> <th>大 統 曆 推 步</th></tr>
+<tr><td>永曆二十五年 (1671)</td> <td>正月</td> <td>甲寅<sup>*</sup></td> <td>癸丑 (夜子初三刻)</td></tr>
+<tr><td rowspan="2">永曆二十八年 (1674)</td> <td>六月</td> <td>癸巳</td> <td>甲午 (丑正初刻)</td></tr>
+<tr><td>九月</td> <td>辛酉</td> <td>壬戌 (丑正初刻)</td></tr>
+<tr><td>永曆二十九年 (1675)</td> <td>閏六月<sup>&dagger;</sup></td> <td>戊午</td> <td>丁巳 (夜子初二刻)</td></tr>
+<tr><td>永曆三十一年 (1677)</td> <td>七月</td> <td>丙子</td> <td>乙亥 (夜子初二刻)</td></tr>
+<tr><td>永曆三十二年 (1678)</td> <td>六月</td> <td>庚午</td> <td>己巳 (夜子初三刻)</td></tr>
+<tr><td>永曆三十六年 (1682)</td> <td>正月</td> <td>己酉</td> <td>庚戌 (子正一刻)</td></tr>
+</table>
+<p style="font-size:95%;"><sup>*</sup>《殘明大統曆》記永曆二十五年正月癸丑朔，明鄭頒行的<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>記正月甲寅朔。<br />
+<sup>&dagger;</sup>《殘明大統曆》記永曆二十九年閏六月戊午朔(1675年7月23日)，依大統曆推步此朔日在丁巳(7月22日)。一日之差導致閏月出現分歧:依《殘明大統曆》六月大戊子朔(6月23日)、閏六月小戊午朔(7月23日);依大統曆推步閏五月小戊子朔(6月23日)、六月大丁巳朔(7月22日)。明鄭頒行的<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>和<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>都記永曆二十九年閏六月，顯示《殘明大統曆》的曆日符合明鄭頒行的大統曆書。</p>
+
+<br />
+<sect id="discrepancies">南明大統曆的朔閏分歧</sect>
+
+<p>以下試論南明史料的朔閏分歧。</p>
+<br />
+<subsect id="LuDatong">魯監國大統曆的朔日差異</subsect>
+
+<p>如上述，與永曆帝同一時期的魯王自稱「監國」，頒行「魯監國大統曆」，用魯王監國紀年:魯王監國元年即隆武二年(1646年)、魯王監國二年即永曆元年等，魯王於監國八年(永曆七年)三月除消監國稱號。黃典權在「南明大統曆考證稿」<sup><a href="SouthernMingCalendar_chinese.html#Huang1962"></a></sup>文中根據黃宗羲「魯紀年」、「海外慟哭記」、翁州老民的「海東逸史」、凌雪「南天痕」、三餘氏的「南明野史」等資料考證了「魯監國大統曆」的一些朔日，發現有兩個朔日與《殘明大統曆》不合:魯王監國四年正月辛酉朔及魯王監國七年正月癸酉朔。監國四年即永曆三年(1649年)、監國七年即永曆六年(1652年)，《殘明大統曆》記該兩年的正月朔為庚申和甲戌，這兩個朔日差異也許是永曆和魯王兩種大統曆書的朔日差異。依大統曆推步得出永曆三年正月朔在庚申日亥正二刻，永曆六年正月朔在甲戌日子正一刻。可見《殘明大統曆》的兩個朔日符合大統曆推步，「魯監國大統曆」的朔日差異顯示其算出的合朔時刻與大統曆推步可差一小時半。</p>
+<br />
+<subsect id="Yongli4">永曆四年的閏月差異</subsect>
+
+<p>《殘明大統曆》和《延平王戶官楊英從征實錄》記永曆四年閏十一月，符合大統曆的推步，但是明鄭頒行的<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>、<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>及<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>卻記閏十二月。黃典權在<a href="SouthernMingCalendar_chinese.html#Huang1962"></a>文中指出閏十一月的記載也見於錢澄「所知錄」、瞿元錫「庚寅始安事略」、夏琳「海紀軌要」、院曼錫「海上見聞錄」等，因此認為閏十二月孤證薄弱，猜測永曆二十五年大統曆閏十二月為「誤刻」。但黃典權沒有看到永曆三十年和三十一年的大統曆書，不知道那兩本曆書也記閏十二月，因此「誤刻」之說難以成立。下表根據大統曆推步列出與此年閏月有關的合朔和中氣。</p>
+<table>
+<tr><th>月 份</th><th>合 朔</th> <th>中 氣</th></tr>
+<tr><td>十一</td><td></td> <td>冬至: 戊寅(1650年12月21日)酉正三刻</td></tr>
+<tr><td>閏十一</td><td>庚辰(1650年12月23日)午初一刻</td> <td></td></tr>
+<tr><td>十二</td><td>己酉(1651年1月21日)亥初三刻</td> <td>大寒: 己酉(1651年1月21日)卯初一刻</td></tr>
+<tr><td>正</td><td>己卯(2月20日)辰正一刻</td> <td>雨水: 己卯(2月20日)申初三刻</td></tr>
+</table>
+<br />
+<p>表中可見根據大統曆推步，己酉朔對應的月份因含十二月中氣大寒是十二月，庚辰朔對應的月份因不含中氣是閏十一月。如上述，節氣計算很簡單，不容易算錯，可以假設南明大統曆編算者算出的冬至、大寒和雨水都符合大統曆推步，但是編曆者算出的合朔時刻或會與大統曆正統算法稍有差異，由於大統曆算出的己酉朔離次日子正初刻有約二小時，編曆者或會因計算差異而算出該朔落在下一日庚戌(1月22日)，這樣庚辰朔對應的月份含大寒為十二月、庚戌朔對應的月份不含中氣為閏十二月。從上一節的討論得知明鄭大統曆算出的合朔時刻確實會與大統曆正統算法有二小時偏差，而閏十二月的資料來自明鄭頒行的大統曆書，合理猜測是閏十二月可能是當時鄭氏命官員權宜編算大統曆算出的結果，而閏十一月可能是來自永曆大統曆。由於鄭氏奉明正朔，當時南明尚在，取閏十一月較好。</p>
+<br />
+<subsect id="Yongli7">永曆七年的閏月爭議</subsect>
+
+<p>《殘明大統曆》記永曆七年閏七月，符合大統曆的推步，但是《延平王戶官楊英從征實錄》記閏八月、《行在陽秋》和明鄭的<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>記閏六月、<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>及<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>卻記閏八月。黃典權在<a href="SouthernMingCalendar_chinese.html#Huang1962"></a>文認為閏八月可能是鄭氏命官員權宜編算大統曆的結果，永曆二十五年大統載的閏六月極可能是憑南明「皇曆」正本而改正的，所以認為永曆七年閏六月。黃典權沒有看到永曆三十年和三十一年的大統曆，不知道兩本曆書改記閏八月，因此據皇曆改正之說值得商榷，較有可能的是永曆二十五年曆書的閏六月為刻誤。下表根據大統曆推步列出與此年閏月有關的合朔和中氣。</p>
+
+<table>
+<tr><th>月 份</th> <th>合 朔</th> <th>中 氣</th></tr>
+<tr><td>六</td> <td></td> <td>大暑: 壬戌(1653年7月22日)辰初三初</td></tr>
+<tr><td rowspan="2">七</td> <td>甲子(1653年7月24日)戌正一刻</td> <td></td></tr>
+<tr><td></td> <td>處暑: 壬辰(8月21日)酉正一刻</td></tr>
+<tr><td>閏七</td> <td>甲午(8月23日)辰正一刻</td> <td></td></tr>
+<tr><td>八</td> <td>癸亥(9月21日)夜子初初刻</td> <td>秋分: 癸亥(9月21日)寅正三刻</td></tr>
+<tr><td>九</td> <td>癸巳(10月21日)申正二刻</td> <td>霜降: 癸巳(10月21日)申初一刻</td></tr>
+</table>
+<br />
+
+<p>表中可見癸亥朔離次日子正初刻有一小時，如果編曆者算出的朔日落在下一日甲子，則甲午朔對應的月份因含八月中氣秋分成為八月，下一個月不含中氣成為閏八月。可見就曆算而論閏七月和閏八月都有可能，閏六月是最不可能的，因為要使甲子朔不含七月中氣處暑，就要將下一個朔從甲午提前兩日到壬辰，這樣便無法用編曆者計算與大統曆算法稍有差異來解釋，而是要編曆者計算時犯下嚴重錯誤才有可能得出閏六月。其實此年清時憲曆閏六月，所以王叔武在「南明史料朔闰考异 &mdash; 《行在阳秋》札记」<sup><a href="SouthernMingCalendar_chinese.html#Wang1979"></a></sup>一文懷疑《行在陽秋》的閏六月記載是雜用清曆。</p>
+
+<p>我認為既然明鄭的永曆三十年和三十一年大統曆都有閏八月記載，閏八月很可能是鄭氏權宜頒行曆書的計算結果。至於《殘明大統曆》的閏七月確是當時永曆大統曆的閏月，還是如黃典權猜測是傅以禮因缺乏資料而用大統曆推步補上的數據，尚需考證。</p>
+
+<br />
+<subsect id="Yongli2">永曆二年的閏月爭議</subsect>
+
+<p>《殘明大統曆》、<a href="N1671_Zheng_chinese.html">永曆二十五年大統曆</a>、<a href="N1676_Zheng_chinese.html">永曆三十年大統曆</a>和<a href="N1677_Zheng_chinese.html">永曆三十一年大統曆</a>都記永曆二年閏三月，符合大統曆推步，但是王叔武在「南明史料朔闰考异 &mdash; 《行在阳秋》札记」<sup><a href="SouthernMingCalendar_chinese.html#Wang1979"></a></sup>一文引《劫灰錄》, 《鹿樵紀聞》, 《明季南略》,  《爝火錄》等記載主張應為閏六月。現先列出根據大統曆推步與此年閏月有關的合朔和中氣。</p>
+
+<table>
+<tr><th>月 份</th> <th>合 朔</th> <th>中 氣</th></tr>
+<tr><td>三</td> <td></td> <td>穀雨: 甲子(1648年4月21日)戌初一刻</td></tr>
+<tr><td>閏三</td> <td>丙寅(1648年4月23日)辰初初刻</td> <td></td></tr>
+<tr><td>四</td> <td>乙未(5月22日)亥初初刻</td> <td>小滿: 乙未(5月22日)卯初三刻</td></tr>
+<tr><td>五</td> <td>乙丑(6月21日)辰正初刻</td> <td>夏至: 乙丑(6月21日)申正一刻</td></tr>
+<tr><td rowspan="2">六</td> <td>甲午(7月20日)酉初三刻</td> <td></td></tr>
+<tr> <td></td> <td>大暑: 丙申(7月22日)丑正三刻</td></tr>
+<tr><td rowspan="2">七</td> <td>甲子(8月19日)丑正二刻</td> <td></td></tr>
+<tr><td></td> <td>處暑: 丙寅(8月21日)未初一刻</td></tr>
+</table>
+<br />
+<p>從王叔武在<a href="SouthernMingCalendar_chinese.html#Wang1979"></a>文提供的明清朔閏異同表得知他認為上表的閏三月丙寅朔應改為四月丙寅朔、四月乙未朔改為五月乙未朔、五月乙丑朔改為六月乙丑朔及六月甲午朔改為閏六月乙未朔。這樣的改動除了要將甲午朔(7月20日)推遲一日變為乙未朔(7月21日)外，還要改動三個中氣日期:小滿和夏至需提前一日使閏三月變四月及四月變五月、大暑需提前二日使五月變六月及六月變閏六月。大統曆推步的六月甲午朔離次日子正初刻超過六小時, 除非編曆者計算時犯了重大錯誤， 不大可能因算法與正統算法稍有不同而落在下一天。明曆的平氣算法非常簡單，要改變那三個中氣日期，就又要假設編曆者犯下重大計算錯誤。所以就曆算而論，王叔武提出的朔閏難以成立。</p>
+
+<br />
+    <hr />
+<div id="references">
+<h2>參 考 文 獻</h2>
+<ul style="list-style-type:none;">
+<li id="LiZhang1996"><p><span class="ref"></span> 李勇、張培瑜，「中国古历定朔推步综述」，天文学进展，14，66-76，1996。</li>
+    
+<li id="LiZhang1998"><p style="letter-spacing:1px;"><span class="ref"></span> Li, Y., Zhang, C.Z., <a href="https://ui.adsabs.harvard.edu/abs/1998A%26A...332.1142L/abstract" target="_blank">"Chinese syzygy calculation established in the 13th century"</a>, Astro. Astrophys., 332, 1142-1146 (1998).</li>
+
+<li id="Li2011"><p><span class="ref"></span> 李勇，「明嘉靖六年《大统历》历书的气朔推步精度」，天文学进展，29，218-227, 2011。</li>
+
+<li id="Huang1962"><p><span class="ref"></span> 黃典權，「南明大統曆考證稿」，《臺南文化》第七卷第三期, 98-135, 1962。<br />
+註:此文章有<a href="https://tainanstudy.nmth.gov.tw/pdf/%E5%85%A8%E6%96%87%E9%80%90%E5%AD%97%E7%A8%BF/%E8%87%BA%E5%8D%97%E6%96%87%E5%8C%96/JN00000703/JN00000703_20.pdf" target="_blank">網上版</a>，但不知道是誰複製的，(2022年4月按連結看到的版本)竟然有很多錯誤，顯然未有仔細校對。有些錯誤頗嚴重:「傅以禮」寫成「傳以禮」、「鄭氏」寫成「鄧氏」、「大統曆」寫成「大統層」、「己丑朔」寫成「之丑明」、「置閏」寫成「量潤」等等，大小錯誤不勝枚舉，閱讀時須留意。</p></li>
+
+<li id="Wang1979"><p><span class="ref"></span> 王叔武，「南明史料朔闰考异 &mdash; 《行在阳秋》札记」，《思想战线》，1979年第3期，82-85。</p></li>
+</ul>
+</div>
+    
+<br /><br />
+    
+</div><!-- end of wrapper -->
+<noscript>
+    <h2>抱 歉!</h2>
+    <p>本網頁需要用 JavaScript 才能正確顯示。</p>
+    <p>請在瀏覽器中啟用 JavaScript 後再進入本網頁。</p>
+</noscript>
+
+<script>
+document.getElementById('wrap').style.display = 'block';
+header(1,'','SouthernMingCalendar')
+let i,j;
+ 
+// automatically add reference numbers to citations
+let ref = document.querySelectorAll("#references li");
+let refn = document.querySelectorAll("#references .ref");
+let n = refn.length;
+for (i=0; i<n; i++) {
+    refn[i].textContent = "["+(i+1)+"]";
+}
+let cita = document.querySelectorAll("a");
+n = cita.length;
+let r = ref.length;
+for (i=0; i<n; i++) {
+    for (j=0; j<r; j++) {
+        if (cita[i].href.includes("#"+ref[j].id)) {
+            cita[i].textContent = "["+(j+1)+"]";
+            break;
+        }
+    }
+}
+</script> 
+</body>
+</html>

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.appearance-none {
+  /*
+   * TODO: Typically, this kind of processing should leave to Autoprefixer,
+   * but it doesn't work for some reason, so we coded here explicitly.
+   */
+  -webkit-appearance: none;
+}

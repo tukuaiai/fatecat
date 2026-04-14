@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta name="keywords" content="農曆, 大統曆, 時憲曆, 上元積年" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+<title>其 他 連 結</title>
+<link rel="stylesheet" href="calendar_chinese.css" />
+<script src="header.js"></script>
+</head>
+
+<body onload="header(1,'','others')">
+<div id="wrapper0">
+<div id="menu"></div>
+<div id="language"></div>
+
+<h1>雜 項</h1>
+    
+<ul>
+<li><a href="Shangyuan_chinese.html">中 國 古 代 曆 法 的 上 元 積 年 系 統</a></li>
+
+<li><a href="3500Calendars_errors.html">《三 千 五 百 年 历 日 天 象》勘 誤</a> </li>
+<li><a href="MingCalendar_chinese.html">明 朝 《大 統 曆》 的 定 朔 計 算 及 曆 表 朔 日 訂 正</a></li>
+<li><a href="SouthernMingCalendar_chinese.html">南 明 和 明 鄭 曆 法 的 朔 閏</a></li>
+<li><a href="http://ytliu.epizy.com/Shixian/index_chinese.html" target="_blank">清 朝 時 憲 曆 的 日 月 位 置</a> (外 部 連 結)</li>
+<li><a href="http://ytliu.epizy.com/eclipse" target="_blank">八 千 年 日 月 食 (公 元 前 4000 年 &ndash; 公 元 4000 年)</a> (英 文、外 部 連 結)</li>
+</ul>
+
+    <br />
+<h2 id="contact">聯 絡</h2>
+    
+<p>如有任何疑問或發現本網站的資料有誤，請電郵<span id="aeilm"></span>查詢或指正。</p>
+    
+</div> <!-- end of wrapper -->
+<br /><br />
+<script>
+let s = {v:"[",  a:"[",  l:"]",  e:"]",  y:"a",  T:"A",  C:"c",  X:"d",  r:"g",  K:"g",  O:"i",  S:"i",  n:"k",  b:"l",  Z:"l",  q:"m",  f:"m",  A:"n",  s:"o",  L:"o",  P:"t",  j:"t",  d:"T",  F:"u",  o:"u",  W:"u",  R:"y"};
+let w = 'fLCejsXaZSyqKldTvWObrAoPnFR';
+document.getElementById('aeilm').textContent = w.split('').reverse().map(x => s[x]).join('');
+</script>
+</body>
+</html>

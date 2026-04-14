@@ -1,0 +1,92 @@
+# .github/release.yml
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+    authors:
+      - octocat
+  categories:
+    - title: Features
+      labels:
+        - feature
+    - title: Enhancement
+      labels:
+        - enhancement
+
+    - title: Breaking Changes
+      labels:
+        - breaking-change
+
+    - title: Bug Fixes
+      labels:
+        - bug
+        - bugfix
+
+    - title: Performance Improvements
+      labels:
+        - performance
+
+    - title: Documentation
+      labels:
+        - documentation
+        - docs
+
+    - title: Tests
+      labels:
+        - test
+        - tests
+
+    - title: Build System
+      labels:
+        - build-system
+        - ci
+
+    - title: Miscellaneous Chores
+      labels:
+        - chore
+
+    - title: Styles
+      labels:
+        - style
+
+    - title: Refactors
+      labels:
+        - refactor
+
+    - title: Accessibility
+      labels:
+        - accessibility
+
+    - title: Internationalization
+      labels:
+        - i18n
+        - localization
+
+    - title: Examples
+      labels:
+        - examples
+
+    - title: Dependencies
+      labels:
+        - dependencies
+
+    - title: Security
+      labels:
+        - security
+
+    - title: Deprecated
+      labels:
+        - deprecated
+
+    - title: Removed
+      labels:
+        - removed
+
+    - title: Design
+      labels:
+        - design
+
+    - title: Other Changes
+      labels:
+        - "*"

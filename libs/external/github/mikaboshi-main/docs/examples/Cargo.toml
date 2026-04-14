@@ -1,0 +1,33 @@
+[package]
+name = "voi-feng-shui"
+version = "0.1.0"
+authors = ["Hiroki Minagawa <minagawa@tokyo800.jp>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+chrono = "0.4.19"
+console_error_panic_hook = "^0.1.6"
+js-sys = "0.3.52"
+mikaboshi = { git = "https://github.com/minagawah/mikaboshi", version = "0.8.0" }
+serde = { version = "1.0.127", features = ["derive"] }
+wasm-bindgen = { version = "0.2.70", features = ["serde-serialize"] }
+
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+#
+# Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
+wee_alloc = { version = "0.4.5", optional = true }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false

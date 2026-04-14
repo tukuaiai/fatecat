@@ -1,0 +1,18 @@
+html,
+body {
+    height: 100vh;
+    overflow: hidden;
+    --uno: bg-base font-ping;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    font-size: 16px;
+}
+
+.dark {
+    color-scheme: dark;
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://json-schema.org/draft-07/schema#",
+  "description": "dantalion: personality JSON Schema",
+  "definitions": {
+    "genius": {
+      "type": "string",
+      "enum": [
+        "000",
+        "001",
+        "012",
+        "024",
+        "025",
+        "100",
+        "108",
+        "125",
+        "555",
+        "789",
+        "888",
+        "919"
+      ]
+    },
+    "lifebase": {
+      "type": "string",
+      "enum": [
+        "application",
+        "association",
+        "development",
+        "expression",
+        "finance",
+        "investment",
+        "organization",
+        "quest",
+        "selfMind",
+        "selfReliance"
+      ]
+    },
+    "potential": {
+      "type": "string",
+      "enum": ["Ci", "Co", "Ei", "Eo", "Fi", "Fo", "Ii", "Io", "Ni", "No"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "cycle": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 11
+    },
+    "inner": {
+      "$ref": "#/definitions/genius"
+    },
+    "lifeBase": {
+      "$ref": "#/definitions/lifebase"
+    },
+    "outer": {
+      "$ref": "#/definitions/genius"
+    },
+    "potentials": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/potential"
+        },
+        {
+          "$ref": "#/definitions/potential"
+        }
+      ]
+    },
+    "workStyle": {
+      "$ref": "#/definitions/genius"
+    }
+  },
+  "required": ["cycle", "inner", "lifeBase", "outer", "potentials", "workStyle"]
+}

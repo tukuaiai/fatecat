@@ -1,0 +1,70 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Observational Data</view>
+        <view class="page__desc">Tab to use, pull down to add</view>
+    </view>
+    <view class="page__bd">
+        <block wx:if="{{add}}">
+            <mp-cells title="Add New Parameters">
+                <mp-cell>
+                    <input bindinput="setName" placeholder="Name" value="{{name}}" />
+                </mp-cell>
+                <mp-cell>
+                    <view slot="title" style="width:50px">H<sub>0</sub></view>
+                    <input bindinput="setHubble" type="digit" placeholder="unit is km/s/Mpc"
+                        value="{{hubbleDisplay}}" />
+                    <icon slot="footer" wx:if="{{hubble<=0}}" type="warn" />
+                </mp-cell>
+                <mp-cell>
+                    <view slot="title" style="width:50px">Ω<sub>m</sub></view>
+                    <input bindinput="setMatter" type="digit" placeholder="unit is 1" value="{{matterDisplay}}" />
+                    <icon slot="footer" wx:if="{{matter<0}}" type="warn" />
+                </mp-cell>
+                <mp-cell>
+                    <view slot="title" style="width:50px">Ω<sub>Λ</sub></view>
+                    <input bindinput="setLambda" type="digit" placeholder="unit is 1" value="{{lambdaDisplay}}" />
+                    <icon slot="footer" wx:if="{{lambda<0}}" type="warn" />
+                </mp-cell>
+                <mp-cell value="{{curvatureDisplay}}">
+                    <view slot="title" style="width:50px">Ω<sub>k</sub></view>
+                </mp-cell>
+            </mp-cells>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="saveData">Save</button>
+            </view>
+        </block>
+        <mp-cells wx:for="{{addData}}" wx:key="name" wx:for-item="item" title="{{item.name}}">
+            <mp-slideview buttons="{{[{type: 'warn',text: 'Delete'}]}}" id="{{index}}" bindtap="useAddData"
+                bindbuttontap="slideButtonTap">
+                <mp-cell footer="{{item.hubble}}">
+                    <view slot="title">H<sub>0</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.matter}}">
+                    <view slot="title">Ω<sub>m</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.lambda}}">
+                    <view slot="title">Ω<sub>Λ</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.curvature}}">
+                    <view slot="title">Ω<sub>k</sub></view>
+                </mp-cell>
+            </mp-slideview>
+        </mp-cells>
+        <mp-cells wx:for="{{obsData}}" wx:key="name" wx:for-item="item" title="{{item.name}}">
+            <mp-slideview id="{{index}}" bindtap="useObsData">
+                <mp-cell footer="{{item.hubble}}">
+                    <view slot="title">H<sub>0</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.matter}}">
+                    <view slot="title">Ω<sub>m</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.lambda}}">
+                    <view slot="title">Ω<sub>Λ</sub></view>
+                </mp-cell>
+                <mp-cell footer="{{item.curvature}}">
+                    <view slot="title">Ω<sub>k</sub></view>
+                </mp-cell>
+            </mp-slideview>
+        </mp-cells>
+    </view>
+</view>

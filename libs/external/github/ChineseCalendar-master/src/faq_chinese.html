@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta name="keywords" content="農曆, 中國曆法, 常問問題, 曆法計算" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+<title>常見問題</title>
+<link rel="stylesheet" href="calendar_chinese.css" />
+<script src="header.js"></script>
+<style>
+label.accordion {
+    font:16px/20px arial, verdana, helvetica, sans-serif;
+    font-weight:bold;
+	margin:0px 0px 5px 0px;
+    letter-spacing: 4px;
+    line-height:22px;
+}
+</style>
+</head>
+
+<body>
+<div id="wrap" style="max-width:800px;margin:auto;">
+<div id="menu"></div>
+<div id="language"></div>
+
+<h1>常 見 問 題</h1>
+<ol>
+<input type="checkbox" class="accordion" id="conversion_program" />
+<label class="accordion" for="conversion_program"><li>有簡單的方法建立公曆和農曆的轉換程式嗎?</li></label>
+
+<div class="content">
+<p>最簡單的方法是先找一份朔閏表(例如本網站的<a href="table_chinese.html">朔閏表</a>)，然後用查表的方法作公曆-農曆轉換。
+</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conversion_tables" />
+<label class="accordion" for="conversion_tables"><li><a href="table_chinese.html">朔閏表網頁</a>的資料從何而得?</li></label>
+
+<div class="content">
+<p>這點在<a href="computation_chinese.html">編算農曆網頁</a>有詳細說明。 簡言之......</p>
+<p><a href="computation_chinese.html#modern">現代(1912-2200)農曆</a>的資料根據《農曆的編算和頒行》文件(編號GB/T 33661-2017)規定的方法編算，但1929年前有幾個曆日根據紫金山天文臺編的《新编万年历（修定本）》數據更正。</p>
+<p><a href="computation_chinese.html#qing">清朝(1645-1911)曆日</a>基本上取自《新编万年历（修定本）》和張培瑜《三千五百年历日天象》的資料。</p> 
+<p><a href="SouthernMingCalendar_chinese.html">南明和明鄭(1645 – 1683)的曆日</a>基本上取自清人傅以禮著的《殘明大統曆》(收錄在《二十五史補編》中)。</p>
+<p><a href="computation_chinese.html#imperial">西漢中葉至明末(前104年 – 1644年)的曆日</a>基本上取自《三千五百年历日天象》，但有一些曆日根據可靠資料訂正。</p>
+<p><a href="QinHanCalendars_chinese.html">秦至漢初(前221年 – 前104年)的曆日</a>採用李忠林在2012年發表的「秦至汉初(前246至前104)历法研究—以出土历简为中心」一文計算。</p>
+<p>戰國時代(前480年 – 前222年)的曆日根據<a href="guliuli_chinese.html">漢傳古六曆</a>計算，古六曆資料取自張培瑜、陳美東、薄樹人和胡鐵珠著的《中国古代历法》書中第三章第六節。</p>
+<p><a href="chunqiu_chinese.html">春秋時代(前722年 – 前481年)的魯國曆法</a>根據《中国古代历法》第三章第五節的資料復原。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conversion_formula" />
+<label class="accordion" for="conversion_formula"><li>有沒有簡單的公式計算農曆?</li></label>
+
+<div class="content">
+<p>就現代農曆而言，答案是「沒有」。</p>
+<p>如<a href="rules_chinese.html">農曆編算法則網頁</a>所言，現代農曆根據《農曆的編算和頒行》文件(編號GB/T 33661-2017)規定的方法編算，該文件對編算農曆有嚴格要求(其中將月相和節氣時刻算準到一秒的精度要求尤其苛刻)，所以沒有簡單的公式計算。簡單與否其實也因人而異，對熟悉天文計算者而言，《農曆的編算和頒行》要求的計算雖然不算簡單，但也不難。</p>
+<p>中國曆法自唐朝以來涉及的計算內容與現代天文年曆相若，編算日曆只是曆法的一小部份，曆法都按當時曆算機構所能掌握最準確的天文觀測數據和最先進的理論方法計算，歷來的曆法計算相對於當時通用的計算工具而言不能算簡單。所以《農曆的編算和頒行》的計算法則只是秉承傳統的曆法計算而已。</p>
+<p>雖然如此，確有簡單公式計算月相和節氣的近似時刻，例如Jean Meeus著的<i>Astronomical Algorithms</i>就有公式計算月相和二分二至的近似時刻，其中二分二至的公式或可推廣至其他節氣。書中的公式算出的月相和節氣時刻精度雖然未能達到《農曆的編算和頒行》文件的要求，但也可用來編算農曆，算出的農曆日期或會有少於~0.1%的錯誤。可先用那些近似公式計算農曆，然後比較紫金山天文臺公布的官方標準農曆，再將算出的~0.1%錯誤曆日改正，亦不失為計算農曆的另一方法。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="sexagenary_calculation" />
+<label class="accordion" for="sexagenary_calculation"><li>如何計算干支?</li></label>
+
+<div class="content">
+<p>計算方法在<a href="sexagenary_chinese.html">干支網頁</a>有詳細說明。干支可紀年﹑紀月﹑紀日和紀時，年干支﹑日干支和時辰干支的計算很簡單，月干支則較為複雜。但是月干支即使在古代也很少使用，時辰也一般只提地支，不問天干。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conjunction" />
+<label class="accordion" for="conjunction"><li>為什麼古代的合朔時刻和初一日有時不一致?</li></label>
+
+<div class="content">
+<p>這是指<a href="index_chinese.html">年曆網頁</a>載的合朔時刻與農曆的初一日在古代有時有差異，例如唐憲宗元和八年(公元813年)二月朔在甲申日(公曆3月6日)19:54，但二月初一卻在乙酉日(3月7日)。</p>
+<p>如<a href="rules_chinese.html">農曆法則網頁</a>所述，農曆的初一日必定是朔日，這法則在中國古代曆法也採用，年曆網頁載的古代合朔和初一不一致至少有以下三個原因。</p>
+<ol>
+<li><p>年曆網頁所載的月相時刻是用現代曆表及現代的天文學定義計算，與古代算法不同。例如唐朝以前合朔的計算只計及月亮和太陽的平均運動，算出的合朔稱為平朔，現代的算法計及月行遲疾和日行盈縮，算出的合朔稱為定朔，兩者時刻的差異有時會超過一日。此外，秦與漢初曆法算出的平朔往往遲於實朔(後天)，平均差異為一日，所以漢初的日食多發生在晦日(即朔之前一天)，甚至晦日前一天(詳情可參閱<a href="QinHanCalendars_chinese.html#conjDiff">此網頁</a>)。雖然自唐朝起合朔計算改用定朔，但是古時的定朔計算沒有現代準確。</p></li>
+
+<li><p>年曆網頁所載的月相時刻是用東經120&deg;平時(UT+8)，此處UT指UT1(1972年前)或UTC(1972年及之後)。古人不用平太陽時，而是用地方視太陽時。例如古都長安的經度是東經108.9&deg;，所以長安的地方視時與UT+8的差異是44分+視時與平時之差。</p></li>
+
+<li><p>自唐《麟德曆》起中國曆法引入進朔法，規定如果合朔時刻在~18點後(確實時刻隨季節稍有調正)，而該日沒有可見日食，則朔日可以虛進一日。此法在唐、五代、兩宋、遼、金和元初都使用，自元《授時曆》起廢除。</p></li>
+</ol>
+
+<p>上述唐憲宗元和八年二月朔的情況很可能是進朔法的結果。民國三年(1914年)起月相和二十四節氣改用現代方法計算，但時間用北京地方平時，北京的經度是東經116&deg;25'，北京地方平時與UT+8相差約十四分。例如有朔發生在公元1916年2月4日0:05(UT+8)，按北京地方平時這朔發生在2月3日23:51，這朔正好是農曆丙辰年的正月朔，所以中國在1916年2月3日慶祝農曆新年，而不是2月4日。現在的中國標準時(UT+8)要到1929年才採用。</p>
+</div>
+</ol>
+</div>
+<br /><br />
+<script>header(1,'','faq');</script>
+</body>
+</html>

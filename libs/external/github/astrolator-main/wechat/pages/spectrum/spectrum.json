@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "mp-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar",
+        "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+        "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell"
+    },
+    "navigationBarTitleText": "Spectrum"
+}

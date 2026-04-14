@@ -1,0 +1,324 @@
+<view class="page__bd" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Calculator</view>
+        <view class="page__desc">Citius, Altius, Fortius</view>
+    </view>
+    <mp-tabs tabs="{{tabs}}" height="{{height}}" minHeight="{{minHeight}}" activeTab="{{activeTab}}"
+        swiperClass="weui-tabs-swiper" bindtabclick="onChange" bindchange="onChange"
+        activeClass="tab-bar-title__selected">
+        <block wx:for="{{tabs}}" wx:key="title">
+            <view slot="tab-content-{{index}}">
+                <block wx:if="{{index==0}}">
+                    <mp-cells title="Angle">
+                        <mp-cell link>
+                            <input slot="title" bindinput="angleCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="angleChange0" value="{{angleIndex0}}" range="{{angle}}">
+                                {{angle[angleIndex0]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{angleDisplay}}">
+                            <picker slot="footer" bindchange="angleChange1" value="{{angleIndex1}}" range="{{angle}}">
+                                {{angle[angleIndex1]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Length">
+                        <mp-cell link>
+                            <input slot="title" bindinput="lengthCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="lengthChange0" value="{{lengthIndex0}}"
+                                range="{{length}}">
+                                {{lengthMain[lengthIndex0]}}<sub>{{lengthSub[lengthIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{lengthDisplay}}">
+                            <picker slot="footer" bindchange="lengthChange1" value="{{lengthIndex1}}"
+                                range="{{length}}">
+                                {{lengthMain[lengthIndex1]}}<sub>{{lengthSub[lengthIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Time">
+                        <mp-cell link>
+                            <input slot="title" bindinput="timeCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="timeChange0" value="{{timeIndex0}}" range="{{time}}">
+                                {{time[timeIndex0]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{timeDisplay}}">
+                            <picker slot="footer" bindchange="timeChange1" value="{{timeIndex1}}" range="{{time}}">
+                                {{time[timeIndex1]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Frequency">
+                        <mp-cell link>
+                            <input slot="title" bindinput="frequencyCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="frequencyChange0" value="{{frequencyIndex0}}"
+                                range="{{frequency}}">
+                                {{frequency[frequencyIndex0]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{frequencyDisplay}}">
+                            <picker slot="footer" bindchange="frequencyChange1" value="{{frequencyIndex1}}"
+                                range="{{frequency}}">
+                                {{frequency[frequencyIndex1]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Mass">
+                        <mp-cell link>
+                            <input slot="title" bindinput="massCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="massChange0" value="{{massIndex0}}" range="{{mass}}">
+                                {{massMain[massIndex0]}}<sub>{{massSub[massIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{massDisplay}}">
+                            <picker slot="footer" bindchange="massChange1" value="{{massIndex1}}" range="{{mass}}">
+                                {{massMain[massIndex1]}}<sub>{{massSub[massIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Energy">
+                        <mp-cell link>
+                            <input slot="title" bindinput="energyCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="energyChange0" value="{{energyIndex0}}"
+                                range="{{energy}}">
+                                {{energy[energyIndex0]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{energyDisplay}}">
+                            <picker slot="footer" bindchange="energyChange1" value="{{energyIndex1}}"
+                                range="{{energy}}">
+                                {{energy[energyIndex1]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Power">
+                        <mp-cell link>
+                            <input slot="title" bindinput="powerCal" type="digit" placeholder="Input here" />
+                            <picker slot="footer" bindchange="powerChange0" value="{{powerIndex0}}" range="{{power}}">
+                                {{powerMain[powerIndex0]}}<sub>{{powerSub[powerIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{powerDisplay}}">
+                            <picker slot="footer" bindchange="powerChange1" value="{{powerIndex1}}" range="{{power}}">
+                                {{powerMain[powerIndex1]}}<sub>{{powerSub[powerIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                </block>
+                <block wx:if="{{index==1}}">
+                    <mp-cells title="Orbital Period">
+                        <mp-cell link>
+                            <input slot="title" bindinput="orbitIn0" type="digit" placeholder="Central mass" />
+                            <picker slot="footer" bindchange="orbitChange0" value="{{orbitIndex0}}" range="{{mass}}">
+                                {{massMain[orbitIndex0]}}<sub>{{massSub[orbitIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" bindinput="orbitIn1" type="digit" placeholder="Semi-major axis" />
+                            <picker slot="footer" bindchange="orbitChange1" value="{{orbitIndex1}}" range="{{length}}">
+                                {{lengthMain[orbitIndex1]}}<sub>{{lengthSub[orbitIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{orbitDisplay}}">
+                            <picker slot="footer" bindchange="orbitChange2" value="{{orbitIndex2}}" range="{{time}}">
+                                {{time[orbitIndex2]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                </block>
+                <block wx:if="{{index==2}}">
+                    <mp-cells title="Schwarzschild Radius">
+                        <mp-cell link>
+                            <input slot="title" bindinput="radiusIn0" type="digit" placeholder="Mass" />
+                            <picker slot="footer" bindchange="radiusChange0" value="{{radiusIndex0}}" range="{{mass}}">
+                                {{massMain[radiusIndex0]}}<sub>{{massSub[radiusIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{radiusDisplay}}">
+                            <picker slot="footer" bindchange="radiusChange1" value="{{radiusIndex1}}"
+                                range="{{length}}">
+                                {{lengthMain[radiusIndex1]}}<sub>{{lengthSub[radiusIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Chirp Mass">
+                        <mp-cell link>
+                            <input slot="title" bindinput="chirpIn0" type="digit" placeholder="Mass" />
+                            <picker slot="footer" bindchange="chirpChange0" value="{{chirpIndex0}}" range="{{mass}}">
+                                {{massMain[chirpIndex0]}}<sub>{{massSub[chirpIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" bindinput="chirpIn1" type="digit" placeholder="Mass" />
+                            <picker slot="footer" bindchange="chirpChange1" value="{{chirpIndex1}}" range="{{mass}}">
+                                {{massMain[chirpIndex1]}}<sub>{{massSub[chirpIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{chirpDisplay}}">
+                            <picker slot="footer" bindchange="chirpChange2" value="{{chirpIndex2}}" range="{{mass}}">
+                                {{massMain[chirpIndex2]}}<sub>{{massSub[chirpIndex2]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Schwarzschild Precession">
+                        <mp-cell link>
+                            <input slot="title" bindinput="precessionIn0" type="digit" placeholder="Central mass" />
+                            <picker slot="footer" bindchange="precessionChange0" value="{{precessionIndex0}}"
+                                range="{{mass}}">
+                                {{massMain[precessionIndex0]}}<sub>{{massSub[precessionIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" bindinput="precessionIn1" type="digit" placeholder="Semi-major axis" />
+                            <picker slot="footer" bindchange="precessionChange1" value="{{precessionIndex1}}"
+                                range="{{length}}">
+                                {{lengthMain[precessionIndex1]}}<sub>{{lengthSub[precessionIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell>
+                            <input slot="title" bindinput="precessionIn2" type="digit" placeholder="Eccentricity" />
+                            <icon slot="footer" wx:if="{{precessionInput3>1}}" type="warn" />
+                        </mp-cell>
+                        <mp-cell link title="Post-Newtonian">
+                            <picker slot="footer" bindchange="precessionChange2" value="{{precessionIndex2}}"
+                                range="{{PN}}">
+                                {{PN[precessionIndex2]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{precessionDisplay}}">
+                            <picker slot="footer" bindchange="precessionChange3" value="{{precessionIndex3}}"
+                                range="{{angle}}">
+                                {{angle[precessionIndex3]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                    <mp-cells title="Energy Loss">
+                        <mp-cell link>
+                            <input slot="title" bindinput="petersIn0" type="digit" placeholder="Mass 1" />
+                            <picker slot="footer" bindchange="petersChange0" value="{{petersIndex0}}" range="{{mass}}">
+                                {{massMain[petersIndex0]}}<sub>{{massSub[petersIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" bindinput="petersIn1" type="digit" placeholder="Mass 2" />
+                            <picker slot="footer" bindchange="petersChange1" value="{{petersIndex1}}" range="{{mass}}">
+                                {{massMain[petersIndex1]}}<sub>{{massSub[petersIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" bindinput="petersIn2" type="digit" placeholder="Semi-major axis" />
+                            <picker slot="footer" bindchange="petersChange2" value="{{petersIndex2}}"
+                                range="{{length}}">
+                                {{lengthMain[petersIndex2]}}<sub>{{lengthSub[petersIndex2]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell>
+                            <input slot="title" bindinput="petersIn3" type="digit" placeholder="Eccentricity" />
+                            <icon slot="footer" wx:if="{{petersInput3>=1}}" type="warn" />
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="<da/dt>" value="{{petersDisplay[0]}}" disabled="true" />
+                            <picker slot="footer" bindchange="petersChange3" mode="multiSelector"
+                                value="{{petersIndex3}}" range="{{petersRange0}}">
+                                {{lengthMain[petersIndex3[0]]}}<sub>{{lengthSub[petersIndex3[0]]}}</sub>·{{time[petersIndex3[1]]}}
+                                <sup>-1</sup>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="<de/dt>" value="{{petersDisplay[1]}}" disabled="true" />
+                            <picker slot="footer" bindchange="petersChange4" value="{{petersIndex4}}" range="{{time}}">
+                                {{time[petersIndex4]}} <sup>-1</sup>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="<dE/dt>" value="{{petersDisplay[2]}}" disabled="true" />
+                            <picker slot="footer" bindchange="petersChange5" mode="multiSelector"
+                                value="{{petersIndex5}}" range="{{petersRange1}}">
+                                {{energy[petersIndex5[0]]}}·{{time[petersIndex5[1]]}} <sup>-1</sup>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="<dL/dt>" value="{{petersDisplay[3]}}" disabled="true" />
+                            <picker slot="footer" bindchange="petersChange6" value="{{petersIndex6}}"
+                                range="{{energy}}">
+                                {{energy[petersIndex6]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="Timescale" value="{{petersDisplay[4]}}" disabled="true" />
+                            <picker slot="footer" bindchange="petersChange7" value="{{petersIndex7}}" range="{{time}}">
+                                {{time[petersIndex7]}}
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                </block>
+                <block wx:if="{{index==3}}">
+                    <mp-cells title="Photon Energy">
+                        <mp-cell link>
+                            <input slot="title" bindinput="photonIn0" type="digit" placeholder="λ⇌f⇌E⇌T" />
+                            <picker slot="footer" bindcolumnchange="photonTypeChange" bindchange="photonChange0"
+                                mode="multiSelector" value="{{photonIndex0}}" range="{{photonRange}}">
+                                {{photonRangeDisplay[photonIndex0[0]][photonIndex0[1]]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{photonDisplay[0]}}" wx:if="{{photonIndex0[0]!=0}}">
+                            <picker slot="footer" bindchange="photonChange1" value="{{photonIndex1}}"
+                                range="{{length}}">
+                                {{lengthMain[photonIndex1]}}<sub>{{lengthSub[photonIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{photonDisplay[1]}}" wx:if="{{photonIndex0[0]!=1}}">
+                            <picker slot="footer" bindchange="photonChange2" value="{{photonIndex2}}"
+                                range="{{frequency}}">
+                                {{frequency[photonIndex2]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{photonDisplay[2]}}" wx:if="{{photonIndex0[0]!=2}}">
+                            <picker slot="footer" bindchange="photonChange3" value="{{photonIndex3}}"
+                                range="{{energy}}">
+                                {{energy[photonIndex3]}}
+                            </picker>
+                        </mp-cell>
+                        <mp-cell title="{{photonDisplay[3]}}" footer="K" wx:if="{{photonIndex0[0]!=3}}" />
+                    </mp-cells>
+                    <mp-cells title="Eddington Luminosity">
+                        <mp-cell link>
+                            <input slot="title" bindinput="eddinRIn0" type="digit" placeholder="Mass" />
+                            <picker slot="footer" bindchange="eddinRChange0" value="{{eddinRIndex0}}" range="{{mass}}">
+                                {{massMain[eddinRIndex0]}}<sub>{{massSub[eddinRIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell link title="{{eddinRDisplay}}">
+                            <picker slot="footer" bindchange="eddinRChange1" value="{{eddinRIndex1}}" range="{{power}}">
+                                {{powerMain[eddinRIndex1]}}<sub>{{powerSub[eddinRIndex1]}}</sub>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                </block>
+                <block wx:if="{{index==4}}">
+                    <mp-cells title="Eddington Accretion">
+                        <mp-cell link>
+                            <input slot="title" bindinput="eddinAIn0" type="digit" placeholder="Mass" />
+                            <picker slot="footer" bindchange="eddinAChange0" value="{{eddinAIndex0}}" range="{{mass}}">
+                                {{massMain[eddinAIndex0]}}<sub>{{massSub[eddinAIndex0]}}</sub>
+                            </picker>
+                        </mp-cell>
+                        <mp-cell>
+                            <input slot="title" bindinput="eddinAIn1" type="digit" placeholder="η" />
+                        </mp-cell>
+                        <mp-cell link>
+                            <input slot="title" placeholder="dM/dt" value="{{eddinADisplay}}" disabled="true" />
+                            <picker slot="footer" bindchange="eddinAChange1" mode="multiSelector"
+                                value="{{eddinAIndex1}}" range="{{eddinARange}}">
+                                {{massMain[eddinAIndex1[0]]}}<sub>{{massSub[eddinAIndex1[0]]}}</sub>·{{time[eddinAIndex1[1]]}}
+                                <sup>-1</sup>
+                            </picker>
+                        </mp-cell>
+                    </mp-cells>
+                </block>
+            </view>
+        </block>
+    </mp-tabs>
+</view>

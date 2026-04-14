@@ -1,0 +1,31 @@
+{
+  "name": "chinese-workday",
+  "version": "1.10.0",
+  "description": "中国工作日",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yize/chinese-workday.git"
+  },
+  "keywords": [
+    "workday",
+    "chinese-workday",
+    "工作日",
+    "非节假日",
+    "节假日",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023"
+  ],
+  "author": "yize.shc@gmail.com",
+  "license": "MIT",
+  "homepage": "https://github.com/yize/chinese-workday#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

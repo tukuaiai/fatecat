@@ -1,0 +1,16 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <scroll-view enable-back-to-top scroll-y enhanced enable-flex display: flex>
+        <mp-searchbar bindselectresult="selectResult" placeholder="Search #TODO" cancelText="Cancel" search="search" />
+        <view class="page__hd">
+            <view class="page__title">Spectrum</view>
+            <view class="page__desc">Air wavelength at S.T.P.</view>
+        </view>
+        <view wx:for="{{list}}" wx:key="element">
+            <view style="font-size:26px;padding-left:16px">{{item.element}}</view>
+            <mp-cells>
+                <mp-cell wx:for="{{item.spectra}}" wx:for-item="spectra" wx:key="name" title="{{spectra.name}}"
+                    footer="{{spectra.wavelength}} Å" />
+            </mp-cells>
+        </view>
+    </scroll-view>
+</view>

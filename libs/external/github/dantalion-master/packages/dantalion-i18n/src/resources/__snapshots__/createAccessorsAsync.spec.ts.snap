@@ -1,0 +1,2607 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.brain.getByKey()\` method ("left") => Get the specified object 1`] = `
+Object {
+  "detail": "They are excellent at logical thinking.",
+  "more": Array [
+    "While they are good at thinking based on numbers and data, they tend to confuse in rambling situations.",
+    "They tend to stick to numerical evidence and are not good at working intuitively.",
+  ],
+  "name": "Left-brained thinking",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.brain.getByKey()\` method ("right") => Get the specified object 1`] = `
+Object {
+  "detail": "They are excellent at **intuitive thinking**.",
+  "more": Array [
+    "While they're **good at using imagination**, such as brainstorming, They tend to disregard the evidence and move with intuition first.",
+    "In **complicated situations**, they are **easy to stop thinking**.",
+  ],
+  "name": "Right-brained thinking",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.brain.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “Left-brained thinking” type or the “Right-brained thinking” type.",
+  "name": "Thinking methods",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.communication.getByKey()\` method ("fix") => Get the specified object 1`] = `
+Object {
+  "detail": "They do dialogue that proceeds with a conclusion.",
+  "more": Array [
+    "They tend to rationalize and get their point across.",
+    "They are relieved when things are clearly defined, such as time and place, but tend to feel uneasy when things are unclear.",
+  ],
+  "name": "**Fix**: Clarification-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.communication.getByKey()\` method ("flex") => Get the specified object 1`] = `
+Object {
+  "detail": "They are good at concluding **fluidly**.",
+  "more": Array [
+    "They also tend to use emotionalism to get their point across.",
+    "They can manage with ambiguity in terms of time, place, etc., but they **feel constrained when it comes to clarity**.",
+  ],
+  "name": "**Flex**: Liquidity-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.communication.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “**Fix**: Clarification-oriented” type or the “**Flex**: Liquidity-oriented type.",
+  "name": "Ways of thinking in dialogue",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("000") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a hyper-linguistic philosophy; and an outlandish worldview. Some people describe them as the sixth senses.",
+    "However, they are not very dynamic, and many of them keep it in their heads.",
+    "It is also common for sensitive types to go on a trip without a plan and lose touch.",
+  ],
+  "name": "Spiritual type",
+  "strategy": Array [
+    "They do hate any restraint, bondage, or rules.",
+    "When they say “Roger!”, but they tend to don't understand yet the request. So it is a good idea to check with them to avoid problems later on.",
+    "If you are going to do something with a group of people, it is best to put them in a position to be asked to be creative.",
+  ],
+  "summary": "They prefer aimless wandering and utilize sharp intuition and flashes of inspiration.",
+  "weak": Array [
+    "They tend to clutter up their notes, folders on their desktops, rooms, and everything else if they are not aware.",
+    "They tend to have a strong link between their emotions and their performance. In other words, if they are not in the right frame of mind, they will not make progress.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("001") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They love to act like a weirdo, untainted by the ideas of others.",
+    "They like individualism and prefer to work at their own pace.",
+    "They are the best actors to play the role of “well thought out idiot”.",
+  ],
+  "name": "Maverick type",
+  "strategy": Array [
+    "They don't like to be paced by others, so they may be challenging to get to know at first sight, but they will be kind to you once you know them.",
+    "In general, seeing the other person with strange eyes is considered a bad thing, but they are exceptions and can use as compliments.",
+    "On the other hand, words such as “unoriginal” or “common sense” can be bad words to them, so be careful.",
+    "When working in a group, they perform best when put in positions requiring them to be creative.",
+  ],
+  "summary": "“Eccentric”, “Freak”, or “Weird” words are a compliment for them! They do in their way like a lone wolf.",
+  "weak": Array [
+    "They tend to do it in their way and not very resourceful.",
+    "They do not like to be pulled along by the pace of others and may impose their own pace on others.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("012") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a youthful temperament, always like middle-teens, even when they grow up.",
+    "They tend to like to discuss, but this tends to be a long story with little substance.",
+    "While they are eager to be in front of the public, they are also good at supporting the whole process behind the scenes.",
+  ],
+  "name": "Early Adopters type",
+  "strategy": Array [
+    "“It's the latest news” and “No one knows about it yet” are powerful words to get their attention.",
+    "On the other hand, worn-out or stable somethings may discourage their interest.",
+  ],
+  "summary": "They are early adopters who love new things and pursue freshness every day.",
+  "weak": Array [
+    "They always like new things, but it's no longer new for them once they know anything. So, they tend to get bored quickly.",
+    "If they have trouble getting started, they tend to lose motivation for even required things.",
+    "They hate intensely to be forced action or angered in front of the public.",
+    "Many peoples say that “Schadenfreude, Take pleasure in the misery of others”. But they are different, and they hate it.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("024") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "Once they just thought about anything, they are hard-working and determined to finish it, but they are not good at planning detailed strategies.",
+    "They are usually mild-mannered but cannot wait for things to happen.",
+    "The “Focused on authority” people, in general, have the gift of being able to turn anxiety into a driving force for action, but they are especially adept at it.",
+    "They can memorize and act as if they already knew something ten years ago, even if they have just learned it for the first time.",
+  ],
+  "name": "Effortist type",
+  "strategy": Array [
+    "It's generally not a good idea to make others angry, but these ordinarily mild-mannered they have the most horrifying way of getting mad among their many personality types.",
+    "They suit as interpersonal coordinators or directors. But, on the other hand, if you give them the responsibility of the planning, they will produce a series of short-lived products because they change their creations frequently due to anxiety.",
+    "When working with them, it is advisable to be frequently and thorough in reporting, communication, and consultation.",
+  ],
+  "summary": "They are impatient and have a strong drive.",
+  "weak": Array [
+    "They are impatient and tend to get anxious if they don't get detailed progress reports.",
+    "They tend not to be good at detailed calculations or standing around.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("025") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a sense of brotherhood with all humankind and have the qualities to get along equally and equally.",
+    "But, on the other hand, because they are “equally friendly,” they will always make a hedge, even with family members.",
+    "They tend to become well informed because they have a lot of connections.",
+  ],
+  "name": "Saintist type",
+  "strategy": Array [
+    "It's taboo to try outfoxing with them, leave them out, skip their turn, or do anything that is not honorable.",
+    "They tend to think equally responsible for all involved and blur their responsibilities collectively, so it is best to follow through.",
+  ],
+  "summary": "They are people who love others and are well-informed personalities.",
+  "weak": Array [
+    "They have a strong sense of camaraderie, so when someone they know gets into trouble, they tend to nose into problems with them.",
+    "Their judgment starts to weaken because they tend to gather too much information from their surroundings.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("100") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They like to pretend that they are not good at something, but they want to surprise and stand out by being prepared.",
+    "They tend to take on everything, trying to do it on their own.",
+  ],
+  "name": "Perfectionism type",
+  "strategy": Array [
+    "They are influencing by flattery and VIP treatment.",
+    "They love to surprise you, but be aware that they will complain that they lost face if you deny them.",
+  ],
+  "summary": "They are severe and stubborn, like a top-notch businessperson who doesn't show weakness!",
+  "weak": Array [
+    "They tend to be hard on themselves and others and are too concerned about public opinion to take challenging actions.",
+    "They are influencing by flattery and VIP treatment.",
+    "When collaborating with someone, cutting corners is generally a bad thing, but doing it with them will make you especially angry.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("108") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They are often as straightforward and honest as a baby.",
+    "They are very shy, and they become reticent when thrown into a place full of strangers.",
+  ],
+  "name": "Naturalism type",
+  "strategy": Array [
+    "They are straightforward to understand, as their personalities change considerably before and after they open up.",
+    "If you make them feel at ease, it is easy to get along with them.",
+  ],
+  "summary": "They are shy, but once you get used to them, they are honest to a fault.",
+  "weak": Array [
+    "They tend to restrict themselves to their sphere of activity and tend to stay in their shells.",
+    "They tend to be too honest in their home positions, such as social networking sites, and many of them become verbally abusive and overly familiar even among their friends.",
+    "Once they let their guard down, they may needlessly trust the other person too much.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("125") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have big, romantic dreams.",
+    "Also, like older adults, they have a long view of life and have the aptitude to be stoic in the short term.",
+  ],
+  "name": "Dreaming Type",
+  "strategy": Array [
+    "When proposing things to them, it is easier to trust if you talk about the risks first and clarify them.",
+    "If you suggest things to them in a humble way, they tend to influence easily.",
+    "They hate intrusive attitudes from above. They can get along well with those who are not so good at it and tend to stress you out without even knowing it.",
+  ],
+  "summary": "No rival in dreams and self-discipline! Straight to the goal in the long run.",
+  "weak": Array [
+    "They are skeptical and tend to be slow to take things on.",
+    "Reflection is critical, but for them, it can lead to regret because of too much.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("555") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "Many people have an air of all-around competence and boss authority, like an executive employee.",
+    "They can get used to something faster than others, even if they have no experience.",
+    "But it takes several times more effort than other types to become an expert in their field. In other words, they are suitable for generalists rather than experts.",
+  ],
+  "name": "Easygoing type",
+  "strategy": Array [
+    "They can do everything on their own, so they tend to take care of everything on their own. When you entrust them with something, be careful not to let them do too much.",
+  ],
+  "summary": "Balanced, capable and caring, a heroic position.",
+  "weak": Array [
+    "They don't like to apologize even when it is their fault. Even if they have apologetic, they are not very good at expressing it.",
+    "Perhaps because they can do everything on their own, they tend to feel uncomfortable when others can't, wondering why they can't do such things.",
+    "They tend to take on everything in an attempt to do it on their own, and as a result, their efficiency becomes less. The same is true for the “Perfectionism type” but since the “Easygoing type” has the dexterity to do so much on their own, they often don't notice that their performance is declining.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("789") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have the humble yet imposing spirit of a company president.",
+    "They have the near qualities as type “Focused on authority”. They have can weigh the authority of others and see the real thing.",
+    "They have a keen eye for weighing the authority of others and detecting the real thing, and they never fail to improve themselves to make their authority more solid.",
+    "While they are good at being unsung heroes, they also like to get in front of people when the time is right and skim the cream.",
+  ],
+  "name": "Authority type",
+  "strategy": Array [
+    "When you introduce yourself to them, don't be modest about your achievements. They will take you at your word and disregard you.",
+    "They tend to talk about themselves for a long time, so it is very effective to direct their conversation appropriately.",
+    "They tend to be apprehensive about places where they have no authority, such as an event they attend for the first time. However, if you escort them, they will recognize you as the “authority” in the situation and follow you.",
+    "Avoid denying their experience straightforward to them. Even if their expertise is wrong, they will anger.",
+  ],
+  "summary": "A talented person who is good at dividing roles by respecting achievements and experience",
+  "weak": Array [
+    "They tend to focus on achievements and authority, whether their own or others, So, they tend to overestimate themselves.",
+    "In general, insensitive and unkind behavior isn't good, but they especially dislike this.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("888") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They are like boys and girls with a challenging nature, interested in every direction.",
+    "Many of them are so hard-hitting that they don't even realize they've been beaten.",
+  ],
+  "name": "Challenger type",
+  "strategy": Array [
+    "Because of their hard-hitting nature, it may be a good idea to entrust them with positions that might make them fret if left to others, in addition to being salespeople.",
+  ],
+  "summary": "They are naive and curious! They don't care if something doesn't work; they will keep trying.",
+  "weak": Array [
+    "Their interests don't last very long, and they tend not to be good at long-term bargaining.",
+    "They tend to change topics frequently. But others often want to continue the issue a little longer, so they may make others uncomfortable.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("919") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "While they have a tremendous amount of concentration, they are always lazy the rest of the time.",
+    "Many of them have a strong disposition to whatever it takes to get whatever they want and the skills to bargain for it.",
+    "They are good at negotiating and have the makings of a salesperson.",
+  ],
+  "name": "Socialize type",
+  "strategy": Array [
+    "It's easier to open up to them if you limit the formalities to the first meeting and create a funky atmosphere the next time you meet.",
+    "They are slackers, but when they are motivated, they do a tremendous amount of work. For this reason, it is essential to let them do their job without pointing out how to do it in detail.",
+  ],
+  "summary": "They are good negotiators and prefer short-term strategy.",
+  "weak": Array [
+    "They tend to be uncomfortable with the formal atmosphere and unclear attitude.",
+    "They are also not very good at producing stable results in the long term.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.genius.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "descriptions": Object {
+    "inner": "**Inner**: the underlying personality",
+    "outer": "**Outer**: the personality that comes out when you don't trust the other person",
+    "workStyle": "**Workstyle**: the personality when you are focused or in an emergency",
+  },
+  "detail": "A more detailed, innate personality. This is classified into 12 types. ",
+  "inner": "Inner",
+  "name": "Type of genius",
+  "outer": "Outer",
+  "workStyle": "Workstyle",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.getDescription()\` method ("bar") => includes the same string 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as bar, and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday bar has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is bar and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.getDescription()\` method ("foo") => includes the same string 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as foo, and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday foo has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is foo and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.getDescription()\` method Get the specified object 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as , and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday  has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is  and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("application") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be good at building organizations.",
+    "They are also more likely to be custodial and caring.",
+  ],
+  "name": "They would like to be the one who experiences everything myself.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("association") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be more intellectually curious than others.",
+    "They have a remarkable ability to come up with their ideas to get them through the moment.",
+  ],
+  "name": "They would like to do it immediately when they think.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("development") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person has a keen sense of sensitivity, reasoning ability, and imagination.",
+    "They also have a strong sense of justice and are often sensitive minds.",
+  ],
+  "name": "They would like to be perfectionists.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("expression") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be a good talker.",
+    "In addition, they tend to have a playful spirit that makes the other person more entertained than themselves.",
+  ],
+  "name": "They would like to be honest with themselves.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("finance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to have a desire to be attractive.",
+    "In addition, they are also caring people, and many have a desire to be noticed by those around them.",
+  ],
+  "name": "They would like to put everything within eye reach.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("investment") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person is strong with numbers and has a remarkable ability to see the meaning of the values they represent.",
+  ],
+  "name": "They would like to be a down-to-earth collector.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("organization") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person has excellent self-discipline.",
+    "Many of them also have a strong mind of giving back.",
+  ],
+  "name": "They would like to live as a member of a group.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("quest") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be logical, intelligent, and quick-witted.",
+    "They respect the classics and excel at making decisions through the studies pioneered by earlier philosophers.",
+  ],
+  "name": "They would like to learn from the wisdom of their pioneers.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("selfMind") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be skilled at asserting their will while listening to others.",
+    "They also work in teams of friends and have an uncompromising mentality until things are accomplished.",
+  ],
+  "name": "They would like to be the leader of the group always.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("selfReliance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be competitive.",
+    "They have a strong sense of self and are good at living without being influenced by others.",
+  ],
+  "name": "They would like to be a lone wolf.",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.lifeBase.getCategoryDetail()\` method Get the specified object 1`] = `"View of life"`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.management.getByKey()\` method ("care") => Get the specified object 1`] = `
+Object {
+  "detail": "They have a good eye, **seeing the costs and risks** in opportunities.",
+  "more": Array [
+    "They are pessimistic and tend to highly cautious people.",
+    "They seek out what they can do by eliminating what they can't do, so while they rarely make big mistakes, they tend to miss significant opportunities.",
+    "We tend to give a negative impression to them, but many can be positive because they can deal with risks once they know them.",
+  ],
+  "name": "**Care**: The risk-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.management.getByKey()\` method ("hope") => Get the specified object 1`] = `
+Object {
+  "detail": "They have an excellent eye for seeing the significant chances hidden behind opportunities.",
+  "more": Array [
+    "They also tend to **be optimistic and reckless**.",
+    "While not afraid of failure, they make a big mistake never try it again.",
+    "We tend to have a positive impression on them, but they are **unfamiliar with risk and have vague fears** that lead them to **think negatively**.",
+  ],
+  "name": "**Hope**: The venture-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.management.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “**Care**: The risk-oriented” type or the “**Hope**: The venture-oriented” type.",
+  "name": "Pros/Cons mindset to opportunity",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("competition") => Get the specified object 1`] = `"They grow motivation where the environment that they can compare with other people's."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("ownMind") => Get the specified object 1`] = `"They grow motivation where the environment that they can do on their plan."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("power") => Get the specified object 1`] = `"They grow motivation where the environment that they can do as soon as they think about it."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("safety") => Get the specified object 1`] = `"They grow motivation where the environment that they can pursue security and peace."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("skillUp") => Get the specified object 1`] = `"They grow motivation where the environment that they can feel daily improvement."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("status") => Get the specified object 1`] = `"They grow motivation where the environment that they can be different from others."`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.motivation.getCategoryDetail()\` method Get the specified object 1`] = `"An environment where motivation is easy to find"`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("adjust") => Get the specified object 1`] = `
+Object {
+  "detail": "They are like commanders on the front line with **excellent coordination skills in the field**.",
+  "more": Array [
+    "They like to be in front of people, but they are more suited to interpersonal coordination than sales.",
+    "They are more suited to support roles such as handling complaints or serving as managers.",
+  ],
+  "name": "**Adjust**: Suited as a coordinate in an organization",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("brain") => Get the specified object 1`] = `
+Object {
+  "detail": "It has strong creativity and shows the best performance **as a brain behind the scenes**.",
+  "more": Array [
+    "When brainstorming, it is best to have them as key members for the best performance.",
+    "On the other hand, if you leave the salesperson to them, they may drop a bomb.",
+  ],
+  "name": "**Brain**: Suited as a strategy planner",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("direct") => Get the specified object 1`] = `
+Object {
+  "detail": "They have balanced learning skills and can do some extent of everything, from on-site to behind the scenes.",
+  "more": Array [
+    "They can do everything tends to be their downfall, and they tend to take on everything by themselves.",
+    "In many cases, they are already working as managers.",
+  ],
+  "name": "**Direct**: Suited as a leader",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("quick") => Get the specified object 1`] = `
+Object {
+  "detail": "They are **highly dynamic** and are most suited for negotiations and business meetings with customers.",
+  "more": Array [
+    "They have intense, vital energy to get out in front of people and be active.",
+    "They tend to be stifled by behind-the-scenes work and do not last long.",
+  ],
+  "name": "**Quick**: Suited as a salesperson",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.position.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Each personality type is suited to a different role. So, in general, it is better to overcome your weaknesses by delegating them to the right person in the right place, rather than on your own, so that you can achieve great results.",
+  "name": "Suitability for the role",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.response.getByKey()\` method ("action") => Get the specified object 1`] = `
+Object {
+  "detail": "They focus on putting energy into action and feel that their place is at the forefront of on-site.",
+  "more": Array [
+    "They tend to may **act before thinking**.",
+    "A group of people with the same personality type as them in proportion will give the impression of being unstable yet active.",
+    "While they are good at public appearances, many of them get easily choked up by behind-the-scenes work such as office work, manufactures, or machine operation.",
+  ],
+  "name": "Get out in public",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.response.getByKey()\` method ("mind") => Get the specified object 1`] = `
+Object {
+  "detail": "They value putting energy into thinking and feel that performing a role behind the scenes is valuable.",
+  "more": Array [
+    "They are more of a thinker before acting type.",
+    "A group with a proportion of their type of people will look stagnant, but it will give the impression of being down-to-earth and solid.",
+    "While they are good at clerical work, manufacturing, and machine operation, they are not good at meeting in person, and many of them get tired of work in public easily.",
+  ],
+  "name": "Behind the scenes work",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.response.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “Get out in public” type or the “Behind the scenes work” type.",
+  "name": "Suitability for the work",
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("authority") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have an underlying **ego for their authority** and a personality that **pursues their future potential**.",
+    "They cannot listen to long talks. As soon as they decide that something is not essential, they blatantly stop listening to the conversation, such as playing with their phones or dozing off.",
+    "People who collect brand-name goods to dress up for their authority tend to have this personality type.",
+    "They tend to have vague, hard-to-realize anxieties and tend to transfer them to their driving force.",
+  ],
+  "name": "Focused on authority",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on humanely” type than the “Focused on economically” type.",
+    "When approaching someone for a talk, it is easier to get through to them if you examine the essential points beforehand and explain them with **great emphasis on their impact**.",
+    "They have the power to act on their insecurities. So **the carrot and stick method**, where you give them anxiety and then propose benefits, is compelling.",
+    "Also, if you appeal to them **to increase their authority**, they are more likely to be influenced.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("economically") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This personality type is the pursues efficiency, with the underlying ego being for the **sake of one's own wealth**.",
+    "They tend to be specs-oriented and tend to disrespect brands. However, some rare people consider brands to be a kind of specs and place importance on them.",
+    "**They cannot listen to long conversations** very well. So they try to understand **only the main points** and tend to think or say, **“in a nutshell...”**.",
+  ],
+  "name": "Focused on economically",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on authority” type than the “Focused on humanely” type.",
+    "When giving a talk to them, they are easier to get through if you **examine the essential points beforehand** and briefly present the main points, leaving the rest for questions and answers or handing out materials.",
+    "They look like to get **strong angry** when they **hear something that interests them**. However, they are **only listening seriously** and are **usually not angry**, so it is essential to endure the bitter atmosphere when talking with them.",
+    "They are less allergic to talk of profit, so it is okay to go straight to the point without blurting it out. However, since they tend to be shrewd about numbers, you will not convince them unless you provide a convincing business model and evidence.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("humanely") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They pursue sociality with an ego to **improve their virtue**.",
+    "They tend to focus on personality in many things. For example, when choosing a product at a store or something, they tend to decide based on the salesperson's character than its quality.",
+    "They tend to **be able to listen to long conversations** from beginning to end with a smile. However, they **can't always understand to gist**.",
+    "If you only get to the point briefly, they will be curious about the introduction, development of the story and not understanding its rest.",
+  ],
+  "name": "Focused on humanely",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on economically” type than the “Focused on authority” type.",
+    "When talking to them, you can get through to them easier if you explain the story **in order**, with a few **redundant additions** each time.",
+    "They also tend to listen smilingly even if they don't understand, so it is more desirable to ask for confirmation at crucial points.",
+    "They have a tendency to be easily influenced when they are praised for their kindness and humanity. Also, it is easier to persuade them if you talk to them with a cause that is not for their own sake but for the sake of the people around them.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessors()\` function \`Accessors.vector.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "There are three main types of humans personality: “Focused on authority”, “Focused on economically”, and “Focused on humanely”.",
+  "name": "Major categories of personality",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.brain.getByKey()\` method ("left") => Get the specified object 1`] = `
+Object {
+  "detail": "They are excellent at logical thinking.",
+  "more": Array [
+    "While they are good at thinking based on numbers and data, they tend to confuse in rambling situations.",
+    "They tend to stick to numerical evidence and are not good at working intuitively.",
+  ],
+  "name": "Left-brained thinking",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.brain.getByKey()\` method ("right") => Get the specified object 1`] = `
+Object {
+  "detail": "They are excellent at **intuitive thinking**.",
+  "more": Array [
+    "While they're **good at using imagination**, such as brainstorming, They tend to disregard the evidence and move with intuition first.",
+    "In **complicated situations**, they are **easy to stop thinking**.",
+  ],
+  "name": "Right-brained thinking",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.brain.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “Left-brained thinking” type or the “Right-brained thinking” type.",
+  "name": "Thinking methods",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.communication.getByKey()\` method ("fix") => Get the specified object 1`] = `
+Object {
+  "detail": "They do dialogue that proceeds with a conclusion.",
+  "more": Array [
+    "They tend to rationalize and get their point across.",
+    "They are relieved when things are clearly defined, such as time and place, but tend to feel uneasy when things are unclear.",
+  ],
+  "name": "**Fix**: Clarification-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.communication.getByKey()\` method ("flex") => Get the specified object 1`] = `
+Object {
+  "detail": "They are good at concluding **fluidly**.",
+  "more": Array [
+    "They also tend to use emotionalism to get their point across.",
+    "They can manage with ambiguity in terms of time, place, etc., but they **feel constrained when it comes to clarity**.",
+  ],
+  "name": "**Flex**: Liquidity-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.communication.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “**Fix**: Clarification-oriented” type or the “**Flex**: Liquidity-oriented type.",
+  "name": "Ways of thinking in dialogue",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("000") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a hyper-linguistic philosophy; and an outlandish worldview. Some people describe them as the sixth senses.",
+    "However, they are not very dynamic, and many of them keep it in their heads.",
+    "It is also common for sensitive types to go on a trip without a plan and lose touch.",
+  ],
+  "name": "Spiritual type",
+  "strategy": Array [
+    "They do hate any restraint, bondage, or rules.",
+    "When they say “Roger!”, but they tend to don't understand yet the request. So it is a good idea to check with them to avoid problems later on.",
+    "If you are going to do something with a group of people, it is best to put them in a position to be asked to be creative.",
+  ],
+  "summary": "They prefer aimless wandering and utilize sharp intuition and flashes of inspiration.",
+  "weak": Array [
+    "They tend to clutter up their notes, folders on their desktops, rooms, and everything else if they are not aware.",
+    "They tend to have a strong link between their emotions and their performance. In other words, if they are not in the right frame of mind, they will not make progress.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("001") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They love to act like a weirdo, untainted by the ideas of others.",
+    "They like individualism and prefer to work at their own pace.",
+    "They are the best actors to play the role of “well thought out idiot”.",
+  ],
+  "name": "Maverick type",
+  "strategy": Array [
+    "They don't like to be paced by others, so they may be challenging to get to know at first sight, but they will be kind to you once you know them.",
+    "In general, seeing the other person with strange eyes is considered a bad thing, but they are exceptions and can use as compliments.",
+    "On the other hand, words such as “unoriginal” or “common sense” can be bad words to them, so be careful.",
+    "When working in a group, they perform best when put in positions requiring them to be creative.",
+  ],
+  "summary": "“Eccentric”, “Freak”, or “Weird” words are a compliment for them! They do in their way like a lone wolf.",
+  "weak": Array [
+    "They tend to do it in their way and not very resourceful.",
+    "They do not like to be pulled along by the pace of others and may impose their own pace on others.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("012") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a youthful temperament, always like middle-teens, even when they grow up.",
+    "They tend to like to discuss, but this tends to be a long story with little substance.",
+    "While they are eager to be in front of the public, they are also good at supporting the whole process behind the scenes.",
+  ],
+  "name": "Early Adopters type",
+  "strategy": Array [
+    "“It's the latest news” and “No one knows about it yet” are powerful words to get their attention.",
+    "On the other hand, worn-out or stable somethings may discourage their interest.",
+  ],
+  "summary": "They are early adopters who love new things and pursue freshness every day.",
+  "weak": Array [
+    "They always like new things, but it's no longer new for them once they know anything. So, they tend to get bored quickly.",
+    "If they have trouble getting started, they tend to lose motivation for even required things.",
+    "They hate intensely to be forced action or angered in front of the public.",
+    "Many peoples say that “Schadenfreude, Take pleasure in the misery of others”. But they are different, and they hate it.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("024") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "Once they just thought about anything, they are hard-working and determined to finish it, but they are not good at planning detailed strategies.",
+    "They are usually mild-mannered but cannot wait for things to happen.",
+    "The “Focused on authority” people, in general, have the gift of being able to turn anxiety into a driving force for action, but they are especially adept at it.",
+    "They can memorize and act as if they already knew something ten years ago, even if they have just learned it for the first time.",
+  ],
+  "name": "Effortist type",
+  "strategy": Array [
+    "It's generally not a good idea to make others angry, but these ordinarily mild-mannered they have the most horrifying way of getting mad among their many personality types.",
+    "They suit as interpersonal coordinators or directors. But, on the other hand, if you give them the responsibility of the planning, they will produce a series of short-lived products because they change their creations frequently due to anxiety.",
+    "When working with them, it is advisable to be frequently and thorough in reporting, communication, and consultation.",
+  ],
+  "summary": "They are impatient and have a strong drive.",
+  "weak": Array [
+    "They are impatient and tend to get anxious if they don't get detailed progress reports.",
+    "They tend not to be good at detailed calculations or standing around.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("025") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have a sense of brotherhood with all humankind and have the qualities to get along equally and equally.",
+    "But, on the other hand, because they are “equally friendly,” they will always make a hedge, even with family members.",
+    "They tend to become well informed because they have a lot of connections.",
+  ],
+  "name": "Saintist type",
+  "strategy": Array [
+    "It's taboo to try outfoxing with them, leave them out, skip their turn, or do anything that is not honorable.",
+    "They tend to think equally responsible for all involved and blur their responsibilities collectively, so it is best to follow through.",
+  ],
+  "summary": "They are people who love others and are well-informed personalities.",
+  "weak": Array [
+    "They have a strong sense of camaraderie, so when someone they know gets into trouble, they tend to nose into problems with them.",
+    "Their judgment starts to weaken because they tend to gather too much information from their surroundings.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("100") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They like to pretend that they are not good at something, but they want to surprise and stand out by being prepared.",
+    "They tend to take on everything, trying to do it on their own.",
+  ],
+  "name": "Perfectionism type",
+  "strategy": Array [
+    "They are influencing by flattery and VIP treatment.",
+    "They love to surprise you, but be aware that they will complain that they lost face if you deny them.",
+  ],
+  "summary": "They are severe and stubborn, like a top-notch businessperson who doesn't show weakness!",
+  "weak": Array [
+    "They tend to be hard on themselves and others and are too concerned about public opinion to take challenging actions.",
+    "They are influencing by flattery and VIP treatment.",
+    "When collaborating with someone, cutting corners is generally a bad thing, but doing it with them will make you especially angry.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("108") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They are often as straightforward and honest as a baby.",
+    "They are very shy, and they become reticent when thrown into a place full of strangers.",
+  ],
+  "name": "Naturalism type",
+  "strategy": Array [
+    "They are straightforward to understand, as their personalities change considerably before and after they open up.",
+    "If you make them feel at ease, it is easy to get along with them.",
+  ],
+  "summary": "They are shy, but once you get used to them, they are honest to a fault.",
+  "weak": Array [
+    "They tend to restrict themselves to their sphere of activity and tend to stay in their shells.",
+    "They tend to be too honest in their home positions, such as social networking sites, and many of them become verbally abusive and overly familiar even among their friends.",
+    "Once they let their guard down, they may needlessly trust the other person too much.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("125") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have big, romantic dreams.",
+    "Also, like older adults, they have a long view of life and have the aptitude to be stoic in the short term.",
+  ],
+  "name": "Dreaming Type",
+  "strategy": Array [
+    "When proposing things to them, it is easier to trust if you talk about the risks first and clarify them.",
+    "If you suggest things to them in a humble way, they tend to influence easily.",
+    "They hate intrusive attitudes from above. They can get along well with those who are not so good at it and tend to stress you out without even knowing it.",
+  ],
+  "summary": "No rival in dreams and self-discipline! Straight to the goal in the long run.",
+  "weak": Array [
+    "They are skeptical and tend to be slow to take things on.",
+    "Reflection is critical, but for them, it can lead to regret because of too much.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("555") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "Many people have an air of all-around competence and boss authority, like an executive employee.",
+    "They can get used to something faster than others, even if they have no experience.",
+    "But it takes several times more effort than other types to become an expert in their field. In other words, they are suitable for generalists rather than experts.",
+  ],
+  "name": "Easygoing type",
+  "strategy": Array [
+    "They can do everything on their own, so they tend to take care of everything on their own. When you entrust them with something, be careful not to let them do too much.",
+  ],
+  "summary": "Balanced, capable and caring, a heroic position.",
+  "weak": Array [
+    "They don't like to apologize even when it is their fault. Even if they have apologetic, they are not very good at expressing it.",
+    "Perhaps because they can do everything on their own, they tend to feel uncomfortable when others can't, wondering why they can't do such things.",
+    "They tend to take on everything in an attempt to do it on their own, and as a result, their efficiency becomes less. The same is true for the “Perfectionism type” but since the “Easygoing type” has the dexterity to do so much on their own, they often don't notice that their performance is declining.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("789") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have the humble yet imposing spirit of a company president.",
+    "They have the near qualities as type “Focused on authority”. They have can weigh the authority of others and see the real thing.",
+    "They have a keen eye for weighing the authority of others and detecting the real thing, and they never fail to improve themselves to make their authority more solid.",
+    "While they are good at being unsung heroes, they also like to get in front of people when the time is right and skim the cream.",
+  ],
+  "name": "Authority type",
+  "strategy": Array [
+    "When you introduce yourself to them, don't be modest about your achievements. They will take you at your word and disregard you.",
+    "They tend to talk about themselves for a long time, so it is very effective to direct their conversation appropriately.",
+    "They tend to be apprehensive about places where they have no authority, such as an event they attend for the first time. However, if you escort them, they will recognize you as the “authority” in the situation and follow you.",
+    "Avoid denying their experience straightforward to them. Even if their expertise is wrong, they will anger.",
+  ],
+  "summary": "A talented person who is good at dividing roles by respecting achievements and experience",
+  "weak": Array [
+    "They tend to focus on achievements and authority, whether their own or others, So, they tend to overestimate themselves.",
+    "In general, insensitive and unkind behavior isn't good, but they especially dislike this.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("888") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They are like boys and girls with a challenging nature, interested in every direction.",
+    "Many of them are so hard-hitting that they don't even realize they've been beaten.",
+  ],
+  "name": "Challenger type",
+  "strategy": Array [
+    "Because of their hard-hitting nature, it may be a good idea to entrust them with positions that might make them fret if left to others, in addition to being salespeople.",
+  ],
+  "summary": "They are naive and curious! They don't care if something doesn't work; they will keep trying.",
+  "weak": Array [
+    "Their interests don't last very long, and they tend not to be good at long-term bargaining.",
+    "They tend to change topics frequently. But others often want to continue the issue a little longer, so they may make others uncomfortable.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("919") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "While they have a tremendous amount of concentration, they are always lazy the rest of the time.",
+    "Many of them have a strong disposition to whatever it takes to get whatever they want and the skills to bargain for it.",
+    "They are good at negotiating and have the makings of a salesperson.",
+  ],
+  "name": "Socialize type",
+  "strategy": Array [
+    "It's easier to open up to them if you limit the formalities to the first meeting and create a funky atmosphere the next time you meet.",
+    "They are slackers, but when they are motivated, they do a tremendous amount of work. For this reason, it is essential to let them do their job without pointing out how to do it in detail.",
+  ],
+  "summary": "They are good negotiators and prefer short-term strategy.",
+  "weak": Array [
+    "They tend to be uncomfortable with the formal atmosphere and unclear attitude.",
+    "They are also not very good at producing stable results in the long term.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.genius.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "descriptions": Object {
+    "inner": "**Inner**: the underlying personality",
+    "outer": "**Outer**: the personality that comes out when you don't trust the other person",
+    "workStyle": "**Workstyle**: the personality when you are focused or in an emergency",
+  },
+  "detail": "A more detailed, innate personality. This is classified into 12 types. ",
+  "inner": "Inner",
+  "name": "Type of genius",
+  "outer": "Outer",
+  "workStyle": "Workstyle",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method ("bar") => includes the same string 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as bar, and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday bar has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is bar and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method ("foo") => includes the same string 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as foo, and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday foo has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is foo and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method Get the specified object 1`] = `
+Object {
+  "cc": "Personality number",
+  "detail": "Details of people whose personality type is classified as , and how to handle them.",
+  "details": "List of available personality type codes",
+  "genius1": "A person has three of these personalities, and the personality that emerges varies depending on the situation.",
+  "genius2": "Of these, “**Inner**: the underlying personality” accounts for most of a person's personality.",
+  "invalid": "An invalid birthday  has been detected. This app is only available from Feb 01, 1873, to Dec 32, 2050.",
+  "personality": "The personality of the person whose birthday is  and how to handle them.",
+  "strategy": "Strategies for this personality type",
+  "weak": "Weaknesses of this personality type",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("application") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be good at building organizations.",
+    "They are also more likely to be custodial and caring.",
+  ],
+  "name": "They would like to be the one who experiences everything myself.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("association") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be more intellectually curious than others.",
+    "They have a remarkable ability to come up with their ideas to get them through the moment.",
+  ],
+  "name": "They would like to do it immediately when they think.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("development") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person has a keen sense of sensitivity, reasoning ability, and imagination.",
+    "They also have a strong sense of justice and are often sensitive minds.",
+  ],
+  "name": "They would like to be perfectionists.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("expression") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be a good talker.",
+    "In addition, they tend to have a playful spirit that makes the other person more entertained than themselves.",
+  ],
+  "name": "They would like to be honest with themselves.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("finance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to have a desire to be attractive.",
+    "In addition, they are also caring people, and many have a desire to be noticed by those around them.",
+  ],
+  "name": "They would like to put everything within eye reach.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("investment") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person is strong with numbers and has a remarkable ability to see the meaning of the values they represent.",
+  ],
+  "name": "They would like to be a down-to-earth collector.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("organization") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person has excellent self-discipline.",
+    "Many of them also have a strong mind of giving back.",
+  ],
+  "name": "They would like to live as a member of a group.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("quest") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be logical, intelligent, and quick-witted.",
+    "They respect the classics and excel at making decisions through the studies pioneered by earlier philosophers.",
+  ],
+  "name": "They would like to learn from the wisdom of their pioneers.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("selfMind") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be skilled at asserting their will while listening to others.",
+    "They also work in teams of friends and have an uncompromising mentality until things are accomplished.",
+  ],
+  "name": "They would like to be the leader of the group always.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("selfReliance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This type of person tends to be competitive.",
+    "They have a strong sense of self and are good at living without being influenced by others.",
+  ],
+  "name": "They would like to be a lone wolf.",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.lifeBase.getCategoryDetail()\` method Get the specified object 1`] = `"View of life"`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.management.getByKey()\` method ("care") => Get the specified object 1`] = `
+Object {
+  "detail": "They have a good eye, **seeing the costs and risks** in opportunities.",
+  "more": Array [
+    "They are pessimistic and tend to highly cautious people.",
+    "They seek out what they can do by eliminating what they can't do, so while they rarely make big mistakes, they tend to miss significant opportunities.",
+    "We tend to give a negative impression to them, but many can be positive because they can deal with risks once they know them.",
+  ],
+  "name": "**Care**: The risk-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.management.getByKey()\` method ("hope") => Get the specified object 1`] = `
+Object {
+  "detail": "They have an excellent eye for seeing the significant chances hidden behind opportunities.",
+  "more": Array [
+    "They also tend to **be optimistic and reckless**.",
+    "While not afraid of failure, they make a big mistake never try it again.",
+    "We tend to have a positive impression on them, but they are **unfamiliar with risk and have vague fears** that lead them to **think negatively**.",
+  ],
+  "name": "**Hope**: The venture-oriented",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.management.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “**Care**: The risk-oriented” type or the “**Hope**: The venture-oriented” type.",
+  "name": "Pros/Cons mindset to opportunity",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("competition") => Get the specified object 1`] = `"They grow motivation where the environment that they can compare with other people's."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("ownMind") => Get the specified object 1`] = `"They grow motivation where the environment that they can do on their plan."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("power") => Get the specified object 1`] = `"They grow motivation where the environment that they can do as soon as they think about it."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("safety") => Get the specified object 1`] = `"They grow motivation where the environment that they can pursue security and peace."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("skillUp") => Get the specified object 1`] = `"They grow motivation where the environment that they can feel daily improvement."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("status") => Get the specified object 1`] = `"They grow motivation where the environment that they can be different from others."`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.motivation.getCategoryDetail()\` method Get the specified object 1`] = `"An environment where motivation is easy to find"`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("adjust") => Get the specified object 1`] = `
+Object {
+  "detail": "They are like commanders on the front line with **excellent coordination skills in the field**.",
+  "more": Array [
+    "They like to be in front of people, but they are more suited to interpersonal coordination than sales.",
+    "They are more suited to support roles such as handling complaints or serving as managers.",
+  ],
+  "name": "**Adjust**: Suited as a coordinate in an organization",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("brain") => Get the specified object 1`] = `
+Object {
+  "detail": "It has strong creativity and shows the best performance **as a brain behind the scenes**.",
+  "more": Array [
+    "When brainstorming, it is best to have them as key members for the best performance.",
+    "On the other hand, if you leave the salesperson to them, they may drop a bomb.",
+  ],
+  "name": "**Brain**: Suited as a strategy planner",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("direct") => Get the specified object 1`] = `
+Object {
+  "detail": "They have balanced learning skills and can do some extent of everything, from on-site to behind the scenes.",
+  "more": Array [
+    "They can do everything tends to be their downfall, and they tend to take on everything by themselves.",
+    "In many cases, they are already working as managers.",
+  ],
+  "name": "**Direct**: Suited as a leader",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("quick") => Get the specified object 1`] = `
+Object {
+  "detail": "They are **highly dynamic** and are most suited for negotiations and business meetings with customers.",
+  "more": Array [
+    "They have intense, vital energy to get out in front of people and be active.",
+    "They tend to be stifled by behind-the-scenes work and do not last long.",
+  ],
+  "name": "**Quick**: Suited as a salesperson",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.position.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Each personality type is suited to a different role. So, in general, it is better to overcome your weaknesses by delegating them to the right person in the right place, rather than on your own, so that you can achieve great results.",
+  "name": "Suitability for the role",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.response.getByKey()\` method ("action") => Get the specified object 1`] = `
+Object {
+  "detail": "They focus on putting energy into action and feel that their place is at the forefront of on-site.",
+  "more": Array [
+    "They tend to may **act before thinking**.",
+    "A group of people with the same personality type as them in proportion will give the impression of being unstable yet active.",
+    "While they are good at public appearances, many of them get easily choked up by behind-the-scenes work such as office work, manufactures, or machine operation.",
+  ],
+  "name": "Get out in public",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.response.getByKey()\` method ("mind") => Get the specified object 1`] = `
+Object {
+  "detail": "They value putting energy into thinking and feel that performing a role behind the scenes is valuable.",
+  "more": Array [
+    "They are more of a thinker before acting type.",
+    "A group with a proportion of their type of people will look stagnant, but it will give the impression of being down-to-earth and solid.",
+    "While they are good at clerical work, manufacturing, and machine operation, they are not good at meeting in person, and many of them get tired of work in public easily.",
+  ],
+  "name": "Behind the scenes work",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.response.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "Depending on the person, they can divide into the “Get out in public” type or the “Behind the scenes work” type.",
+  "name": "Suitability for the work",
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("authority") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They have an underlying **ego for their authority** and a personality that **pursues their future potential**.",
+    "They cannot listen to long talks. As soon as they decide that something is not essential, they blatantly stop listening to the conversation, such as playing with their phones or dozing off.",
+    "People who collect brand-name goods to dress up for their authority tend to have this personality type.",
+    "They tend to have vague, hard-to-realize anxieties and tend to transfer them to their driving force.",
+  ],
+  "name": "Focused on authority",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on humanely” type than the “Focused on economically” type.",
+    "When approaching someone for a talk, it is easier to get through to them if you examine the essential points beforehand and explain them with **great emphasis on their impact**.",
+    "They have the power to act on their insecurities. So **the carrot and stick method**, where you give them anxiety and then propose benefits, is compelling.",
+    "Also, if you appeal to them **to increase their authority**, they are more likely to be influenced.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("economically") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "This personality type is the pursues efficiency, with the underlying ego being for the **sake of one's own wealth**.",
+    "They tend to be specs-oriented and tend to disrespect brands. However, some rare people consider brands to be a kind of specs and place importance on them.",
+    "**They cannot listen to long conversations** very well. So they try to understand **only the main points** and tend to think or say, **“in a nutshell...”**.",
+  ],
+  "name": "Focused on economically",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on authority” type than the “Focused on humanely” type.",
+    "When giving a talk to them, they are easier to get through if you **examine the essential points beforehand** and briefly present the main points, leaving the rest for questions and answers or handing out materials.",
+    "They look like to get **strong angry** when they **hear something that interests them**. However, they are **only listening seriously** and are **usually not angry**, so it is essential to endure the bitter atmosphere when talking with them.",
+    "They are less allergic to talk of profit, so it is okay to go straight to the point without blurting it out. However, since they tend to be shrewd about numbers, you will not convince them unless you provide a convincing business model and evidence.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("humanely") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "They pursue sociality with an ego to **improve their virtue**.",
+    "They tend to focus on personality in many things. For example, when choosing a product at a store or something, they tend to decide based on the salesperson's character than its quality.",
+    "They tend to **be able to listen to long conversations** from beginning to end with a smile. However, they **can't always understand to gist**.",
+    "If you only get to the point briefly, they will be curious about the introduction, development of the story and not understanding its rest.",
+  ],
+  "name": "Focused on humanely",
+  "strategy": Array [
+    "There is a relationship like the rock-paper-scissors between the “Focused on authority” type, “Focused on economically” type, and “Focused on humanely” type. They are easier to talk to the “Focused on economically” type than the “Focused on authority” type.",
+    "When talking to them, you can get through to them easier if you explain the story **in order**, with a few **redundant additions** each time.",
+    "They also tend to listen smilingly even if they don't understand, so it is more desirable to ask for confirmation at crucial points.",
+    "They have a tendency to be easily influenced when they are praised for their kindness and humanity. Also, it is easier to persuade them if you talk to them with a cause that is not for their own sake but for the sake of the people around them.",
+  ],
+}
+`;
+
+exports[`LANG=en \`createAccessorsAsync()\` function \`Accessors.vector.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "There are three main types of humans personality: “Focused on authority”, “Focused on economically”, and “Focused on humanely”.",
+  "name": "Major categories of personality",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.brain.getByKey()\` method ("left") => Get the specified object 1`] = `
+Object {
+  "detail": "左脳思考の人は、**論理的思考**が優れています。",
+  "more": Array [
+    "**数値・データに基づいて考えることが得意**である一方、**漫然な状況では混乱**しがちな傾向があります。",
+    "数値的なエビデンスに固執してしまい、**直感的に動くことは苦手**です。",
+  ],
+  "name": "左脳思考",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.brain.getByKey()\` method ("right") => Get the specified object 1`] = `
+Object {
+  "detail": "右脳思考の人は、**直感的思考**が優れています。",
+  "more": Array [
+    "ブレストなど、**想像力を使うことが得意**である一方、**エビデンスを軽視し、直感優先**で動いてしまう傾向があります。",
+    "**忙しい状況では、思考停止に**陥りがちです。",
+  ],
+  "name": "右脳思考",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.brain.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって右脳思考か左脳思考かに分かれます。",
+  "name": "思考タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.communication.getByKey()\` method ("fix") => Get the specified object 1`] = `
+Object {
+  "detail": "**結論ありき**で対話を進めるタイプです。",
+  "more": Array [
+    "理詰めで自分の主張を通していく傾向もあります。",
+    "時間や場所など、はっきり**明確になると安心**する反面、曖昧だと不安になる人が多いです。",
+  ],
+  "name": "明確化指向",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.communication.getByKey()\` method ("flex") => Get the specified object 1`] = `
+Object {
+  "detail": "**流動的**に着地点を決めて行くタイプです。",
+  "more": Array [
+    "感情論で自分の主張を通していく傾向もあります。",
+    "時間や場所など、曖昧でもどうにかなる反面、**明確にすると窮屈**に感じる人が多いです。",
+  ],
+  "name": "柔軟指向",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.communication.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって明確化指向か柔軟指向かに分かれます。",
+  "name": "対話における思考方法",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("000") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "(既存の言語で言い表せない)超言語的哲学……ぶっ飛んだ世界観を持っています。霊感と表現している人もいます。",
+    "ただし行動力はあまり高くなく、頭の中で留めている人が多いです。",
+    "浮遊霊のように、無計画で旅に出て、連絡が付かなくなることも、敏感タイプあるあるです。",
+  ],
+  "name": "敏感タイプ",
+  "strategy": Array [
+    "ありとあらゆる拘束・束縛・ルールを嫌います。",
+    "依頼などに対し“わかった(わかってない)”と言いがちです。確認をとってあげると後々のトラブル回避に繋がります。",
+    "集団で何かをする場合、独創性を問われるポジションに置くと良いでしょう。",
+  ],
+  "summary": "鋭い直感と閃きを武器に、無目的な放浪が好きなタイプ",
+  "weak": Array [
+    "意識しないとメモ、フォルダー、部屋など、ありとあらゆるものが散らかっていく傾向があります。",
+    "敏感タイプは、感情とパフォーマンスが非常に強くリンクする傾向があります。つまり気が向いていないと、本当に進捗しなくなります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("001") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "他人の思想に染まらず、変人のように振舞うのが大好きです。",
+    "全てにおいて、没個性的な物事を嫌い、マイペースに活動することを好みます。",
+    "“緻密に計算されたバカ”・“実は天才なバカ”役を演じるには、最強の適役と言えるでしょう。",
+  ],
+  "name": "独自タイプ",
+  "strategy": Array [
+    "初見はとっつきにくいと思いますが、仲良くなると優しくしてくれます。",
+    "変人、変わっている、などの言葉は一般的に悪口となりますが、独自タイプに限り例外で、褒め言葉となります。",
+    "逆に没個性的なワード、常識人であることを褒める行為などは悪口となり得ますので注意です。",
+    "集団で何かをやる場合、独創性を問われるポジションに就かせると最高のパフォーマンスを発揮します。",
+  ],
+  "summary": "奇人変人は褒め言葉！周りに流されず我流のアイデアで勝負",
+  "weak": Array [
+    "我流が強く確立しているため、臨機応変的な行動は苦手な傾向があります。",
+    "他人のペースに引っ張られることを嫌うあまり、自分のペースを相手に押し付けてしまうこともあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("012") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "大人になっても青春時代のような印象を持つ、青年気質なタイプです。",
+    "話し合いが好きな傾向がありますが、これは一長一短で中身の薄い長話に陥りがちです。",
+    "人前に出たがりな反面、黒子的な振る舞いで全体をサポートするのも得意です。",
+  ],
+  "name": "先端タイプ",
+  "strategy": Array [
+    "“誰も知らない”・“最新情報です”は、先端タイプを振り向かせるパワーワードです。",
+    "逆に枯れている、実績があるなどと安定性に訴えかける触れ込みは、彼らの興味を削ぐ結果となるでしょう。",
+  ],
+  "summary": "新しいモノ大好き！日々新鮮さを求めるヒトバシラー気質",
+  "weak": Array [
+    "新しいものにこだわるあまり、少々飽きっぽい印象になりがちです。",
+    "出だしに遅れると、波に乗れずモチベがなかなか上がらない傾向もあります。",
+    "強引な行動を受けたり、公衆の面前の前で怒られることが大嫌いです。",
+    "“人の不幸は蜜の味”とはよく言いますが、先端タイプは多くの人と違い、そう言った言動を嫌います。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("024") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "やると決めたことは、最後までやり遂げようとする努力家タイプですが、細かい戦略を練るのは不得手です。",
+    "普段温和ですが、せっかちで最強の行動力を持つタイプです。",
+    "アート脳タイプは全般的に、不安を行動の原動力に転換できる才能を持っていますが、この努力タイプはその能力が特に顕著です。",
+    "今初めて知ったことを、まるで 10 年前から知っていたかのような口ぶりで語れるような、暗記力と演技力を持っている人が多いです。",
+  ],
+  "name": "努力タイプ",
+  "strategy": Array [
+    "人を怒らせるのは一般的に得策ではありませんが、努力タイプは特にタブーです。普段融和な雰囲気ですが、めちゃくちゃ怖い目を見ることになるでしょう。",
+    "努力タイプは対人調整役やディレクターが適役です。一方で企画の責を与えると、短命商品を連発してしまいます。不安からコロコロ商品を変えてしまうためです。",
+    "努力タイプと組んで仕事をする場合、報告・連絡・相談をしつこいくらい綿密にすると望ましいです。",
+  ],
+  "summary": "せっかちで、最強の行動力を持つ",
+  "weak": Array [
+    "せっかちで、事細かな進捗報告がないと不安になってしまいがちです。",
+    "細かい計算や立ち回りは苦手な傾向があります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("025") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "人類皆兄弟のような意識を持ち、誰とも等しく平等に仲良くできる素質を持ちます。",
+    "一方で“等しく仲良し”のため、家族であっても必ず一線をひきます。",
+    "配慮タイプは多くの人のコネを持てることから、必然的に事情通になる傾向が多いです。",
+  ],
+  "name": "配慮タイプ",
+  "strategy": Array [
+    "配慮タイプに対して駆け引きや抜け駆け、順番飛ばしなど、仁義に悖る行為はタブーです。",
+    "彼らが何かやらかした際は、関係者全員に責任があると考えて、自分の非を集団でぼかしがちなので、フォローしてあげると良いでしょう。",
+  ],
+  "summary": "他人大好き、事情通な人格者",
+  "weak": Array [
+    "仲間意識の強さから、知り合いが関わっていると言うだけで、関係のないトラブルにまで首を突っ込んでしまいがちな傾向があります。",
+    "配慮タイプは周囲から情報を集めすぎて、収拾がつかなくなり物事の決断が鈍る傾向があります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("100") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "苦手なふりしておきながら、ちゃっかり準備しておいて驚かして目立つことを好みます。",
+    "自力でやろうとなんでも抱えてしまい、結果としてパフォーマンスが落ちる傾向があります。",
+  ],
+  "name": "完璧タイプ",
+  "strategy": Array [
+    "おだてたり、VIP 扱いするとすぐに靡いてしまいますので、仲良くしたい場合は積極的に活用してみましょう。",
+    "完璧タイプはサプライズをするのが大好きですが、それを否定すると面子を傷つけられたと不満を持つので注意。",
+    "誰かと共同作業する際、手抜きすることは一般的に悪いことですが、完璧タイプとの間でそれをすると、特に怒るでしょう。",
+  ],
+  "summary": "生真面目で頑固一徹！弱音を吐かなかい一流ビジネスマン気質",
+  "weak": Array [
+    "自分にも他人にも厳しい性格が祟って、世間体を気にして冒険できない人が多いです。",
+    "おだてられたり、VIP 扱いされてしまうと、ちょっと弱いかも。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("108") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "赤子のように、素直で正直な性格を持つことが多いです。",
+    "非常に人見知りが激しく、知らない人ばかりのところに放り込まれると、借りて来た猫のように大人しくなる人が多いです。",
+  ],
+  "name": "自然タイプ",
+  "strategy": Array [
+    "自然タイプは、心を開く前と後で性格がかなり変わるため、非常にわかりやすいです。",
+    "安心させてあげると、仲良くできやすいです。",
+  ],
+  "summary": "人見知りだけど、慣れれば裏表のないド正直もの",
+  "weak": Array [
+    "自分で自分の行動範囲を縛って、殻に閉じこもりがちな傾向があります。",
+    "自身の SNS アカウントなど、ホームポジションでは正直がすぎるあまり、相当に言葉が荒れてしまう、友達間でも馴れ馴れしくなりすぎてしまう人が多いです。",
+    "自然タイプは一度警戒を解くと、不用意に相手を信じすぎてしまうことがあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("125") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "人生を長く見据えて、大きくロマンチストな夢を持っている人が多いです。",
+    "そしてその夢に対し、短期的にはどこまでもストイックになれる素質を持っています。",
+  ],
+  "name": "夢想タイプ",
+  "strategy": Array [
+    "夢想タイプに物事を提案する際、あえてリスクを先に話し、明確化することで、却って信用に繋がりやすいです。",
+    "“計算高い”・“できる子”みたいにおだてられたり、“〜させて？”と下手で迫られると、流されやすい傾向があります。",
+    "“〜してやるよ”みたいな、押し付けがましい態度が大嫌いです。そう言う苦手な人でもうまく付き合えるため、知らずのうちにストレスをためがちです。",
+  ],
+  "summary": "夢と自己管理で敵う者なし！長期戦で目標へ一直線",
+  "weak": Array [
+    "疑り深く、物事への取り掛かりが遅くなり、スロースタートとなりがちです。",
+    "反省は重要ですが、しすぎるあまり後悔とまでなってしまうことがあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("555") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "ベテラン社員のような、万能感と親分肌のような空気感を持つ人が多いです。",
+    "悠然タイプは、未経験のことであっても、人一倍早く慣れることができます。",
+    "一方で、その道の達人になるには、他タイプの数倍努力が必要となります。すなわち、エキスパートというよりジェネラリスト向けの素質といえます。",
+  ],
+  "name": "悠然タイプ",
+  "strategy": Array [
+    "悠然タイプは自力でなんでもできてしまうがため、自分でなんでも抱えてしまいます。何かを任せる際は“やらせすぎない”よう注意すると良いでしょう。",
+  ],
+  "summary": "バランス型能力と面倒見が良い、勇者的ポジション",
+  "weak": Array [
+    "悠然タイプは、自分が悪くても謝罪するのを嫌がります。責任や謝罪心を持っていても、それを表明するのが極端に苦手です。",
+    "自力でやろうとなんでも抱えてしまい、結果としてパフォーマンスが落ちる傾向があります。完璧タイプも同様ですが、悠然タイプは自力でもそこそこできてしまう器用さを持っているため、パフォーマンスが落ちていることに気づけない場合が多いです。",
+    "彼らは自力なんでもできてしまうためか、他人ができないと、“どうしてこんなこともできないのか”という不快感を持ちがちです。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("789") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "社長・会長のような、控えめながらも堂々とした芯を持つ人が多いです。",
+    "実績タイプは、部分的にアート脳タイプのような性質を重ね持ち、相手の権威を量り、本物を見抜く眼力を備えています。",
+    "また自分の権威をより盤石にすべく、自分磨きを欠かしません。",
+    "縁の下の力持ちとして活躍するのが得意な反面、ここぞというときに人前に出て、美味しいところを攫っていきたい欲求があります。",
+  ],
+  "name": "実績タイプ",
+  "strategy": Array [
+    "実績タイプへ自己紹介する際は、自分の実績を謙遜せずに明かしましょう。謙遜しすぎると“たいしたことない”と軽視されてしまいます。",
+    "自分語りが長くなりがちですので、適切に話のディレクションをしてあげると効果大です。",
+    "例えば初参加のイベントなど、権威を持たない門外の場所に不安を覚える傾向があります。エスコートしてあげると“その場での権威ある人”と認めてついていくようになります。",
+    "実績タイプに対して、経験を否定することは避けましょう。それがたとえ誤りであっても無用の軋轢を生じさせます。",
+  ],
+  "summary": "実績経験を重んじて、役割分担が上手い影の実力者のようなタイプ",
+  "weak": Array [
+    "実績タイプは自他問わず、実績を重視する傾向があります。そのため、自分の実績を盛り過ぎてしまう人が多いです。",
+    "一般的に、無神経で気が利かない行為はよくありませんが、実績タイプはこれを特に嫌います。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("888") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "少年少女のような、至る方向に興味を持つチャレンジ気質を持ちます。",
+    "とにかく打たれ強く、叩かれたことにすら気づかない人が多いです。",
+  ],
+  "name": "挑戦タイプ",
+  "strategy": Array [
+    "打たれ強い性格なので、営業職など他人に任せると気を揉んでしまいそうなポジションを任せるのもアリかもしれません。",
+  ],
+  "summary": "天真爛漫で興味旺盛！ダメでも気にせず挑戦し続けるタイプ",
+  "weak": Array [
+    "興味があまり長続きせず、長期戦は苦手な傾向があります。",
+    "話題をコロコロ変えてしまう傾向があり、もう少し話題を続けたい相手を不快にさせてしまうこともあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getByKey()\` method ("919") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "一瞬の集中力は凄まじいですが、それ以外の時間は常に怠けている気質を持ちます。やる気スイッチのオンオフが最もわかりやすいタイプです。",
+    "欲しいものは何がなんでも手に入れるという、強い気質を持っています。",
+    "駆け引きが得意で、営業職向けの素質があります。",
+  ],
+  "name": "実益タイプ",
+  "strategy": Array [
+    "実益タイプに対しては、フォーマルな付き合いは最初一回限りにして、次に会うときはカジュアルを通り越して、“チャラい”空気を作るとより心を開きやすいです。",
+    "基本サボり魔ですが、その分スイッチ入った時の仕事量は凄まじいです。あまり指摘せずに見守ることが大事です。",
+  ],
+  "summary": "先手必勝の短期決戦型！駆け引き上手なタイプ",
+  "weak": Array [
+    "実益タイプは堅苦しい空気や、ぐずぐずはっきりしない態度が苦手な傾向があります。",
+    "また、彼らは長期的に安定した成果を出すことが苦手です。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.genius.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "descriptions": Object {
+    "inner": "**本性**: 根底にある性格",
+    "outer": "**装い**: 相手を信用しない時に出る性格",
+    "workStyle": "**集中**: 集中時や緊急時に現れる性格",
+  },
+  "detail": "より詳細な、天性の性格。これは 12 種類に分類します。",
+  "inner": "本性",
+  "name": "素質",
+  "outer": "装い",
+  "workStyle": "集中",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.getDescription()\` method ("bar") => includes the same string 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ bar の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日 bar を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が bar の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.getDescription()\` method ("foo") => includes the same string 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ foo の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日 foo を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が foo の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.getDescription()\` method Get the specified object 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ  の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日  を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が  の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("application") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、組織づくりに長けている傾向があります。",
+    "親分肌で面倒見の良い人が多いです。",
+  ],
+  "name": "何でも自主体験する自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("association") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、知的好奇心が人一倍強い傾向にあります。",
+    "自分なりのアイデアで、その場その場を乗り切る能力に長けています。",
+  ],
+  "name": "とにかく行動第一な自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("development") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、鋭い感性、推理力、想像力に長けています。",
+    "また正義感が強く、繊細な心の持ち主である場合が多いです。",
+  ],
+  "name": "より完璧な自分を築き続ける自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("expression") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、話術に長ける傾向があります。",
+    "自分より相手を楽しませる、そんな遊び心を潜在的に持っている人が多いです。",
+  ],
+  "name": "ありのままの素直な自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("finance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、魅力的な自分でありたい欲求を持つ傾向があります。",
+    "世話好きで、周囲から注目されたい欲求を持つ人が多いです。",
+  ],
+  "name": "コレクターな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("investment") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、数字に強く、その値の示す意味を見抜ける能力に長けています。",
+    "慎重で、冷静な分析眼を持っている人が多いです。",
+  ],
+  "name": "堅実な収集家としての自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("organization") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、自己管理能力に長けています。",
+    "また、恩返しの気持ちが強い人も多いです。",
+  ],
+  "name": "集団の一員としての自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("quest") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、論理的、理知的で聡明な傾向があります。",
+    "古典を尊重し、先哲の開拓した学問を通した判断力に秀でています。",
+  ],
+  "name": "先人の知恵から学ぶ自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("selfMind") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、他人の話を聞きつつも、我を通すことに長ける傾向があります。",
+    "仲間を組んで行動することで、物事を達成するまで妥協しない精神性を持ちます。",
+  ],
+  "name": "集団のリーダーな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getByKey()\` method ("selfReliance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、負けず嫌いな傾向があります。",
+    "自分という強い芯を持ち、誰にも流されず生きることに長けています。",
+  ],
+  "name": "一匹オオカミな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.lifeBase.getCategoryDetail()\` method Get the specified object 1`] = `"人生観"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.management.getByKey()\` method ("care") => Get the specified object 1`] = `
+Object {
+  "detail": "リスク重視の人は、機会における**コストやリスクを見抜く**、優れた眼力を持っています。",
+  "more": Array [
+    "悲観的で、**石橋を叩いて壊す**傾向もあります。",
+    "できないことを消去法で潰して、できることを模索していく人が多いため、**大きな失敗は少ない**反面、大きなチャンスを逃しがち。",
+    "リスク重視の人は、この文面ではネガティブな印象を受けがちですが、**リスクが判れば対処ができる**ため、**理詰めでポジティブになれる**人も多いです。",
+  ],
+  "name": "リスク重視",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.management.getByKey()\` method ("hope") => Get the specified object 1`] = `
+Object {
+  "detail": "リターン重視の人は、機会の裏に**隠れた大きなチャンスを見抜く**、優れた眼力を持っています。",
+  "more": Array [
+    "**楽天的で見切り発車**になりがちな傾向もあります。",
+    "失敗を恐れない反面、大きな失敗をするとそれには二度とチャレンジしない人も多いです。",
+    "リターン重視の人は、この文面ではポジティブな印象を受けがちですが、**リスクに疎く漠然とした不安**から、**ネガティブ思考に陥る**人も少なくありません。",
+  ],
+  "name": "リターン重視",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.management.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によってリスク重視かリターン重視かに分かれます。",
+  "name": "リスク・リターンの考え方",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("competition") => Get the specified object 1`] = `"他人と比べられるような環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("ownMind") => Get the specified object 1`] = `"自分で立てた計画で動ける環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("power") => Get the specified object 1`] = `"思ったらやる、ができる環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("safety") => Get the specified object 1`] = `"さらなる安泰を追求できる環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("skillUp") => Get the specified object 1`] = `"日々向上が実感できる環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getByKey()\` method ("status") => Get the specified object 1`] = `"周囲と違うことができる環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.motivation.getCategoryDetail()\` method Get the specified object 1`] = `"モチベが出やすい環境"`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("adjust") => Get the specified object 1`] = `
+Object {
+  "detail": "前線指揮官のように、**現場での調整力**に優れています。",
+  "more": Array [
+    "割と人前に出たいタイプですが、営業というより対人調整に向いています。",
+    "クレーム対応などのサポート役や、ディレクターなどが適役です。",
+  ],
+  "name": "渉外・調整タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("brain") => Get the specified object 1`] = `
+Object {
+  "detail": "発想力が強く、**裏方での頭脳戦**では最高のパフォーマンスを発揮します。",
+  "more": Array [
+    "ブレストをする際は企画タイプの人をキーメンバーに据えると最高のパフォーマンスを発揮します。",
+    "反面、営業を任せると地雷発言してしまうことも。",
+  ],
+  "name": "企画タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("direct") => Get the specified object 1`] = `
+Object {
+  "detail": "**バランス型素質**を持ち、現場から裏方まで、なんでもそこそこできます。",
+  "more": Array [
+    "なんでもこなせることが仇となり、全部一人で背負ってしまいがちなので、リーダー的ポジションに就いて、企画・営業など得意とする人に任せることで、より良いパフォーマンスを出せます。",
+    "実際のところ、経営者にこのタイプは多いです。",
+  ],
+  "name": "リーダー・勇者タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.position.getByKey()\` method ("quick") => Get the specified object 1`] = `
+Object {
+  "detail": "**行動力に優れ**、客との交渉・商談に最も向いています。",
+  "more": Array [
+    "とにかく人前に出て、活動する強い行動エネルギーを持っています。",
+    "裏方仕事は息が詰まってしまい、長時間続かない傾向があります。",
+  ],
+  "name": "営業タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.position.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "性格タイプごとに、向いている役割が違います。一般的に短所は自力より、適材適所的に得意な**人に任せることで克服**した方が、大きな結果を出せます。",
+  "name": "向いている役割",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.response.getByKey()\` method ("action") => Get the specified object 1`] = `
+Object {
+  "detail": "行動にエネルギーを注ぎ込むことを重視し、現場の第一線に自分の居場所を感じるタイプです。",
+  "more": Array [
+    "現場タイプの人は、どちらかというと**考えるよりも行動派**です。",
+    "現場タイプの人が比率を占める集団は、不安定ながらも活発な印象になります。",
+    "人前に出るのが得意である一方で、事務作業や機械操作などの裏方作業はすぐ息が詰まってしまう人が多いです。",
+  ],
+  "name": "現場タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.response.getByKey()\` method ("mind") => Get the specified object 1`] = `
+Object {
+  "detail": "思考にエネルギーを注ぎ込むことを重視し、裏方で役割をこなすことに価値を感じるタイプです。",
+  "more": Array [
+    "裏方タイプの人は、どちらかというと**行動の前に熟考派**です。",
+    "裏方タイプの人が比率を占める集団は、一見停滞しているようで、地に足をつけた盤石な印象になります。",
+    "事務作業や機械操作は得意である一方、人前に出るのは苦手で、現場作業はすぐ疲れてしまう人が多いです。",
+  ],
+  "name": "裏方タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.response.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって現場タイプか裏方タイプかに分かれます。",
+  "name": "仕事の素質",
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("authority") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の権威のため**を根底のエゴとし、将来性を追求するタイプです。",
+    "アート脳タイプは、**長話を聞けません**。重要な話でないと判断した途端、スマホをいじったり、居眠りしたりなど、**露骨に話を聞かなく**なります。",
+    "ブランドモノだから、と言う理由でブランドものを集める人は、概ねアート脳タイプの傾向があります。",
+    "漠然とした、具現化しにくい不安を持っている人が多く、またその不安を原動力に転嫁しやすい特性があります。",
+  ],
+  "name": "アート脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、理系脳タイプより文系脳タイプを説得できやすい傾向があります。",
+    "話を持ちかける際は、事前に重要なところを吟味して、そこに対する**インパクト**の強さを**すっごい強調して説明**すると、話が通じやすいです。",
+    "アート脳タイプは、自分の抱える不安をバネにした行動力を持っています。やや邪道ですが、不安を与えてからベネフィットを提案する、**鞭飴**作戦が有効です。",
+    "また、相手の**権威性アップ**をベネフィットに訴えかけると、刺さりやすいです。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("economically") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の富のため**を根底のエゴとし、効率性を追求するタイプです。",
+    "スペック至上主義の傾向があり、ブランドものを軽視する傾向が強いです。ただし、ブランドも一種のスペックと考え、重視する人も稀にいます。",
+    "理系脳タイプは、**長話をあまり聞けません**。“**つまりこういうことだよね？**”と、脳内で**要点だけかいつまんで理解**しようとします。",
+  ],
+  "name": "理系脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、文系脳タイプよりアート脳タイプを説得できやすい傾向があります。",
+    "話をする際は事前に重要なところを吟味して、**要点だけ**を伝え、残りは質疑応答にするか、資料などにして渡すなどすると、話が通じやすいです。",
+    "**興味ある話**を聞くと、真剣に話を聞くあまり、怒り顔になるなど、至極**険悪な空気になりやすい**傾向があります。ここで諦めずにしっかり話すと、最後には納得してくれるケースが多いです。",
+    "理系脳タイプは、儲け話に対するアレルギーを持つ人が少なく、ぼかさず直球的に踏み込んでも大丈夫です。ただし**数値に強い**傾向があるため、納得のいくビジネスモデルやエビデンスを用意しないと、納得してくれないでしょう。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.vector.getByKey()\` method ("humanely") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の人格のため**を根底のエゴとし、社会性を追求するタイプです。",
+    "多くのことに対し、人柄に重点を置きがちで、店とかで商品を選ぶ際、スペック関係ないのに、販売員の人柄で決めてしまったりする傾向があります。",
+    "文系脳タイプは、総じて長話をちゃんとニコニコ最初から最後まで聞ける傾向があります。ただし**頭に入っているかどうかは別の話**。",
+    "話を端折ると“なんで？”となり、その後の話が理解できなくなりがちです。家族で映画とか見る時、勝手にシークバーいじって顰蹙買うことも。",
+  ],
+  "name": "文系脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、アート脳タイプより理系脳タイプを説得できやすい傾向があります。",
+    "話をする際は、**起承転結を順番通り**、冗長な補足も都度つけて説明すると話が通りやすいです。端折ると“何で？”となって、その後の話が理解できなくなりがちです。",
+    "またこのタイプは、**わかってなくてもニコニコ聞いてしまう**ので、要所要所で確認をとるとベターでしょう。",
+    "**人柄や、人の良さに訴えかける**と弱い傾向があります。また、本人のためというより、本人の周りの人のため、みたいな大義名分で攻めると説得しやすいでしょう。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessors()\` function \`Accessors.vector.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人の性格は大きく 3 つ、アート脳タイプ・理系脳タイプ・文系脳タイプに分類できます。",
+  "name": "性格の大分類",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.brain.getByKey()\` method ("left") => Get the specified object 1`] = `
+Object {
+  "detail": "左脳思考の人は、**論理的思考**が優れています。",
+  "more": Array [
+    "**数値・データに基づいて考えることが得意**である一方、**漫然な状況では混乱**しがちな傾向があります。",
+    "数値的なエビデンスに固執してしまい、**直感的に動くことは苦手**です。",
+  ],
+  "name": "左脳思考",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.brain.getByKey()\` method ("right") => Get the specified object 1`] = `
+Object {
+  "detail": "右脳思考の人は、**直感的思考**が優れています。",
+  "more": Array [
+    "ブレストなど、**想像力を使うことが得意**である一方、**エビデンスを軽視し、直感優先**で動いてしまう傾向があります。",
+    "**忙しい状況では、思考停止に**陥りがちです。",
+  ],
+  "name": "右脳思考",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.brain.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって右脳思考か左脳思考かに分かれます。",
+  "name": "思考タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.communication.getByKey()\` method ("fix") => Get the specified object 1`] = `
+Object {
+  "detail": "**結論ありき**で対話を進めるタイプです。",
+  "more": Array [
+    "理詰めで自分の主張を通していく傾向もあります。",
+    "時間や場所など、はっきり**明確になると安心**する反面、曖昧だと不安になる人が多いです。",
+  ],
+  "name": "明確化指向",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.communication.getByKey()\` method ("flex") => Get the specified object 1`] = `
+Object {
+  "detail": "**流動的**に着地点を決めて行くタイプです。",
+  "more": Array [
+    "感情論で自分の主張を通していく傾向もあります。",
+    "時間や場所など、曖昧でもどうにかなる反面、**明確にすると窮屈**に感じる人が多いです。",
+  ],
+  "name": "柔軟指向",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.communication.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって明確化指向か柔軟指向かに分かれます。",
+  "name": "対話における思考方法",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("000") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "(既存の言語で言い表せない)超言語的哲学……ぶっ飛んだ世界観を持っています。霊感と表現している人もいます。",
+    "ただし行動力はあまり高くなく、頭の中で留めている人が多いです。",
+    "浮遊霊のように、無計画で旅に出て、連絡が付かなくなることも、敏感タイプあるあるです。",
+  ],
+  "name": "敏感タイプ",
+  "strategy": Array [
+    "ありとあらゆる拘束・束縛・ルールを嫌います。",
+    "依頼などに対し“わかった(わかってない)”と言いがちです。確認をとってあげると後々のトラブル回避に繋がります。",
+    "集団で何かをする場合、独創性を問われるポジションに置くと良いでしょう。",
+  ],
+  "summary": "鋭い直感と閃きを武器に、無目的な放浪が好きなタイプ",
+  "weak": Array [
+    "意識しないとメモ、フォルダー、部屋など、ありとあらゆるものが散らかっていく傾向があります。",
+    "敏感タイプは、感情とパフォーマンスが非常に強くリンクする傾向があります。つまり気が向いていないと、本当に進捗しなくなります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("001") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "他人の思想に染まらず、変人のように振舞うのが大好きです。",
+    "全てにおいて、没個性的な物事を嫌い、マイペースに活動することを好みます。",
+    "“緻密に計算されたバカ”・“実は天才なバカ”役を演じるには、最強の適役と言えるでしょう。",
+  ],
+  "name": "独自タイプ",
+  "strategy": Array [
+    "初見はとっつきにくいと思いますが、仲良くなると優しくしてくれます。",
+    "変人、変わっている、などの言葉は一般的に悪口となりますが、独自タイプに限り例外で、褒め言葉となります。",
+    "逆に没個性的なワード、常識人であることを褒める行為などは悪口となり得ますので注意です。",
+    "集団で何かをやる場合、独創性を問われるポジションに就かせると最高のパフォーマンスを発揮します。",
+  ],
+  "summary": "奇人変人は褒め言葉！周りに流されず我流のアイデアで勝負",
+  "weak": Array [
+    "我流が強く確立しているため、臨機応変的な行動は苦手な傾向があります。",
+    "他人のペースに引っ張られることを嫌うあまり、自分のペースを相手に押し付けてしまうこともあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("012") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "大人になっても青春時代のような印象を持つ、青年気質なタイプです。",
+    "話し合いが好きな傾向がありますが、これは一長一短で中身の薄い長話に陥りがちです。",
+    "人前に出たがりな反面、黒子的な振る舞いで全体をサポートするのも得意です。",
+  ],
+  "name": "先端タイプ",
+  "strategy": Array [
+    "“誰も知らない”・“最新情報です”は、先端タイプを振り向かせるパワーワードです。",
+    "逆に枯れている、実績があるなどと安定性に訴えかける触れ込みは、彼らの興味を削ぐ結果となるでしょう。",
+  ],
+  "summary": "新しいモノ大好き！日々新鮮さを求めるヒトバシラー気質",
+  "weak": Array [
+    "新しいものにこだわるあまり、少々飽きっぽい印象になりがちです。",
+    "出だしに遅れると、波に乗れずモチベがなかなか上がらない傾向もあります。",
+    "強引な行動を受けたり、公衆の面前の前で怒られることが大嫌いです。",
+    "“人の不幸は蜜の味”とはよく言いますが、先端タイプは多くの人と違い、そう言った言動を嫌います。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("024") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "やると決めたことは、最後までやり遂げようとする努力家タイプですが、細かい戦略を練るのは不得手です。",
+    "普段温和ですが、せっかちで最強の行動力を持つタイプです。",
+    "アート脳タイプは全般的に、不安を行動の原動力に転換できる才能を持っていますが、この努力タイプはその能力が特に顕著です。",
+    "今初めて知ったことを、まるで 10 年前から知っていたかのような口ぶりで語れるような、暗記力と演技力を持っている人が多いです。",
+  ],
+  "name": "努力タイプ",
+  "strategy": Array [
+    "人を怒らせるのは一般的に得策ではありませんが、努力タイプは特にタブーです。普段融和な雰囲気ですが、めちゃくちゃ怖い目を見ることになるでしょう。",
+    "努力タイプは対人調整役やディレクターが適役です。一方で企画の責を与えると、短命商品を連発してしまいます。不安からコロコロ商品を変えてしまうためです。",
+    "努力タイプと組んで仕事をする場合、報告・連絡・相談をしつこいくらい綿密にすると望ましいです。",
+  ],
+  "summary": "せっかちで、最強の行動力を持つ",
+  "weak": Array [
+    "せっかちで、事細かな進捗報告がないと不安になってしまいがちです。",
+    "細かい計算や立ち回りは苦手な傾向があります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("025") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "人類皆兄弟のような意識を持ち、誰とも等しく平等に仲良くできる素質を持ちます。",
+    "一方で“等しく仲良し”のため、家族であっても必ず一線をひきます。",
+    "配慮タイプは多くの人のコネを持てることから、必然的に事情通になる傾向が多いです。",
+  ],
+  "name": "配慮タイプ",
+  "strategy": Array [
+    "配慮タイプに対して駆け引きや抜け駆け、順番飛ばしなど、仁義に悖る行為はタブーです。",
+    "彼らが何かやらかした際は、関係者全員に責任があると考えて、自分の非を集団でぼかしがちなので、フォローしてあげると良いでしょう。",
+  ],
+  "summary": "他人大好き、事情通な人格者",
+  "weak": Array [
+    "仲間意識の強さから、知り合いが関わっていると言うだけで、関係のないトラブルにまで首を突っ込んでしまいがちな傾向があります。",
+    "配慮タイプは周囲から情報を集めすぎて、収拾がつかなくなり物事の決断が鈍る傾向があります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("100") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "苦手なふりしておきながら、ちゃっかり準備しておいて驚かして目立つことを好みます。",
+    "自力でやろうとなんでも抱えてしまい、結果としてパフォーマンスが落ちる傾向があります。",
+  ],
+  "name": "完璧タイプ",
+  "strategy": Array [
+    "おだてたり、VIP 扱いするとすぐに靡いてしまいますので、仲良くしたい場合は積極的に活用してみましょう。",
+    "完璧タイプはサプライズをするのが大好きですが、それを否定すると面子を傷つけられたと不満を持つので注意。",
+    "誰かと共同作業する際、手抜きすることは一般的に悪いことですが、完璧タイプとの間でそれをすると、特に怒るでしょう。",
+  ],
+  "summary": "生真面目で頑固一徹！弱音を吐かなかい一流ビジネスマン気質",
+  "weak": Array [
+    "自分にも他人にも厳しい性格が祟って、世間体を気にして冒険できない人が多いです。",
+    "おだてられたり、VIP 扱いされてしまうと、ちょっと弱いかも。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("108") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "赤子のように、素直で正直な性格を持つことが多いです。",
+    "非常に人見知りが激しく、知らない人ばかりのところに放り込まれると、借りて来た猫のように大人しくなる人が多いです。",
+  ],
+  "name": "自然タイプ",
+  "strategy": Array [
+    "自然タイプは、心を開く前と後で性格がかなり変わるため、非常にわかりやすいです。",
+    "安心させてあげると、仲良くできやすいです。",
+  ],
+  "summary": "人見知りだけど、慣れれば裏表のないド正直もの",
+  "weak": Array [
+    "自分で自分の行動範囲を縛って、殻に閉じこもりがちな傾向があります。",
+    "自身の SNS アカウントなど、ホームポジションでは正直がすぎるあまり、相当に言葉が荒れてしまう、友達間でも馴れ馴れしくなりすぎてしまう人が多いです。",
+    "自然タイプは一度警戒を解くと、不用意に相手を信じすぎてしまうことがあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("125") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "人生を長く見据えて、大きくロマンチストな夢を持っている人が多いです。",
+    "そしてその夢に対し、短期的にはどこまでもストイックになれる素質を持っています。",
+  ],
+  "name": "夢想タイプ",
+  "strategy": Array [
+    "夢想タイプに物事を提案する際、あえてリスクを先に話し、明確化することで、却って信用に繋がりやすいです。",
+    "“計算高い”・“できる子”みたいにおだてられたり、“〜させて？”と下手で迫られると、流されやすい傾向があります。",
+    "“〜してやるよ”みたいな、押し付けがましい態度が大嫌いです。そう言う苦手な人でもうまく付き合えるため、知らずのうちにストレスをためがちです。",
+  ],
+  "summary": "夢と自己管理で敵う者なし！長期戦で目標へ一直線",
+  "weak": Array [
+    "疑り深く、物事への取り掛かりが遅くなり、スロースタートとなりがちです。",
+    "反省は重要ですが、しすぎるあまり後悔とまでなってしまうことがあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("555") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "ベテラン社員のような、万能感と親分肌のような空気感を持つ人が多いです。",
+    "悠然タイプは、未経験のことであっても、人一倍早く慣れることができます。",
+    "一方で、その道の達人になるには、他タイプの数倍努力が必要となります。すなわち、エキスパートというよりジェネラリスト向けの素質といえます。",
+  ],
+  "name": "悠然タイプ",
+  "strategy": Array [
+    "悠然タイプは自力でなんでもできてしまうがため、自分でなんでも抱えてしまいます。何かを任せる際は“やらせすぎない”よう注意すると良いでしょう。",
+  ],
+  "summary": "バランス型能力と面倒見が良い、勇者的ポジション",
+  "weak": Array [
+    "悠然タイプは、自分が悪くても謝罪するのを嫌がります。責任や謝罪心を持っていても、それを表明するのが極端に苦手です。",
+    "自力でやろうとなんでも抱えてしまい、結果としてパフォーマンスが落ちる傾向があります。完璧タイプも同様ですが、悠然タイプは自力でもそこそこできてしまう器用さを持っているため、パフォーマンスが落ちていることに気づけない場合が多いです。",
+    "彼らは自力なんでもできてしまうためか、他人ができないと、“どうしてこんなこともできないのか”という不快感を持ちがちです。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("789") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "社長・会長のような、控えめながらも堂々とした芯を持つ人が多いです。",
+    "実績タイプは、部分的にアート脳タイプのような性質を重ね持ち、相手の権威を量り、本物を見抜く眼力を備えています。",
+    "また自分の権威をより盤石にすべく、自分磨きを欠かしません。",
+    "縁の下の力持ちとして活躍するのが得意な反面、ここぞというときに人前に出て、美味しいところを攫っていきたい欲求があります。",
+  ],
+  "name": "実績タイプ",
+  "strategy": Array [
+    "実績タイプへ自己紹介する際は、自分の実績を謙遜せずに明かしましょう。謙遜しすぎると“たいしたことない”と軽視されてしまいます。",
+    "自分語りが長くなりがちですので、適切に話のディレクションをしてあげると効果大です。",
+    "例えば初参加のイベントなど、権威を持たない門外の場所に不安を覚える傾向があります。エスコートしてあげると“その場での権威ある人”と認めてついていくようになります。",
+    "実績タイプに対して、経験を否定することは避けましょう。それがたとえ誤りであっても無用の軋轢を生じさせます。",
+  ],
+  "summary": "実績経験を重んじて、役割分担が上手い影の実力者のようなタイプ",
+  "weak": Array [
+    "実績タイプは自他問わず、実績を重視する傾向があります。そのため、自分の実績を盛り過ぎてしまう人が多いです。",
+    "一般的に、無神経で気が利かない行為はよくありませんが、実績タイプはこれを特に嫌います。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("888") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "少年少女のような、至る方向に興味を持つチャレンジ気質を持ちます。",
+    "とにかく打たれ強く、叩かれたことにすら気づかない人が多いです。",
+  ],
+  "name": "挑戦タイプ",
+  "strategy": Array [
+    "打たれ強い性格なので、営業職など他人に任せると気を揉んでしまいそうなポジションを任せるのもアリかもしれません。",
+  ],
+  "summary": "天真爛漫で興味旺盛！ダメでも気にせず挑戦し続けるタイプ",
+  "weak": Array [
+    "興味があまり長続きせず、長期戦は苦手な傾向があります。",
+    "話題をコロコロ変えてしまう傾向があり、もう少し話題を続けたい相手を不快にさせてしまうこともあります。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getByKey()\` method ("919") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "一瞬の集中力は凄まじいですが、それ以外の時間は常に怠けている気質を持ちます。やる気スイッチのオンオフが最もわかりやすいタイプです。",
+    "欲しいものは何がなんでも手に入れるという、強い気質を持っています。",
+    "駆け引きが得意で、営業職向けの素質があります。",
+  ],
+  "name": "実益タイプ",
+  "strategy": Array [
+    "実益タイプに対しては、フォーマルな付き合いは最初一回限りにして、次に会うときはカジュアルを通り越して、“チャラい”空気を作るとより心を開きやすいです。",
+    "基本サボり魔ですが、その分スイッチ入った時の仕事量は凄まじいです。あまり指摘せずに見守ることが大事です。",
+  ],
+  "summary": "先手必勝の短期決戦型！駆け引き上手なタイプ",
+  "weak": Array [
+    "実益タイプは堅苦しい空気や、ぐずぐずはっきりしない態度が苦手な傾向があります。",
+    "また、彼らは長期的に安定した成果を出すことが苦手です。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.genius.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "descriptions": Object {
+    "inner": "**本性**: 根底にある性格",
+    "outer": "**装い**: 相手を信用しない時に出る性格",
+    "workStyle": "**集中**: 集中時や緊急時に現れる性格",
+  },
+  "detail": "より詳細な、天性の性格。これは 12 種類に分類します。",
+  "inner": "本性",
+  "name": "素質",
+  "outer": "装い",
+  "workStyle": "集中",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method ("bar") => includes the same string 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ bar の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日 bar を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が bar の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method ("foo") => includes the same string 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ foo の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日 foo を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が foo の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.getDescription()\` method Get the specified object 1`] = `
+Object {
+  "cc": "性格番号",
+  "detail": "性格タイプ  の詳細、および取扱方法",
+  "details": "有効な性格タイプ一覧",
+  "genius1": "人はその中から 3 種類の素質をもち、状況によって現れる素質が異なります。",
+  "genius2": "そのうち、“**本性**: 根底にある性格”が**その人の持つ性格の殆ど**、80%以上を占めています。",
+  "invalid": "無効な誕生日  を検出しました。1873-02-01 から 2050-12-31 までのみ対応しています。",
+  "personality": "誕生日が  の人の性格と、取扱方法",
+  "strategy": "このタイプに対する攻略法",
+  "weak": "このタイプの弱点",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("application") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、組織づくりに長けている傾向があります。",
+    "親分肌で面倒見の良い人が多いです。",
+  ],
+  "name": "何でも自主体験する自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("association") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、知的好奇心が人一倍強い傾向にあります。",
+    "自分なりのアイデアで、その場その場を乗り切る能力に長けています。",
+  ],
+  "name": "とにかく行動第一な自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("development") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、鋭い感性、推理力、想像力に長けています。",
+    "また正義感が強く、繊細な心の持ち主である場合が多いです。",
+  ],
+  "name": "より完璧な自分を築き続ける自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("expression") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、話術に長ける傾向があります。",
+    "自分より相手を楽しませる、そんな遊び心を潜在的に持っている人が多いです。",
+  ],
+  "name": "ありのままの素直な自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("finance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、魅力的な自分でありたい欲求を持つ傾向があります。",
+    "世話好きで、周囲から注目されたい欲求を持つ人が多いです。",
+  ],
+  "name": "コレクターな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("investment") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、数字に強く、その値の示す意味を見抜ける能力に長けています。",
+    "慎重で、冷静な分析眼を持っている人が多いです。",
+  ],
+  "name": "堅実な収集家としての自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("organization") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、自己管理能力に長けています。",
+    "また、恩返しの気持ちが強い人も多いです。",
+  ],
+  "name": "集団の一員としての自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("quest") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、論理的、理知的で聡明な傾向があります。",
+    "古典を尊重し、先哲の開拓した学問を通した判断力に秀でています。",
+  ],
+  "name": "先人の知恵から学ぶ自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("selfMind") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、他人の話を聞きつつも、我を通すことに長ける傾向があります。",
+    "仲間を組んで行動することで、物事を達成するまで妥協しない精神性を持ちます。",
+  ],
+  "name": "集団のリーダーな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getByKey()\` method ("selfReliance") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "このタイプの人は、負けず嫌いな傾向があります。",
+    "自分という強い芯を持ち、誰にも流されず生きることに長けています。",
+  ],
+  "name": "一匹オオカミな自分でありたい",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.lifeBase.getCategoryDetail()\` method Get the specified object 1`] = `"人生観"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.management.getByKey()\` method ("care") => Get the specified object 1`] = `
+Object {
+  "detail": "リスク重視の人は、機会における**コストやリスクを見抜く**、優れた眼力を持っています。",
+  "more": Array [
+    "悲観的で、**石橋を叩いて壊す**傾向もあります。",
+    "できないことを消去法で潰して、できることを模索していく人が多いため、**大きな失敗は少ない**反面、大きなチャンスを逃しがち。",
+    "リスク重視の人は、この文面ではネガティブな印象を受けがちですが、**リスクが判れば対処ができる**ため、**理詰めでポジティブになれる**人も多いです。",
+  ],
+  "name": "リスク重視",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.management.getByKey()\` method ("hope") => Get the specified object 1`] = `
+Object {
+  "detail": "リターン重視の人は、機会の裏に**隠れた大きなチャンスを見抜く**、優れた眼力を持っています。",
+  "more": Array [
+    "**楽天的で見切り発車**になりがちな傾向もあります。",
+    "失敗を恐れない反面、大きな失敗をするとそれには二度とチャレンジしない人も多いです。",
+    "リターン重視の人は、この文面ではポジティブな印象を受けがちですが、**リスクに疎く漠然とした不安**から、**ネガティブ思考に陥る**人も少なくありません。",
+  ],
+  "name": "リターン重視",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.management.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によってリスク重視かリターン重視かに分かれます。",
+  "name": "リスク・リターンの考え方",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("competition") => Get the specified object 1`] = `"他人と比べられるような環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("ownMind") => Get the specified object 1`] = `"自分で立てた計画で動ける環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("power") => Get the specified object 1`] = `"思ったらやる、ができる環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("safety") => Get the specified object 1`] = `"さらなる安泰を追求できる環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("skillUp") => Get the specified object 1`] = `"日々向上が実感できる環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getByKey()\` method ("status") => Get the specified object 1`] = `"周囲と違うことができる環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.motivation.getCategoryDetail()\` method Get the specified object 1`] = `"モチベが出やすい環境"`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("adjust") => Get the specified object 1`] = `
+Object {
+  "detail": "前線指揮官のように、**現場での調整力**に優れています。",
+  "more": Array [
+    "割と人前に出たいタイプですが、営業というより対人調整に向いています。",
+    "クレーム対応などのサポート役や、ディレクターなどが適役です。",
+  ],
+  "name": "渉外・調整タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("brain") => Get the specified object 1`] = `
+Object {
+  "detail": "発想力が強く、**裏方での頭脳戦**では最高のパフォーマンスを発揮します。",
+  "more": Array [
+    "ブレストをする際は企画タイプの人をキーメンバーに据えると最高のパフォーマンスを発揮します。",
+    "反面、営業を任せると地雷発言してしまうことも。",
+  ],
+  "name": "企画タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("direct") => Get the specified object 1`] = `
+Object {
+  "detail": "**バランス型素質**を持ち、現場から裏方まで、なんでもそこそこできます。",
+  "more": Array [
+    "なんでもこなせることが仇となり、全部一人で背負ってしまいがちなので、リーダー的ポジションに就いて、企画・営業など得意とする人に任せることで、より良いパフォーマンスを出せます。",
+    "実際のところ、経営者にこのタイプは多いです。",
+  ],
+  "name": "リーダー・勇者タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.position.getByKey()\` method ("quick") => Get the specified object 1`] = `
+Object {
+  "detail": "**行動力に優れ**、客との交渉・商談に最も向いています。",
+  "more": Array [
+    "とにかく人前に出て、活動する強い行動エネルギーを持っています。",
+    "裏方仕事は息が詰まってしまい、長時間続かない傾向があります。",
+  ],
+  "name": "営業タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.position.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "性格タイプごとに、向いている役割が違います。一般的に短所は自力より、適材適所的に得意な**人に任せることで克服**した方が、大きな結果を出せます。",
+  "name": "向いている役割",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.response.getByKey()\` method ("action") => Get the specified object 1`] = `
+Object {
+  "detail": "行動にエネルギーを注ぎ込むことを重視し、現場の第一線に自分の居場所を感じるタイプです。",
+  "more": Array [
+    "現場タイプの人は、どちらかというと**考えるよりも行動派**です。",
+    "現場タイプの人が比率を占める集団は、不安定ながらも活発な印象になります。",
+    "人前に出るのが得意である一方で、事務作業や機械操作などの裏方作業はすぐ息が詰まってしまう人が多いです。",
+  ],
+  "name": "現場タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.response.getByKey()\` method ("mind") => Get the specified object 1`] = `
+Object {
+  "detail": "思考にエネルギーを注ぎ込むことを重視し、裏方で役割をこなすことに価値を感じるタイプです。",
+  "more": Array [
+    "裏方タイプの人は、どちらかというと**行動の前に熟考派**です。",
+    "裏方タイプの人が比率を占める集団は、一見停滞しているようで、地に足をつけた盤石な印象になります。",
+    "事務作業や機械操作は得意である一方、人前に出るのは苦手で、現場作業はすぐ疲れてしまう人が多いです。",
+  ],
+  "name": "裏方タイプ",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.response.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人によって現場タイプか裏方タイプかに分かれます。",
+  "name": "仕事の素質",
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("authority") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の権威のため**を根底のエゴとし、将来性を追求するタイプです。",
+    "アート脳タイプは、**長話を聞けません**。重要な話でないと判断した途端、スマホをいじったり、居眠りしたりなど、**露骨に話を聞かなく**なります。",
+    "ブランドモノだから、と言う理由でブランドものを集める人は、概ねアート脳タイプの傾向があります。",
+    "漠然とした、具現化しにくい不安を持っている人が多く、またその不安を原動力に転嫁しやすい特性があります。",
+  ],
+  "name": "アート脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、理系脳タイプより文系脳タイプを説得できやすい傾向があります。",
+    "話を持ちかける際は、事前に重要なところを吟味して、そこに対する**インパクト**の強さを**すっごい強調して説明**すると、話が通じやすいです。",
+    "アート脳タイプは、自分の抱える不安をバネにした行動力を持っています。やや邪道ですが、不安を与えてからベネフィットを提案する、**鞭飴**作戦が有効です。",
+    "また、相手の**権威性アップ**をベネフィットに訴えかけると、刺さりやすいです。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("economically") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の富のため**を根底のエゴとし、効率性を追求するタイプです。",
+    "スペック至上主義の傾向があり、ブランドものを軽視する傾向が強いです。ただし、ブランドも一種のスペックと考え、重視する人も稀にいます。",
+    "理系脳タイプは、**長話をあまり聞けません**。“**つまりこういうことだよね？**”と、脳内で**要点だけかいつまんで理解**しようとします。",
+  ],
+  "name": "理系脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、文系脳タイプよりアート脳タイプを説得できやすい傾向があります。",
+    "話をする際は事前に重要なところを吟味して、**要点だけ**を伝え、残りは質疑応答にするか、資料などにして渡すなどすると、話が通じやすいです。",
+    "**興味ある話**を聞くと、真剣に話を聞くあまり、怒り顔になるなど、至極**険悪な空気になりやすい**傾向があります。ここで諦めずにしっかり話すと、最後には納得してくれるケースが多いです。",
+    "理系脳タイプは、儲け話に対するアレルギーを持つ人が少なく、ぼかさず直球的に踏み込んでも大丈夫です。ただし**数値に強い**傾向があるため、納得のいくビジネスモデルやエビデンスを用意しないと、納得してくれないでしょう。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.vector.getByKey()\` method ("humanely") => Get the specified object 1`] = `
+Object {
+  "detail": Array [
+    "**己の人格のため**を根底のエゴとし、社会性を追求するタイプです。",
+    "多くのことに対し、人柄に重点を置きがちで、店とかで商品を選ぶ際、スペック関係ないのに、販売員の人柄で決めてしまったりする傾向があります。",
+    "文系脳タイプは、総じて長話をちゃんとニコニコ最初から最後まで聞ける傾向があります。ただし**頭に入っているかどうかは別の話**。",
+    "話を端折ると“なんで？”となり、その後の話が理解できなくなりがちです。家族で映画とか見る時、勝手にシークバーいじって顰蹙買うことも。",
+  ],
+  "name": "文系脳タイプ",
+  "strategy": Array [
+    "アート脳タイプ・理系脳タイプ・文系脳タイプでそれぞれ三すくみのような関係があり、アート脳タイプより理系脳タイプを説得できやすい傾向があります。",
+    "話をする際は、**起承転結を順番通り**、冗長な補足も都度つけて説明すると話が通りやすいです。端折ると“何で？”となって、その後の話が理解できなくなりがちです。",
+    "またこのタイプは、**わかってなくてもニコニコ聞いてしまう**ので、要所要所で確認をとるとベターでしょう。",
+    "**人柄や、人の良さに訴えかける**と弱い傾向があります。また、本人のためというより、本人の周りの人のため、みたいな大義名分で攻めると説得しやすいでしょう。",
+  ],
+}
+`;
+
+exports[`LANG=ja \`createAccessorsAsync()\` function \`Accessors.vector.getCategoryDetail()\` method Get the specified object 1`] = `
+Object {
+  "detail": "人の性格は大きく 3 つ、アート脳タイプ・理系脳タイプ・文系脳タイプに分類できます。",
+  "name": "性格の大分類",
+}
+`;

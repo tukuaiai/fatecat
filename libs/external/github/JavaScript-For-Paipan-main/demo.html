@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="never" />
+<title>测试页面</title>
+<script>
+if(top != self){  
+	top.location.href = self.location.href;  
+}
+document.write("<script src='./js/jquery-3.6.0.min.js'><\/script>");
+document.write("<script src='./js/paipan.js?v="+Math.random()+"'><\/script>");
+document.write("<script src='./js/paipan.gx.js?v="+Math.random()+"'><\/script>");
+</script> 
+</head>
+<body>
+<div>请查看开发者工具-控制台</div>
+<script>
+$(function(){
+	var ckey = new Array();
+	ckey[0] = '年柱';
+	ckey[1] = '月柱';
+	ckey[2] = '日柱';
+	ckey[3] = '时柱';
+	ckey[4] = '大运';
+	ckey[5] = '流年';
+	ckey[6] = '流月';
+	ckey[7] = '流日';
+	ckey[8] = '流时';
+
+	var tgdz = new Array();
+	tgdz[0] = '天干';
+	tgdz[1] = '地支';
+
+	var fm = p.fatemaps(0, 1990, 1, 1, 12, 0, 0);
+	
+	console.log(fm);
+	
+	var tg = fm['tg'];
+	var dz = fm['dz'];
+
+	//var tg = [0,1,2,3,4,5,6,7,5];
+	//var dz = [0,1,4,8,11,6,2,5,6];
+	var gxs = GetGX(tg, dz);
+	for(var i in gxs){
+		for(var j in gxs[i]){
+			var gx = gxs[i][j];
+			var a = [];
+			for(var k in gx[0]){
+				array_push(a, ckey[k] + tgdz[gx[1][0]]);
+			}
+			
+			console.log(implode('+', a) + ':' + gx[1][4] + "\n");
+		}
+	}
+});	
+</script>
+</body>
+</html>

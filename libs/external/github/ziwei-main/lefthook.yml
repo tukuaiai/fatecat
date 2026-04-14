@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: format package.json
+      glob: "package.json"
+      run: pnpm sort-package-json
+      stage_fixed: true
+
+    - name: lint
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm oxlint {staged_files}
+      stage_fixed: true
+
+    - name: format
+      glob: "*"
+      run: pnpm oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+    - name: type check
+      run: pnpm oxlint --type-aware {staged_files}
+      stage_fixed: true

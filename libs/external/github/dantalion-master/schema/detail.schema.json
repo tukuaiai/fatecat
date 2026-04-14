@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://json-schema.org/draft-07/schema#",
+  "description": "dantalion: details JSON Schema",
+  "definitions": {
+    "affinityLevel": {
+      "description": "Affinity level.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "affinity": {
+      "description": "The lists of affinity by genius type.",
+      "type": "object",
+      "properties": {
+        "100": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "108": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "125": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "555": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "789": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "888": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "919": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "000": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "001": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "012": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "024": {
+          "$ref": "#/definitions/affinityLevel"
+        },
+        "025": {
+          "$ref": "#/definitions/affinityLevel"
+        }
+      },
+      "required": [
+        "100",
+        "108",
+        "125",
+        "555",
+        "789",
+        "888",
+        "919",
+        "000",
+        "001",
+        "012",
+        "024",
+        "025"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "affinity": {
+      "type": "object",
+      "properties": {
+        "biz": {
+          "description": "The lists of affinity by genius type for business.",
+          "$ref": "#/definitions/affinity"
+        },
+        "love": {
+          "description": "The lists of affinity by genius type for romance.",
+          "$ref": "#/definitions/affinity"
+        }
+      },
+      "required": ["biz", "love"]
+    },
+    "brain": {
+      "description": "The types of thought method.",
+      "type": "string",
+      "enum": ["left", "right"]
+    },
+    "communication": {
+      "description": "The types of dialogue policy.",
+      "type": "string",
+      "enum": ["fix", "flex"]
+    },
+    "management": {
+      "description": "The types that the risk management method.",
+      "type": "string",
+      "enum": ["care", "hope"]
+    },
+    "motivation": {
+      "description": "The types of easy to the motivated environment.",
+      "type": "string",
+      "enum": ["competition", "ownMind", "power", "safety", "skillUp", "status"]
+    },
+    "position": {
+      "description": "The types for role.",
+      "type": "string",
+      "enum": ["adjust", "brain", "direct", "quick"]
+    },
+    "response": {
+      "description": "The types for role.",
+      "type": "string",
+      "enum": ["action", "mind"]
+    },
+    "vector": {
+      "description": "Vector of genius type.",
+      "type": "string",
+      "enum": ["authority", "economically", "humanely"]
+    }
+  },
+  "required": [
+    "affinity",
+    "brain",
+    "communication",
+    "management",
+    "motivation",
+    "position",
+    "response",
+    "vector"
+  ]
+}

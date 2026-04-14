@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="underscore-min.js"></script>
+</head>
+<body>
+
+<script>
+
+    var MINGGONG = '命宫', SHENGONG = '身宫', ZIWEI = '紫薇', TIANFU = '天府';
+
+    // 天干
+    var TIANGAN = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+    // 地支
+    var DIZHI = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+    // 纳音歌
+    // 甲乙锦江烟，丙丁没谷田，戊己荧堤柳，庚辛挂杖钱，壬癸林钟满，花甲纳音全。
+    var NAYINGE = [
+        ['锦', '江', '烟'],
+        ['没', '谷', '田'],
+        ['荧', '堤', '柳'],
+        ['挂', '杖', '钱'],
+        ['林', '钟', '满']
+    ];
+    var NAYINGE_TRANSFERED = [
+        [4, 2, 6],
+        [2, 6, 5],
+        [3, 5, 3],
+        [6, 3, 4],
+        [3, 4, 2]
+    ];
+
+    var OTHER_GONGS = ['兄弟', '夫妻', '子女', '财帛', '疾厄', '迁移', '交友', '事业', '田宅', '福德', '父母'];
+
+    var XINGXI_TIANFU = ['太阴', '贪狼', '巨门', '天相', '天梁', '七杀', undefined, undefined, undefined, '破军']
+    var XINGXI_ZIWEI = ['天机', undefined, '太阳', '武曲', '天同', undefined, undefined, '廉贞']
+
+    /**
+     * 五行局
+     * 水二局，木三局，金四局，土五局，火六局
+     */
+    var WUXINGJU = [
+        {name: '水', count: 2},
+        {name: '木', count: 3},
+        {name: '金', count: 4},
+        {name: '土', count: 5},
+        {name: '火', count: 6}
+    ];
+
+    function initTable(table) {
+        for (var i = 0; i < DIZHI.length; i++) {
+            table.push({
+                dizhi: i
+            });
+        }
+    }
+
+    /**
+     * 定寅首
+     * @param yearTiangan 生年的天干
+     */
+    function get_yinshou(yearTiangan) {
+        return (2 + (yearTiangan % (TIANGAN.length / 2)) * 2) % 10;
+    }
+
+    function get_nayin(tiangan, dizhi) {
+        return NAYINGE_TRANSFERED
+                [Math.floor(tiangan / 2)]
+                [Math.floor((dizhi % (DIZHI.length / 2)) / 2)];
+    }
+
+    function get_wuxinggong() {
+
+    }
+
+    var sample_user = {
+        year: [2, 2], // 丙寅
+        month: 1,  // 二月
+        day: 0, // 初一
+        hour: 6 // 午时
+    }
+
+    var fxp = {
+        year: [1, 1], // 乙丑
+        month: 9,  // 十月
+        day: 6, // 初七
+        hour: 6 // 午时
+    }
+
+    function printTable(table) {
+        for (var i = 0; i < table.length; i++) {
+            console.log(TIANGAN[table[i].tiangan] + '' + DIZHI[table[i].dizhi] + ':' + JSON.stringify(table[i]));
+        }
+    }
+
+    function printItem(item) {
+        console.log(TIANGAN[item.tiangan] + '' + DIZHI[item.dizhi] + ':' + JSON.stringify(table[i]));
+    }
+
+    function ziwei(user) {
+        // 初始化表格
+        var table = [];
+        initTable(table);
+
+        // 定寅首
+        var yinshou = get_yinshou(user.year[0]);
+
+        // 填充表格其他位置的天干
+        for (var i = 0; i < DIZHI.length; i++) {
+            table[(i + 2) % DIZHI.length].tiangan = (i + yinshou + TIANGAN.length) % TIANGAN.length;
+        }
+
+        /**
+         * 命宫
+         * 命宫是从寅宫开始做正月顺时针数到生月，数到的这个宫再作为子时，在逆时针数到生时，就是命宫
+         */
+        var minggong = (2 + user.month - user.hour + DIZHI.length) % DIZHI.length;
+        table[minggong][MINGGONG] = true;
+
+        /**
+         * 身宫
+         * 命宫是从寅宫开始做正月顺时针数到生月，数到的这个宫再作为子时，从那个宫顺时针数到生时，就是身宫
+         */
+        var shengong = (2 + user.month + user.hour + DIZHI.length) % DIZHI.length;
+        table[shengong][SHENGONG] = true;
+
+        // 填充其他宫
+        for (var i = 0; i < OTHER_GONGS.length; i++) {
+            table[(minggong - i - 1 + DIZHI.length) % DIZHI.length][OTHER_GONGS[i] + '宫'] = true;
+        }
+
+        /**
+         * 命宫五行宫
+         */
+        var wuxinggong = get_nayin(table[minggong].tiangan, table[minggong].dizhi);
+
+        /**
+         * 安紫微星
+         * 用生日数除以命宫五行局数，如果不够除则需要补足以后再除，最后取补上去的数和商数。
+         */
+        var num1 = Math.ceil((user.day + 1) / wuxinggong);
+        var num2 = num1 * wuxinggong - user.day - 1;
+        var ziwei_index = ((2 + (num1 - 1)) - ((num2 % 2) * 2 - 1 ) * num2 + DIZHI.length) % DIZHI.length;
+        table[ziwei_index][ZIWEI] = true;
+
+        /**
+         * 0-4 1-3 2-2 3-1 4-0 5-(-1) 6-(-2)
+         */
+        var tianfu_index = (4 - ziwei_index + DIZHI.length) % DIZHI.length;
+        table[tianfu_index][TIANFU] = true;
+
+        // 填充其他位置的星
+        for (var i = 0; i < XINGXI_TIANFU.length; i++) {
+            if (XINGXI_TIANFU[i]) {
+                table[(tianfu_index + i + 1) % DIZHI.length][XINGXI_TIANFU[i]] = true;
+            }
+        }
+        for (var i = 0; i < XINGXI_ZIWEI.length; i++) {
+            if (XINGXI_ZIWEI[i]) {
+                table[(ziwei_index - i - 1 + DIZHI.length) % DIZHI.length][XINGXI_ZIWEI[i]] = true;
+            }
+        }
+
+        printTable(table);
+    }
+
+    //    ziwei(sample_user);
+    ziwei(fxp);
+
+
+</script>
+</body>
+</html>

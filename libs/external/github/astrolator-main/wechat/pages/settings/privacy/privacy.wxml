@@ -1,0 +1,50 @@
+<view class="page__bd" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">About Privacy</view>
+        <view class="page__desc">World-Class Privacy Protection</view>
+    </view>
+    <view class="weui-article">
+        <view class="weui-article__p">1. 因为开发者是个买不起服务器的穷光蛋，所以本小程序不收集/上传任何个人数据。
+        </view>
+        <view class="weui-article__p">2. 第一点其实是想掩盖作者并不会编程的事实。
+        </view>
+        <view class="weui-article__p">3. 本小程序只在本地保存设置页信息。
+        </view>
+        <view class="weui-article__p">4. 微信后台记录的机型与客户端版本号等信息均与本人无关。
+        </view>
+        <view class="weui-article__p">5. 以下内容仅用于展示小程序能获取的数据权限范围，方便开发者debug，不作任何记录与保存。
+        </view>
+    </view>
+    <mp-cells title="About">
+        <mp-cell title="System" footer="{{system}}" />
+        <mp-cell title="Brand" footer="{{brand}}" />
+        <mp-cell title="Model" footer="{{model}}" />
+        <mp-cell title="Language" footer="{{language}}" />
+        <mp-cell title="Battery" footer="{{charging}}, {{battery}}%" />
+        <mp-cell title="Network" footer="{{network}}" />
+        <mp-cell title="Brightness" footer="{{brightness}}%" />
+        <mp-cell title="WeChat Version" footer="{{wechatVersion}}" />
+        <mp-cell title="SDK Version" footer="{{SDKVersion}}" />
+    </mp-cells>
+    <mp-cells title="Wi-Fi" wx:if="{{network=='Wi-Fi'}}">
+        <mp-cell title="SSID" footer="{{ssid}}" />
+        <mp-cell title="BSSID" footer="{{bssid}}" />
+        <mp-cell title="Security" footer="{{secure}}" />
+        <mp-cell title="Strength" footer="{{strength}}%" />
+        <mp-cell title="Frequency (WeChat Bug)" footer="{{frequency}} MHz" />
+    </mp-cells>
+    <mp-cells title="Accelerometer">
+        <mp-cell title="X" footer="{{AccX}}" />
+        <mp-cell title="Y" footer="{{AccY}}" />
+        <mp-cell title="Z" footer="{{AccZ}}" />
+    </mp-cells>
+    <mp-cells title="Gyroscope">
+        <mp-cell title="X" footer="{{GyroX}}" />
+        <mp-cell title="Y" footer="{{GyroY}}" />
+        <mp-cell title="Z" footer="{{GyroZ}}" />
+    </mp-cells>
+    <mp-cells title="Compass">
+        <mp-cell title="Direction" footer="{{compassDir}}" />
+        <mp-cell title="Accuracy" footer="{{compassAcc}}" />
+    </mp-cells>
+</view>

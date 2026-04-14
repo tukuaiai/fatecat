@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSHasLocalizedDisplayName</key>
+	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>CircularIntent</string>
+		<string>CurveIntent</string>
+		<string>LargeIntent</string>
+		<string>MediumIntent</string>
+		<string>RectIntent</string>
+		<string>SingleLineIntent</string>
+		<string>SmallIntent</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceHanSansKR-Heavy.otf</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array/>
+		</dict>
+	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>image</string>
+	</dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>NSAppIconComplementingColorNames</key>
+			<array>
+				<string>ShortcutsBackground1</string>
+				<string>ShortcutsBackground2</string>
+			</array>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>NSAppIconComplementingColorNames</key>
+			<array>
+				<string>ShortcutsBackground1</string>
+				<string>ShortcutsBackground2</string>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

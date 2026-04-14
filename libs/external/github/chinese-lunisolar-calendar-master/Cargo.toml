@@ -1,0 +1,32 @@
+[package]
+name = "chinese-lunisolar-calendar"
+version = "0.2.1"
+authors = ["Magic Len <len@magiclen.org>"]
+edition = "2021"
+rust-version = "1.71"
+repository = "https://github.com/magiclen/chinese-lunisolar-calendar"
+homepage = "https://magiclen.org/chinese-lunisolar-calendar"
+keywords = ["chinese", "calendar", "lunar", "leap", "solar"]
+categories = ["no-std", "localization", "date-and-time"]
+description = "The traditional Chinese Calendar, known as 農曆 or 陰曆 in Chinese, is based on the moon, and is commonly referred to as the Lunar Calendar."
+license = "MIT"
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+year-helper = "0.2"
+
+chinese-variant = "1"
+
+enum-ordinalize = { version = "4.2", default-features = false, features = ["derive", "traits"] }
+
+[features]
+default = ["std"]
+
+std = ["chrono/std"]
+
+ba-zi-weight = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs_1_92"]

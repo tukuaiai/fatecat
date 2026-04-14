@@ -1,0 +1,43 @@
+<view class="page__bd" data-weui-theme="{{theme}}">
+    <view class="page__hd" style="margin-top:{{height}}px">
+        <view class="page__desc">Welcome to</view>
+        <view style="font-size:50px;font-weight:bold">Astrolator</view>
+    </view>
+    <view class="weui-article">
+        <view class="weui-article__h1">ΛCDM Cosmology</view>
+        <view class="weui-article__section">
+            <view class="weui-article__h2"></view>
+            <view class="weui-article__p">With Hubble constant H<sub>0</sub>, matter density Ω<sub>m</sub> and vacuum
+                density Ω<sub>Λ</sub>, you can
+                get the age of the universe, age & lookback time, three types of distances of a specific redshift, and
+                age & distance differences between two redshifts.</view>
+        </view>
+        <view class="weui-article__h1">Calculator</view>
+        <view class="weui-article__section">
+            <view class="weui-article__h2">Unit Convertor</view>
+            <view class="weui-article__p">A simple unit convertor for angle, length, time, frequency, mass, energy, and
+                power with common astrophysical units.</view>
+            <view class="weui-article__h2">Dynamics</view>
+            <view class="weui-article__p">Calculate orbital period, more functions will be added soon.</view>
+            <view class="weui-article__h2">General Relativity</view>
+            <view class="weui-article__p">Schwarzschild radius, chirp mass, precession, and energy loss of binary
+                system.
+            </view>
+            <view class="weui-article__h2">Radiation</view>
+            <view class="weui-article__p">Photon energy in different expressions, Eddington luminosity.</view>
+            <view class="weui-article__h2">Accretion</view>
+            <view class="weui-article__p">Eddington accretion.</view>
+        </view>
+        <view class="weui-article__h1">Acronym</view>
+        <view class="weui-article__section">
+            <view class="weui-article__p">It is a helper for you to find acronyms.</view>
+        </view>
+        <view class="weui-article__h1">Settings</view>
+        <view class="weui-article__section">
+            <view class="weui-article__p">Display and units settings.<p wx:if="{{android}}"> As the developer has no
+                    android devices, you may meet unexpected behavior.</p> If any bugs occur, you can contact the
+                developer or send a feedback here.
+            </view>
+        </view>
+    </view>
+</view>

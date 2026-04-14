@@ -1,0 +1,110 @@
+{
+  "000": {
+    "brain": "right",
+    "communication": "flex",
+    "position": "brain",
+    "management": "hope",
+    "motivation": "status",
+    "response": "mind",
+    "vector": "authority"
+  },
+  "001": {
+    "brain": "right",
+    "communication": "fix",
+    "position": "brain",
+    "management": "hope",
+    "motivation": "ownMind",
+    "response": "mind",
+    "vector": "economically"
+  },
+  "012": {
+    "brain": "left",
+    "communication": "fix",
+    "position": "quick",
+    "management": "hope",
+    "motivation": "skillUp",
+    "response": "action",
+    "vector": "humanely"
+  },
+  "024": {
+    "brain": "right",
+    "communication": "flex",
+    "position": "adjust",
+    "management": "care",
+    "motivation": "power",
+    "response": "action",
+    "vector": "authority"
+  },
+  "025": {
+    "brain": "right",
+    "communication": "fix",
+    "position": "adjust",
+    "management": "care",
+    "motivation": "skillUp",
+    "response": "action",
+    "vector": "humanely"
+  },
+  "100": {
+    "brain": "left",
+    "communication": "flex",
+    "position": "direct",
+    "management": "care",
+    "motivation": "status",
+    "response": "mind",
+    "vector": "authority"
+  },
+  "108": {
+    "brain": "right",
+    "communication": "flex",
+    "position": "brain",
+    "management": "hope",
+    "motivation": "safety",
+    "response": "mind",
+    "vector": "humanely"
+  },
+  "125": {
+    "brain": "right",
+    "communication": "fix",
+    "position": "adjust",
+    "management": "care",
+    "motivation": "competition",
+    "response": "action",
+    "vector": "economically"
+  },
+  "555": {
+    "brain": "left",
+    "communication": "fix",
+    "position": "direct",
+    "management": "care",
+    "motivation": "ownMind",
+    "response": "mind",
+    "vector": "economically"
+  },
+  "789": {
+    "brain": "left",
+    "communication": "flex",
+    "position": "direct",
+    "management": "care",
+    "motivation": "safety",
+    "response": "mind",
+    "vector": "humanely"
+  },
+  "888": {
+    "brain": "left",
+    "communication": "flex",
+    "position": "quick",
+    "management": "hope",
+    "motivation": "power",
+    "response": "action",
+    "vector": "authority"
+  },
+  "919": {
+    "brain": "left",
+    "communication": "fix",
+    "position": "quick",
+    "management": "hope",
+    "motivation": "competition",
+    "response": "action",
+    "vector": "economically"
+  }
+}

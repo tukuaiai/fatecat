@@ -1,0 +1,24 @@
+{
+  "name": "chinese_calendar",
+  "version": "0.0.1",
+  "description": "Conversion between Western and Chinese Calendar (722 BCE - 2200 CE)",
+  "main": "build.js",
+  "private": true,
+  "scripts": {
+    "build": "node build.js all",
+    "part": "node build.js",
+    "clean": "node build.js clean"
+  },
+  "repository": "github:ytliu0/ChineseCalendar",
+  "author": "Yuk Tung Liu",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/ytliu0/ChineseCalendar",
+  "dependencies": {
+    "html-minifier-terser": "^5.1.1",
+    "terser": "^5.14.2"
+  },
+  "engines": {
+    "node": ">= 16.1.0",
+    "npm": ">= 7.11.2"
+  }
+}

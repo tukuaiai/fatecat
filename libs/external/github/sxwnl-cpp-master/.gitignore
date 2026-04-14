@@ -1,0 +1,47 @@
+# Prerequisites
+*.d
+*.bak
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Test bin files
+test0
+test1
+test2
+test3
+test4
+test6
+test5
+.vscode/*
+.vs/*
+
+# cmake build path
+build

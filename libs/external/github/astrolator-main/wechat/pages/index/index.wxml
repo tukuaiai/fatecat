@@ -1,0 +1,130 @@
+<view class="page__bd" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Cosmology</view>
+        <view class="page__desc">Λ-Cold Dark Matter</view>
+    </view>
+    <mp-cells title="Basic Parameters">
+        <mp-cell>
+            <view slot="title" style="width:50px">H<sub>0</sub></view>
+            <input bindinput="setHubble" type="digit" placeholder="unit is km/s/Mpc" value="{{hubbleDisplay}}" />
+            <icon slot="footer" wx:if="{{hubble<=0}}" type="warn" />
+        </mp-cell>
+        <mp-cell>
+            <view slot="title" style="width:50px">Ω<sub>m</sub></view>
+            <input bindinput="setMatter" type="digit" placeholder="unit is 1" value="{{matterDisplay}}" />
+            <icon slot="footer" wx:if="{{matter<0}}" type="warn" />
+        </mp-cell>
+        <mp-cell>
+            <view slot="title" style="width:50px">Ω<sub>Λ</sub></view>
+            <input bindinput="setLambda" type="digit" placeholder="unit is 1" value="{{lambdaDisplay}}" />
+            <icon slot="footer" wx:if="{{lambda<0}}" type="warn" />
+        </mp-cell>
+        <mp-cell value="{{curvatureDisplay}}">
+            <view slot="title" style="width:50px">Ω<sub>k</sub></view>
+        </mp-cell>
+    </mp-cells>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" loading="{{basicLoading}}"
+            bindtap="startBasicCalculation">Start</button>
+        <button class="weui-btn" type="default" plain="true" bindtap="obsData">Preset Parameters</button>
+    </view>
+    <block wx:if="{{showBasicResult}}">
+        <mp-cells>
+            <mp-cell title="Age" footer="{{ageDisplay}} {{time[timeIndex]}}" />
+        </mp-cells>
+        <mp-cells title="Redshift">
+            <mp-cell title="2 Redshifts">
+                <switch slot="footer" checked="{{twoRedshift}}" bindchange="twoRedshiftChange" />
+            </mp-cell>
+            <mp-cell wx:if="{{twoRedshift}}">
+                <view slot="title" style="width:50px">z<sub>1</sub></view>
+                <input id="0" bindinput="setRedshift" type="digit" placeholder="unit is 1" value="{{redshift0}}" />
+                <icon slot="footer" wx:if="{{redshift0<=0}}" type="warn" />
+            </mp-cell>
+            <mp-cell>
+                <view slot="title" style="width:50px">z<sub wx:if="{{twoRedshift}}">2</sub></view>
+                <input id="1" bindinput="setRedshift" type="digit" placeholder="unit is 1" value="{{redshift1}}" />
+                <icon slot="footer" wx:if="{{redshift1<=0}}" type="warn" />
+            </mp-cell>
+        </mp-cells>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" loading="{{redshiftLoading}}"
+                bindtap="startRedshiftCalculation">Start</button>
+        </view>
+        <block wx:if="{{showRedshiftResult}}">
+            <mp-cells title="Time">
+                <mp-cell footer="{{redshiftAge0Display}} {{time[timeIndex]}}" wx:if="{{twoRedshift}}">
+                    <view slot="title">Age(z<sub>1</sub>)</view>
+                </mp-cell>
+                <mp-cell footer="{{lookbackTime0Display}} {{time[timeIndex]}}" wx:if="{{twoRedshift}}">
+                    <view slot="title">Lookback(z<sub>1</sub>)</view>
+                </mp-cell>
+                <mp-cell footer="{{redshiftAge1Display}} {{time[timeIndex]}}">
+                    <view slot="title">Age<block wx:if="{{twoRedshift}}">(z<sub>2</sub>)</block>
+                    </view>
+                </mp-cell>
+                <mp-cell footer="{{lookbackTime1Display}} {{time[timeIndex]}}">
+                    <view slot="title">Lookback<block wx:if="{{twoRedshift}}">(z<sub>2</sub>)</block>
+                    </view>
+                </mp-cell>
+                <mp-cell title="Time Difference" footer="{{timeDifference}} {{time[timeIndex]}}"
+                    wx:if="{{twoRedshift}}" />
+            </mp-cells>
+            <mp-cells title="Hubble Constant">
+                <mp-cell footer="{{redshift0Hubble}} km/s/Mpc" wx:if="{{twoRedshift}}">
+                    <view slot="title">H(z<sub>1</sub>)</view>
+                </mp-cell>
+                <mp-cell footer="{{redshift1Hubble}} km/s/Mpc">
+                    <view slot="title">H<block wx:if="{{twoRedshift}}">(z<sub>2</sub>)</block>
+                    </view>
+                </mp-cell>
+            </mp-cells>
+            <mp-cells title="Distance">
+                <mp-cell wx:if="{{twoRedshift}}">
+                    <view>Comoving(z<sub>1</sub>)</view>
+                    <view slot="footer">{{comoving0Display}}
+                        {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub></view>
+                </mp-cell>
+                <mp-cell>
+                    <view slot="title">Comoving<block wx:if="{{twoRedshift}}">(z<sub>2</sub>)</block>
+                    </view>
+                    <view slot="footer">{{comoving1Display}}
+                        {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub></view>
+                </mp-cell>
+                <mp-cell title="Luminosity" wx:if="{{!twoRedshift}}">
+                    <view slot="footer">{{luminosityDisplay}}
+                        {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub></view>
+                </mp-cell>
+                <mp-cell title="Ang. Diam." wx:if="{{!twoRedshift}}">
+                    <view slot="footer">{{angularDisplay}}
+                        {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub></view>
+                </mp-cell>
+                <mp-cell title="Comov. Diff." wx:if="{{twoRedshift}}">
+                    <view slot="footer">{{comovingDifference}}
+                        {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub></view>
+                </mp-cell>
+            </mp-cells>
+            <mp-cells title="Angle⇌Length" wx:if="{{!twoRedshift}}">
+                <mp-cell link>
+                    <input slot="title" bindinput="angleLengthCal" type="digit" placeholder="Input here" />
+                    <picker slot="footer" bindcolumnchange="angleLengthTypeChange" bindchange="angleLengthChange"
+                        mode="multiSelector" id="0" value="{{angleLengthIndex0}}" range="{{angleLengthRange}}">
+                        {{angleLengthRangeDisplay[angleLengthIndex0[0]][angleLengthIndex0[1]]}}
+                    </picker>
+                </mp-cell>
+                <mp-cell link wx:if="{{angleLengthIndex0[0]!=0}}" title="{{angleDisplay}}">
+                    <picker slot="footer" bindchange="angleLengthChange" id="1" value="{{angleLengthIndex0}}"
+                        range="{{angle}}">
+                        {{angle[angleLengthIndex1]}}
+                    </picker>
+                </mp-cell>
+                <mp-cell link wx:if="{{angleLengthIndex0[0]!=1}}" title="{{lengthDisplay}}">
+                    <picker slot="footer" bindchange="angleLengthChange" id="2" value="{{angleLengthIndex1}}"
+                        range="{{length}}">
+                        {{lengthMain[angleLengthIndex2]}}<sub>{{lengthSub[angleLengthIndex2]}}</sub>
+                    </picker>
+                </mp-cell>
+            </mp-cells>
+        </block>
+    </block>
+</view>

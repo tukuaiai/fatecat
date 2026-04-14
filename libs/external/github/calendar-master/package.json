@@ -1,0 +1,45 @@
+{
+  "name": "lunar-calendar",
+  "version": "1.0.0",
+  "description": "Chinese lunar calendar based on astronomy",
+  "main": "calendar.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "mocha ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhttjdr/calendar.git"
+  },
+  "keywords": [
+    "lunar",
+    "calendar",
+    "astronomy"
+  ],
+  "author": "lhttjdr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhttjdr/calendar/issues"
+  },
+  "homepage": "https://github.com/lhttjdr/calendar#readme",
+  "dependencies": {
+    "brfs": "^1.4.3",
+    "decimal.js": "^7.1.1",
+    "transform-loader": "^0.2.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
+    "mocha": "^5.2.0",
+    "mochawesome": "^2.1.0",
+    "raw-loader": "^0.5.1",
+    "webpack": "^2.4.1"
+  }
+}

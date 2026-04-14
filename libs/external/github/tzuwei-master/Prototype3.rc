@@ -1,0 +1,284 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\Prototype3.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Prototype3.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 239, 85
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About Zi Wei Charts "
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CTEXT           "This program helps in building Chinese astrological charts. We hope you will enjoy the new possibilities that the chart opens up.",
+                    IDC_STATIC,7,12,225,19,SS_NOPREFIX
+    CTEXT           "Boris Mazniker and Steve Kirby, 2005, year of the Wooden Rooster",
+                    IDC_STATIC,7,38,225,8
+    DEFPUSHBUTTON   "OK",IDOK,96,64,50,14,WS_GROUP
+END
+
+IDD_PROTOTYPE3_DIALOG DIALOGEX 0, 0, 364, 141
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Zi Wei Chart"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Build Chart",IDOK,249,108,59,16
+    LTEXT           "Please, enter your date of birth :",IDC_STATIC,7,7,109,
+                    12
+    COMBOBOX        IDC_YEAR,7,31,37,87,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_MONTH,59,31,60,88,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_DAY,125,31,31,87,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Year",IDC_STATIC,7,20,38,10
+    LTEXT           "Month",IDC_STATIC,64,20,38,10
+    LTEXT           "Day",IDC_STATIC,136,20,26,8
+    LTEXT           "Hour",IDC_STATIC,204,20,26,10
+    LTEXT           "Min",IDC_STATIC,259,20,26,10
+    COMBOBOX        IDC_HOUR,201,31,46,87,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_MIN,259,31,35,86,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_TZ,305,31,52,76,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Time Zone",IDC_STATIC,306,20,42,8
+    LTEXT           "Please, enter your first and last name :",IDC_STATIC,7,
+                    52,130,12
+    EDITTEXT        IDC_NAME,7,65,148,12,ES_AUTOHSCROLL
+    CONTROL         "Male",IDC_GENDER_MALE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,213,66,31,10
+    CONTROL         "Female",IDC_GENDER_FEMALE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,282,65,39,10
+    GROUPBOX        "Gender :",IDC_GRBOX_GENDER,201,55,156,28
+    DEFPUSHBUTTON   "Save Profile",IDSAVEPROFILE,87,107,50,16
+    DEFPUSHBUTTON   "Load Profile",IDLOADPROFILE,17,107,50,16
+    GROUPBOX        "Profiles",IDC_STATIC,7,87,147,47
+    GROUPBOX        "Chart",IDC_STATIC,201,92,156,42
+END
+
+IDD_TZUWEICHARTDLG DIALOGEX 0, 0, 571, 381
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tzu Wei Chart"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "Print",IDOK,177,358,50,16
+    PUSHBUTTON      "Exit",IDCANCEL,338,358,50,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,1,0,0
+ PRODUCTVERSION 1,1,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Steve and Boris Inc"
+            VALUE "FileDescription", "Zi Wei program"
+            VALUE "FileVersion", "1.1.0.0"
+            VALUE "InternalName", "Prototype3.exe"
+            VALUE "LegalCopyright", "(c) Steve and Boris Inc.  All rights reserved."
+            VALUE "OriginalFilename", "Prototype3.exe"
+            VALUE "ProductName", "Zi Wei Natal Chart Builder"
+            VALUE "ProductVersion", "1.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 78
+    END
+
+    IDD_PROTOTYPE3_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 357
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 134
+    END
+
+    IDD_TZUWEICHARTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 564
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 374
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTFILE
+//
+
+IDR_TEXTFILE1           TEXTFILE                "res\\textfile.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_STEM0               BITMAP                  "res\\stem1.bmp"
+IDB_STEM1               BITMAP                  "res\\stem2.bmp"
+IDB_STEM2               BITMAP                  "res\\stem3.bmp"
+IDB_STEM3               BITMAP                  "res\\stem4.bmp"
+IDB_STEM4               BITMAP                  "res\\stem5.bmp"
+IDB_STEM5               BITMAP                  "res\\stem6.bmp"
+IDB_STEM6               BITMAP                  "res\\stem7.bmp"
+IDB_STEM7               BITMAP                  "res\\stem8.bmp"
+IDB_STEM8               BITMAP                  "res\\stem9.bmp"
+IDB_STEM9               BITMAP                  "res\\stem10.bmp"
+IDB_BRANCH0             BITMAP                  "res\\BRANCH0.bmp"
+IDB_BRANCH1             BITMAP                  "res\\BRANCH1.bmp"
+IDB_BRANCH2             BITMAP                  "res\\BRANCH2.bmp"
+IDB_BRANCH3             BITMAP                  "res\\BRANCH3.bmp"
+IDB_BRANCH4             BITMAP                  "res\\BRANCH4.bmp"
+IDB_BRANCH5             BITMAP                  "res\\BRANCH5.bmp"
+IDB_BRANCH6             BITMAP                  "res\\BRANCH6.bmp"
+IDB_BRANCH7             BITMAP                  "res\\BRANCH7.bmp"
+IDB_BRANCH8             BITMAP                  "res\\BRANCH8.bmp"
+IDB_BRANCH9             BITMAP                  "res\\BRANCH9.bmp"
+IDB_BRANCH10            BITMAP                  "res\\BRANCH10.bmp"
+IDB_BRANCH11            BITMAP                  "res\\BRANCH11.bmp"
+//IDB_BITMAP1             BITMAP                  "res\\oval1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About Prototype3..."
+    IDS_LOCALTZ             "&Local Timezone"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\Prototype3.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,2 @@
+cd /home/nhydev/github/pjreddie/darknet
+./darknet detector train /home/nhydev/github/pjreddie/darknet/VOCdevkit/VOC2007/voc.data /home/nhydev/github/chineseocr/chineseocr/models/text.cfg /tmp/darknet53.conv.74

@@ -1,0 +1,17 @@
+<view class="page__bd" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Developer</view>
+        <view class="page__desc">社会主义摸鱼接班人</view>
+    </view>
+    <view class="weui-article">
+        <view class="weui-article__h1">Sponsor</view>
+        <view class="weui-article__section">
+            <view class="weui-article__p">If you think Astrolator helpful, you can give me a thumb up or recommend Astrolator to your friends. (You can tab three dots at the upper right corner, then tab Astrolator, where you can find the thumb and recommend buttoms)</view>
+            <view class="weui-article__p">If you think Astrolator great and want to buy me a cup of coffee, please consider donate to <span style="font-weight:bold">China Foundation for Poverty Alleviation</span> (you can search "中国扶贫基金会" in WeChat/Alipay), as I have bought enough coffee. Send the screenshot by "Contect Developer" and I will list your name as a sponsor to Astrolator.</view>
+        </view>
+        <view class="weui-article__h1">Maintenance</view>
+        <view class="weui-article__section">
+            <view class="weui-article__p">Update irregularly, bugs will be fixed <span style="text-decoration:line-through">ASAP</span>.</view>
+        </view>
+    </view>
+</view>

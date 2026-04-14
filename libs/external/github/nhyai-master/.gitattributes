@@ -1,0 +1,2 @@
+*.js linguist-language=Vue
+*.html linguist-language=python

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Prototype3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prototype3Dlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TzuWei.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TzuWeiChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TzuWeiChartDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChineseCalConv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype3Dlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTzuWei.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TzuWei.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TzuWeiChart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TzuWeiChartDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\BRANCH0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\branch9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Prototype3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stem9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Prototype3.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Prototype3.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\textfile.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\Prototype3.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

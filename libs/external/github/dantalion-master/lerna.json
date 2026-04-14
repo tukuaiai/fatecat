@@ -1,0 +1,13 @@
+{
+  "command": {
+    "bootstrap": {
+      "ci": true
+    }
+  },
+  "hoist": true,
+  "npmClient": "npm",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "0.19.2"
+}

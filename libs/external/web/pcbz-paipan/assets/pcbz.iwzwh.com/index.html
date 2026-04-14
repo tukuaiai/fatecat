@@ -1,0 +1,77 @@
+<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.ico"><meta name="description" content="网页版问真八字在线排盘，免下载使用，更适合专业命理师的选择。为您提供八字命盘准确信息、命例云存储、真太阳时、AI智能提示格局、旺衰、五行能量、八字合婚、玄学学堂、名人八字库、断事笔记等功能。"/><title>问真八字在线排盘</title><style>/* 普通屏幕 */
+     .half-px-border {
+            border: 1px solid #000;
+        }
+
+        /* 设备像素比为 2 的屏幕 */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            .half-px-border {
+                border: none;
+                position: relative;
+            }
+
+            .half-px-border::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200%;
+                height: 200%;
+                border: 1px solid #000;
+                transform-origin: top left;
+                transform: scale(0.5);
+            }
+        }</style><script defer="defer" src="static/js/chunk-vendors.8167917f.js"></script><script defer="defer" src="static/js/app.b72cc1cc.js"></script><link href="static/css/chunk-vendors.77af898f.css" rel="stylesheet"><link href="static/css/app.7cdce042.css" rel="stylesheet"></head><body style="background-color: #f5f5f7;"><noscript><strong>We're sorry but 问真八字在线排盘 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app" class="app-root"></div><script src="https://www.iwzbz.com/jquery.min.js"></script><script>var fff = 0;
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    if (/ipad|iphone|midp|rv:1.2.3.4|ucweb|android|windows ce|windows mobile/.test(sUserAgent)) {
+      fff = 1;
+      window.location.href = "https://bz.iwzwh.com/";
+    } else {
+
+    }
+
+    function getCurrentDate() {
+      var now = new Date();
+      var currentDate = "";
+
+      var year = now.getFullYear();
+      currentDate += year + "-";
+
+      var month = now.getMonth() + 1;
+      currentDate += month + "-";
+
+      var day = now.getDate();
+      currentDate += day + "";
+
+      return currentDate;
+    }
+    if (fff == 0) {
+      var dd = getCurrentDate();
+      var lastdate = window.localStorage.getItem("wzpc_user_lastdate");
+      if (lastdate != dd) {
+        window.localStorage.setItem("wzpc_user_lastdate", dd);
+        url2 = 'https://bzapi.iwzbz.com/addcount2.php?key=' + "wzpconline_" + dd;
+
+        $.ajax({
+          url: url2,
+          dataType: "json",
+
+          success: function (rs) {
+          }
+        });
+      }
+      var isread = window.localStorage.getItem("wzpc_user");
+      if (isread != "1") {
+        window.localStorage.setItem("wzpc_user", '1');
+        url2 = 'https://bzapi.iwzbz.com/addcount2.php?key=' + "wzpcnew_" + dd;
+
+        $.ajax({
+          url: url2,
+          dataType: "json",
+
+          success: function (rs) {
+          }
+        });
+      }
+    };</script></body></html>

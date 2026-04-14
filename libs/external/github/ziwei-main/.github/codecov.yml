@@ -1,0 +1,18 @@
+coverage:
+  status:
+    project:
+      core:
+        paths:
+          - packages/core/
+      i18n:
+        paths:
+          - packages/i18n/
+      react:
+        paths:
+          - packages/react/
+      react-native:
+        paths:
+          - packages/react-native/
+      react-hooks:
+        paths:
+          - packages/react-hooks/
