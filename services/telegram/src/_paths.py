@@ -8,8 +8,12 @@ import os
 # 服务根目录: services/telegram
 SERVICE_ROOT = Path(__file__).resolve().parent.parent
 
-# fate-service 根目录: plugins/fate
+# fate-service 仓库根目录
 FATE_SERVICE_ROOT = SERVICE_ROOT.parent.parent
+
+# 新核心模块路径
+FATE_CORE_ROOT = FATE_SERVICE_ROOT / "services" / "fate_core"
+FATE_CORE_SRC_DIR = FATE_CORE_ROOT / "src"
 
 # tradecat 项目根目录
 PROJECT_ROOT = FATE_SERVICE_ROOT.parent.parent

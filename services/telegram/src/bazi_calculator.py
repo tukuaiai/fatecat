@@ -318,97 +318,141 @@ class BaziCalculator:
             huangli = self._calc_huangli()
         
         # 集成所有扩展模块
-        # === 专业扩展功能 - 强制原生算法，失败即终止 ===
-        from sxwnl_integration import SXWNLCalculator
-        from fortel_ziwei_integration import FortelZiweiCalculator
-
-        def _run_with_perf(fn, name):
-            t0 = time.monotonic()
-            try:
-                return fn()
-            except Exception as e:
-                raise RuntimeError(f"{name} failed: {e}") from e
-            finally:
-                dur = int((time.monotonic() - t0) * 1000)
-                print(f"[PERF] ext {name} {dur}ms")
-
-        sxwnl_result = _run_with_perf(
-            lambda: SXWNLCalculator(self.calc_dt, self.longitude).calculate_high_precision_calendar(),
-            "sxwnl"
-        )
-        ziwei_result = _run_with_perf(
-            lambda: FortelZiweiCalculator(self.calc_dt, self.gender, self.longitude).calculate_professional_ziwei(as_of=calc_now),
-            "ziwei"
-        )
-        need_lat = (not hide.get("fengshui", False)) or (not hide.get("astro", False))
-        if need_lat and self.latitude is None:
-            raise RuntimeError("缺失纬度: 无法启动风水罗盘/天文占星模块")
-
-        fengshui_result = {}
-        if not hide.get("fengshui", False):
-            from mikaboshi_fengshui_integration import MikaboshiFengshuiCalculator
-            fengshui_result = _run_with_perf(
-                lambda: MikaboshiFengshuiCalculator(self.calc_dt, self.longitude, self.latitude).calculate_fengshui_compass(),
-                "fengshui"
-            )
-
-        astro_result = {}
-        if not hide.get("astro", False):
-            from astro_integration import AstroCalculator
-            astro_result = _run_with_perf(
-                lambda: AstroCalculator(self.calc_dt, self.longitude, self.latitude).calculate_astronomical_positions(),
-                "astro"
-            )
-
-        sxwnlCalendar = sxwnl_result.get('sxwnl', {})
-        highPrecisionTime = sxwnl_result.get('precision', {})
-        astronomicalData = sxwnl_result.get('astronomy', {})
-
-        ziweiChart = ziwei_result.get('professionalZiwei', {})
-        palaceAnalysis = ziwei_result.get('palaces', {})
-        starInfluence = ziwei_result.get('fiveElementsClass', ziwei_result.get('influence', {}))
-
-        def _build_star_positions(palaces):
-            positions = []
-            for p in palaces or []:
-                majors = [s.get("name", "") for s in p.get("majorStars", []) if s]
-                minors = [s.get("name", "") for s in p.get("minorStars", []) if s]
-                if majors or minors:
-                    positions.append({
-                        "palace": p.get("name", ""),
-                        "majorStars": majors,
-                        "minorStars": minors,
-                    })
-            return positions
-
-        starPositions = _build_star_positions(palaceAnalysis)
-
-        fengshuiCompass = fengshui_result.get('fengshuiCompass', {}) if isinstance(fengshui_result, dict) else {}
-        directionAnalysis = fengshui_result.get('directions', {}) if isinstance(fengshui_result, dict) else {}
-        nineStars = fengshui_result.get('stars', {}) if isinstance(fengshui_result, dict) else {}
-        bagua = fengshui_result.get('bagua', {}) if isinstance(fengshui_result, dict) else {}
-
-        planetPositions = astro_result.get('astronomy', {}) if isinstance(astro_result, dict) else {}
-        zodiacSigns = astro_result.get('zodiac', {}) if isinstance(astro_result, dict) else {}
-        aspects = astro_result.get('aspects', {}) if isinstance(astro_result, dict) else {}
-        houses = astro_result.get('houses', {}) if isinstance(astro_result, dict) else {}
-
-        # 系统优化与现代化八字（可关闭计算）
+        sxwnlCalendar = {}
+        highPrecisionTime = {}
+        astronomicalData = {}
+        ziweiChart = {}
+        palaceAnalysis = {}
+        starInfluence = {}
+        starPositions = []
+        ziweiHoroscope = {}
+        fengshuiCompass = {}
+        directionAnalysis = {}
+        nineStars = {}
+        bagua = {}
+        planetPositions = {}
+        zodiacSigns = {}
+        aspects = {}
+        houses = {}
         modernBazi = {}
         typeScriptModel = {}
         apiInterface = {}
-        if not hide.get("system", False):
-            # 现代化八字（强制依赖外部 dantalion-master；缺失即终止）
-            dantalion_repo = _root / "libs/external/github/dantalion-master"
-            dist_js = dantalion_repo / "packages/dantalion-core/dist/index.js"
-            if not dist_js.exists():
-                raise RuntimeError("dantalion-core 未构建（缺少 dist/index.js），请先在 dantalion-master 目录执行构建再重试")
-            from dantalion_integration import DantalionCalculator
-            dantalion = DantalionCalculator(self.calc_dt, self.gender)
-            dantalion_result = dantalion.calculate_modern_bazi()
-            modernBazi = dantalion_result.get('modernBazi', {})
-            typeScriptModel = dantalion_result.get('typescript', {})
-            apiInterface = dantalion_result.get('api', {})
+        multiCalendar = {}
+        holidays = {}
+        festivals = {}
+        ziweiBasic = {}
+        performance = {}
+        caching = {}
+        optimization = {}
+
+        if not hide.get("extensions", False):
+            # === 专业扩展功能 - 强制原生算法，失败即终止 ===
+            from sxwnl_integration import SXWNLCalculator
+            from fortel_ziwei_integration import FortelZiweiCalculator
+
+            def _run_with_perf(fn, name):
+                t0 = time.monotonic()
+                try:
+                    return fn()
+                except Exception as e:
+                    raise RuntimeError(f"{name} failed: {e}") from e
+                finally:
+                    dur = int((time.monotonic() - t0) * 1000)
+                    print(f"[PERF] ext {name} {dur}ms")
+
+            sxwnl_result = _run_with_perf(
+                lambda: SXWNLCalculator(self.calc_dt, self.longitude).calculate_high_precision_calendar(),
+                "sxwnl"
+            )
+            ziwei_result = _run_with_perf(
+                lambda: FortelZiweiCalculator(self.calc_dt, self.gender, self.longitude).calculate_professional_ziwei(as_of=calc_now),
+                "ziwei"
+            )
+            need_lat = (not hide.get("fengshui", False)) or (not hide.get("astro", False))
+            if need_lat and self.latitude is None:
+                raise RuntimeError("缺失纬度: 无法启动风水罗盘/天文占星模块")
+
+            fengshui_result = {}
+            if not hide.get("fengshui", False):
+                from mikaboshi_fengshui_integration import MikaboshiFengshuiCalculator
+                fengshui_result = _run_with_perf(
+                    lambda: MikaboshiFengshuiCalculator(self.calc_dt, self.longitude, self.latitude).calculate_fengshui_compass(),
+                    "fengshui"
+                )
+
+            astro_result = {}
+            if not hide.get("astro", False):
+                from astro_integration import AstroCalculator
+                astro_result = _run_with_perf(
+                    lambda: AstroCalculator(self.calc_dt, self.longitude, self.latitude).calculate_astronomical_positions(),
+                    "astro"
+                )
+
+            sxwnlCalendar = sxwnl_result.get('sxwnl', {})
+            highPrecisionTime = sxwnl_result.get('precision', {})
+            astronomicalData = sxwnl_result.get('astronomy', {})
+
+            ziweiChart = ziwei_result.get('professionalZiwei', {})
+            palaceAnalysis = ziwei_result.get('palaces', {})
+            starInfluence = ziwei_result.get('fiveElementsClass', ziwei_result.get('influence', {}))
+            ziweiHoroscope = ziwei_result.get('horoscope', {})
+
+            def _build_star_positions(palaces):
+                positions = []
+                for p in palaces or []:
+                    majors = [s.get("name", "") for s in p.get("majorStars", []) if s]
+                    minors = [s.get("name", "") for s in p.get("minorStars", []) if s]
+                    if majors or minors:
+                        positions.append({
+                            "palace": p.get("name", ""),
+                            "majorStars": majors,
+                            "minorStars": minors,
+                        })
+                return positions
+
+            starPositions = _build_star_positions(palaceAnalysis)
+
+            fengshuiCompass = fengshui_result.get('fengshuiCompass', {}) if isinstance(fengshui_result, dict) else {}
+            directionAnalysis = fengshui_result.get('directions', {}) if isinstance(fengshui_result, dict) else {}
+            nineStars = fengshui_result.get('stars', {}) if isinstance(fengshui_result, dict) else {}
+            bagua = fengshui_result.get('bagua', {}) if isinstance(fengshui_result, dict) else {}
+
+            planetPositions = astro_result.get('astronomy', {}) if isinstance(astro_result, dict) else {}
+            zodiacSigns = astro_result.get('zodiac', {}) if isinstance(astro_result, dict) else {}
+            aspects = astro_result.get('aspects', {}) if isinstance(astro_result, dict) else {}
+            houses = astro_result.get('houses', {}) if isinstance(astro_result, dict) else {}
+
+            if not hide.get("system", False):
+                # 现代化八字（强制依赖外部 dantalion-master；缺失即终止）
+                dantalion_repo = _root / "libs/external/github/dantalion-master"
+                dist_js = dantalion_repo / "packages/dantalion-core/dist/index.js"
+                if not dist_js.exists():
+                    raise RuntimeError("dantalion-core 未构建（缺少 dist/index.js），请先在 dantalion-master 目录执行构建再重试")
+                from dantalion_integration import DantalionCalculator
+                dantalion = DantalionCalculator(self.calc_dt, self.gender)
+                dantalion_result = dantalion.calculate_modern_bazi()
+                modernBazi = dantalion_result.get('modernBazi', {})
+                typeScriptModel = dantalion_result.get('typescript', {})
+                apiInterface = dantalion_result.get('api', {})
+
+                from system_optimization import SystemOptimization
+                sys_opt = SystemOptimization()
+                performance = sys_opt.get_performance_metrics() if hasattr(sys_opt, 'get_performance_metrics') else {'status': 'active'}
+                caching = sys_opt.get_cache_stats() if hasattr(sys_opt, 'get_cache_stats') else {'status': 'active'}
+                optimization = {'level': 'native', 'algorithm': 'original'}
+
+            if not hide.get("calendar", False):
+                from advanced_calendar_integration import AdvancedCalendarCalculator
+                calendar_calc = AdvancedCalendarCalculator(calc_now)  # 当前日期的历法
+                calendar_result = calendar_calc.calculate_advanced_calendar()
+                multiCalendar = calendar_result.get('advancedCalendar', {}).get('multiCalendar', {})
+                holidays = calendar_result.get('advancedCalendar', {}).get('holidayCalendar', {})
+                festivals = calendar_result.get('advancedCalendar', {}).get('chineseCalendar', {})
+
+            from ziwei import ZiweiCalculator
+            ziwei_basic_calc = ZiweiCalculator({"fourPillars": four_pillars}, self.calc_dt, self.gender)
+            ziwei_basic_result = ziwei_basic_calc.calculate()
+            ziweiBasic = ziwei_basic_result.get('ziwei', {})
 
         # === 传统命理功能 - 调用原生算法模块 ===
         # 占卜类模块使用当前时间（非出生时间）
@@ -443,23 +487,7 @@ class BaziCalculator:
             liuyao_result = liuyao_calc.calculate()
             liuyaoHexagram = liuyao_result.get('liuyao', {})
 
-        from ziwei import ZiweiCalculator
-        ziwei_basic_calc = ZiweiCalculator({"fourPillars": four_pillars}, self.calc_dt, self.gender)
-        ziwei_basic_result = ziwei_basic_calc.calculate()
-        ziweiBasic = ziwei_basic_result.get('ziwei', {})
-
         # liuyaoHexagram 已在 divination 分支中计算；关闭时为空 dict
-
-        multiCalendar = {}
-        holidays = {}
-        festivals = {}
-        if not hide.get("calendar", False):
-            from advanced_calendar_integration import AdvancedCalendarCalculator
-            calendar_calc = AdvancedCalendarCalculator(now)  # 当前日期的历法
-            calendar_result = calendar_calc.calculate_advanced_calendar()
-            multiCalendar = calendar_result.get('advancedCalendar', {}).get('multiCalendar', {})
-            holidays = calendar_result.get('advancedCalendar', {}).get('holidayCalendar', {})
-            festivals = calendar_result.get('advancedCalendar', {}).get('chineseCalendar', {})
 
         hexagrams = {}
         yijingAnalysis = {}
@@ -485,16 +513,6 @@ class BaziCalculator:
         # 真太阳时细节：严格复用 paipan-master（与 calc_dt 同口径），禁止双口径
         complete_true_solar_time = self.true_solar_detail
         zi_time_analysis = self.zi_time_analysis
-
-        performance = {}
-        caching = {}
-        optimization = {}
-        if not hide.get("system", False):
-            from system_optimization import SystemOptimization
-            sys_opt = SystemOptimization()
-            performance = sys_opt.get_performance_metrics() if hasattr(sys_opt, 'get_performance_metrics') else {'status': 'active'}
-            caching = sys_opt.get_cache_stats() if hasattr(sys_opt, 'get_cache_stats') else {'status': 'active'}
-            optimization = {'level': 'native', 'algorithm': 'original'}
 
         # 姓名合婚模块（可关闭计算）
         marriageCompatibility = {}
@@ -633,7 +651,7 @@ class BaziCalculator:
             "starPositions": starPositions,
             "palaceAnalysis": palaceAnalysis,
             "starInfluence": starInfluence,
-            "ziweiHoroscope": ziwei_result.get('horoscope', {}),
+            "ziweiHoroscope": ziweiHoroscope,
             "fengshuiCompass": fengshuiCompass,
             "directionAnalysis": directionAnalysis,
             "nineStars": nineStars,

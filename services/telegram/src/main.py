@@ -1,15 +1,16 @@
-"""八字排盘微服务 API"""
+from datetime import datetime
 import sys
-from pathlib import Path
+from typing import Optional
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from datetime import datetime
 from zoneinfo import ZoneInfo
-from typing import Optional
+
+from _paths import BAZI_DB_DIR, FATE_CORE_SRC_DIR
 from utils.timezone import now_cn
-from _paths import BAZI_DB_DIR
 
 sys.path.insert(0, str(BAZI_DB_DIR))
+sys.path.insert(0, str(FATE_CORE_SRC_DIR))
 
 from models import (
     BaziRequest,
@@ -25,6 +26,7 @@ from bazi_calculator import BaziCalculator
 from report_generator import DEFAULT_HIDE as REPORT_HIDE
 import db_v2 as db
 from liuyao_factors import generate_factor
+from fate_core.usecases import PureAnalysisInput, calculate_pure_analysis
 
 app = FastAPI(title="八字排盘服务", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -35,15 +37,18 @@ def health():
     return {"status": "ok"}
 
 
+def _parse_bazi_request(req: BaziRequest) -> tuple[datetime, float, float]:
+    birth_dt = datetime.strptime(f"{req.birthDate} {req.birthTime}", "%Y-%m-%d %H:%M:%S")
+    if not req.birthPlace:
+        raise HTTPException(status_code=400, detail="birthPlace 必填（经纬度用于真太阳时/风水/占星）")
+    return birth_dt, req.birthPlace.longitude, req.birthPlace.latitude
+
+
 @app.post("/api/v1/bazi/simple")
 def calculate_bazi_simple(req: BaziRequest):
     """简化八字计算 - 直接返回原始结果"""
     try:
-        birth_dt = datetime.strptime(f"{req.birthDate} {req.birthTime}", "%Y-%m-%d %H:%M:%S")
-        if not req.birthPlace:
-            raise HTTPException(status_code=400, detail="birthPlace 必填（经纬度用于真太阳时/风水/占星）")
-        longitude = req.birthPlace.longitude
-        latitude = req.birthPlace.latitude
+        birth_dt, longitude, latitude = _parse_bazi_request(req)
         
         calculator = BaziCalculator(
             birth_dt,
@@ -61,15 +66,40 @@ def calculate_bazi_simple(req: BaziRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/api/v1/bazi/pure-analysis")
+def calculate_bazi_pure_analysis(req: BaziRequest):
+    """纯命理分析 - 仅返回配置约束下的核心字段。"""
+    try:
+        birth_dt, longitude, latitude = _parse_bazi_request(req)
+        payload = PureAnalysisInput(
+            birth_dt=birth_dt,
+            gender=req.gender,
+            longitude=longitude,
+            latitude=latitude,
+            name=req.name,
+            birth_place=req.birthPlace.name,
+            use_true_solar_time=req.options.useTrueSolarTime,
+        )
+        result = calculate_pure_analysis(payload)
+        return {
+            "success": True,
+            "data": result,
+            "meta": {
+                "calculatedAt": now_cn().isoformat(),
+                "profile": "pure_analysis",
+            },
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/v1/bazi/calculate", response_model=BaziResponse)
 def calculate_bazi(req: BaziRequest, user_id: Optional[str] = None):
     """计算八字排盘"""
     try:
-        birth_dt = datetime.strptime(f"{req.birthDate} {req.birthTime}", "%Y-%m-%d %H:%M:%S")
-        if not req.birthPlace:
-            raise HTTPException(status_code=400, detail="birthPlace 必填（经纬度用于真太阳时/风水/占星）")
-        longitude = req.birthPlace.longitude
-        latitude = req.birthPlace.latitude
+        birth_dt, longitude, latitude = _parse_bazi_request(req)
         
         calculator = BaziCalculator(
             birth_dt,
