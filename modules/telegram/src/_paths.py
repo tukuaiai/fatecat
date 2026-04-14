@@ -8,11 +8,6 @@ from pathlib import Path
 MODULE_ROOT = Path(__file__).resolve().parent.parent
 REPO_ROOT = MODULE_ROOT.parent.parent
 
-# 兼容旧命名，避免大面积改动
-SERVICE_ROOT = MODULE_ROOT
-FATE_SERVICE_ROOT = REPO_ROOT
-PROJECT_ROOT = REPO_ROOT
-
 # ==================== 静态资产路径 ====================
 ASSETS_DIR = REPO_ROOT / "assets"
 CONFIG_DIR = ASSETS_DIR / "config"
