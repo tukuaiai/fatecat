@@ -11,6 +11,7 @@ assets/
 ├── AGENTS.md
 ├── config/
 ├── data/
+│   └── classics/     # 命理古籍与基础语料文本
 ├── database/
 ├── deploy/
 ├── docs/
@@ -23,6 +24,7 @@ assets/
 
 - `config/`：配置模板、运行配置与品牌真相源入口；不放业务代码。
 - `data/`：静态数据文件；不放运行时生成的数据。
+  - `data/classics/`：命理古籍、基础知识语料与后续检索/切片输入源。
 - `database/`：数据库 schema 与静态定义；不放 `.db` 实库。
 - `deploy/`：打包、Agent 引导、环境自举脚本与机器可读部署清单。
 - `docs/`：文档、记录、结构说明。
