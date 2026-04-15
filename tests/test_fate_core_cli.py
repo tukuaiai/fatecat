@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "modules" / "fate_core" / "src"))
 
 from fate_core.cli import _build_pure_analysis_input, _normalize_payload, main
+from fate_core.support import get_branding_payload
 
 
 def test_normalize_payload_supports_api_request_shape():
@@ -83,3 +84,4 @@ def test_main_pure_analysis_reads_inline_json(monkeypatch, capsys):
     assert result["success"] is True
     assert result["profile"] == "pure_analysis"
     assert result["data"] == expected_result
+    assert result["branding"] == get_branding_payload()

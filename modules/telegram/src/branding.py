@@ -1,6 +1,13 @@
-"""支撑工具模块。"""
+from __future__ import annotations
 
-from .branding import (
+import sys
+
+from _paths import FATE_CORE_SRC_DIR
+
+if str(FATE_CORE_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(FATE_CORE_SRC_DIR))
+
+from fate_core.support.branding import (  # noqa: E402
     append_branding_markdown,
     append_branding_text,
     attach_branding,
@@ -9,7 +16,6 @@ from .branding import (
     get_branding_payload,
     load_branding,
 )
-from .paths import FATE_PROFILE_DIR, FATE_REPO_ROOT, TELEGRAM_SRC_DIR
 
 __all__ = [
     "append_branding_markdown",
@@ -17,9 +23,6 @@ __all__ = [
     "attach_branding",
     "build_branding_markdown",
     "build_branding_text",
-    "FATE_PROFILE_DIR",
-    "FATE_REPO_ROOT",
-    "TELEGRAM_SRC_DIR",
     "get_branding_payload",
     "load_branding",
 ]

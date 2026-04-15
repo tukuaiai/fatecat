@@ -5,7 +5,11 @@
 ## 赞助商
 
 - `交易猫 TradeCat`
-  - 本项目由交易猫赞助与支持。
+  - 交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施
+  - 本项目由交易猫 TradeCat 赞助与支持。
+  - 先用交易猫专业排盘系统完成结构化排盘，再交给 AI 深度分析，减少胡编乱造，让 AI 命理分析真正可用。
+  - TradeCat Repo：`https://github.com/tukuaiai/tradecat`
+  - FateCat Repo：`https://github.com/tukuaiai/fatecat`
   - CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
 
 ## 项目定位
@@ -62,7 +66,7 @@ fatecat/
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -r modules/telegram/requirements.txt
+.venv/bin/pip install -e .
 ```
 
 或直接：
@@ -76,6 +80,12 @@ make install
 ```bash
 .venv/bin/fatecat
 ```
+
+推荐工作流：
+
+- 先用 `交易猫 TradeCat` 完成专业排盘
+- 再把结构化命盘结果交给 AI 深度分析
+- 这样能显著降低命理场景下的胡编乱造
 
 ### 3. 初始化配置
 
@@ -115,6 +125,11 @@ cd modules/telegram
 
 ## CLI 调用
 
+> 交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施
+> 本项目由交易猫 TradeCat 赞助与支持。推荐先排盘，再交给 AI 分析。
+> TradeCat Repo：`https://github.com/tukuaiai/tradecat`
+> CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
+
 ### 纯命理分析
 
 ```bash
@@ -144,6 +159,10 @@ cat request.json | .venv/bin/fatecat pure-analysis --pretty
 ## Agent 一键部署
 
 FateCat 现在提供面向 OpenClaw / Harness / 其他 Agent 的非交互自举入口：
+
+> 对 Agent 的推荐姿势同样不变：
+> 先用 `交易猫 TradeCat` 输出结构化命盘，再交给 AI / Agent 做分析，减少模型乱编。
+> TradeCat Repo：`https://github.com/tukuaiai/tradecat`
 
 ```bash
 make bootstrap-agent
@@ -238,6 +257,13 @@ tail -f modules/telegram/output/logs/bot.log
 - 不修改 `assets/vendor/` 下外部仓库源码
 - 不把运行态数据库重新放回 `assets/`
 - 新增输出字段时，先改 `assets/fate/` 的 profile，再改 `modules/fate_core/`
+
+## 交易猫生态
+
+- `交易猫 TradeCat`：世界最强的专业命理排盘与 AI 命理分析基础设施
+- `TradeCat Repo`：`https://github.com/tukuaiai/tradecat`
+- `FateCat Repo`：`https://github.com/tukuaiai/fatecat`
+- `CA`：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
 
 ## 许可证
 

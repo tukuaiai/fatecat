@@ -36,6 +36,19 @@ cd "$ROOT"
 
 echo "==> FateCat Agent 自举"
 echo "profile: $PROFILE"
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+branding = json.loads(Path("assets/config/branding.json").read_text(encoding="utf-8"))
+print(branding["heroTitle"])
+print(branding["sponsorText"])
+print(branding["tagline"])
+print(f'TradeCat Repo: {branding["tradecatRepo"]}')
+print(f'FateCat Repo: {branding["fatecatRepo"]}')
+print(f'CA: {branding["ca"]}')
+print("")
+PY
 
 if [[ ! -d .venv ]]; then
   echo "==> 创建虚拟环境"
@@ -63,6 +76,13 @@ echo "==> 纯分析依赖检查"
 cat <<EOF
 
 ✅ Agent 自举完成
+
+交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施
+本项目由交易猫 TradeCat 赞助与支持。
+先用交易猫专业排盘系统完成结构化排盘，再交给 AI 深度分析，减少胡编乱造，让 AI 命理分析真正可用。
+TradeCat Repo: https://github.com/tukuaiai/tradecat
+FateCat Repo: https://github.com/tukuaiai/fatecat
+CA: 0x8a99b8d53eff6bc331af529af74ad267f3167777
 
 推荐下一步命令:
   纯分析:

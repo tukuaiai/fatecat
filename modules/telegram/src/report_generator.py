@@ -6,6 +6,8 @@ from datetime import datetime
 from typing import Dict, Any
 import re
 
+from branding import build_branding_text, load_branding
+
 # 控制易经细节输出
 SUPPRESS_DETAILS = True  # 暂时关闭易经细节（不输出示例文案）
 
@@ -1322,7 +1324,16 @@ def generate_full_report(result: Dict[str, Any], hide: Dict[str, bool] | None = 
         parts.extend(["", "## 第五卷：学术参数（隐藏/技术区）", ""])
         parts.extend(tech_parts)
 
-    return _normalize_present_text("\n".join(parts))
+    branding = load_branding()
+    normalized = _normalize_present_text("\n".join(parts))
+    sponsor_section = "\n".join(
+        [
+            f"## {branding['reportFooterTitle']}",
+            "",
+            build_branding_text(compact=False),
+        ]
+    )
+    return f"{normalized}\n\n{sponsor_section}"
 
 
 def generate_geju_section(result: Dict[str, Any]) -> str:

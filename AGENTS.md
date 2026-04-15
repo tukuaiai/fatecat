@@ -62,6 +62,7 @@ fatecat/
 ```text
 assets/config/.env
 assets/config/.env.example
+assets/config/branding.json
 ```
 
 必需变量：

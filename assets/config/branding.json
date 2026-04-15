@@ -1,0 +1,12 @@
+{
+  "name": "交易猫 TradeCat",
+  "heroTitle": "交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施",
+  "sponsorText": "本项目由交易猫 TradeCat 赞助与支持。",
+  "tagline": "先用交易猫专业排盘系统完成结构化排盘，再交给 AI 深度分析，减少胡编乱造，让 AI 命理分析真正可用。",
+  "tradecatRepo": "https://github.com/tukuaiai/tradecat",
+  "fatecatRepo": "https://github.com/tukuaiai/fatecat",
+  "ca": "0x8a99b8d53eff6bc331af529af74ad267f3167777",
+  "cliBanner": "交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施",
+  "telegramFooter": "本项目由交易猫 TradeCat 赞助与支持。先用交易猫专业排盘，再交给 AI 深度分析。",
+  "reportFooterTitle": "赞助支持"
+}

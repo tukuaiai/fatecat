@@ -15,6 +15,11 @@ from telegram.error import RetryAfter, NetworkError, TimedOut
 from telegram.ext import (Application, CommandHandler, CallbackQueryHandler,
                           MessageHandler, filters, ContextTypes, ConversationHandler)
 from dotenv import load_dotenv
+from branding import (
+    append_branding_markdown,
+    append_branding_text,
+    get_branding_payload,
+)
 from utils.timezone import now_cn, fmt_cn
 from _paths import (
     get_env_file, LOGS_DIR, TXT_DIR, QUEUE_DIR, PROMPTS_DIR,
@@ -98,26 +103,54 @@ def _setup_logger():
 
 logger = _setup_logger()
 QUEUE_PATH = (QUEUE_DIR / "send_queue.jsonl").resolve()
+BRANDING = get_branding_payload()
+
+
+def _with_branding_markdown(text: str, *, compact: bool = False) -> str:
+    return append_branding_markdown(text, compact=compact)
+
+
+def _with_branding_text(text: str, *, compact: bool = False) -> str:
+    return append_branding_text(text, compact=compact)
+
+
+def _brand_button_row(label: str = "🐱 交易猫 TradeCat") -> list[InlineKeyboardButton]:
+    return [InlineKeyboardButton(label, url=BRANDING["tradecatRepo"])]
 
 
 def main_kb(gender="male"):
     """主菜单键盘 - 性别切换"""
     m = "✅" if gender == "male" else ""
     f = "✅" if gender == "female" else ""
-    return InlineKeyboardMarkup([[
-        InlineKeyboardButton(f"{m} 乾造（男）", callback_data="g_male"),
-        InlineKeyboardButton(f"{f} 坤造（女）", callback_data="g_female")
-    ]])
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(f"{m} 乾造（男）", callback_data="g_male"),
+                InlineKeyboardButton(f"{f} 坤造（女）", callback_data="g_female"),
+            ],
+            _brand_button_row(),
+        ]
+    )
 
 def confirm_kb():
     """确认键盘"""
-    return InlineKeyboardMarkup([[
-        InlineKeyboardButton("🚀 开始排盘", callback_data="calc"),
-        InlineKeyboardButton("✏️ 返回修改", callback_data="edit")
-    ]])
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🚀 开始排盘", callback_data="calc"),
+                InlineKeyboardButton("✏️ 返回修改", callback_data="edit"),
+            ],
+            _brand_button_row(),
+        ]
+    )
 
 def result_kb():
-    return InlineKeyboardMarkup([[InlineKeyboardButton("🎲 重新排盘", callback_data="restart")]])
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🎲 重新排盘", callback_data="restart")],
+            _brand_button_row(),
+        ]
+    )
 
 
 async def _send_result(chat_id, context, out_path, filename, ai_path, ai_filename, d):
@@ -140,6 +173,7 @@ https://chatgpt.com/
 https://x.com/i/grok
 
 ⏱️ 北京时间：{now_str}"""
+    header = _with_branding_markdown(header, compact=False)
 
     await _send_with_retry(
         lambda: context.bot.send_message(
@@ -161,7 +195,8 @@ https://x.com/i/grok
 def build_main_msg(gender="male"):
     g = "乾造（男）" if gender == "male" else "坤造（女）"
     now_str = fmt_cn(now_cn())
-    return f"""🎲 *超级排盘*
+    return _with_branding_markdown(
+        f"""🎲 *超级排盘*
 
 当前: {g}
 （点击下方按钮切换性别）
@@ -178,11 +213,14 @@ def build_main_msg(gender="male"):
 北京市东城区
 孙笑川
 ```
-⏱️ 北京时间：{now_str}"""
+⏱️ 北京时间：{now_str}""",
+        compact=False,
+    )
 
 
 def build_confirm_msg(d):
-    return (
+    return _with_branding_markdown(
+        (
         "📋 *确认信息*\n"
         "```\n"
         f"📅 日期：{d['birth_date']}\n"
@@ -191,6 +229,8 @@ def build_confirm_msg(d):
         f"👤 姓名：{d.get('name') or '匿名'}\n"
         "```\n"
         "确认无误请点击开始排盘 ⏬"
+        ),
+        compact=True,
     )
 
 
@@ -436,7 +476,7 @@ def _make_retry_notifier(context: ContextTypes.DEFAULT_TYPE, chat_id: int):
             return
         sent["flag"] = True
         try:
-            await context.bot.send_message(chat_id=chat_id, text=msg)
+            await context.bot.send_message(chat_id=chat_id, text=_with_branding_text(msg, compact=True))
         except Exception as e:
             # 提示失败不影响主流程
             logger.warning(f"[WARN] retry notifier failed: {e}")
@@ -456,7 +496,8 @@ def _build_progress_text(state, elapsed):
     percent = min(100, int(elapsed / target * 100))
     done = [items[i] for i, t in enumerate(cumu) if elapsed >= t]
     tip = tips[int(elapsed // 7) % len(tips)] if tips else ""
-    return (
+    return _with_branding_markdown(
+        (
         "⏳ 正在排盘（计算中）\n"
         "```\n"
         f"步骤 {step + 1}/{len(items)}：{items[step]}\n"
@@ -465,6 +506,8 @@ def _build_progress_text(state, elapsed):
         f"已完成：{', '.join(done) if done else '准备中'}\n"
         "```\n"
         f"命理小知识：{tip}"
+        ),
+        compact=True,
     )
 
 
@@ -486,7 +529,7 @@ async def _finalize_progress_send(state, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,
-            text=f"❌ 排盘失败: {e}\n\n发送 /paipan 重试",
+            text=_with_branding_text(f"❌ 排盘失败: {e}\n\n发送 /paipan 重试", compact=True),
         )
         return
 
@@ -509,11 +552,12 @@ https://chatgpt.com/
 https://x.com/i/grok
 
 ⏱️ 北京时间：{now_str}"""
+    header = _with_branding_markdown(header, compact=False)
 
     await context.bot.edit_message_text(
         chat_id=chat_id,
         message_id=message_id,
-        text="✅ 排盘完成，报告已发送。",
+        text=_with_branding_text("✅ 排盘完成，报告已发送。", compact=True),
     )
 
     notifier = _make_retry_notifier(context, chat_id)
@@ -541,7 +585,7 @@ https://x.com/i/grok
         })
         await context.bot.send_message(
             chat_id=chat_id,
-            text=f"⚠️ 排盘已生成但发送失败，已加入补发队列。错误: {send_err}"
+            text=_with_branding_text(f"⚠️ 排盘已生成但发送失败，已加入补发队列。错误: {send_err}", compact=True),
         )
 
 
@@ -660,16 +704,16 @@ async def handle_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
     date_str, time_str, place, name, err = parse_input(text)
     if err:
-        await update.message.reply_text(f"❌ {err}\n请按模板逐行输入：日期/时间/地点/姓名")
+        await update.message.reply_text(_with_branding_text(f"❌ {err}\n请按模板逐行输入：日期/时间/地点/姓名", compact=True))
         return INPUT
     if not (date_str and time_str and place and name):
-        await update.message.reply_text("❌ 输入缺失，请按模板逐行输入")
+        await update.message.reply_text(_with_branding_text("❌ 输入缺失，请按模板逐行输入", compact=True))
         return INPUT
 
     # 地点校验（模糊命中），否则退回主菜单
     coords = get_coords(place)
     if coords is None:
-        await update.message.reply_text("❌ 未匹配到地点，请输入中国境内地名（如“北京市海淀区”）")
+        await update.message.reply_text(_with_branding_text("❌ 未匹配到地点，请输入中国境内地名（如“北京市海淀区”）", compact=True))
         context.user_data.clear()
         await update.message.reply_text(
             build_main_msg("male"),
@@ -750,14 +794,14 @@ async def handle_confirm_callback(update: Update, context: ContextTypes.DEFAULT_
             status = get_queue_status()
             if status["queue_size"] >= status["queue_max"]:
                 await query.edit_message_text(
-                    "⏳ 服务器繁忙，请稍后再试\n\n发送 /paipan 重试",
+                    _with_branding_text("⏳ 服务器繁忙，请稍后再试\n\n发送 /paipan 重试", compact=True),
                     reply_markup=result_kb()
                 )
                 return ConversationHandler.END
             await acquire_slot()
         # ========== 槽位获取结束 ==========
 
-        msg = await query.edit_message_text("⏳ 正在排盘，生成完整报告...")
+        msg = await query.edit_message_text(_with_branding_text("⏳ 正在排盘，生成完整报告...", compact=True))
 
         try:
             out_path, filename, ai_path, ai_filename = await asyncio.to_thread(
@@ -771,7 +815,7 @@ async def handle_confirm_callback(update: Update, context: ContextTypes.DEFAULT_
             await context.bot.edit_message_text(
                 chat_id=update.effective_chat.id,
                 message_id=msg.message_id,
-                text=f"❌ 排盘失败: {e}\n\n发送 /paipan 重试",
+                text=_with_branding_text(f"❌ 排盘失败: {e}\n\n发送 /paipan 重试", compact=True),
                 reply_markup=result_kb(),
             )
             return ConversationHandler.END
@@ -812,6 +856,7 @@ https://chatgpt.com/
 https://x.com/i/grok
 
 ⏱️ 北京时间：{now_str}"""
+            header = _with_branding_markdown(header, compact=False)
             _enqueue_send_task({
                 "type": "media_group",
                 "chat_id": update.effective_chat.id,
@@ -826,14 +871,14 @@ https://x.com/i/grok
             await context.bot.edit_message_text(
                 chat_id=update.effective_chat.id,
                 message_id=msg.message_id,
-                text=f"⚠️ 排盘已生成但发送失败，已加入补发队列。错误: {send_err}",
+                text=_with_branding_text(f"⚠️ 排盘已生成但发送失败，已加入补发队列。错误: {send_err}", compact=True),
             )
         else:
             try:
                 await context.bot.edit_message_text(
                     chat_id=update.effective_chat.id,
                     message_id=msg.message_id,
-                    text="✅ 排盘完成，报告已发送。",
+                    text=_with_branding_text("✅ 排盘完成，报告已发送。", compact=True),
                 )
             except Exception as status_err:
                 logger.warning(f"[SEND] 结果已发送，但状态消息更新失败: {status_err}")
@@ -900,19 +945,22 @@ async def handle_restart(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("已取消。发送 /paipan 重新开始。")
+    await update.message.reply_text(_with_branding_text("已取消。发送 /paipan 重新开始。", compact=True))
     return ConversationHandler.END
 
 
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     now_str = fmt_cn(now_cn())
     await update.message.reply_text(
-        "🤡 可用命令\n"
-        "```\n"
-        "/start 进入排盘\n"
-        "/help  查看帮助\n"
-        "```\n"
-        f"⏱️ 北京时间：{now_str}",
+        _with_branding_markdown(
+            "🤡 可用命令\n"
+            "```\n"
+            "/start 进入排盘\n"
+            "/help  查看帮助\n"
+            "```\n"
+            f"⏱️ 北京时间：{now_str}",
+            compact=False,
+        ),
         parse_mode=ParseMode.MARKDOWN,
     )
     return ConversationHandler.END
@@ -921,7 +969,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     token = os.getenv("FATE_BOT_TOKEN")
     if not token:
-        print("错误: 未设置 FATE_BOT_TOKEN (请在 assets/config/.env 中配置)")
+        print(_with_branding_text("错误: 未设置 FATE_BOT_TOKEN (请在 assets/config/.env 中配置)", compact=True))
         return
     
     async def post_init(app: Application):

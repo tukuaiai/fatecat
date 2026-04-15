@@ -8,8 +8,20 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from fate_core.support import attach_branding, build_branding_text
 from fate_core.support.paths import FATE_PROFILE_DIR, FATE_REPO_ROOT
 from fate_core.usecases import PureAnalysisInput, calculate_pure_analysis
+
+
+class BrandingArgumentParser(argparse.ArgumentParser):
+    """在帮助与错误输出中强制携带品牌文案。"""
+
+    def error(self, message: str) -> None:
+        self.print_usage(sys.stderr)
+        print(f"{self.prog}: error: {message}", file=sys.stderr)
+        print("", file=sys.stderr)
+        print(build_branding_text(compact=False), file=sys.stderr)
+        raise SystemExit(2)
 
 
 def _parse_datetime(value: str) -> datetime:
@@ -239,11 +251,13 @@ def _run_pure_analysis(args: argparse.Namespace) -> int:
     pure_input = _build_pure_analysis_input(payload)
     result = calculate_pure_analysis(pure_input)
     _write_json_payload(
-        {
+        attach_branding(
+            {
             "success": True,
             "profile": "pure_analysis",
             "data": result,
-        },
+            }
+        ),
         pretty=args.pretty,
         output_file=args.output_file,
     )
@@ -253,19 +267,26 @@ def _run_pure_analysis(args: argparse.Namespace) -> int:
 def _run_health(args: argparse.Namespace) -> int:
     report = _collect_health_report(args.mode)
     pretty = args.json or args.pretty
-    _write_json_payload(report, pretty=pretty, output_file=args.output_file)
+    _write_json_payload(attach_branding(report), pretty=pretty, output_file=args.output_file)
     return 0 if report["success"] else 1
 
 
 def _run_serve(args: argparse.Namespace) -> int:
     start_script = FATE_REPO_ROOT / "modules" / "telegram" / "start.py"
     command = [sys.executable, str(start_script), args.mode]
+    print(build_branding_text(compact=False))
+    print("")
     completed = subprocess.run(command, cwd=FATE_REPO_ROOT, check=False)
     return completed.returncode
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="fatecat", description="FateCat 命理分析与交付 CLI")
+    parser = BrandingArgumentParser(
+        prog="fatecat",
+        description="FateCat 命理分析与交付 CLI",
+        epilog=build_branding_text(compact=False),
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     pure_parser = subparsers.add_parser("pure-analysis", help="执行纯命理分析并输出 JSON")
@@ -302,7 +323,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         return args.handler(args)
     except Exception as exc:
-        _write_json_payload({"success": False, "error": str(exc)}, pretty=True)
+        _write_json_payload(attach_branding({"success": False, "error": str(exc)}), pretty=True)
         return 1
 
 

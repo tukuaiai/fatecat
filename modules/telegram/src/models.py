@@ -155,11 +155,22 @@ class Meta(BaseModel):
     recordId: Optional[int] = None
 
 
+class BrandingInfo(BaseModel):
+    name: str
+    heroTitle: str
+    sponsorText: str
+    tagline: str
+    tradecatRepo: str
+    fatecatRepo: str
+    ca: str
+
+
 class BaziResponse(BaseModel):
     success: bool
     data: Optional[BaziData] = None
     error: Optional[str] = None
     meta: Meta
+    branding: BrandingInfo
 
 # ========== 六爻因子响应模型 ==========
 
@@ -181,3 +192,4 @@ class LiuyaoFactorResponse(BaseModel):
     data: Optional[LiuyaoFactorData] = None
     error: Optional[str] = None
     meta: Meta
+    branding: BrandingInfo

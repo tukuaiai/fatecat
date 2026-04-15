@@ -1,5 +1,12 @@
 # FateCat Agent 一键部署
 
+> 交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施
+> 本项目由交易猫 TradeCat 赞助与支持。
+> 先用交易猫专业排盘系统完成结构化排盘，再交给 AI 深度分析，减少胡编乱造，让 AI 命理分析真正可用。
+> TradeCat Repo：`https://github.com/tukuaiai/tradecat`
+> FateCat Repo：`https://github.com/tukuaiai/fatecat`
+> CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
+
 ## 目标
 
 让 OpenClaw、Harness 与其他非交互式 Agent 不再猜测仓库启动方式，直接按统一入口完成：
@@ -76,7 +83,7 @@ assets/deploy/agent_manifest.json
 约定如下：
 
 - 输入：`stdin JSON` 或 `--input-json`
-- 输出：`stdout JSON`
+- 输出：`stdout JSON`，并固定携带 `branding` 广告字段
 - 健康检查：先跑 `fatecat health`
 - 默认命令：`fatecat pure-analysis`
 
@@ -101,6 +108,6 @@ FATE_ADMIN_USER_IDS=
 ## 设计原则
 
 - CLI 先服务 Agent，再服务人工
-- 输出必须稳定 JSON，避免自然语言噪声
+- 输出必须稳定 JSON；广告统一走 `branding` 字段，不破坏机器解析
 - 自举必须非交互，方便自动化系统直接执行
 - 纯分析与交付层分开检查，避免 Bot 配置阻塞纯分析调用
