@@ -47,7 +47,7 @@ tail -f modules/telegram/output/logs/bot.log
 ## 自恢复与健康
 - Bot 内置重连与发送重试；网络抖动会指数退避。
 - 若 60s 内持续失败，进程会退出，便于外部 watchdog/supervisor 重启。
-- 管理员（`FATE_ADMIN_USER_IDS` 中的首个 ID）调用排盘时跳过假进度，直接返回结果，便于验证。
+- 当前不启用用户冷却时间、每日次数上限，也不做人为假进度延迟。
 
 ## 代理配置
 - 在 `assets/config/.env` 中填写：

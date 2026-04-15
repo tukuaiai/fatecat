@@ -5,7 +5,6 @@ import re
 import asyncio
 import time
 import logging
-import random
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from datetime import datetime
@@ -35,7 +34,7 @@ from report_generator import generate_full_report
 from report_generator import DEFAULT_HIDE as REPORT_HIDE
 from location import get as get_location, get_coords
 import db_v2 as db
-from rate_limiter import check_rate_limit, record_request, acquire_slot, release_slot, get_queue_status
+from rate_limiter import acquire_slot, release_slot, get_queue_status
 
 # 自动初始化数据库
 db.ensure_db()
@@ -730,21 +729,8 @@ async def handle_confirm_callback(update: Update, context: ContextTypes.DEFAULT_
     if query.data == "calc":
         d = context.user_data
         d.setdefault("gender", "male")
-        
-        # ========== 限流检查 ==========
         user_id = update.effective_user.id
         is_admin = (str(update.effective_chat.id) == str(ADMIN_CHAT_ID))
-        
-        if not is_admin:
-            allowed, reason = check_rate_limit(user_id)
-            if not allowed:
-                await query.edit_message_text(
-                    f"⏳ {reason}\n\n发送 /paipan 重试",
-                    reply_markup=result_kb()
-                )
-                return ConversationHandler.END
-            record_request(user_id)
-        # ========== 限流检查结束 ==========
         
         try:
             lng, lat = get_location(d.get("birth_place", ""))
@@ -771,58 +757,87 @@ async def handle_confirm_callback(update: Update, context: ContextTypes.DEFAULT_
             await acquire_slot()
         # ========== 槽位获取结束 ==========
 
-        # 启动真实计算（后台线程）
-        calc_task = asyncio.create_task(
-            asyncio.to_thread(_calc_and_save_report, d, lng, lat, update.effective_user.id)
-        )
-
-        # 管理员：跳过伪进度，直接发送
-        if is_admin:
-            try:
-                out_path, filename, ai_path, ai_filename = await calc_task
-                await _send_result(
-                    chat_id=update.effective_chat.id,
-                    context=context,
-                    out_path=out_path,
-                    filename=filename,
-                    ai_path=ai_path,
-                    ai_filename=ai_filename,
-                    d=d,
-                )
-            except Exception as e:
-                await query.edit_message_text(f"❌ 排盘失败: {e}\n\n发送 /paipan 重试")
-            return ConversationHandler.END
-
-        # 伪进度计划（目标 55~70 秒）
-        target_secs = random.randint(55, 70)
-        base = [random.uniform(3, 8) for _ in PROGRESS_ITEMS]
-        factor = target_secs / sum(base)
-        durations = [round(b * factor, 2) for b in base]
-        cumu = []
-        s = 0
-        for t in durations:
-            s += t
-            cumu.append(s)
-
         msg = await query.edit_message_text("⏳ 正在排盘，生成完整报告...")
 
-        progress_state = {
-            "chat_id": update.effective_chat.id,
-            "message_id": msg.message_id,
-            "start_ts": time.monotonic(),
-            "target_secs": target_secs,
-            "durations": durations,
-            "cumu": cumu,
-            "items": PROGRESS_ITEMS,
-            "tips": PROGRESS_TIPS,
-            "task": calc_task,
-            "data": dict(d),  # 复制一份避免后续修改
-        }
+        try:
+            out_path, filename, ai_path, ai_filename = await asyncio.to_thread(
+                _calc_and_save_report,
+                d,
+                lng,
+                lat,
+                user_id,
+            )
+        except Exception as e:
+            await context.bot.edit_message_text(
+                chat_id=update.effective_chat.id,
+                message_id=msg.message_id,
+                text=f"❌ 排盘失败: {e}\n\n发送 /paipan 重试",
+                reply_markup=result_kb(),
+            )
+            return ConversationHandler.END
+        finally:
+            if not is_admin:
+                try:
+                    release_slot()
+                except Exception:
+                    pass
 
-        # 每个步骤结束刷新一次进度
-        asyncio.create_task(progress_loop(progress_state, context))
+        try:
+            await _send_result(
+                chat_id=update.effective_chat.id,
+                context=context,
+                out_path=out_path,
+                filename=filename,
+                ai_path=ai_path,
+                ai_filename=ai_filename,
+                d=d,
+            )
+        except Exception as send_err:
+            now_str = fmt_cn(now_cn())
+            name_display = d.get('name') or '命主'
+            gender_display = '乾造' if d.get('gender','male')=='male' else '坤造'
+            header = f"""🎲 {name_display} {gender_display}
+报告见附件
+```
+{filename}
+{ai_filename}
+```
+免费AI分析网站（复制 AI 分析版全文到网站对话框中）
+神算gem版本（效果最好）：https://gemini.google.com/gem/1Vcz5d99hw73vgxUlDzB80AnvJdfbCiGT?usp=sharing
+https://aistudio.google.com/
+https://gemini.google.com/
+https://business.gemini.google/
+https://claude.ai/
+https://chatgpt.com/
+https://x.com/i/grok
 
-        return INPUT
+⏱️ 北京时间：{now_str}"""
+            _enqueue_send_task({
+                "type": "media_group",
+                "chat_id": update.effective_chat.id,
+                "header": header,
+                "parse_mode": "Markdown",
+                "files": [
+                    (str(out_path), filename),
+                    (str(ai_path), ai_filename),
+                ],
+                "queued_at": now_cn().isoformat(),
+            })
+            await context.bot.edit_message_text(
+                chat_id=update.effective_chat.id,
+                message_id=msg.message_id,
+                text=f"⚠️ 排盘已生成但发送失败，已加入补发队列。错误: {send_err}",
+            )
+        else:
+            try:
+                await context.bot.edit_message_text(
+                    chat_id=update.effective_chat.id,
+                    message_id=msg.message_id,
+                    text="✅ 排盘完成，报告已发送。",
+                )
+            except Exception as status_err:
+                logger.warning(f"[SEND] 结果已发送，但状态消息更新失败: {status_err}")
+        return ConversationHandler.END
     
     return CONFIRM
 
