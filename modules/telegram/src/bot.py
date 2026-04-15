@@ -28,6 +28,7 @@ startup_check()
 # 统一从仓库内 assets/config/.env 加载配置
 load_dotenv(get_env_file())
 ADMIN_CHAT_ID = (os.getenv("FATE_ADMIN_USER_IDS") or "").split(",")[0] or None
+BOT_PROXY_URL = (os.getenv("FATE_BOT_PROXY_URL") or "").strip() or None
 
 from bazi_calculator import BaziCalculator
 from report_generator import generate_full_report
@@ -914,7 +915,7 @@ def main():
             BotCommand("help", "查看帮助"),
         ])
 
-    app = (
+    builder = (
         Application.builder()
         .token(token)
         .post_init(post_init)
@@ -927,8 +928,21 @@ def main():
         .get_updates_read_timeout(10)
         .get_updates_write_timeout(10)
         .get_updates_pool_timeout(10)
-        .build()
     )
+
+    if BOT_PROXY_URL:
+        print(f"[fatecat] Telegram 代理已启用: {BOT_PROXY_URL}")
+        if hasattr(builder, "proxy"):
+            builder = builder.proxy(BOT_PROXY_URL)
+        else:
+            builder = builder.proxy_url(BOT_PROXY_URL)
+
+        if hasattr(builder, "get_updates_proxy"):
+            builder = builder.get_updates_proxy(BOT_PROXY_URL)
+        else:
+            builder = builder.get_updates_proxy_url(BOT_PROXY_URL)
+
+    app = builder.build()
     
     async def health_check(context: ContextTypes.DEFAULT_TYPE):
         app_ctx = context.application

@@ -85,6 +85,14 @@ FATE_BOT_TOKEN=your_bot_token_here
 FATE_ADMIN_USER_IDS=123456789
 ```
 
+如需代理访问 Telegram，可额外配置：
+
+```env
+FATE_BOT_PROXY_URL=http://127.0.0.1:7890
+```
+
+支持 `http://`、`https://`、`socks5://`；推荐统一用 `FATE_BOT_PROXY_URL`，不再依赖外部 shell 单独导出代理变量。
+
 ### 4. 启动模块
 
 ```bash

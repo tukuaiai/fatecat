@@ -6,6 +6,7 @@
 - 环境变量优先放在 `assets/config/.env`
   - `FATE_BOT_TOKEN`（必需）
   - `FATE_ADMIN_USER_IDS`（可选，管理员 Telegram ID）
+  - `FATE_BOT_PROXY_URL`（可选，Telegram 出站代理）
 
 ## 单实例启动（推荐）
 1) 先清理旧进程，避免多实例冲突  
@@ -48,7 +49,19 @@ tail -f modules/telegram/output/logs/bot.log
 - 若 60s 内持续失败，进程会退出，便于外部 watchdog/supervisor 重启。
 - 管理员（`FATE_ADMIN_USER_IDS` 中的首个 ID）调用排盘时跳过假进度，直接返回结果，便于验证。
 
+## 代理配置
+- 在 `assets/config/.env` 中填写：
+```env
+FATE_BOT_PROXY_URL=http://127.0.0.1:7890
+```
+- 支持 `http://`、`https://`、`socks5://`
+- 常见本地代理：
+  - Clash / Mihomo HTTP 端口：`http://127.0.0.1:7890`
+  - Clash / Mihomo SOCKS 端口：`socks5://127.0.0.1:7891`
+- 代码会同时把该代理用于普通请求与 `getUpdates` 长轮询。
+
 ## 故障排查速查
 - 报“未设置 FATE_BOT_TOKEN”：确认 `assets/config/.env` 已加载，或先导出同名环境变量。
+- 代理已开但仍连不上：先确认本地代理端口可用，再检查 `FATE_BOT_PROXY_URL` 协议头是否正确。
 - 启动报端口占用（API 模式）：释放端口或修改 `src/main.py` 端口。
 - 长时间无响应：`tail -f bot.log`，必要时按“停止/重启”执行。
