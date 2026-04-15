@@ -14,11 +14,14 @@
 import subprocess
 import json
 import os
+import shutil
+import tempfile
 from datetime import datetime
+from pathlib import Path
 from typing import Dict, Any
 
 from _paths import IZTRO_DIR
-IZTRO_PATH = str(IZTRO_DIR)
+IZTRO_PATH = Path(IZTRO_DIR)
 
 # 英文到中文映射
 EN_TO_CN = {
@@ -38,6 +41,78 @@ EN_TO_CN = {
     'tianma': '天马',
     'success': '成功',
 }
+
+
+def _load_package_json(repo_dir: Path) -> dict:
+    """读取 Node 仓库 package.json。"""
+    package_json = repo_dir / "package.json"
+    if not package_json.exists():
+        raise RuntimeError(f"缺少 package.json: {package_json}")
+    try:
+        return json.loads(package_json.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"package.json 解析失败: {package_json}: {exc}") from exc
+
+
+def _resolve_node_package_entry(repo_dir: Path, fallback: str = "lib/index.js") -> Path:
+    """按 package.json main 字段解析入口文件。"""
+    package_meta = _load_package_json(repo_dir)
+    entry = package_meta.get("main") or fallback
+    return repo_dir / entry
+
+
+def _has_npm_script(repo_dir: Path, script_name: str) -> bool:
+    """判断 package.json 是否声明了指定 npm script。"""
+    package_meta = _load_package_json(repo_dir)
+    scripts = package_meta.get("scripts", {})
+    return isinstance(scripts, dict) and script_name in scripts
+
+
+def _run_npm_command(repo_dir: Path, args: list[str], timeout: int) -> subprocess.CompletedProcess:
+    """执行 npm 命令并保留错误上下文。"""
+    npm_bin = shutil.which("npm")
+    if not npm_bin:
+        raise RuntimeError("未找到 npm，无法自动准备 iztro 依赖")
+
+    result = subprocess.run(
+        [npm_bin, *args],
+        cwd=repo_dir,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+        env=dict(os.environ),
+    )
+    if result.returncode != 0:
+        stderr = result.stderr.strip()
+        stdout = result.stdout.strip()
+        detail = stderr or stdout or "无输出"
+        raise RuntimeError(f"npm {' '.join(args)} 失败: {detail}")
+    return result
+
+
+def _ensure_iztro_ready(repo_dir: Path) -> Path:
+    """确保 iztro 已安装依赖并生成入口文件。"""
+    repo_dir = Path(repo_dir)
+    node_modules_dir = repo_dir / "node_modules"
+    entry_path = _resolve_node_package_entry(repo_dir)
+
+    if node_modules_dir.exists() and entry_path.exists():
+        return entry_path
+
+    if not node_modules_dir.exists():
+        _run_npm_command(repo_dir, ["install", "--no-fund", "--no-audit"], timeout=300)
+
+    entry_path = _resolve_node_package_entry(repo_dir)
+    if not entry_path.exists() and _has_npm_script(repo_dir, "build"):
+        _run_npm_command(repo_dir, ["run", "build"], timeout=300)
+        entry_path = _resolve_node_package_entry(repo_dir)
+
+    if not entry_path.exists():
+        raise RuntimeError(
+            f"iztro 入口缺失: {entry_path}；已尝试自动安装/构建，请检查 {repo_dir / 'package.json'}"
+        )
+
+    return entry_path
 
 def translate_value(obj):
     """递归翻译英文值为中文"""
@@ -86,9 +161,10 @@ class FortelZiweiCalculator:
         gender_en = 'male' if self.gender in ['male', '男', 'm'] else 'female'
         as_of = as_of or datetime.now()
         as_of_shichen = self._hour_to_shichen(as_of.hour)
+        entry_path = _ensure_iztro_ready(IZTRO_PATH)
         
         js_script = f"""
-        const {{ astro }} = require('{IZTRO_PATH}/lib/index.js');
+        const {{ astro }} = require({json.dumps(str(entry_path))});
         try {{
             const result = astro.bySolar(
                 '{self.birth_dt.year}-{self.birth_dt.month:02d}-{self.birth_dt.day:02d}',
@@ -126,21 +202,33 @@ class FortelZiweiCalculator:
             process.exit(1);
         }}
         """
-        
-        temp_file = '/tmp/native_iztro.js'
-        with open(temp_file, 'w', encoding='utf-8') as f:
-            f.write(js_script)
-        
-        env = dict(os.environ)
-        env["TZ"] = "Asia/Shanghai"
-        result = subprocess.run(['node', temp_file], capture_output=True, text=True, timeout=30, env=env)
-        
-        if result.returncode != 0:
-            raise RuntimeError(f"iztro原生算法执行失败: {result.stderr}")
-        
+
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as temp_file:
+            temp_file.write(js_script)
+            temp_path = temp_file.name
+
         try:
-            data = json.loads(result.stdout)
-            # 翻译英文为中文
-            return translate_value(data)
-        except json.JSONDecodeError as e:
-            raise RuntimeError(f"iztro输出解析失败: {e}")
+            env = dict(os.environ)
+            env["TZ"] = "Asia/Shanghai"
+            result = subprocess.run(
+                ['node', temp_path],
+                capture_output=True,
+                text=True,
+                timeout=30,
+                env=env,
+            )
+
+            if result.returncode != 0:
+                stderr = result.stderr.strip() or result.stdout.strip()
+                raise RuntimeError(f"iztro原生算法执行失败: {stderr}")
+
+            try:
+                data = json.loads(result.stdout)
+                return translate_value(data)
+            except json.JSONDecodeError as e:
+                raise RuntimeError(f"iztro输出解析失败: {e}")
+        finally:
+            try:
+                os.unlink(temp_path)
+            except FileNotFoundError:
+                pass
