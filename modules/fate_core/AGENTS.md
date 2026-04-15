@@ -10,6 +10,8 @@
 modules/fate_core/
 ├── AGENTS.md
 └── src/fate_core/
+    ├── cli.py
+    ├── __main__.py
     ├── adapters/
     ├── contracts/
     ├── kernel/
@@ -20,6 +22,7 @@ modules/fate_core/
 
 ## 职责边界
 
+- `cli.py` / `__main__.py`：命令行入口；负责 Agent / OpenClaw / Harness 的标准化调用面，不下沉到底层算法。
 - `contracts/`：字段契约与 profile 加载；禁止依赖 Telegram / FastAPI。
 - `adapters/`：唯一允许接触外部成熟 repo 或遗留 calculator 的地方。
 - `providers/`：按字段组装配纯命理输出；允许调用 adapter 提供的运行时与遗留 helper。

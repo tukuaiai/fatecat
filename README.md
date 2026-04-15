@@ -71,6 +71,12 @@ python3 -m venv .venv
 make install
 ```
 
+安装后会提供统一 CLI：
+
+```bash
+.venv/bin/fatecat
+```
+
 ### 3. 初始化配置
 
 ```bash
@@ -106,6 +112,46 @@ make status
 cd modules/telegram
 ../../.venv/bin/python start.py bot
 ```
+
+## CLI 调用
+
+### 纯命理分析
+
+```bash
+.venv/bin/fatecat pure-analysis --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市"}' --pretty
+```
+
+也支持把现有 API 请求 JSON 直接通过 `stdin` 传入：
+
+```bash
+cat request.json | .venv/bin/fatecat pure-analysis --pretty
+```
+
+### 健康检查
+
+```bash
+.venv/bin/fatecat health --mode pure --json
+.venv/bin/fatecat health --mode delivery --json
+```
+
+### 启动交付层
+
+```bash
+.venv/bin/fatecat serve api
+.venv/bin/fatecat serve bot
+```
+
+## Agent 一键部署
+
+FateCat 现在提供面向 OpenClaw / Harness / 其他 Agent 的非交互自举入口：
+
+```bash
+make bootstrap-agent
+make bootstrap-openclaw
+make bootstrap-harness
+```
+
+机器可读部署清单位于 `assets/deploy/agent_manifest.json`，说明文档位于 `assets/docs/Agent 一键部署.md`。
 
 ## 关键目录说明
 

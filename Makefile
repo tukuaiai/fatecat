@@ -7,7 +7,7 @@ PIP := .venv/bin/pip
 RUFF := .venv/bin/ruff
 PYTEST := .venv/bin/pytest
 
-.PHONY: help venv install install-dev clean lint format test check run start stop status
+.PHONY: help venv install install-dev clean lint format test check run start stop status cli-health bootstrap-agent bootstrap-openclaw bootstrap-harness
 
 help:
 	@echo "FateCat 常用命令:"
@@ -16,6 +16,9 @@ help:
 	@echo "    make venv        - 创建虚拟环境"
 	@echo "    make install     - 安装依赖"
 	@echo "    make install-dev - 安装开发依赖"
+	@echo "    make bootstrap-agent     - 通用 Agent 一键部署"
+	@echo "    make bootstrap-openclaw  - OpenClaw 一键部署"
+	@echo "    make bootstrap-harness   - Harness 一键部署"
 	@echo "    make clean       - 清理缓存和构建产物"
 	@echo "    make reset       - 重建虚拟环境"
 	@echo ""
@@ -24,6 +27,7 @@ help:
 	@echo "    make format      - 代码格式化 (ruff)"
 	@echo "    make test        - 运行测试 (pytest)"
 	@echo "    make check       - 完整检查 (lint + test)"
+	@echo "    make cli-health  - CLI 健康检查"
 	@echo ""
 	@echo "  运行模块:"
 	@echo "    make run         - 前台运行（调试用）"
@@ -44,12 +48,12 @@ venv:
 
 install: venv
 	@echo "安装依赖..."
-	$(PIP) install -q -r modules/telegram/requirements.txt
+	$(PIP) install -q -e .
 	@echo "✅ 依赖安装完成"
 
 install-dev: install
 	@echo "安装开发依赖..."
-	$(PIP) install -q -r requirements-dev.txt
+	$(PIP) install -q -e '.[dev]'
 	@echo "✅ 开发依赖安装完成"
 
 clean:
@@ -67,7 +71,7 @@ reset: clean
 	rm -rf .venv
 	python3 -m venv .venv
 	$(PIP) install -q --upgrade pip
-	$(PIP) install -q -r modules/telegram/requirements.txt
+	$(PIP) install -q -e .
 	@echo "✅ 虚拟环境重建完成"
 
 lock:
@@ -118,6 +122,18 @@ check: lint test
 syntax:
 	$(PYTHON) -m py_compile modules/telegram/src/bot.py
 	@echo "✅ 语法检查通过"
+
+cli-health: install
+	$(PYTHON) -m fate_core health --mode pure --json
+
+bootstrap-agent:
+	bash assets/deploy/bootstrap_agent.sh --profile general --write-env-if-missing
+
+bootstrap-openclaw:
+	bash assets/deploy/bootstrap_agent.sh --profile openclaw --write-env-if-missing
+
+bootstrap-harness:
+	bash assets/deploy/bootstrap_agent.sh --profile harness --write-env-if-missing
 
 # ==================== 运行模块 ====================
 

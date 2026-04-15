@@ -26,7 +26,7 @@ fatecat/
 │   ├── config/                    # 配置模板与配置文件
 │   ├── data/                      # 静态数据
 │   ├── database/                  # schema 等静态数据库资产
-│   ├── deploy/                    # 打包部署脚本
+│   ├── deploy/                    # 打包部署脚本与 Agent 自举脚本
 │   ├── docs/                      # 文档与历史记录
 │   ├── fate/                      # 字段 profile / 输出配置
 │   └── vendor/                    # 外部成熟仓库，只读
@@ -46,6 +46,7 @@ fatecat/
 │       ├── scripts/
 │       ├── output/
 │       └── start.py
+├── .venv/bin/fatecat              # 安装后可用的统一 CLI
 ├── scripts/
 └── tests/
 ```
@@ -201,6 +202,10 @@ make test
 make start
 make stop
 make status
+make bootstrap-openclaw
+make bootstrap-harness
+.venv/bin/fatecat health --mode pure --json
+.venv/bin/fatecat pure-analysis --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042}'
 ```
 
 ---

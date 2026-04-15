@@ -32,6 +32,9 @@ backups/
 *.log
 logs/
 services/telegram/output/
+modules/telegram/output/
+modules/telegram/complete_result.json
+modules/telegram/complete_integration_result.json
 
 # OS
 .DS_Store
