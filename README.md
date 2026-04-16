@@ -16,11 +16,14 @@
 <p>
   <a href="#overview">项目概览</a> ·
   <a href="#capabilities">核心能力</a> ·
+  <a href="#modes">模式选择</a> ·
   <a href="#quick-start">快速开始</a> ·
+  <a href="#workflow">推荐工作流</a> ·
   <a href="#cli">CLI 调用</a> ·
   <a href="#delivery">Telegram / API</a> ·
   <a href="#agent">Agent 一键部署</a> ·
   <a href="#layout">目录结构</a> ·
+  <a href="#faq">FAQ</a> ·
   <a href="#disclaimer">免责声明</a>
 </p>
 
@@ -43,6 +46,12 @@
 > - FateCat Repo：`https://github.com/tukuaiai/fatecat`
 > - CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
 
+<p align="center">
+  <a href="./assets/docs/Agent%20%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2.md"><img src="https://img.shields.io/badge/📦_Agent_一键部署-查看文档-6C47FF?style=for-the-badge" alt="Agent 一键部署文档"></a>
+  <a href="./assets/docs/Telegram%20Bot%20%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%87%8D%E5%90%AF%E6%8C%87%E5%8D%97.md"><img src="https://img.shields.io/badge/🤖_Telegram_启动-查看文档-26A5E4?style=for-the-badge" alt="Telegram 启动指南"></a>
+  <a href="./assets/docs/%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.md"><img src="https://img.shields.io/badge/🗂️_目录结构-查看文档-2E8B57?style=for-the-badge" alt="当前目录结构"></a>
+</p>
+
 <a id="overview"></a>
 
 ## 项目概览
@@ -62,6 +71,10 @@ FateCat 当前明确采用“胶水层”定位：
 - Telegram / FastAPI 只负责交付、编排、适配与对外接口。
 - 配置、数据、schema、文档、古籍语料统一收敛到 `assets/`。
 - 数据库、队列、日志等运行态内容统一放到 `runtime/` 或模块输出目录。
+
+一句话总结：
+
+> **TradeCat / 外部成熟仓库负责更专业的排盘，FateCat 负责把排盘结果变成 AI 友好的稳定输入，再交给 Telegram / API / Agent 使用。**
 
 <a id="capabilities"></a>
 
@@ -95,6 +108,23 @@ FateCat 当前明确采用“胶水层”定位：
 
 - `assets/data/classics/` 已收敛命理古籍与基础知识语料，可用于后续检索、切片、RAG 或提示词构建。
 - `assets/data/` 同时承载城市坐标等静态数据，不与运行态数据混放。
+
+<a id="modes"></a>
+
+## 你该用哪种模式
+
+| 场景 | 推荐入口 | 是否要求 `FATE_BOT_TOKEN` | 说明 |
+|------|----------|---------------------------|------|
+| 本地调试、脚本串联、先排盘再喂 AI | `fatecat pure-analysis` | 否 | 最稳定、最适合结构化 JSON 输出 |
+| 想直接聊天式使用 | `fatecat serve bot` | 是 | Telegram Bot 交互最直接 |
+| 要接服务、工作流、上层系统 | `fatecat serve api` | 否 | 适合 HTTP / Webhook / 自建前端 |
+| OpenClaw / Harness / 自动化 Agent | `make bootstrap-openclaw` / `make bootstrap-harness` | 纯分析否，Bot 是 | 非交互部署最省事 |
+
+如果你只想避免 AI 乱编，默认推荐：
+
+1. 先用 `TradeCat` 或其他专业来源完成排盘
+2. 再用 `FateCat CLI` 输出稳定结构化结果
+3. 最后把 JSON 交给 AI 做解释、总结和扩展
 
 <a id="quick-start"></a>
 
@@ -198,6 +228,27 @@ make status
 .venv/bin/fatecat serve api
 .venv/bin/fatecat serve bot
 ```
+
+<a id="workflow"></a>
+
+## 推荐工作流
+
+```text
+TradeCat / 专业排盘
+        ↓
+FateCat pure-analysis 输出稳定 JSON
+        ↓
+AI 基于结构化字段做命理解读
+        ↓
+Telegram / API / Agent 继续交付
+```
+
+推荐这样做，不推荐让 AI 直接“口算排盘”的原因很简单：
+
+- 排盘是结构化计算问题，优先交给成熟算法和专业排盘系统。
+- 解读是生成式问题，适合交给 AI 在稳定字段之上做总结和延展。
+- 把“计算”和“解释”拆开，能明显减少字段漂移、术语错位和模型脑补。
+- 同一份 JSON 可以复用给 Telegram、API、脚本和 Agent，不需要每条链路重写。
 
 <a id="cli"></a>
 
@@ -404,6 +455,45 @@ tail -f modules/telegram/output/logs/bot.log
 .venv/bin/fatecat health --mode pure --json
 .venv/bin/fatecat health --mode delivery --json
 ```
+
+<a id="faq"></a>
+
+## FAQ
+
+### 1. 是不是只配置一个 `FATE_BOT_TOKEN` 就够了？
+
+不是所有模式都需要。
+
+- 只跑 `CLI / pure-analysis`：通常不需要 `FATE_BOT_TOKEN`
+- 跑 `Telegram Bot`：必须配置 `FATE_BOT_TOKEN`
+- 跑 `FastAPI`：至少要配置监听地址与端口，是否需要 Bot Token 取决于你是否同时启 Bot
+- 走代理：补 `FATE_BOT_PROXY_URL=http://127.0.0.1:7890`
+
+### 2. 为什么不直接让 AI 自己排盘？
+
+因为这是当前最容易失真的环节。
+
+- AI 适合解释、总结、风格化表达
+- 不适合在缺少稳定字段约束时临场“脑补排盘”
+- FateCat 的作用就是先把输入和输出字段稳定下来，再让 AI 做后续分析
+
+### 3. 为什么坚持保留外部成熟仓库，只做胶水层？
+
+这是当前性价比最高、也最稳定的路线。
+
+- 成熟排盘仓库已经解决了大量历法、节气、真太阳时和命理细节问题
+- 直接重写底层算法，风险高、维护成本大、回归面也会急剧扩大
+- FateCat 把重点放在“统一字段、稳定入口、可部署交付、AI 友好输出”上，更符合仓库定位
+
+### 4. 为什么目录要拆成 `assets/`、`modules/`、`runtime/`？
+
+为了把静态真相源、模块代码和运行态结果彻底分开。
+
+- `assets/`：配置模板、文档、schema、古籍语料、外部只读依赖
+- `modules/`：纯分析内核和 Telegram / API 交付层代码
+- `runtime/`：数据库、日志、其他运行态产物
+
+这样做的好处是：路径清晰、职责不混、迁移和部署时也更稳定。
 
 <a id="disclaimer"></a>
 
