@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 from zoneinfo import ZoneInfo
 
 from _paths import FATE_CORE_SRC_DIR
-from branding import attach_branding, get_branding_payload
+from branding import attach_branding, get_branding_payload, get_disclaimer_payload
 from utils.timezone import now_cn
 
 if str(FATE_CORE_SRC_DIR) not in sys.path:
@@ -38,6 +38,10 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 
 def _branding_model() -> BrandingInfo:
     return BrandingInfo(**get_branding_payload())
+
+
+def _disclaimer_model() -> str:
+    return get_disclaimer_payload()
 
 
 @app.exception_handler(HTTPException)
@@ -195,6 +199,7 @@ def calculate_bazi(req: BaziRequest, user_id: Optional[str] = None):
             record_id = db.save_record(user_id, "bazi", biz_data)
         
         return BaziResponse(
+            disclaimer=_disclaimer_model(),
             success=True,
             data=data,
             meta=Meta(calculatedAt=now_cn().isoformat(), recordId=record_id),
@@ -202,6 +207,7 @@ def calculate_bazi(req: BaziRequest, user_id: Optional[str] = None):
         )
     except Exception as e:
         return BaziResponse(
+            disclaimer=_disclaimer_model(),
             success=False,
             error=str(e),
             meta=Meta(calculatedAt=now_cn().isoformat()),
@@ -223,6 +229,7 @@ def calculate_liuyao_factor(req: LiuyaoFactorRequest):
         )
         data = LiuyaoFactorData(**factor.to_dict())
         return LiuyaoFactorResponse(
+            disclaimer=_disclaimer_model(),
             success=True,
             data=data,
             meta=Meta(calculatedAt=now_cn().isoformat(), algorithm="liuyao-divicast", version="1.0.0"),
@@ -230,6 +237,7 @@ def calculate_liuyao_factor(req: LiuyaoFactorRequest):
         )
     except Exception as e:
         return LiuyaoFactorResponse(
+            disclaimer=_disclaimer_model(),
             success=False,
             error=str(e),
             meta=Meta(calculatedAt=now_cn().isoformat(), algorithm="liuyao-divicast", version="1.0.0"),

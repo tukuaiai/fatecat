@@ -166,6 +166,7 @@ class BrandingInfo(BaseModel):
 
 
 class BaziResponse(BaseModel):
+    disclaimer: str
     success: bool
     data: Optional[BaziData] = None
     error: Optional[str] = None
@@ -188,6 +189,7 @@ class LiuyaoFactorData(BaseModel):
 
 
 class LiuyaoFactorResponse(BaseModel):
+    disclaimer: str
     success: bool
     data: Optional[LiuyaoFactorData] = None
     error: Optional[str] = None

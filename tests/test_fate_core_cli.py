@@ -81,6 +81,8 @@ def test_main_pure_analysis_reads_inline_json(monkeypatch, capsys):
     result = json.loads(captured.out)
 
     assert exit_code == 0
+    assert next(iter(result)) == "disclaimer"
+    assert "本项目及AI分析结果仅供传统文化研究、算法测试与娱乐参考。" in result["disclaimer"]
     assert result["success"] is True
     assert result["profile"] == "pure_analysis"
     assert result["data"] == expected_result

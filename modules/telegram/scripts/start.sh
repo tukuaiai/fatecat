@@ -62,6 +62,18 @@ get_python() {
   fi
 }
 
+print_disclaimer() {
+  python3 - <<'PY'
+import json
+from pathlib import Path
+
+branding = json.loads(Path("assets/config/branding.json").read_text(encoding="utf-8"))
+print(branding["disclaimerTitle"])
+print(branding["disclaimerText"])
+print("")
+PY
+}
+
 start() {
   load_env
   mkdir -p "$LOG_DIR"
@@ -75,6 +87,8 @@ start() {
   fi
 
   PY_BIN=$(get_python)
+  cd "$REPO_ROOT"
+  print_disclaimer
   echo "==> 启动 FateCat Bot..."
   cd "$MODULE_DIR"
   setsid bash -c "exec \"$PY_BIN\" start.py bot" > "$LOG_DIR/nohup.out" 2>&1 < /dev/null &

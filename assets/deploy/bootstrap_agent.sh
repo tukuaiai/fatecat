@@ -41,6 +41,9 @@ import json
 from pathlib import Path
 
 branding = json.loads(Path("assets/config/branding.json").read_text(encoding="utf-8"))
+print(branding["disclaimerTitle"])
+print(branding["disclaimerText"])
+print("")
 print(branding["heroTitle"])
 print(branding["sponsorText"])
 print(branding["tagline"])
@@ -76,6 +79,9 @@ echo "==> 纯分析依赖检查"
 cat <<EOF
 
 ✅ Agent 自举完成
+
+⚠️ 免责声明
+本项目及AI分析结果仅供传统文化研究、算法测试与娱乐参考。命理学非精密科学，命运掌握在自己手中。使用者因轻信或误读本程序结果而产生的任何心理、财务及生活决策后果，本开源项目及开发者概不负责。
 
 交易猫 TradeCat｜世界最强的专业命理排盘与 AI 命理分析基础设施
 本项目由交易猫 TradeCat 赞助与支持。
