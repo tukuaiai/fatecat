@@ -731,6 +731,30 @@ tail -f modules/telegram/output/logs/bot.log
 - `FateCat Repo`：`https://github.com/tukuaiai/fatecat`
 - `CA`：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
 
+## Contributors
+
+> 以下名单为 FateCat 当前直接集成或明确依赖的上游开源作者 / 维护者致谢，不等同于 FateCat 仓库的直接 Git 提交贡献者。
+
+| 上游项目 | 作者 / 维护者 | FateCat 中的用途 |
+| --- | --- | --- |
+| `lunar-python` | `6tail` | 核心历法、节气、四柱基础计算 |
+| `bazi-1` | `pythontesting`（源码头注释）；本地镜像来源 `nicktaobo` | 五行评分、神煞、调候、断语字典 |
+| `sxwnl` | 寿星万年历相关算法来源；本地镜像来源 `nicktaobo` | 高精度历法、天文与时间修正 |
+| `paipan` | `hkargc`；源码内注明参考 `bieyu.com` 与寿星万年历许剑伟老师 | 真太阳时、早晚子时规则 |
+| `fortel-ziweidoushu` | `Airic Yu`（`airicyu`） | 紫微斗数排盘 |
+| `iztro` | `SylarLong` | 紫微斗数原生算法 |
+| `dantalion` | `Kito Kurone`（`kurone-kito` / 黒音キト） | 现代八字人格分析 |
+| `mikaboshi` | `Hiroki Minagawa` | 风水罗盘参考算法 |
+| `Chinese-Divination` | `Bowen Li`、`Can Zhao` | 六爻、梅花、易学扩展 |
+| `holiday-and-chinese-almanac-calendar` | `zqzess` | 黄历与全年 ICS 数据 |
+| `chinese-calendar` | `Lirian Su`（`LKI`） | 节假日、调休、工作日判断 |
+| `js_astro` | `Yoshihiro Sakai` | 天文参考算法 |
+
+补充说明：
+
+- `Iching-master` 当前已接入，但本地快照未提供可靠作者元数据，暂未单独署名，待核实后可再补充。
+- 上游算法与资料是 FateCat 的能力基础之一；若后续新增 vendor 依赖，建议同步把作者与仓库来源补进本区块。
+
 ## Star History
 
 <p align="center">
