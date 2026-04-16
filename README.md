@@ -28,11 +28,14 @@
   <a href="#modes">模式选择</a> ·
   <a href="#architecture">架构与工作流</a> ·
   <a href="#quick-start">快速开始</a> ·
+  <a href="#contract">输入输出契约</a> ·
   <a href="#cli">CLI 调用</a> ·
   <a href="#delivery">Telegram / API</a> ·
   <a href="#agent">Agent 一键部署</a> ·
   <a href="#layout">目录结构</a> ·
+  <a href="#docs-map">文档地图</a> ·
   <a href="#faq">FAQ</a> ·
+  <a href="#contributing">参与协作</a> ·
   <a href="#disclaimer">免责声明</a>
 </p>
 
@@ -261,6 +264,89 @@ make status
 .venv/bin/fatecat health --mode delivery --json
 ```
 
+<a id="contract"></a>
+
+## 输入输出契约
+
+### `pure-analysis` 输入支持两种形态
+
+#### 1. 扁平输入
+
+```json
+{
+  "birthDateTime": "1990-01-01 08:00:00",
+  "gender": "男",
+  "longitude": 116.4074,
+  "latitude": 39.9042,
+  "birthPlace": "北京市",
+  "useTrueSolarTime": true
+}
+```
+
+#### 2. API 请求结构
+
+```json
+{
+  "name": "张三",
+  "gender": "male",
+  "birthDate": "1990-05-15",
+  "birthTime": "14:30:00",
+  "birthPlace": {
+    "name": "深圳",
+    "longitude": 114.1,
+    "latitude": 22.5,
+    "timezone": "Asia/Shanghai"
+  },
+  "options": {
+    "useTrueSolarTime": true,
+    "calendarType": "solar"
+  }
+}
+```
+
+### `pure-analysis` 输出顶层结构
+
+```json
+{
+  "success": true,
+  "profile": "pure_analysis",
+  "data": { "...": "命理分析字段集合" },
+  "disclaimer": "本项目及AI分析结果仅供传统文化研究、算法测试与娱乐参考。",
+  "branding": {
+    "name": "交易猫 TradeCat",
+    "tradecatRepo": "https://github.com/tukuaiai/tradecat",
+    "fatecatRepo": "https://github.com/tukuaiai/fatecat",
+    "ca": "0x8a99b8d53eff6bc331af529af74ad267f3167777"
+  }
+}
+```
+
+### `pure_analysis` Profile 当前覆盖的字段分组
+
+| 分组 | 说明 | 代表字段 |
+|------|------|----------|
+| `base_chart` | 基础命盘与结构字段 | `fourPillars` `hiddenStems` `tenGods` `fiveElements` |
+| `fortune` | 大运、流年、流月等运势字段 | `majorFortune` `annualFortune` `monthlyFortune` |
+| `classical` | 传统命理扩展字段 | `boneWeight` `mingGua` `geju` `yongShen` |
+
+当前 `pure_analysis` profile 真相源见：
+
+- `assets/fate/profiles/pure_analysis.json`
+
+### 你最该依赖的稳定字段
+
+如果你要继续把结果喂给 AI，优先依赖这些字段：
+
+- `data.fourPillars`
+- `data.dayMaster`
+- `data.fiveElements`
+- `data.geju`
+- `data.yongShen`
+- `data.majorFortune`
+- `data.annualFortune`
+- `disclaimer`
+- `branding`
+
 <a id="cli"></a>
 
 ## CLI 调用
@@ -349,6 +435,29 @@ tail -f modules/telegram/output/logs/bot.log
 
 ```bash
 .venv/bin/fatecat serve api
+```
+
+### API 请求示例
+
+```bash
+curl -X POST "http://127.0.0.1:8001/api/v1/bazi/pure-analysis" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "张三",
+    "gender": "male",
+    "birthDate": "1990-05-15",
+    "birthTime": "14:30:00",
+    "birthPlace": {
+      "name": "深圳",
+      "longitude": 114.1,
+      "latitude": 22.5,
+      "timezone": "Asia/Shanghai"
+    },
+    "options": {
+      "useTrueSolarTime": true,
+      "calendarType": "solar"
+    }
+  }'
 ```
 
 ### 返回约定
@@ -482,6 +591,21 @@ make bootstrap-openclaw
 make bootstrap-harness
 ```
 
+<a id="docs-map"></a>
+
+## 文档地图
+
+| 文档 | 用途 | 适合什么时候看 |
+|------|------|----------------|
+| `assets/docs/Agent 一键部署.md` | Agent / OpenClaw / Harness 自举说明 | 你想一键部署或做自动化 |
+| `assets/docs/Telegram Bot 启动与重启指南.md` | Bot 启动、重启、日志与代理说明 | 你要跑 Telegram Bot |
+| `assets/docs/当前目录结构.md` | 当前实际目录组织说明 | 你要理解仓库分层 |
+| `assets/docs/系统架构图.md` | 较完整的系统结构说明 | 你要看整体架构 |
+| `assets/docs/序列图.md` | 链路时序说明 | 你要看请求流程 |
+| `assets/docs/功能清单.md` | 字段能力与功能总览 | 你要评估命理分析覆盖面 |
+| `assets/docs/功能状态.md` | 计算/呈现开关口径 | 你要调整报告显示范围 |
+| `assets/vendor/README.md` | 外部成熟仓库依赖说明 | 你要核对底层依赖 |
+
 ## 当前重点
 
 - 优先沉淀 `modules/fate_core/` 的纯命理分析模块
@@ -562,6 +686,24 @@ tail -f modules/telegram/output/logs/bot.log
 - CLI JSON、API 响应、Telegram 文本和报告都统一附带 `disclaimer`
 - branding 字段和文案用于保留来源、赞助信息和部署出口一致性
 - 这样做既满足法律风险提醒，也避免不同入口出现“同仓库不同口径”
+
+<a id="contributing"></a>
+
+## 参与协作
+
+欢迎通过以下方式协作：
+
+- 提交 Issue：`https://github.com/tukuaiai/fatecat/issues`
+- 提交 Pull Request：`https://github.com/tukuaiai/fatecat/pulls`
+- 讨论排盘基础设施：`https://github.com/tukuaiai/tradecat`
+
+协作时建议优先遵守这些约束：
+
+- 纯命理分析优先落到 `modules/fate_core/`
+- 交付层入口优先落到 `modules/telegram/`
+- 输出字段先改 `assets/fate/`
+- 架构/目录调整后同步更新 `AGENTS.md` 与相关文档
+- 不直接修改 `assets/vendor/` 下外部成熟仓库源码
 
 <a id="disclaimer"></a>
 
