@@ -24,6 +24,14 @@
   <a href="#disclaimer">免责声明</a>
 </p>
 
+<p><strong>Star History</strong></p>
+
+<p>
+  <a href="https://star-history.com/#tukuaiai/fatecat&Date">
+    <img src="https://api.star-history.com/svg?repos=tukuaiai/fatecat&type=Date" alt="FateCat Star History Chart">
+  </a>
+</p>
+
 </div>
 
 > [!WARNING]
