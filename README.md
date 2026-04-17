@@ -23,16 +23,19 @@
 </p>
 
 <p>
+  <a href="#overview">项目总览</a> ·
   <a href="#why-fatecat">为什么需要</a> ·
   <a href="#highlights">核心亮点</a> ·
   <a href="#modes">模式选择</a> ·
   <a href="#architecture">架构与工作流</a> ·
   <a href="#quick-start">快速开始</a> ·
   <a href="#contract">输入输出契约</a> ·
+  <a href="#ai-template">AI / Agent 模板</a> ·
   <a href="#cli">CLI 调用</a> ·
   <a href="#delivery">Telegram / API</a> ·
   <a href="#agent">Agent 一键部署</a> ·
   <a href="#layout">目录结构</a> ·
+  <a href="#roadmap">路线图</a> ·
   <a href="#docs-map">文档地图</a> ·
   <a href="#faq">FAQ</a> ·
   <a href="#contributing">参与协作</a> ·
@@ -57,6 +60,18 @@
 > - TradeCat Repo：`https://github.com/tukuaiai/tradecat`
 > - FateCat Repo：`https://github.com/tukuaiai/fatecat`
 > - CA：`0x8a99b8d53eff6bc331af529af74ad267f3167777`
+
+<a id="overview"></a>
+
+## 项目总览
+
+| 维度 | 说明 |
+|------|------|
+| 项目角色 | FateCat 是“专业排盘结果 → AI 分析结果”之间的结构化中间层 |
+| 最适合谁 | 需要把命盘稳定交给 CLI、Telegram、FastAPI、OpenClaw、Harness 或其他 Agent 的开发者 |
+| 推荐链路 | `TradeCat / 专业排盘` → `FateCat pure-analysis` → `AI / Telegram / API / Agent` |
+| 核心真相源 | `assets/fate/` 定义输出字段，`assets/vendor/` 提供成熟算法，`assets/config/` 统一配置 |
+| 明确边界 | 不重写所有底层历法、不让 AI 直接口算排盘、不在 `assets/vendor/` 上魔改源码 |
 
 <a id="why-fatecat"></a>
 
@@ -87,16 +102,23 @@ FateCat 的定位不是重写所有底层历法与命理算法，而是把已经
 - **输出带来源与免责声明**：CLI、API、Telegram 报告统一携带 `branding` / `disclaimer`，保证来源信息和风险提醒不丢失。
 - **静态资产统一收敛**：配置、文档、schema、古籍语料、外部成熟仓库都统一放进 `assets/`，运行态只留在 `runtime/`。
 
+## 可信性与边界
+
+- **排盘交给成熟算法**：底层历法、节气、真太阳时、传统字段优先复用 `assets/vendor/` 中的成熟仓库，不在 FateCat 内重新发明。
+- **解释交给 `fate_core`**：纯命理分析逻辑集中在 `modules/fate_core/`，避免 Telegram / FastAPI / Bot UI 逻辑反向污染分析层。
+- **字段由 profile 驱动**：`assets/fate/profiles/pure_analysis.json` 是当前稳定输出契约真相源，AI / Agent 应优先依赖它。
+- **来源与风险提示强制保留**：CLI、API、Telegram、错误输出统一附带 `branding` 与 `disclaimer`，方便下游继续保留来源与免责声明。
+
 <a id="modes"></a>
 
 ## 模式选择
 
-| 场景 | 推荐入口 | 是否要求 `FATE_BOT_TOKEN` | 说明 |
-|------|----------|---------------------------|------|
-| 本地调试、脚本串联、先排盘再喂 AI | `fatecat pure-analysis` | 否 | 最稳定、最适合结构化 JSON 输出 |
-| 想直接聊天式使用 | `fatecat serve bot` | 是 | Telegram Bot 交互最直接 |
-| 要接服务、工作流、上层系统 | `fatecat serve api` | 否 | 适合 HTTP / Webhook / 自建前端 |
-| OpenClaw / Harness / 自动化 Agent | `make bootstrap-openclaw` / `make bootstrap-harness` | 纯分析否，Bot 是 | 非交互部署最省事 |
+| 场景 | 推荐入口 | 输出形态 | 是否要求 `FATE_BOT_TOKEN` | 说明 |
+|------|----------|----------|---------------------------|------|
+| 本地调试、脚本串联、先排盘再喂 AI | `fatecat pure-analysis` | `stdout JSON` / 文件 JSON | 否 | 最稳定、最适合结构化输出 |
+| 想直接聊天式使用 | `fatecat serve bot` | Telegram 消息 / 报告 | 是 | 人工交互最直接 |
+| 要接服务、工作流、上层系统 | `fatecat serve api` | HTTP JSON | 否 | 适合 Webhook、自动化平台、自建前端 |
+| OpenClaw / Harness / 自动化 Agent | `make bootstrap-openclaw` / `make bootstrap-harness` | 非交互 CLI / 健康检查 | 纯分析否，Bot 是 | 最适合批处理与自动部署 |
 
 如果你的目标只是“避免 AI 乱编”，默认推荐：
 
@@ -145,6 +167,29 @@ Telegram / API / Agent 继续交付
 <a id="quick-start"></a>
 
 ## 快速开始
+
+### 0. 最短路径
+
+- 只做纯命理排盘 + AI 分析：`make bootstrap-agent` → `.venv/bin/fatecat health --mode pure --json` → `.venv/bin/fatecat pure-analysis ...`
+- 需要 Telegram / API：先复制 `assets/config/.env`，填写 `FATE_BOT_TOKEN` 与 `FATE_BOT_PROXY_URL`，再执行 `.venv/bin/fatecat serve both`
+- 需要 Agent 集成：直接跳到 [Agent 一键部署](#agent)，优先用 `make bootstrap-openclaw` 或 `make bootstrap-harness`
+- 快速跳转：[输入输出契约](#contract) · [CLI 调用](#cli) · [Telegram / API](#delivery) · [目录结构](#layout)
+
+### 第一次跑通纯分析
+
+如果你只想先验证“结构化排盘 → JSON 输出 → 再喂给 AI”这条主链路，直接执行：
+
+```bash
+cat > request.json <<'EOF'
+{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市"}
+EOF
+
+make bootstrap-agent
+.venv/bin/fatecat pure-analysis --input-file request.json --output-file output/pure_analysis.json --pretty
+cat output/pure_analysis.json
+```
+
+看到带 `success`、`data`、`disclaimer`、`branding` 的 JSON，就说明主路径已经跑通。
 
 ### 1. 环境要求
 
@@ -196,6 +241,18 @@ make install
 
 ```bash
 .venv/bin/fatecat
+```
+
+如果你已经执行：
+
+```bash
+source .venv/bin/activate
+```
+
+后续也可以直接使用：
+
+```bash
+fatecat
 ```
 
 </details>
@@ -263,6 +320,14 @@ make status
 .venv/bin/fatecat health --mode pure --json
 .venv/bin/fatecat health --mode delivery --json
 ```
+
+### 6. 第一个 AI 投喂
+
+跑通 `pure-analysis` 后，下一步不要让 AI 自己“脑补排盘”，而是：
+
+1. 保留 `output/pure_analysis.json`
+2. 直接复用 [AI / Agent 分析模板](#ai-template)
+3. 让 AI 严格基于结构化字段做解释、总结和建议
 
 <a id="contract"></a>
 
@@ -346,6 +411,41 @@ make status
 - `data.annualFortune`
 - `disclaimer`
 - `branding`
+
+<a id="ai-template"></a>
+
+## AI / Agent 分析模板
+
+FateCat 的推荐姿势不是“让 AI 直接算命盘”，而是：
+
+- FateCat 负责稳定排盘和字段结构
+- AI / Agent 只负责基于结构化结果做解释、总结和建议
+- 下游输出必须保留 `disclaimer` 与 `branding`，不要把免责声明和来源信息吞掉
+
+下游分析时，建议强制遵守这 4 条规则：
+
+1. 只基于返回 JSON 分析，不得补造未返回的排盘字段。
+2. 字段缺失时直接写“未提供，无法判断”，不要脑补。
+3. 优先依赖 `data.fourPillars`、`data.dayMaster`、`data.fiveElements`、`data.geju`、`data.yongShen`、`data.majorFortune`、`data.annualFortune`。
+4. 输出顺序建议固定为：命局结构 → 五行强弱 → 格局 / 用神 → 大运 / 流年 → 落地建议。
+
+可以直接把下面这段模板交给任意 AI / Agent：
+
+```text
+你将收到 FateCat `pure-analysis` 返回的结构化 JSON。
+
+要求：
+1. 仅基于输入 JSON 分析，不得自行补造排盘信息。
+2. 如果某字段不存在，明确写“未提供，无法判断”。
+3. 输出最上方先保留 `disclaimer` 与 `branding`。
+4. 分析顺序固定为：
+   - 命局结构
+   - 日主与五行强弱
+   - 格局与用神
+   - 大运与流年重点
+   - 可执行建议
+5. 结论必须引用对应字段，不要脱离字段做泛化断言。
+```
 
 <a id="cli"></a>
 
@@ -576,20 +676,38 @@ fatecat/
 
 ## 常用命令
 
-```bash
-make help
-make install
-make install-dev
-make lint
-make test
-make start
-make stop
-make status
-make restart
-make bootstrap-agent
-make bootstrap-openclaw
-make bootstrap-harness
-```
+| 目标 | 命令 |
+|------|------|
+| 查看所有命令 | `make help` |
+| 安装基础依赖 | `make install` |
+| 安装开发依赖 | `make install-dev` |
+| 代码检查 | `make lint` |
+| 运行测试 | `make test` |
+| 启动后台服务 | `make start` |
+| 查看运行状态 | `make status` |
+| 重启后台服务 | `make restart` |
+| 停止后台服务 | `make stop` |
+| 通用 Agent 自举 | `make bootstrap-agent` |
+| OpenClaw 自举 | `make bootstrap-openclaw` |
+| Harness 自举 | `make bootstrap-harness` |
+
+<a id="roadmap"></a>
+
+## 路线图
+
+### 当前重点
+
+- 优先沉淀 `modules/fate_core/` 的纯命理分析模块
+- 按 `assets/fate/` 的配置持续扩展稳定字段
+- 保持 `assets/vendor/` 外部成熟仓库只读，不在本仓库重写底层算法
+- 持续优化 CLI / Agent / Telegram / API 的统一部署体验
+
+### 已经完成的结构收敛
+
+- 顶层结构已收敛为 `assets/`、`modules/`、`runtime/`
+- CLI、Telegram、FastAPI、Agent 统一共享 `branding` / `disclaimer`
+- Agent 自举已统一为 `bootstrap_agent.sh` + `agent_manifest.json`
+- 纯命理分析入口已独立为 `fatecat pure-analysis`
 
 <a id="docs-map"></a>
 
@@ -602,16 +720,9 @@ make bootstrap-harness
 | `assets/docs/当前目录结构.md` | 当前实际目录组织说明 | 你要理解仓库分层 |
 | `assets/docs/系统架构图.md` | 较完整的系统结构说明 | 你要看整体架构 |
 | `assets/docs/序列图.md` | 链路时序说明 | 你要看请求流程 |
-| `assets/docs/功能清单.md` | 字段能力与功能总览 | 你要评估命理分析覆盖面 |
+| `assets/docs/功能清单.md` | 字段能力与功能总览 | 你要评估当前覆盖面 |
 | `assets/docs/功能状态.md` | 计算/呈现开关口径 | 你要调整报告显示范围 |
 | `assets/vendor/README.md` | 外部成熟仓库依赖说明 | 你要核对底层依赖 |
-
-## 当前重点
-
-- 优先沉淀 `modules/fate_core/` 的纯命理分析模块
-- 按 `assets/fate/` 的配置输出稳定字段
-- 保持 `assets/vendor/` 外部成熟仓库只读，不在本仓库重写底层算法
-- 持续优化 CLI / Agent / Telegram / API 的统一部署体验
 
 ## 故障排查
 
@@ -621,10 +732,23 @@ make bootstrap-harness
 grep FATE_BOT_TOKEN assets/config/.env
 ```
 
+### 代理或 Telegram 不通
+
+```bash
+grep FATE_BOT_PROXY_URL assets/config/.env
+```
+
 ### 数据库检查
 
 ```bash
 sqlite3 runtime/database/bazi/bazi.db ".tables"
+```
+
+### 外部依赖缺失
+
+```bash
+.venv/bin/fatecat health --mode pure --json
+ls assets/vendor/github/iztro-main/lib/index.js
 ```
 
 ### 查看日志
@@ -686,6 +810,26 @@ tail -f modules/telegram/output/logs/bot.log
 - CLI JSON、API 响应、Telegram 文本和报告都统一附带 `disclaimer`
 - branding 字段和文案用于保留来源、赞助信息和部署出口一致性
 - 这样做既满足法律风险提醒，也避免不同入口出现“同仓库不同口径”
+
+### 6. 现在最成熟的一键安装命令是什么？
+
+当前仓库对自动化和人工环境都优先推荐：
+
+- 通用：`make bootstrap-agent`
+- OpenClaw：`make bootstrap-openclaw`
+- Harness：`make bootstrap-harness`
+
+这三条命令都会调用同一个非交互自举脚本 `assets/deploy/bootstrap_agent.sh`，比手动拼装环境更稳定。
+
+### 7. 想给 Agent 接入，最稳的方式是什么？
+
+优先走 CLI，而不是让 Agent 解析网页或模拟聊天流程。
+
+- 先执行 `fatecat health --mode pure --json`
+- 再执行 `fatecat pure-analysis`
+- 最后把输出 JSON 交给上层 Agent / LLM
+
+这样最省上下文、最适合自动化，也最不容易因为 UI 或文案变化导致链路失效。
 
 <a id="contributing"></a>
 
