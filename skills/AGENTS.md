@@ -12,7 +12,6 @@ skills/
 └── fatecat/
     ├── AGENTS.md
     ├── SKILL.md
-    ├── assets/
     ├── references/
     └── scripts/
 ```

@@ -10,9 +10,6 @@
 skills/fatecat/
 ├── AGENTS.md
 ├── SKILL.md
-├── assets/
-│   ├── env/
-│   └── request-examples/
 ├── references/
 │   ├── index.md
 │   ├── architecture.md
@@ -34,7 +31,6 @@ skills/fatecat/
 ## 职责边界
 
 - `SKILL.md`：只给操作手册，不承载大段背景资料。
-- `assets/`：只放 skill 自己的模板与示例；不放真实敏感配置。
 - `references/`：解释架构、命令、迁移与排障；引用仓库真相源，不复制 vendor 文档。
 - `scripts/`：包装 FateCat CLI，并负责把当前 skill 导出成独立 bundle。
 - `scripts/fatecat_runtime/`：当前 FateCat 项目的真实源码与运行时骨架；所有包装脚本都从这里起跳。
@@ -43,4 +39,4 @@ skills/fatecat/
 
 - `SKILL.md -> references/* + scripts/*`
 - `scripts/* -> embedded/exported scripts/fatecat_runtime`
-- 禁止把 `assets/config/.env`、真实 `.db`、`.venv/` 打进 skill 资产
+- 禁止把真实 `assets/config/.env`、真实 `.db`、`.venv/` 打进导出产物

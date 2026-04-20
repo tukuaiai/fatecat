@@ -12,6 +12,8 @@
 }
 ```
 
+这个最小 JSON 就是推荐的 smoke test 输入，无需再维护单独的 `request-examples/` 目录。
+
 ## 可接受别名
 
 - `birth_datetime`

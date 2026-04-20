@@ -10,7 +10,6 @@
 skills/fatecat/
 ├── SKILL.md                 # 触发入口
 ├── references/             # 长文档
-├── assets/                 # 示例与模板
 └── scripts/                # 包装脚本与导出脚本
      ├── *.sh               # 直接调用 FateCat CLI
      ├── fatecat_runtime/   # FateCat 真实源码根

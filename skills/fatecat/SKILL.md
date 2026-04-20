@@ -21,7 +21,7 @@ Trigger when any of these applies:
 - 这个 skill 不重写 `assets/vendor/` 下的成熟算法仓库，也不替代它们的原始文档。
 - 当前仓库的 FateCat 源码真相源已经位于 `skills/fatecat/scripts/fatecat_runtime/`；外层根目录只保留 skill 容器与版本元数据。
 - 这个 skill 不接受缺失核心输入的纯分析请求；最少需要 `birthDateTime`、`gender`、`longitude`、`latitude`。
-- 这个 skill 不应写入真实 `assets/config/.env`、真实运行态数据库或敏感凭据到 skill 资产区。
+- 这个 skill 不应把真实 `assets/config/.env`、真实运行态数据库或敏感凭据混入文档层或导出产物。
 
 ## Quick Reference
 
