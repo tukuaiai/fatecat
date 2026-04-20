@@ -1,0 +1,21 @@
+layer: "library"
+language: "typescript"
+
+tasks:
+  build:
+    command: "rslib build"
+    inputs:
+      - "src/**/*"
+      - "rslib.config.ts"
+      - "tsconfig.json"
+    outputs:
+      - "dist"
+  dev:
+    command: "rslib build --watch"
+    inputs:
+      - "src/**/*"
+      - "rslib.config.ts"
+      - "tsconfig.json"
+    outputs:
+      - "dist"
+    local: true

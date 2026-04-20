@@ -1,0 +1,19 @@
+project: Chinendar.xcodeproj
+retain_objc_accessible: true
+retain_public: true
+schemes:
+- Chinendar Mac
+- Chinendar Vision
+- Chinendar Watch
+- Chinendar iOS
+- Mac Widget Extension
+- Watch Widget Extension
+- iOS Widget Extension
+targets:
+- Chinendar Mac
+- Chinendar Vision
+- Chinendar Watch
+- Chinendar iOS
+- Mac Widget Extension
+- Watch Widget Extension
+- iOS Widget Extension

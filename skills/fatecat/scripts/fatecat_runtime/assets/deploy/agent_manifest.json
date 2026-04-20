@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "project": "fatecat",
+  "description": "面向 AI Agent 的 FateCat 自举与调用清单",
+  "envTemplate": "assets/config/agent.env.example",
+  "brandingConfig": "assets/config/branding.json",
+  "brandingMode": "all responses include top-level branding field",
+  "profiles": {
+    "general": {
+      "bootstrap": "bash assets/deploy/bootstrap_agent.sh --profile general --write-env-if-missing",
+      "healthPure": ".venv/bin/fatecat health --mode pure --json",
+      "healthDelivery": ".venv/bin/fatecat health --mode delivery --json",
+      "pureAnalysis": ".venv/bin/fatecat pure-analysis --input-json '{\"birthDateTime\":\"1990-01-01 08:00:00\",\"gender\":\"男\",\"longitude\":116.4074,\"latitude\":39.9042,\"birthPlace\":\"北京市\"}' --pretty",
+      "serveApi": ".venv/bin/fatecat serve api",
+      "serveBot": ".venv/bin/fatecat serve bot"
+    },
+    "openclaw": {
+      "bootstrap": "bash assets/deploy/bootstrap_agent.sh --profile openclaw --write-env-if-missing",
+      "inputMode": "stdin-json-or-inline-json",
+      "outputMode": "stdout-json",
+      "preferredCommand": ".venv/bin/fatecat pure-analysis --pretty"
+    },
+    "harness": {
+      "bootstrap": "bash assets/deploy/bootstrap_agent.sh --profile harness --write-env-if-missing",
+      "inputMode": "stdin-json-or-inline-json",
+      "outputMode": "stdout-json",
+      "preferredCommand": ".venv/bin/fatecat pure-analysis --pretty"
+    }
+  }
+}

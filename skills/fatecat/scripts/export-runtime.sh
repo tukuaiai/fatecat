@@ -51,7 +51,6 @@ rsync -a \
   --exclude '.mypy_cache/' \
   --exclude 'assets/config/.env' \
   --exclude 'runtime/**/*.db' \
-  "${repo_root}/AGENTS.md" \
   "${repo_root}/README.md" \
   "${repo_root}/Makefile" \
   "${repo_root}/pyproject.toml" \
@@ -67,6 +66,10 @@ touch "${dest_runtime}/runtime/database/bazi/.gitkeep"
 
 if [[ -f "${dest_runtime}/runtime/database/bazi/bazi.db" ]]; then
   rm -f "${dest_runtime}/runtime/database/bazi/bazi.db"
+fi
+
+if [[ -f "${skill_root}/scripts/fatecat_runtime/AGENTS.md" ]]; then
+  cp "${skill_root}/scripts/fatecat_runtime/AGENTS.md" "${dest_runtime}/AGENTS.md"
 fi
 
 echo "导出完成: ${dest_skill}"

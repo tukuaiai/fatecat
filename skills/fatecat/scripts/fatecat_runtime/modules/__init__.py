@@ -1,0 +1,1 @@
+"""FateCat modules package."""

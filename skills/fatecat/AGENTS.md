@@ -27,6 +27,7 @@ skills/fatecat/
     ├── pure-analysis.sh
     ├── serve-api.sh
     ├── serve-bot.sh
+    ├── sync-runtime.sh
     └── export-runtime.sh
 ```
 
@@ -35,10 +36,11 @@ skills/fatecat/
 - `SKILL.md`：只给操作手册，不承载大段背景资料。
 - `assets/`：只放 skill 自己的模板与示例；不放真实敏感配置。
 - `references/`：解释架构、命令、迁移与排障；引用仓库真相源，不复制 vendor 文档。
-- `scripts/`：优先包装现有 FateCat CLI；只有导出脚本才负责物化独立 runtime。
+- `scripts/`：包装 FateCat CLI，并维护嵌入式 `fatecat_runtime/` 镜像；导出脚本负责生成独立 bundle。
+- `scripts/fatecat_runtime/`：当前仓库的运行时镜像，用于让 skill 本身可以脱离仓库根结构独立收口。
 
 ## 依赖方向
 
 - `SKILL.md -> references/* + scripts/*`
-- `scripts/* -> repo root or exported scripts/fatecat_runtime`
+- `scripts/* -> repo root or embedded/exported scripts/fatecat_runtime`
 - 禁止把 `assets/config/.env`、真实 `.db`、`.venv/` 打进 skill 资产

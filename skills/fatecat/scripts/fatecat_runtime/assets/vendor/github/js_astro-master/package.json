@@ -1,0 +1,9 @@
+{
+  "name": "js-astro-calculator",
+  "version": "1.0.0",
+  "description": "JavaScript天文计算库",
+  "main": "index.js",
+  "dependencies": {
+    "astronomy-engine": "^2.1.19"
+  }
+}

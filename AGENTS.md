@@ -259,4 +259,5 @@ cat modules/telegram/output/logs/nohup.out
 
 - 新增顶层 `skills/` 作为 Agent 技能封装层
 - 新增 `skills/fatecat/`，用 skill 外壳包装 FateCat 能力
-- 当前阶段不在源仓库内复制整份 `fatecat_runtime/`，改为包装脚本 + 导出脚本路线
+- 新增 `skills/fatecat/scripts/fatecat_runtime/` 作为嵌入式运行时镜像
+- skill 包装脚本采用“双运行时”策略：未 bootstrap 镜像前先回退到源仓库，镜像就绪后优先使用嵌入式 runtime

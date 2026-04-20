@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <title>人生K线 | 八字命理可视化</title>
+    <style>
+      body {
+        font-family: 'Inter', "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", sans-serif;
+        background-color: #f8f9fa;
+      }
+      .font-serif-sc {
+        font-family: 'Noto Serif SC', serif;
+      }
+      /* Custom Scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+      }
+
+      /* Print Styles for Save Report */
+      @media print {
+        /* Hide UI elements not needed in the report */
+        .no-print, header, footer, button {
+          display: none !important;
+        }
+        
+        /* Reset layout for paper */
+        body { 
+          background-color: white !important; 
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        
+        main {
+          margin: 0 !important;
+          padding: 0 !important;
+          max-width: 100% !important;
+          box-shadow: none !important;
+        }
+
+        /* Ensure charts and colored bars print correctly */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        
+        /* Ensure page breaks don't cut cards in half */
+        .break-inside-avoid {
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  <script type="module" crossorigin src="./assets/index-BxBezyHd.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/lunar-BPioIzsr.js">
+  <link rel="modulepreload" crossorigin href="./assets/recharts-DuwrOd3P.js">
+  <link rel="modulepreload" crossorigin href="./assets/lucide-BZ5mTEZ-.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-CX7odDfc.css">
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+

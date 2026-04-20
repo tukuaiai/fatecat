@@ -1,0 +1,10 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "Obs. Para.",
+    "usingComponents": {
+        "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+        "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+        "mp-slideview": "/miniprogram_npm/weui-miniprogram/slideview/slideview",
+        "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon"
+    }
+}

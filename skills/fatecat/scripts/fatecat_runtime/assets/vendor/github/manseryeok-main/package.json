@@ -1,0 +1,45 @@
+{
+  "name": "manseryeok",
+  "version": "1.0.1",
+  "description": "Korean Saju (Four Pillars) and Manseryeok calculation library",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "saju",
+    "manseryeok",
+    "korean",
+    "fortune-telling",
+    "사주",
+    "만세력"
+  ],
+  "author": "Yoohyojun <hyojun99222@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yhj1024/manseryeok"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "pnpm lint && pnpm test:run && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

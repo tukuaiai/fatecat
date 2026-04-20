@@ -1,0 +1,53 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/index/observation/observation",
+        "pages/calculator/calculator",
+        "pages/acronym/acronym",
+        "pages/spectrum/spectrum",
+        "pages/settings/settings",
+        "pages/settings/license/license",
+        "pages/settings/privacy/privacy",
+        "pages/settings/developer/developer",
+        "pages/settings/version/version",
+        "pages/welcome/welcome"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "@navBgColor",
+        "navigationBarTextStyle": "@navTxtStyle",
+        "navigationStyle": "custom",
+        "backgroundColor": "@bgColor",
+        "backgroundTextStyle": "@bgTxtStyle"
+    },
+    "tabBar": {
+        "color": "@tabBarColor",
+        "selectedColor": "@tabBarSelectedColor",
+        "borderStyle": "@tabBorderStyle",
+        "backgroundColor": "@tabBarBackgroundColor",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "Cosmology"
+            },
+            {
+                "pagePath": "pages/calculator/calculator",
+                "text": "Calculator"
+            },
+            {
+                "pagePath": "pages/acronym/acronym",
+                "text": "Acronym"
+            },
+            {
+                "pagePath": "pages/settings/settings",
+                "text": "Settings"
+            }
+        ]
+    },
+    "darkmode": true,
+    "themeLocation": "theme.json",
+    "sitemapLocation": "sitemap.json",
+    "style": "v2",
+    "useExtendedLib": {
+        "weui": true
+    }
+}

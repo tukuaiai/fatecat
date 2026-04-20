@@ -1,0 +1,84 @@
+{
+  "name": "@ziweijs/react",
+  "version": "0.3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "基于 @ziweijs/core 的 React 紫微斗数命盘组件",
+  "keywords": [
+    "紫微斗数",
+    "Ziwei",
+    "Ziwei-Doushu",
+    "命理学",
+    "命盘",
+    "排盘",
+    "北派紫微斗数",
+    "紫微星盘",
+    "八字命理",
+    "工具库",
+    "JavaScript",
+    "TypeScript",
+    "占星",
+    "占卜",
+    "星盘工具",
+    "命理工具",
+    "天干地支",
+    "五行",
+    "四化飞星",
+    "专业紫微",
+    "ziwei.js",
+    "Ziwei.js",
+    "紫微斗数工具",
+    "命理排盘",
+    "命理算法",
+    "紫微算法",
+    "现代命理",
+    "Chinese astrology",
+    "astrology",
+    "fengshui",
+    "ziwei-doushu-library",
+    "ziwei-doushu-calculator"
+  ],
+  "homepage": "https://github.com/lzm0x219/ziwei/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/lzm0x219/ziwei/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzm0x219/ziwei.git",
+    "directory": "packages/react"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "lzm0x219",
+    "email": "lzm0x219@gmail.com"
+  },
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "ahooks": "catalog:",
+    "@ziweijs/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=19.2.0",
+    "react-dom": ">=19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@rslib/core": "catalog:",
+    "typescript": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "@microsoft/api-extractor": "catalog:",
+    "@rsbuild/plugin-react": "catalog:"
+  }
+}

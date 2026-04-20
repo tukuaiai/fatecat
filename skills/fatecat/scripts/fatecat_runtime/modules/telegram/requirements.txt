@@ -1,0 +1,12 @@
+python-telegram-bot>=20.0
+python-dotenv>=1.0.0
+httpx[socks]>=0.25.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+china-region>=0.0.11
+addressparser>=0.2.4
+sxtwl>=1.4.10
+colorama>=0.4.6
+bidict>=0.23.1
+divicast>=0.1.1

@@ -1,0 +1,147 @@
+.iztro-palace {
+  padding: 3px;
+  display: grid;
+  text-transform: capitalize;
+  grid-template-rows: auto auto auto 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "major minor adj"
+    "horo  horo adj"
+    "fate  fate fate"
+    "ft   ft  ft";
+  transition: all 0.25s ease-in-out;
+  grid-auto-flow: column;
+}
+.iztro-palace.focused-palace {
+  background-color: #aab8d32f;
+}
+.iztro-palace.opposite-palace {
+  background-color: #93f73d4f;
+}
+.iztro-palace.surrounded-palace {
+  background-color: #aff46f24;
+}
+.iztro-palace-major {
+  grid-area: major;
+}
+.iztro-palace-minor {
+  grid-area: minor;
+  justify-self: center;
+}
+.iztro-palace-adj {
+  grid-area: adj;
+  display: inline-flex;
+  justify-self: flex-end;
+  gap: 3px;
+  white-space: nowrap;
+  text-align: right;
+}
+.iztro-palace-horo-star {
+  grid-area: horo;
+  align-self: center;
+}
+.iztro-palace-horo-star .stars {
+  display: flex;
+  gap: 3px;
+}
+.iztro-palace-scope {
+  white-space: nowrap;
+  text-align: center;
+}
+.iztro-palace-scope-decadal {
+  font-weight: 700;
+}
+.iztro-palace-fate {
+  grid-area: fate;
+  align-self: flex-end;
+  white-space: nowrap;
+  justify-content: center;
+  display: flex;
+  gap: 3px;
+  height: 17px;
+}
+
+.iztro-palace-fate .iztro-palace-decadal-active {
+  background-color: var(--iztro-color-decadal);
+}
+
+.iztro-palace-fate .iztro-palace-yearly-active {
+  background-color: var(--iztro-color-yearly);
+}
+
+.iztro-palace-fate .iztro-palace-monthly-active {
+  background-color: var(--iztro-color-monthly);
+}
+
+.iztro-palace-fate .iztro-palace-daily-active {
+  background-color: var(--iztro-color-daily);
+}
+
+.iztro-palace-fate .iztro-palace-hourly-active {
+  background-color: var(--iztro-color-hourly);
+}
+
+.iztro-palace-footer {
+  grid-area: ft;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-self: flex-start;
+}
+
+.iztro-palace-lft24 {
+  text-align: left;
+}
+
+.iztro-palace-rgt24 {
+  text-align: right;
+}
+.iztro-palace-name {
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+.iztro-palace-name .iztro-palace-name-wrapper {
+  position: relative;
+}
+.iztro-palace-name .iztro-palace-name-taichi {
+  position: absolute;
+  font-size: 12px;
+  line-height: 14px;
+  background-color: var(--iztro-color-major);
+  padding: 0 2px;
+  color: #fff;
+  z-index: 2;
+  border-radius: 0 4px 4px 0;
+  font-weight: normal !important;
+  bottom: 0;
+}
+.iztro-palace-gz {
+  text-align: right;
+  cursor: pointer;
+}
+.iztro-palace-gz span {
+  display: inline-block;
+  padding: 0 1px;
+  text-wrap: nowrap;
+}
+.iztro-palace-dynamic-name {
+  text-align: center;
+  display: flex;
+  white-space: nowrap;
+  gap: 3px;
+  justify-content: center;
+}
+.iztro-palace-dynamic-name .iztro-palace-dynamic-name-decadal {
+  color: var(--iztro-color-decadal);
+}
+.iztro-palace-dynamic-name .iztro-palace-dynamic-name-yearly {
+  color: var(--iztro-color-yearly);
+}
+.iztro-palace-dynamic-name .iztro-palace-dynamic-name-monthly {
+  color: var(--iztro-color-monthly);
+}
+.iztro-palace-dynamic-name .iztro-palace-dynamic-name-daily {
+  color: var(--iztro-color-daily);
+}
+.iztro-palace-dynamic-name .iztro-palace-dynamic-name-hourly {
+  color: var(--iztro-color-hourly);
+}

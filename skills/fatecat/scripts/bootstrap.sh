@@ -4,7 +4,7 @@ set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "${script_dir}/common.sh"
 
-runtime_root="$(resolve_runtime_root)"
+runtime_root="$(resolve_bootstrap_root)"
 with_dev="0"
 
 while [[ $# -gt 0 ]]; do

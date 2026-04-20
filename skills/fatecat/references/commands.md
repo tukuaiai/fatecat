@@ -8,6 +8,12 @@
 bash skills/fatecat/scripts/bootstrap.sh
 ```
 
+### 刷新嵌入式 runtime
+
+```bash
+bash skills/fatecat/scripts/sync-runtime.sh
+```
+
 ### 纯分析健康检查
 
 ```bash

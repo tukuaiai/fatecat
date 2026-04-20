@@ -1,0 +1,82 @@
+@charset "utf-8";
+body,html{width:100%;height:100%;color:#333;font-family: "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+body,ul,ol,dl,dt,dd,li,p,h1,h2,h3,h4,h5,h6{font-weight:normal;}
+*{margin:0;padding:0;}
+li{list-style:none;}
+a{text-decoration:none; outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+a:hover,a:focus{text-decoration:none;}
+img{border:none;}
+input,textarea,select{outline:none;}
+input::-ms-clear,input::-ms-reveal{display:none;}
+textarea{resize:none;padding:0;-webkit-appearance:none;border:none;-webkit-tap-highlight-color:transparent;}
+input{border:none;-webkit-appearance:none;border-radius:0px;padding:0;-webkit-tap-highlight-color:transparent;}
+::-webkit-search-cancel-button{ display:none;}
+/*IE下清除下拉箭头*/
+select::-ms-expand { display: none;}
+select{
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
+::-moz-placeholder {color: #999;}
+:-moz-placeholder {color: #999;}
+input:-ms-input-placeholder{color: #999 !important;}
+textarea:-ms-input-placeholder{color: #999 !important;}
+input:focus:-ms-input-placeholder{color: #999 !important;opacity:1 !important;}
+textarea:focus:-ms-input-placeholder{color: #999 !important;opacity:1 !important;}
+input::-webkit-input-placeholder {color:#999; }
+textarea::-webkit-input-placeholder {color:#999;}
+
+.clearfix:after{content:''; clear:both; display:block; height:0; overflow:hidden;}
+.clearfix{zoom:1;}
+.fl{float:left;}
+.fr{float:right;}
+table{border-collapse:collapse;}
+
+#indexMap .anchorBL{bottom:20px;}
+.ell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.ell-rows-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+.ell-rows-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:4;
+}
+::-webkit-scrollbar
+{
+    width: 10px;  /*滚动条宽度*/
+    height: 10px;  /*滚动条高度*/
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    border-radius: 10px;  /*滚动条的背景区域的圆角*/
+    background-color: white;/*滚动条的背景颜色*/
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;  /*滚动条的圆角*/
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    background-color: #eeeeee;  /*滚动条的背景颜色*/
+}
+.ai-common-banner{
+    box-sizing: border-box;
+    position: relative;
+    height: 480px;
+    background: no-repeat 30%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+

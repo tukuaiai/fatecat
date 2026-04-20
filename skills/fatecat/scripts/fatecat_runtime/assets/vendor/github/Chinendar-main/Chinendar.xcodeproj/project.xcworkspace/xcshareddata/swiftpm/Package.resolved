@@ -1,0 +1,15 @@
+{
+  "originHash" : "fd258bb9454cf1904a1133c10daef6493fa61335c3f86e966432f67676fd8bf2",
+  "pins" : [
+    {
+      "identity" : "celestialsystem",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LEOYoon-Tsaw/CelestialSystem",
+      "state" : {
+        "revision" : "3a47621f9a69fc02c82443e7b764519fa2392340",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}

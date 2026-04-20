@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module":"NodeNext",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./build/types",
+    "moduleResolution": "nodenext",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "outDir": "build/",
+    "typeRoots": [
+      "./node_modules/@types", "./src/types"
+    ],
+    "types": ["node", "jest"]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "ts-node": {  "files": true },
+  "exclude": ["node_modules"],
+  "extends": "@tsconfig/node18/tsconfig.json"
+}

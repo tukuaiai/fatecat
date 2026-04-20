@@ -1,0 +1,11 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <mp-dialog title="{{category}}" show="{{showContentDialog}}" bindbuttontap="copyExplanation" buttons="{{buttons}}">
+        <view>{{explanation}}</view>
+    </mp-dialog>
+    <mp-indexList list="{{list}}" bindchoose="onChoose">
+        <view class="page__hd" bindtap="copyWebAddress">
+            <view class="page__title">Wikipedia</view>
+            <view class="page__desc" style="color:var(--weui-LINK)">List of astronomy acronyms</view>
+        </view>
+    </mp-indexList>
+</view>

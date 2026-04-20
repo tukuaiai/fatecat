@@ -1,0 +1,7 @@
+tasks:
+  format:
+    command: "biome format --write --no-errors-on-unmatched ."
+  lint:
+    command: "biome check --no-errors-on-unmatched --files-ignore-unknown=true ."
+  typecheck:
+    command: "tsgo --noEmit"

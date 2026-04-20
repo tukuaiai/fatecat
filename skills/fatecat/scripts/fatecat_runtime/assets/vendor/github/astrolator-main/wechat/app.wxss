@@ -1,0 +1,41 @@
+.page__hd {
+    padding: 100px 40px 40px;
+}
+.page__bd {
+    padding-bottom: 40px;
+}
+.page__title {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+}
+.page__desc {
+    margin-top: 5px;
+    text-align: left;
+    font-size: 20px;
+}
+.weui-btn-area {
+    margin: 28px 16px 28px;
+}
+.weui-tabs-bar__wrp {
+    background-color: var(--weui-BG-2) !important;
+}
+.weui-tabs-bar__title {
+    margin: 0px 10px;
+}
+.tab-bar-title__selected {
+    font-size: 20px;
+    font-weight: bold;
+}
+.weui-tabs-bar__item {
+    background-color: var(--weui-BG-2) !important;
+    color: var(--weui-FG-0) !important;
+}
+sup {
+    font-size: 10px;
+    vertical-align: text-top;
+}
+sub {
+    font-size: 10px;
+    vertical-align: text-bottom;
+}

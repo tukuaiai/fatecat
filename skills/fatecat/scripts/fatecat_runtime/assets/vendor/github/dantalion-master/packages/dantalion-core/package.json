@@ -1,0 +1,58 @@
+{
+  "name": "@kurone-kito/dantalion-core",
+  "version": "0.19.2",
+  "description": "NPM library that calculates the personality from the birthday.",
+  "keywords": [
+    "ba-zi",
+    "bazi",
+    "birthday",
+    "chinese-astrology",
+    "four-pillars",
+    "library",
+    "self-assessment",
+    "ziweidoushu",
+    "zodiac"
+  ],
+  "homepage": "https://kurone-kito.github.io/dantalion/",
+  "bugs": {
+    "url": "https://github.com/kurone-kito/dantalion/issues"
+  },
+  "license": "MIT",
+  "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurone-kito/dantalion.git",
+    "directory": "packages/dantalion-core"
+  },
+  "scripts": {
+    "lint": "eslint --cache --fix .",
+    "prepack": "tsc --project tsconfig.build.json",
+    "start": "tsc --project tsconfig.build.json --watch",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.5",
+    "jest-cli": "^27.0.5",
+    "prettier": "^2.3.1",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

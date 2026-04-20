@@ -1,0 +1,59 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Any
+import sys
+
+from fate_core.support.paths import TELEGRAM_SRC_DIR
+
+if str(TELEGRAM_SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(TELEGRAM_SRC_DIR))
+
+from bazi_calculator import BaziCalculator
+
+PURE_ANALYSIS_HIDE: dict[str, bool] = {
+    "extensions": True,
+    "divination": True,
+    "number_divination": True,
+    "yijing": True,
+    "name_marriage": True,
+    "system": True,
+    "zeri": True,
+    "fengshui": True,
+    "astro": True,
+    "calendar": True,
+    "health": True,
+}
+
+
+@dataclass(frozen=True)
+class LegacyBaziInput:
+    """遗留八字计算器输入。"""
+
+    birth_dt: datetime
+    gender: str
+    longitude: float
+    latitude: float
+    name: str | None = None
+    birth_place: str = ""
+    use_true_solar_time: bool = True
+
+
+def calculate_legacy_bazi(payload: LegacyBaziInput, *, hide: dict[str, bool] | None = None) -> dict[str, Any]:
+    """兼容调用遗留 `BaziCalculator`。"""
+    calculator = BaziCalculator(
+        payload.birth_dt,
+        payload.gender,
+        payload.longitude,
+        latitude=payload.latitude,
+        name=payload.name,
+        birth_place=payload.birth_place,
+        use_true_solar_time=payload.use_true_solar_time,
+    )
+    return calculator.calculate(hide=hide or {})
+
+
+def calculate_pure_analysis_raw(payload: LegacyBaziInput) -> dict[str, Any]:
+    """生成纯命理分析所需的原始结果。"""
+    return calculate_legacy_bazi(payload, hide=PURE_ANALYSIS_HIDE)

@@ -17,8 +17,13 @@
 
 ## `找不到 runtime root`
 
-- 原因：你直接拷走了 `skills/fatecat/`，但没有执行导出脚本物化运行时代码
-- 处理：回到源仓库执行 `export-runtime.sh --output <dir>`，再从导出目录运行
+- 原因：你直接拷走了 `skills/fatecat/`，但没有携带 `fatecat_runtime/`，也没有回退到源仓库
+- 处理：回到源仓库执行 `sync-runtime.sh` 或 `export-runtime.sh --output <dir>`，再从导出目录运行
+
+## `镜像代码不是最新的`
+
+- 原因：根仓库改动后，没有刷新 `skills/fatecat/scripts/fatecat_runtime/`
+- 处理：执行 `bash skills/fatecat/scripts/sync-runtime.sh`
 
 ## 导出目录里仍然有敏感文件
 

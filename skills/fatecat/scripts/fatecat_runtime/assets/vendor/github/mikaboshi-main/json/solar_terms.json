@@ -1,0 +1,266 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "en": "lichun",
+      "ja": ["立春", "risshun"],
+      "vi": ["lập xuân", "lập xuân"],
+      "zh_cn": ["立春", "lìchūn"],
+      "zh_tw": ["立春", "lìchūn"]
+    },
+    "angle": 315
+  },
+  {
+    "id": 2,
+    "name": {
+      "en": "yushui",
+      "ja": ["雨水", "usui"],
+      "vi": ["vũ thủy", "vũ thủy"],
+      "zh_cn": ["雨水", "yǔshuǐ"],
+      "zh_tw": ["雨水", "yǔshuǐ"]
+    },
+    "angle": 330
+  },
+  {
+    "id": 3,
+    "name": {
+      "en": "jingzhe",
+      "ja": ["啓蟄", "keichitsu"],
+      "vi": ["kinh trập", "kinh trập"],
+      "zh_cn": ["驚蟄", "jīngzhé"],
+      "zh_tw": ["驚蟄", "jīngzhé"]
+    },
+    "angle": 345
+  },
+  {
+    "id": 4,
+    "name": {
+      "en": "chunfen",
+      "ja": ["春分", "shunbun"],
+      "vi": ["xuân phân", "xuân phân"],
+      "zh_cn": ["春分", "chūnfēn"],
+      "zh_tw": ["春分", "chūnfēn"]
+    },
+    "angle": 0
+  },
+  {
+    "id": 5,
+    "name": {
+      "en": "qingming",
+      "ja": ["清明", "seimei"],
+      "vi": ["thanh minh", "thanh minh"],
+      "zh_cn": ["清明", "qīngmíng"],
+      "zh_tw": ["清明", "qīngmíng"]
+    },
+    "angle": 15
+  },
+  {
+    "id": 6,
+    "name": {
+      "en": "guyu",
+      "ja": ["穀雨", "kokuu"],
+      "vi": ["cốc vũ", "cốc vũ"],
+      "zh_cn": ["穀雨", "gǔyǔ"],
+      "zh_tw": ["穀雨", "gǔyǔ"]
+    },
+    "angle": 30
+  },
+  {
+    "id": 7,
+    "name": {
+      "en": "lixia",
+      "ja": ["立夏", "rikka"],
+      "vi": ["lập hạ", "lập hạ"],
+      "zh_cn": ["立夏", "lìxià"],
+      "zh_tw": ["立夏", "lìxià"]
+    },
+    "angle": 45
+  },
+  {
+    "id": 8,
+    "name": {
+      "en": "xiaoman",
+      "ja": ["小満", "shouman"],
+      "vi": ["tiểu mãn", "tiểu mãn"],
+      "zh_cn": ["小滿", "xiǎomǎn"],
+      "zh_tw": ["小滿", "xiǎomǎn"]
+    },
+    "angle": 60
+  },
+  {
+    "id": 9,
+    "name": {
+      "en": "mangzhong",
+      "ja": ["芒種", "boushu"],
+      "vi": ["mang chủng", "mang chủng"],
+      "zh_cn": ["芒種", "mángzhòng"],
+      "zh_tw": ["芒種", "mángzhòng"]
+    },
+    "angle": 75
+  },
+  {
+    "id": 10,
+    "name": {
+      "en": "xiazhi",
+      "ja": ["夏至", "geshi"],
+      "vi": ["hạ chí", "hạ chí"],
+      "zh_cn": ["夏至", "xiàzhì"],
+      "zh_tw": ["夏至", "xiàzhì"]
+    },
+    "angle": 90
+  },
+  {
+    "id": 11,
+    "name": {
+      "en": "xiaoshu",
+      "ja": ["小暑", "shousho"],
+      "vi": ["tiểu thử", "tiểu thử"],
+      "zh_cn": ["小暑", "xiǎoshǔ"],
+      "zh_tw": ["小暑", "xiǎoshǔ"]
+    },
+    "angle": 105
+  },
+  {
+    "id": 12,
+    "name": {
+      "en": "dashu",
+      "ja": ["大暑", "taisho"],
+      "vi": ["đại thử", "đại thử"],
+      "zh_cn": ["大暑", "dàshǔ"],
+      "zh_tw": ["大暑", "dàshǔ"]
+    },
+    "angle": 120
+  },
+  {
+    "id": 13,
+    "name": {
+      "en": "liqiu",
+      "ja": ["立秋", "risshuu"],
+      "vi": ["lập thu", "lập thu"],
+      "zh_cn": ["立秋", "lìqiū"],
+      "zh_tw": ["立秋", "lìqiū"]
+    },
+    "angle": 135
+  },
+  {
+    "id": 14,
+    "name": {
+      "en": "chushu",
+      "ja": ["処暑", "shosho"],
+      "vi": ["xử thử", "xử thử"],
+      "zh_cn": ["處暑", "chǔshǔ"],
+      "zh_tw": ["處暑", "chǔshǔ"]
+    },
+    "angle": 150
+  },
+  {
+    "id": 15,
+    "name": {
+      "en": "bailu",
+      "ja": ["白露", "hakuro"],
+      "vi": ["bạch lộ", "bạch lộ"],
+      "zh_cn": ["白露", "báilù"],
+      "zh_tw": ["白露", "báilù"]
+    },
+    "angle": 165
+  },
+  {
+    "id": 16,
+    "name": {
+      "en": "qiufen",
+      "ja": ["秋分", "shubun"],
+      "vi": ["thu phân", "thu phân"],
+      "zh_cn": ["秋分", "qiūfēn"],
+      "zh_tw": ["秋分", "qiūfēn"]
+    },
+    "angle": 180
+  },
+  {
+    "id": 17,
+    "name": {
+      "en": "hanlu",
+      "ja": ["寒露", "kanro"],
+      "vi": ["hàn lộ", "hàn lộ"],
+      "zh_cn": ["寒露", "hánlù"],
+      "zh_tw": ["寒露", "hánlù"]
+    },
+    "angle": 195
+  },
+  {
+    "id": 18,
+    "name": {
+      "en": "shuanjiang",
+      "ja": ["霜降", "soukou"],
+      "vi": ["sương giáng", "sương giáng"],
+      "zh_cn": ["霜降", "shuāngjiàng"],
+      "zh_tw": ["", ""]
+    },
+    "angle": 210
+  },
+  {
+    "id": 19,
+    "name": {
+      "en": "lidong",
+      "ja": ["立冬", "rittou"],
+      "vi": ["lập đông", "lập đông"],
+      "zh_cn": ["立冬", "lìdōng"],
+      "zh_tw": ["立冬", "lìdōng"]
+    },
+    "angle": 225
+  },
+  {
+    "id": 20,
+    "name": {
+      "en": "xiaoxue",
+      "ja": ["小雪", "shousetsu"],
+      "vi": ["tiểu tuyết", "tiểu tuyết"],
+      "zh_cn": ["小雪", "xiǎoxuě"],
+      "zh_tw": ["小雪", "xiǎoxuě"]
+    },
+    "angle": 240
+  },
+  {
+    "id": 21,
+    "name": {
+      "en": "daxue",
+      "ja": ["大雪", "taisetsu"],
+      "vi": ["đại tuyết", "đại tuyết"],
+      "zh_cn": ["大雪", "dàxuě"],
+      "zh_tw": ["大雪", "dàxuě"]
+    },
+    "angle": 255
+  },
+  {
+    "id": 22,
+    "name": {
+      "en": "dongzhi",
+      "ja": ["冬至", "touji"],
+      "vi": ["Đông chí", "Đông chí"],
+      "zh_cn": ["冬至", "dōngzhì"],
+      "zh_tw": ["冬至", "dōngzhì"]
+    },
+    "angle": 270
+  },
+  {
+    "id": 23,
+    "name": {
+      "en": "xiaohan",
+      "ja": ["小寒", "shoukan"],
+      "vi": ["tiểu hàn", "tiểu hàn"],
+      "zh_cn": ["小寒", "xiǎohán"],
+      "zh_tw": ["小寒", "xiǎohán"]
+    },
+    "angle": 285
+  },
+  {
+    "id": 24,
+    "name": {
+      "en": "dahan",
+      "ja": ["大寒", "daikan"],
+      "vi": ["Đại hàn", "Đại hàn"],
+      "zh_cn": ["大寒", "dàhán"],
+      "zh_tw": ["大寒", "dàhán"]
+    },
+    "angle": 300
+  }
+]

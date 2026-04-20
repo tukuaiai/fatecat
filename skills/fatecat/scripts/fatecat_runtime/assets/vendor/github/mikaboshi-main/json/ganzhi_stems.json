@@ -1,0 +1,102 @@
+[
+  {
+    "num": 1,
+    "name": {
+      "en": "jia",
+      "ja": ["きのえ", "kinoe"],
+      "vi": ["giáp", "giap"],
+      "zh_cn": ["甲", "jiǎ"],
+      "zh_tw": ["甲", "jiǎ"]
+    }
+  },
+  {
+    "num": 2,
+    "name": {
+      "en": "yi",
+      "ja": ["きのと", "kinoto"],
+      "vi": ["ất", "ất"],
+      "zh_cn": ["乙", "yǐ"],
+      "zh_tw": ["乙", "yǐ"]
+    }
+  },
+  {
+    "num": 3,
+    "name": {
+      "en": "bing",
+      "ja": ["ひのえ", "hinoe"],
+      "vi": ["bính", "bính"],
+      "zh_cn": ["丙", "bǐng"],
+      "zh_tw": ["丙", "bǐng"]
+    }
+  },
+  {
+    "num": 4,
+    "name": {
+      "en": "ding",
+      "ja": ["ひのと", "hinoto"],
+      "vi": ["đinh", "đinh"],
+      "zh_cn": ["丁", "dīng"],
+      "zh_tw": ["丁", "dīng"]
+    }
+  },
+  {
+    "num": 5,
+    "name": {
+      "en": "wu",
+      "ja": ["つちのえ", "tsuchinoe"],
+      "vi": ["mậu", "mậu"],
+      "zh_cn": ["戊", "wù"],
+      "zh_tw": ["戊", "wù"]
+    }
+  },
+  {
+    "num": 6,
+    "name": {
+      "en": "ji",
+      "ja": ["つちのと", "tsuchinoe"],
+      "vi": ["kỷ", "kỷ"],
+      "zh_cn": ["己", "jǐ"],
+      "zh_tw": ["己", "jǐ"]
+    }
+  },
+  {
+    "num": 7,
+    "name": {
+      "en": "geng",
+      "ja": ["かのえ", "kanoe"],
+      "vi": ["canh", "canh"],
+      "zh_cn": ["庚", "gēng"],
+      "zh_tw": ["庚", "gēng"]
+    }
+  },
+  {
+    "num": 8,
+    "name": {
+      "en": "xin",
+      "ja": ["かのと", "kanoto"],
+      "vi": ["tân", "tân"],
+      "zh_cn": ["辛", "xīn"],
+      "zh_tw": ["辛", "xīn"]
+    }
+  },
+  {
+    "num": 9,
+    "name": {
+      "en": "ren",
+      "ja": ["みずのえ", "mizunoe"],
+      "vi": ["nhâm", "nhâm"],
+      "zh_cn": ["壬", "rén"],
+      "zh_tw": ["壬", "rén"]
+    }
+  },
+  {
+    "num": 10,
+    "name": {
+      "en": "gui",
+      "ja": ["みずのと", "mizunoto"],
+      "vi": ["quý", "quý"],
+      "zh_cn": ["癸", "guǐ"],
+      "zh_tw": ["癸", "guǐ"]
+    }
+  }
+]

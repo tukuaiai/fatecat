@@ -1,0 +1,1 @@
+"""FateCat Telegram module."""

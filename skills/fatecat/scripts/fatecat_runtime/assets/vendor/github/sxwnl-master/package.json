@@ -1,0 +1,10 @@
+{
+  "name": "sxwnl-calculator",
+  "version": "1.0.0",
+  "description": "寿星万年历计算器",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "lunar-javascript": "^1.6.12"
+  }
+}

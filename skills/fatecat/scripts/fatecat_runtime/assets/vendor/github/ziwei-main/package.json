@@ -1,0 +1,40 @@
+{
+  "name": "ziwei",
+  "private": true,
+  "scripts": {
+    "build": "moon :build",
+    "changeset": "changeset",
+    "changeset:publish": "changeset publish",
+    "changeset:version": "changeset version",
+    "coverage": "vitest run --coverage",
+    "prepare": "is-ci || lefthook install",
+    "test": "vitest",
+    "test:analytics": "vitest --reporter=junit --outputFile=test-report.junit.xml"
+  },
+  "overrides": {
+    "vite": "8.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "catalog:",
+    "@changesets/cli": "catalog:",
+    "@microsoft/api-extractor": "catalog:",
+    "@moonrepo/cli": "catalog:",
+    "@rslib/core": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitest/browser-playwright": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@vitest/ui": "catalog:",
+    "is-ci": "catalog:",
+    "lefthook": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "sort-package-json": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vitest-browser-react": "catalog:"
+  },
+  "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501"
+}

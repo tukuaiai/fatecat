@@ -1,0 +1,49 @@
+{
+  "name": "@ziweijs/i18n",
+  "version": "0.2.0",
+  "description": "轻量级 i18n 工具，提供类型安全的翻译实例创建能力",
+  "keywords": [
+    "i18n",
+    "国际化",
+    "translator",
+    "typescript",
+    "ziwei"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/lzm0x219/ziwei/tree/main/packages/i18n#readme",
+  "bugs": {
+    "url": "https://github.com/lzm0x219/ziwei/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzm0x219/ziwei.git",
+    "directory": "packages/i18n"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "lzm0x219",
+    "email": "lzm0x219@gmail.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "@rslib/core": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "catalog:",
+    "@microsoft/api-extractor": "catalog:"
+  }
+}

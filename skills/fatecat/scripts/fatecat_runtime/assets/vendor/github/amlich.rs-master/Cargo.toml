@@ -1,0 +1,18 @@
+[package]
+name = "amlich"
+version = "0.0.2"
+authors = ["Ngo Xuan Bach <thanbaiks@gmail.com>"]
+description = "A library and CLI application for Vietnamese Lunar Calendar"
+license = "MIT"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rustbox = "^0.11.0"
+chrono = "0.4.10"
+
+[dependencies.tui]
+version = "^0.6.2"
+default-features = false
+features = ['rustbox']

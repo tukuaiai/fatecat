@@ -3,14 +3,9 @@ set -euo pipefail
 
 skill_scripts_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 skill_root="$(cd -- "${skill_scripts_dir}/.." && pwd)"
+embedded_runtime_root="${skill_root}/scripts/fatecat_runtime"
 
-resolve_runtime_root() {
-  local embedded_runtime="${skill_root}/scripts/fatecat_runtime"
-  if [[ -f "${embedded_runtime}/pyproject.toml" ]]; then
-    printf '%s\n' "${embedded_runtime}"
-    return 0
-  fi
-
+resolve_repo_runtime_root() {
   local current="${skill_root}"
   while [[ "${current}" != "/" ]]; do
     if [[ -f "${current}/pyproject.toml" && -d "${current}/modules/fate_core" && -d "${current}/assets" ]]; then
@@ -22,6 +17,42 @@ resolve_runtime_root() {
 
   echo "无法定位 FateCat runtime 根目录。若要独立运行，请先执行 export-runtime.sh 生成 scripts/fatecat_runtime/。" >&2
   return 1
+}
+
+embedded_runtime_ready() {
+  [[ -f "${embedded_runtime_root}/pyproject.toml" && -x "${embedded_runtime_root}/.venv/bin/fatecat" ]]
+}
+
+embedded_runtime_exists() {
+  [[ -f "${embedded_runtime_root}/pyproject.toml" ]]
+}
+
+resolve_runtime_root() {
+  if embedded_runtime_ready; then
+    printf '%s\n' "${embedded_runtime_root}"
+    return 0
+  fi
+
+  if resolve_repo_runtime_root >/dev/null 2>&1; then
+    resolve_repo_runtime_root
+    return 0
+  fi
+
+  if embedded_runtime_exists; then
+    printf '%s\n' "${embedded_runtime_root}"
+    return 0
+  fi
+
+  echo "无法定位 FateCat runtime 根目录。" >&2
+  return 1
+}
+
+resolve_bootstrap_root() {
+  if embedded_runtime_exists; then
+    printf '%s\n' "${embedded_runtime_root}"
+    return 0
+  fi
+  resolve_repo_runtime_root
 }
 
 resolve_fatecat_bin() {

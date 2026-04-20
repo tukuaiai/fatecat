@@ -1,0 +1,70 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+        <view class="page__title">Settings</view>
+        <view class="page__desc">Locally stored</view>
+    </view>
+    <mp-cells title="Display">
+        <mp-cell link title="Language">
+            <picker slot="footer" bindchange="languageChange" value="{{languageIndex}}" range="{{language}}">
+                {{language[languageIndex]}} </picker>
+        </mp-cell>
+        <mp-cell title="Scientific Notation">
+            <switch slot="footer" checked="{{scientific}}" bindchange="scientificChange" />
+        </mp-cell>
+        <mp-cell link title="Precision">
+            <picker slot="footer" bindchange="precisionChange" value="{{precisionIndex}}" range="{{precision}}">
+                {{precision[precisionIndex]}}
+            </picker>
+        </mp-cell>
+    </mp-cells>
+    <mp-cells title="Default Units">
+        <mp-cell link title="Angle">
+            <picker slot="footer" bindchange="angleChange" value="{{angleIndex}}" range="{{angle}}">
+                {{angle[angleIndex]}}
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Length">
+            <picker slot="footer" bindchange="lengthChange" value="{{lengthIndex}}" range="{{length}}">
+                {{lengthMain[lengthIndex]}}<sub>{{lengthSub[lengthIndex]}}</sub>
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Time">
+            <picker slot="footer" bindchange="timeChange" value="{{timeIndex}}" range="{{time}}">
+                {{time[timeIndex]}}
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Frequency">
+            <picker slot="footer" bindchange="frequencyChange" value="{{frequencyIndex}}" range="{{frequency}}">
+                {{frequency[frequencyIndex]}}
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Mass">
+            <picker slot="footer" bindchange="massChange" value="{{massIndex}}" range="{{mass}}">
+                {{massMain[massIndex]}}<sub>{{massSub[massIndex]}}</sub>
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Energy">
+            <picker slot="footer" bindchange="energyChange" value="{{energyIndex}}" range="{{energy}}">
+                {{energy[energyIndex]}}
+            </picker>
+        </mp-cell>
+        <mp-cell link title="Power">
+            <picker slot="footer" bindchange="powerChange" value="{{powerIndex}}" range="{{power}}">
+                {{powerMain[powerIndex]}}<sub>{{powerSub[powerIndex]}}</sub>
+            </picker>
+        </mp-cell>
+    </mp-cells>
+    <mp-cells title="About">
+        <mp-cell link url="license/license" title="License" />
+        <mp-cell link url="privacy/privacy" title="Privacy" />
+        <mp-cell title="Icon" footer="Bryan Goff @ Unsplash" />
+        <mp-cell link url="developer/developer" title="Developer" />
+    </mp-cells>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" plain open-type="contact">Contact Developer</button>
+        <button class="weui-btn" type="warn" plain open-type="feedback">Feedback</button>
+    </view>
+    <view style="margin-top:-15px;padding-bottom:10px" class="weui-footer">
+        <navigator url="version/version" class="weui-footer__text">Version {{version}} | © 2018-2020</navigator>
+    </view>
+</view>

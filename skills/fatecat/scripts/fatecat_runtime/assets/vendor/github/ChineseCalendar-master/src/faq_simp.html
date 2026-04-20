@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta name="keywords" content="农历, 中国历法, 常问问题, 历法计算" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+<title>常见问题</title>
+<link rel="stylesheet" href="calendar_chinese.css" />
+<script src="header.js"></script>
+<style>
+label.accordion {
+    font:16px/20px arial, verdana, helvetica, sans-serif;
+    font-weight:bold;
+	margin:0px 0px 5px 0px;
+    letter-spacing: 4px;
+    line-height:22px;
+}
+</style>
+</head>
+
+<body>
+<div id="wrap" style="max-width:800px;margin:auto;">
+<div id="menu"></div>
+<div id="language"></div>
+
+<h1>常 见 问 题</h1>
+<ol>
+<input type="checkbox" class="accordion" id="conversion_program" />
+<label class="accordion" for="conversion_program"><li>有简单的方法建立公历和农历的转换程式吗?</li></label>
+
+<div class="content">
+<p>最简单的方法是先找一份朔闰表(例如本网站的<a href="table_simp.html">朔闰表</a>)，然后用查表的方法作公历-农历转换。
+</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conversion_tables" />
+<label class="accordion" for="conversion_tables"><li><a href="table_simp.html">朔闰表网页</a>的资料从何而得?</li></label>
+
+<div class="content">
+<p>这点在<a href="computation_simp.html">编算农历网页</a>有详细说明。 简言之......</p>
+<p><a href="computation_simp.html#modern">现代(1912-2200)农历</a>的资料根据《农历的编算和颁行》文件(编号GB/T 33661-2017)规定的方法编算，但1929年前有几个历日根据紫金山天文台编的《新编万年历（修定本）》数据更正。</p>
+<p><a href="computation_simp.html#qing">清朝(1645-1911)历日</a>基本上取自《新编万年历（修定本）》和张培瑜《三千五百年历日天象》的资料。</p> 
+<p><a href="SouthernMingCalendar_simp.html">南明和明郑(1645 – 1683)的历日</a>基本上取自清人傅以礼著的《残明大统历》(收录在《二十五史补编》中)。</p>
+<p><a href="computation_simp.html#imperial">西汉中叶至明末(前104年 – 1644年)的历日</a>基本上取自《三千五百年历日天象》，但有一些历日根据可靠资料订正。</p>
+<p><a href="QinHanCalendars_simp.html">秦至汉初(前221年 – 前104年)的历日</a>采用李忠林在2012年发表的「秦至汉初(前246至前104)历法研究—以出土历简为中心」一文计算。</p>
+<p>战国时代(前480年 – 前222年)的历日根据<a href="guliuli_simp.html">汉传古六历</a>计算，古六历资料取自张培瑜、陈美东、薄树人和胡铁珠著的《中国古代历法》书中第三章第六节。</p>
+<p><a href="chunqiu_simp.html">春秋时代(前722年 – 前481年)的鲁国历法</a>根据《中国古代历法》第三章第五节的资料复原。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conversion_formula" />
+<label class="accordion" for="conversion_formula"><li>有没有简单的公式计算农历?</li></label>
+
+<div class="content">
+<p>就现代农历而言，答案是「没有」。</p>
+<p>如<a href="rules_simp.html">农历编算法则网页</a>所言，现代农历根据《农历的编算和颁行》文件(编号GB/T 33661-2017)规定的方法编算，该文件对编算农历有严格要求(其中将月相和节气时刻算准到一秒的精度要求尤其苛刻)，所以没有简单的公式计算。简单与否其实也因人而异，对熟悉天文计算者而言，《农历的编算和颁行》要求的计算虽然不算简单，但也不难。</p>
+<p>中国历法自唐朝以来涉及的计算内容与现代天文年历相若，编算日历只是历法的一小部份，历法都按当时历算机构所能掌握最准确的天文观测数据和最先进的理论方法计算，历来的历法计算相对于当时通用的计算工具而言不能算简单。所以《农曆的编算和颁行》的计算法则只是秉承传统的历法计算而已。</p>
+<p>虽然如此，确有简单公式计算月相和节气的近似时刻，例如Jean Meeus著的<i>Astronomical Algorithms</i>就有公式计算月相和二分二至的近似时刻，其中二分二至的公式或可推广至其他节气。书中的公式算出的月相和节气时刻精度虽然未能达到《农历的编算和颁行》文件的要求，但也可用来编算农历，算出的农历日期或会有少于~0.1%的错误。可先用那些近似公式计算农历，然后比较紫金山天文台公布的官方标准农历，再将算出的~0.1%错误历日改正，亦不失为计算农历的另一方法。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="sexagenary_calculation" />
+<label class="accordion" for="sexagenary_calculation"><li>如何计算干支?</li></label>
+
+<div class="content">
+<p>计算方法在<a href="sexagenary_simp.html">干支网页</a>有详细说明。干支可纪年﹑纪月﹑纪日和纪时，年干支﹑日干支和时辰干支的计算很简单，月干支则较为复杂。但是月干支即使在古代也很少使用，时辰也一般只提地支，不问天干。</p>
+</div>
+
+<input type="checkbox" class="accordion" id="conjunction" />
+<label class="accordion" for="conjunction"><li>为什么古代的合朔时刻和初一日有时不一致?</li></label>
+
+<div class="content">
+<p>这是指<a href="index_simp.html">年历网页</a>载的合朔时刻与农历的初一日在古代有时有差异，例如唐宪宗元和八年(公元813年)二月朔在甲申日(公历3月6日)19:54，但二月初一却在乙酉日(3月7日)。</p>
+<p>如<a href="rules_simp.html">农历法则网页</a>所述，农历的初一日必定是朔日，这法则在中国古代历法也采用，年历网页载的古代合朔和初一不一致至少有以下三个原因。</p>
+<ol>
+<li><p>年历网页所载的月相时刻是用现代历表及现代的天文学定义计算，与古代算法不同。例如唐朝以前合朔的计算只计及月亮和太阳的平均运动，算出的合朔称为平朔，现代的算法计及月行迟疾和日行盈缩，算出的合朔称为定朔，两者时刻的差异有时会超过一日。此外，秦与汉初历法算出的平朔往往迟于实朔(后天)，平均差异为一日，所以汉初的日食多发生在晦日(即朔之前一天)，甚至晦日前一天(详情可参阅<a href="QinHanCalendars_simp.html#conjDiff">此网页</a>)。虽然自唐朝起合朔计算改用定朔，但是古时的定朔计算没有现代准确。</p></li>
+
+<li><p>年历网页所载的月相时刻是用东经120&deg;平时(UT+8)，此处UT指UT1(1972年前)或UTC(1972年及之后)。古人不用平太阳时，而是用地方视太阳时。例如古都长安的经度是东经108.9&deg;，所以长安的地方视时与UT+8的差异是44分+视时与平时之差。</p></li>
+
+<li><p>自唐《麟德历》起中国历法引入进朔法，规定如果合朔时刻在~18点后(确实时刻随季节稍有调正)，而该日没有可见日食，则朔日可以虚进一日。此法在唐、五代、两宋、辽、金和元初都使用，自元《授时历》起废除。</p></li>
+</ol>
+
+<p>上述唐宪宗元和八年二月朔的情况很可能是进朔法的结果。民国三年(1914年)起月相和二十四节气改用现代方法计算，但时间用北京地方平时，北京的经度是东经116&deg;25'，北京地方平时与UT+8相差约十四分。例如有朔发生在公元1916年2月4日0:05(UT+8)，按北京地方平时这朔发生在2月3日23:51，所以朔日是2月3日，这朔正好是农历丙辰年的正月朔，所以中国在1916年2月3日庆祝农历新年，而不是2月4日。现在的中国标准时(UT+8)要到1929年才采用。</p>
+</div>
+
+</ol>
+</div>
+<br /><br />
+<script>header(2,'','faq');</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-weight: 600;
+  font-family: "Source Han Serif SC VF", sans-serif;
+}

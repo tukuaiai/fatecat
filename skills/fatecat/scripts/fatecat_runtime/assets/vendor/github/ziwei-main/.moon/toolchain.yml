@@ -1,0 +1,6 @@
+unstable_javascript:
+  packageManager: "pnpm"
+
+unstable_node: {}
+
+unstable_pnpm: {}

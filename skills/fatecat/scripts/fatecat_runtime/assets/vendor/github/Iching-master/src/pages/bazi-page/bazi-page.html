@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>八字</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>日历</ion-label>
+      <ion-select [(ngModel)]="calendar" (ngModelChange)="updateChanges($event)">
+        <ion-option value="solar">公历</ion-option>
+        <ion-option value="lunar">农历</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>出生年月</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="birthday" (ngModelChange)="updateChanges($event)"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>出生时间</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="birthtime" (ngModelChange)="updateChanges($event)"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-card *ngFor="let gua_info of gua_infos">
+    <ion-card-header>
+    {{gua_info.sizhu}}
+    </ion-card-header>
+    <ion-card-content>
+    {{gua_info.name}} {{gua_info.gong}}宫 属{{gua_info.wuxing}}
+    </ion-card-content>
+  </ion-card>
+  <div id="bazi"></div>
+</ion-content>
