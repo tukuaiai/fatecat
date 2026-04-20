@@ -1,8 +1,8 @@
-# AGENTS.md - fatecat root
+# AGENTS.md - FateCat Skill Repo
 
 ## 目录用途
 
-当前根目录只是 skill 容器与版本根，不再承载 FateCat 业务源码。
+当前根目录就是单 skill 仓库根：对外暴露标准 skill 入口，对内托管 FateCat 项目源码。
 
 ## 目录结构
 
@@ -10,25 +10,28 @@
 fatecat/
 ├── AGENTS.md
 ├── README.md
-└── skills/
+├── SKILL.md
+├── references/
+├── scripts/
+└── project/
     ├── AGENTS.md
-    └── fatecat/
-        ├── AGENTS.md
-        ├── SKILL.md
-        ├── references/
-        └── scripts/
-            ├── *.sh
-            └── fatecat_runtime/
+    ├── pyproject.toml
+    ├── assets/
+    ├── modules/
+    ├── runtime/
+    ├── scripts/
+    └── tests/
 ```
 
 ## 职责边界
 
-- 根目录：只保留仓库说明、顶层导航与 Git 元数据。
-- `skills/fatecat/`：FateCat skill 外壳。
-- `skills/fatecat/scripts/fatecat_runtime/`：当前 FateCat 项目的真实源码根、运行时骨架与文档真相源。
+- `SKILL.md`：标准 skill 入口说明。
+- `references/`：长文档、输入输出契约、迁移与排障材料。
+- `scripts/`：skill 包装脚本与导出脚本。
+- `project/`：FateCat 项目的真实源码根、运行时骨架与项目文档真相源。
 
 ## 依赖方向
 
-- `README.md -> skills/fatecat/SKILL.md`
-- `skills/fatecat/* -> skills/fatecat/scripts/fatecat_runtime/*`
-- 禁止在根目录重新散落 `modules/`、`assets/`、`runtime/`、`tests/` 等并行源码目录
+- `README.md -> SKILL.md + references/*`
+- `scripts/* -> project/*`
+- 禁止在根目录重新散落与 `project/` 平行的第二套业务源码目录

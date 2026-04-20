@@ -3,28 +3,28 @@ set -euo pipefail
 
 skill_scripts_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 skill_root="$(cd -- "${skill_scripts_dir}/.." && pwd)"
-embedded_runtime_root="${skill_root}/scripts/fatecat_runtime"
+project_root="${skill_root}/project"
 
-embedded_runtime_ready() {
-  [[ -f "${embedded_runtime_root}/pyproject.toml" && -x "${embedded_runtime_root}/.venv/bin/fatecat" ]]
+project_ready() {
+  [[ -f "${project_root}/pyproject.toml" && -x "${project_root}/.venv/bin/fatecat" ]]
 }
 
-embedded_runtime_exists() {
-  [[ -f "${embedded_runtime_root}/pyproject.toml" ]]
+project_exists() {
+  [[ -f "${project_root}/pyproject.toml" ]]
 }
 
 resolve_runtime_root() {
-  if embedded_runtime_ready; then
-    printf '%s\n' "${embedded_runtime_root}"
+  if project_ready; then
+    printf '%s\n' "${project_root}"
     return 0
   fi
 
-  if embedded_runtime_exists; then
-    printf '%s\n' "${embedded_runtime_root}"
+  if project_exists; then
+    printf '%s\n' "${project_root}"
     return 0
   fi
 
-  echo "无法定位 FateCat runtime 根目录：缺少 ${embedded_runtime_root}。" >&2
+  echo "无法定位 FateCat 项目根目录：缺少 ${project_root}。" >&2
   return 1
 }
 

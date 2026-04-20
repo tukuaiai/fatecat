@@ -1,35 +1,35 @@
 # FateCat
 
-当前仓库已经收口为 skill-only 结构。
+当前仓库已经重构为单-skill仓库布局。
 
 真实项目源码位于：
 
-`skills/fatecat/scripts/fatecat_runtime/`
+`project/`
 
 根目录现在只承担 3 件事：
 
-- 作为 Git 仓库根
-- 作为 skill 入口导航层
-- 作为后续导出与分发的最小容器
+- 作为标准 skill 根目录
+- 作为 FateCat 的包装入口与文档层
+- 作为可导出的单-skill bundle 源
 
 ## 快速入口
 
-- skill 说明：`skills/fatecat/SKILL.md`
-- skill 架构：`skills/fatecat/AGENTS.md`
-- 项目源码根：`skills/fatecat/scripts/fatecat_runtime/AGENTS.md`
+- skill 说明：`SKILL.md`
+- skill 架构：`AGENTS.md`
+- 项目源码根：`project/AGENTS.md`
 
 ## 常用命令
 
 ```bash
-bash skills/fatecat/scripts/bootstrap.sh
-bash skills/fatecat/scripts/health.sh --mode pure --json
-bash skills/fatecat/scripts/pure-analysis.sh \
+bash scripts/bootstrap.sh
+bash scripts/health.sh --mode pure --json
+bash scripts/pure-analysis.sh \
   --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市"}' \
   --pretty
 ```
 
 ## 说明
 
-- 不要再把源码散回根目录。
-- 需要改业务代码时，直接进入 `skills/fatecat/scripts/fatecat_runtime/`。
-- 需要导出独立 skill bundle 时，使用 `bash skills/fatecat/scripts/export-runtime.sh --output <dir>`。
+- 不要再把业务源码塞回 `scripts/` 或 `references/`。
+- 需要改业务代码时，直接进入 `project/`。
+- 需要导出独立 skill bundle 时，使用 `bash scripts/export-runtime.sh --output <dir>`。

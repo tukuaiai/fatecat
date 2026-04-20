@@ -1,19 +1,19 @@
-# FateCat Skill 迁移与导出计划
+# FateCat Skill 单仓布局与导出计划
 
-## Phase 1: 仓库内可运行的 skill 外壳
+## 当前布局
 
-- 创建 `skills/fatecat/` 作为 skill 外壳
-- 提供 `SKILL.md`、参考文档、包装脚本
-- 把 FateCat 项目整体迁入 `skills/fatecat/scripts/fatecat_runtime/`
-- 让包装脚本只依赖 skill 内部源码根
+- 根目录直接作为 skill 根
+- `SKILL.md`、`references/`、`scripts/` 位于根目录
+- FateCat 项目整体收口到 `project/`
+- 包装脚本只依赖 `project/` 这一处源码真相源
 
-## Phase 2: 导出独立 bundle
+## 导出 bundle
 
 - 通过 `export-runtime.sh` 复制运行所需骨架到导出目录
-- 导出目标结构包含 `skills/fatecat/scripts/fatecat_runtime/`
+- 导出目标结构保持当前单-skill布局
 - 排除 `.git/`、`.venv/`、真实 `.db`、真实 `.env`
 
-## Phase 3: 后续优化
+## 后续优化
 
 - 评估 `full` bundle 与 `lite` bundle 两种分发模式
 - 视情况增加校验脚本，确保导出后命令仍可用
@@ -22,22 +22,22 @@
 
 必须带走：
 
-- `pyproject.toml`
-- `Makefile`
-- `modules/`
-- `assets/`
-- `tests/`
 - `README.md`
 - `AGENTS.md`
+- `SKILL.md`
+- `references/`
+- `scripts/`
+- `project/`
 
 必须排除：
 
 - `.git/`
+- `.history/`
 - `.venv/`
 - `.pytest_cache/`
 - `.ruff_cache/`
-- `assets/config/.env`
-- `runtime/**/*.db`
+- `project/assets/config/.env`
+- `project/runtime/**/*.db`
 
 ## 风险
 

@@ -24,7 +24,7 @@
 - `lat`
 - `birth_place`
 
-这些别名由 `modules/fate_core/src/fate_core/cli.py` 中的输入归一化逻辑处理。
+这些别名由 `project/modules/fate_core/src/fate_core/cli.py` 中的输入归一化逻辑处理。
 
 ## 纯分析输出顶层
 
