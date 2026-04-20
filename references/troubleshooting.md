@@ -1,5 +1,24 @@
 # FateCat Skill 故障排查
 
+## 默认止血动作
+
+如果你还不确定问题属于依赖、入口、配置还是输入，先执行：
+
+```bash
+bash scripts/preflight.sh --mode pure --bootstrap --pretty
+```
+
+如果你怀疑开发依赖没装全，执行：
+
+```bash
+bash scripts/preflight.sh --mode pure --with-dev --pretty
+```
+
+## `strict skill 校验失败，提示目录名不匹配`
+
+- 原因：`SKILL.md` frontmatter 里的 `name` 是 `fatecat`，但你把 bundle 导出到了别的 basename，例如 `fatecat-skill-bundle`
+- 处理：重新导出到 basename 为 `fatecat` 的目录，例如 `bash scripts/export-runtime.sh --output /tmp/fatecat --mode lite`
+
 ## `配置文件不存在`
 
 - 原因：`project/assets/config/.env` 缺失
@@ -25,7 +44,27 @@
 - 原因：导出脚本会主动排除 `.venv/`
 - 处理：进入导出目录后执行 `bash scripts/bootstrap.sh`
 
-## 导出目录里仍然有敏感文件
+## `导出目录里仍然有敏感文件`
 
 - 原因：手工复制绕过了导出脚本
 - 处理：删除导出目录，重新使用 `export-runtime.sh`
+
+## `bundle 体积过大`
+
+- 原因：使用了完整导出模式，或根级 `assets/lifecycle/packs/` 已累积大量历史沉淀
+- 处理：优先改用 `bash scripts/export-runtime.sh --output <dir> --mode lite`
+
+## `未发现生命周期包`
+
+- 原因：还没有执行 `bash scripts/init-lifecycle-pack.sh --name <slug>`
+- 处理：先初始化一个生命周期包，再执行 `lifecycle-status.sh`
+
+## `运维包缺少 health 结果`
+
+- 原因：还没有执行 `bootstrap.sh`，或者 `.venv/bin/fatecat` 已失效
+- 处理：先执行 `bash scripts/bootstrap.sh`，再重新运行 `collect-ops-bundle.sh`
+
+## `自动救活没有真正启用`
+
+- 原因：当前 skill 只提供 repo 内的健康检查、重启命令和运维证据打包，没有直接替你安装 systemd、supervisor、容器编排或外部告警
+- 处理：按 `references/ops-pack.md` 中的边界说明，把仓库内 runbook 接到目标环境的守护体系

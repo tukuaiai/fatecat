@@ -1,123 +1,339 @@
 ---
 name: fatecat
-description: "FateCat 命理分析交付 skill：封装 pure-analysis、health、serve api、serve bot 与独立导出流程。Use when 你要用 FateCat 做结构化命理分析、健康检查、Bot/API 交付，或把当前仓库导出为可分发 skill bundle。"
+description: "FateCat 执行型命理排盘 skill：基于当前仓库完成依赖安装、健康检查、纯分析执行、JSON 文件输出，以及 API/Bot 交付前检查。Use when 你要让 agent 调用这个仓库生成命理排盘结果文件，或在上线前完成首次安装、配置检查、生产可用性校验。"
 ---
 
 # fatecat Skill
 
-用 FateCat 的单-skill仓库布局稳定执行结构化命理分析、交付层启动与 skill bundle 导出；不在 skill 层重写业务算法。
+这个 skill 的职责不是在文档层重写命理算法，而是指导 agent 直接调用当前仓库，把 FateCat 从“未安装 / 未配置 / 未校验”推进到“依赖就绪 / 健康通过 / 可以执行命理排盘并输出文件”的可运行状态。
 
 ## When to Use This Skill
 
 Trigger when any of these applies:
-- 你要把出生时间、性别、经纬度等输入转换为 FateCat `pure-analysis` 结构化 JSON
-- 你要先做 `health` 检查，再决定当前环境是否能跑纯分析或 Telegram / API 交付
-- 你要启动 FateCat 的 FastAPI 或 Telegram Bot 入口
-- 你要把当前 FateCat 仓库封装成可分发的独立 skill bundle
-- 你要查询 FateCat 的输入输出契约、命令入口、迁移约束或排障手册
+- 你要让 agent 基于当前仓库执行一次命理排盘，并把结果写入 JSON 文件
+- 你要在首次接手仓库时完成依赖安装、虚拟环境准备、CLI 入口修复
+- 你要在正式执行任务前检查 `pure` 或 `delivery` 模式是否健康
+- 你要在生产前确认配置、依赖、入口命令、输出文件链路全部打通
+- 你要启动 FateCat 的 API 或 Bot 交付层，但必须先走前置检查
+- 你要给后续 agent 留下一套“先检查、再执行、最后验收”的标准运行手册
 
 ## Not For / Boundaries
 
-- 这个 skill 不重写 `assets/vendor/` 下的成熟算法仓库，也不替代它们的原始文档。
-- 当前仓库的 FateCat 源码真相源位于 `project/`；根目录只保留 skill 入口、文档与包装脚本。
-- 这个 skill 不接受缺失核心输入的纯分析请求；最少需要 `birthDateTime`、`gender`、`longitude`、`latitude`。
-- 这个 skill 不应把真实 `assets/config/.env`、真实运行态数据库或敏感凭据混入文档层或导出产物。
+- 这个 skill 不重写 `project/assets/vendor/` 下的外部算法仓库，也不允许用文档替代真实执行结果。
+- 当前 FateCat 源码真相源在 `project/`；根目录的 `scripts/` 只是包装入口，不能在根目录再发明第二套运行时。
+- 纯命理排盘最少需要：`birthDateTime`、`gender`、`longitude`、`latitude`；缺一项都不应冒然执行。
+- `delivery` 模式依赖 `project/assets/config/.env` 等真实配置；没有配置时只能停在检查阶段，不能假装“可生产”。
+- 真正的生产可用，必须以健康检查、一次真实输出、必要时 API/Bot 启动验证为准；不能只看文档或只跑 `--help`。
 
 ## Quick Reference
 
-### 先安装当前仓库运行环境
+### 0. 仓库定位
+
+```bash
+pwd
+```
+
+期望当前目录是 skill 根目录，且存在 `project/`、`scripts/`、`SKILL.md`。
+
+### 1. 首次安装运行时
 
 ```bash
 bash scripts/bootstrap.sh
 ```
 
-### 检查纯分析依赖
+如果要连开发依赖一起装：
 
 ```bash
-bash scripts/health.sh --mode pure --json
+bash scripts/bootstrap.sh --with-dev
 ```
 
-### 执行纯命理分析
+### 2. 检查 CLI 是否可用
 
 ```bash
+project/.venv/bin/fatecat --help
+```
+
+### 3. 检查纯分析健康状态
+
+```bash
+bash scripts/health.sh --mode pure --json --pretty
+```
+
+### 3.5 一键执行标准预检
+
+```bash
+bash scripts/preflight.sh --mode pure --bootstrap --smoke --pretty
+```
+
+如果要检查交付层但暂不执行排盘：
+
+```bash
+bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+```
+
+### 4. 检查交付层健康状态
+
+```bash
+bash scripts/health.sh --mode delivery --json --pretty
+```
+
+### 5. 用 JSON 字符串直接执行排盘
+
+```bash
+mkdir -p output
 bash scripts/pure-analysis.sh \
-  --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市"}' \
+  --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市","name":"测试样本"}' \
+  --output-file output/bazi-result.json \
   --pretty
 ```
 
-### 启动 API
+### 6. 用输入文件执行排盘
 
 ```bash
+mkdir -p output
+bash scripts/pure-analysis.sh \
+  --input-file input.json \
+  --output-file output/bazi-result.json \
+  --pretty
+```
+
+### 7. 启动 API 前先做 delivery 检查
+
+```bash
+bash scripts/health.sh --mode delivery --json --pretty
 bash scripts/serve-api.sh
 ```
 
-### 启动 Bot
+### 8. 启动 Bot 前先做 delivery 检查
 
 ```bash
+bash scripts/health.sh --mode delivery --json --pretty
 bash scripts/serve-bot.sh
 ```
 
-### 导出独立 skill runtime
+## Execution Logic
+
+### Phase 1. 首次接手 / 依赖准备
+
+必须先做：
+1. 确认当前目录是 skill 根目录，且 `project/pyproject.toml` 存在。
+2. 执行 `bash scripts/bootstrap.sh`。
+3. 执行 `project/.venv/bin/fatecat --help`，确认 CLI 入口健康。
+
+更推荐直接执行：
 
 ```bash
-bash scripts/export-runtime.sh --output /tmp/fatecat-skill-bundle
+bash scripts/preflight.sh --mode pure --bootstrap --pretty
+```
+
+完成定义：
+- `project/.venv/bin/fatecat` 可执行
+- `fatecat` 至少暴露 `pure-analysis`、`health`、`serve`
+
+### Phase 2. 配置与前置检查
+
+执行前必须判断目标模式：
+- 只做排盘文件输出：走 `pure` 模式检查
+- 要启动 API/Bot：走 `delivery` 模式检查
+
+纯分析检查：
+
+```bash
+bash scripts/health.sh --mode pure --json --pretty
+```
+
+交付层检查：
+
+```bash
+bash scripts/health.sh --mode delivery --json --pretty
+```
+
+完成定义：
+- 输出中没有阻断性错误
+- 需要 `delivery` 时，配置文件和交付层依赖已就绪
+- 推荐优先使用统一入口：`bash scripts/preflight.sh --mode <pure|delivery> --bootstrap --pretty`
+
+### Phase 3. 输入验收
+
+在真正执行命理排盘前，agent 必须确认：
+- 出生时间格式可解析
+- 性别值符合 FateCat CLI 接受范围
+- 经度、纬度存在且是数字
+- 若要写文件，目标目录存在或可创建
+
+如果用户只给自然语言描述，没有给坐标，这个 skill 应先停在“收集输入”或“查地理坐标”阶段，不应直接执行。
+
+### Phase 4. 执行命理排盘并输出文件
+
+标准执行路径：
+
+```bash
+mkdir -p output
+bash scripts/pure-analysis.sh \
+  --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市","name":"测试样本"}' \
+  --output-file output/bazi-result.json \
+  --pretty
+```
+
+如果需要把“预检 + 样例输出”一步完成，优先用：
+
+```bash
+bash scripts/preflight.sh \
+  --mode pure \
+  --bootstrap \
+  --smoke \
+  --output-file output/preflight-sample.json \
+  --pretty
+```
+
+完成定义：
+- 命令退出码为 0
+- 输出文件存在
+- 输出 JSON 可读取
+- 顶层至少能看到 `success`、`data`、`profile` 等结果字段
+
+### Phase 5. 生产前确认
+
+若目标是“确保可以生产后开始任务”，最少还要补这三步：
+1. 再跑一次目标模式的 `health`
+2. 保留一份真实输出文件作为验收样本
+3. 如果走交付层，再启动一次 API 或 Bot 验证入口链路
+
+推荐验收顺序：
+1. `bash scripts/bootstrap.sh`
+2. `bash scripts/preflight.sh --mode pure --bootstrap --smoke --output-file output/preflight-sample.json --pretty`
+3. `bash scripts/pure-analysis.sh ... --output-file ...`
+4. 若要上线交付层：`bash scripts/health.sh --mode delivery --json --pretty`
+5. `bash scripts/serve-api.sh` 或 `bash scripts/serve-bot.sh`
+
+## Common Patterns
+
+### Pattern 1. 首次初始化并验证 CLI
+
+```bash
+bash scripts/bootstrap.sh && project/.venv/bin/fatecat --help
+```
+
+### Pattern 2. 纯分析生产前检查
+
+```bash
+bash scripts/preflight.sh --mode pure --bootstrap --pretty
+```
+
+### Pattern 3. 交付层生产前检查
+
+```bash
+bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+```
+
+### Pattern 4. 直接落文件
+
+```bash
+mkdir -p output && bash scripts/pure-analysis.sh --input-file input.json --output-file output/result.json --pretty
+```
+
+### Pattern 5. 一步完成预检和烟雾输出
+
+```bash
+bash scripts/preflight.sh --mode pure --bootstrap --smoke --output-file output/preflight.json --pretty
+```
+
+### Pattern 6. 用命令行参数直接执行
+
+```bash
+project/.venv/bin/fatecat pure-analysis \
+  --birth-datetime '1990-01-01 08:00:00' \
+  --gender 男 \
+  --longitude 116.4074 \
+  --latitude 39.9042 \
+  --birth-place 北京市 \
+  --output-file output/result.json \
+  --pretty
 ```
 
 ## Examples
 
-### Example 1
+### Example 1: 首次接手仓库并确认可执行
 
-- Input: 只需要给 AI / Agent 一份稳定的命理结构化 JSON
+- Input: 一个刚拉下来的 FateCat skill 仓库，需要先确认能不能跑
 - Steps:
-  1. 执行 `bash scripts/bootstrap.sh`
-  2. 执行 `bash scripts/health.sh --mode pure --json`
-  3. 执行 `bash scripts/pure-analysis.sh --input-json '...' --pretty`
+  1. 执行 `bash scripts/preflight.sh --mode pure --bootstrap --pretty`
+  2. 必要时再执行 `project/.venv/bin/fatecat --help`
 - Expected output / acceptance:
-  - 输出 JSON 顶层包含 `success`、`profile`、`data`、`branding`、`disclaimer`
-  - `profile` 为 `pure_analysis`
+  - 虚拟环境成功创建
+  - CLI 帮助正常显示
+  - `pure` 健康检查通过，没有阻断性错误
 
-### Example 2
+### Example 2: 生成一份命理排盘 JSON 文件
 
-- Input: 当前环境要暴露 HTTP 接口给上层工作流调用
+- Input: 用户给出出生时间、性别、经纬度，要求保存结果文件
 - Steps:
-  1. 准备 `project/assets/config/.env`
-  2. 执行 `bash scripts/health.sh --mode delivery --json`
+  1. 先执行 `bash scripts/preflight.sh --mode pure --bootstrap --pretty`
+  2. 创建输出目录：`mkdir -p output`
+  3. 执行：
+     `bash scripts/pure-analysis.sh --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042,"birthPlace":"北京市"}' --output-file output/bazi-result.json --pretty`
+- Expected output / acceptance:
+  - 命令成功结束
+  - `output/bazi-result.json` 存在
+  - 文件中有结构化命理结果，而不是空文件或报错栈
+
+### Example 3: 上线前验证 API 交付层
+
+- Input: 已经能做纯分析，现在要确认 API 入口达到可生产前状态
+- Steps:
+  1. 确认 `project/assets/config/.env` 等交付层配置已准备
+  2. 执行 `bash scripts/preflight.sh --mode delivery --bootstrap --pretty`
   3. 执行 `bash scripts/serve-api.sh`
 - Expected output / acceptance:
-  - FastAPI 进程启动成功
-  - `/health` 可返回带 branding 的健康响应
+  - `delivery` 健康检查通过
+  - API 进程成功启动
+  - 不再出现缺配置、缺入口、缺依赖这类启动即失败问题
 
-### Example 3
+### Example 4: agent 的标准执行顺序
 
-- Input: 需要把当前 FateCat 仓库导出成可分发的 skill bundle
+- Input: 用户说“开始做排盘，先确保环境没问题”
 - Steps:
-  1. 执行 `bash scripts/export-runtime.sh --output /tmp/fatecat-skill-bundle`
-  2. 检查输出目录下是否存在 `SKILL.md`、`scripts/`、`project/`
-  3. 在导出目录内继续执行 `bash scripts/bootstrap.sh`
+  1. `bash scripts/preflight.sh --mode pure --bootstrap --pretty`
+  2. 检查输入字段是否完整
+  3. `bash scripts/pure-analysis.sh ... --output-file ... --pretty`
+  4. 读取输出文件并向用户汇报
 - Expected output / acceptance:
-  - 导出目录不包含 `.venv/`、`.git/`、真实 `.db`、真实 `.env`
-  - 导出目录保留 `pyproject.toml`、`modules/`、`assets/`、`tests/` 等运行所需骨架
+  - agent 不会跳过安装与检查直接开跑
+  - 每次真实执行前，都有前置健康证据
+  - 结果文件与口头汇报一致
 
 ## References
 
-- `references/index.md`: 导航索引
-- `references/architecture.md`: skill 外壳与运行时边界
-- `references/commands.md`: 常用命令入口
+- `references/index.md`: 总导航
+- `references/execution-playbook.md`: 标准执行链路与决策顺序
+- `references/commands.md`: 仓库脚本与命令入口
 - `references/io-contract.md`: 输入输出契约
-- `references/migration-plan.md`: 单-skill布局与 bundle 导出路线
-- `references/troubleshooting.md`: 常见失败模式
+- `references/troubleshooting.md`: 常见失败模式与修复方向
+- `references/ops-pack.md`: 运维包与健康检查边界
+- `references/stage-gates.md`: 从“能跑”到“可生产”的阶段门禁
 
 ## Maintenance
 
-- Sources: `project/README.md`、`project/AGENTS.md`、`project/pyproject.toml`、`project/modules/fate_core/src/fate_core/cli.py`、`project/modules/telegram/src/main.py`、`project/assets/deploy/bootstrap_agent.sh`
+- Sources:
+  - `scripts/bootstrap.sh`
+  - `scripts/preflight.sh`
+  - `scripts/health.sh`
+  - `scripts/pure-analysis.sh`
+  - `scripts/serve-api.sh`
+  - `scripts/serve-bot.sh`
+  - `scripts/common.sh`
+  - `project/modules/fate_core/src/fate_core/cli.py`
+  - `project/modules/telegram/src/main.py`
 - Verification path:
-  - 命令帮助：`project/.venv/bin/fatecat --help`
-  - 纯分析：`project/.venv/bin/fatecat pure-analysis --help`
-  - 健康检查：`project/.venv/bin/fatecat health --help`
-  - 交付层：`project/.venv/bin/fatecat serve --help`
-  - skill 结构校验：`/home/lenovo/.codex/skills/auto-skill/scripts/validate-skill.sh . --strict`
+  - `bash scripts/bootstrap.sh`
+  - `bash scripts/preflight.sh --mode pure --bootstrap --pretty`
+  - `project/.venv/bin/fatecat --help`
+  - `project/.venv/bin/fatecat pure-analysis --help`
+  - `project/.venv/bin/fatecat health --help`
+  - `bash scripts/health.sh --mode pure --json --pretty`
+  - `bash scripts/pure-analysis.sh --input-json '{"birthDateTime":"1990-01-01 08:00:00","gender":"男","longitude":116.4074,"latitude":39.9042}' --output-file /tmp/fatecat-sample.json --pretty`
 - Last updated: 2026-04-20
 - Known limits:
-  - `project/` 现在就是 FateCat 源码真相源
-  - 导出 bundle 会剥离 `.venv`、真实 `.env`、真实 `.db`，导出后仍需重新 bootstrap
-  - `delivery` 模式仍然依赖完整配置与外部库
+  - 纯分析可以在无交付层配置时运行，但 `delivery` 模式不行
+  - 生产可用性最终取决于真实配置、真实依赖和一次真实执行结果
+  - 本 skill 只规定仓库内的标准运行路径，不替代外部部署系统的职责

@@ -4,6 +4,30 @@ set -euo pipefail
 skill_scripts_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 skill_root="$(cd -- "${skill_scripts_dir}/.." && pwd)"
 project_root="${skill_root}/project"
+lifecycle_root="${skill_root}/assets/lifecycle"
+lifecycle_templates_dir="${lifecycle_root}/templates"
+lifecycle_packs_dir="${lifecycle_root}/packs"
+
+die() {
+  echo "$*" >&2
+  exit 1
+}
+
+usage_error() {
+  die "参数错误：$*"
+}
+
+ensure_command() {
+  local cmd="$1"
+  command -v "${cmd}" >/dev/null 2>&1 || die "缺少命令：${cmd}"
+}
+
+ensure_parent_dir() {
+  local target_path="$1"
+  local target_dir
+  target_dir="$(dirname -- "${target_path}")"
+  mkdir -p "${target_dir}"
+}
 
 project_ready() {
   [[ -f "${project_root}/pyproject.toml" && -x "${project_root}/.venv/bin/fatecat" ]]
@@ -30,6 +54,27 @@ resolve_runtime_root() {
 
 resolve_bootstrap_root() {
   resolve_runtime_root
+}
+
+ensure_lifecycle_dirs() {
+  mkdir -p "${lifecycle_templates_dir}" "${lifecycle_packs_dir}"
+}
+
+normalize_slug() {
+  local raw="$1"
+
+  printf '%s' "${raw}" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[[:space:]]\+/-/g' \
+    | tr -cd 'a-z0-9._-'
+}
+
+latest_lifecycle_pack() {
+  if [[ ! -d "${lifecycle_packs_dir}" ]]; then
+    return 1
+  fi
+
+  find "${lifecycle_packs_dir}" -mindepth 1 -maxdepth 1 -type d | sort | tail -n 1
 }
 
 fatecat_entrypoint_healthy() {
@@ -64,4 +109,12 @@ resolve_fatecat_bin() {
 
   echo "未找到 ${runtime_root}/.venv/bin/fatecat，请先执行 bootstrap.sh。" >&2
   return 1
+}
+
+run_fatecat() {
+  local runtime_root
+  runtime_root="$(resolve_runtime_root)"
+  local fatecat_bin
+  fatecat_bin="$(resolve_fatecat_bin "${runtime_root}")"
+  "${fatecat_bin}" "$@"
 }

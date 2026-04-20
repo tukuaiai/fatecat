@@ -1,1 +1,26 @@
 .history/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Root skill runtime outputs
+output/
+*.log
+
+# Lifecycle working packs
+assets/lifecycle/packs/*
+!assets/lifecycle/packs/.gitkeep
+
+# Local virtualenvs
+.venv/
+venv/

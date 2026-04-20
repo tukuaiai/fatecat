@@ -14,11 +14,12 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     *)
-      echo "未知参数: $1" >&2
-      exit 2
+      usage_error "未知参数: $1"
       ;;
   esac
 done
+
+ensure_command python3
 
 cd "${runtime_root}"
 
