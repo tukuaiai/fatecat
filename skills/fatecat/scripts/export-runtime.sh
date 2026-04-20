@@ -6,7 +6,6 @@ source "${script_dir}/common.sh"
 
 output_dir=""
 runtime_root="$(resolve_runtime_root)"
-repo_root="$(cd "${runtime_root}" && pwd)"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -28,8 +27,8 @@ fi
 
 dest_root="$(mkdir -p "${output_dir}" && cd "${output_dir}" && pwd)"
 case "${dest_root}" in
-  "${repo_root}"|"${repo_root}/"* )
-    echo "导出目录不能位于当前 FateCat 源仓库内部，否则会形成递归复制。" >&2
+  "${runtime_root}"|"${runtime_root}/"* )
+    echo "导出目录不能位于嵌入式 FateCat runtime 内部，否则会形成递归复制。" >&2
     exit 2
     ;;
 esac
@@ -51,14 +50,14 @@ rsync -a \
   --exclude '.mypy_cache/' \
   --exclude 'assets/config/.env' \
   --exclude 'runtime/**/*.db' \
-  "${repo_root}/README.md" \
-  "${repo_root}/Makefile" \
-  "${repo_root}/pyproject.toml" \
-  "${repo_root}/assets" \
-  "${repo_root}/modules" \
-  "${repo_root}/scripts" \
-  "${repo_root}/tests" \
-  "${repo_root}/runtime" \
+  "${runtime_root}/README.md" \
+  "${runtime_root}/Makefile" \
+  "${runtime_root}/pyproject.toml" \
+  "${runtime_root}/assets" \
+  "${runtime_root}/modules" \
+  "${runtime_root}/scripts" \
+  "${runtime_root}/tests" \
+  "${runtime_root}/runtime" \
   "${dest_runtime}/"
 
 mkdir -p "${dest_runtime}/runtime/database/bazi"
@@ -68,8 +67,8 @@ if [[ -f "${dest_runtime}/runtime/database/bazi/bazi.db" ]]; then
   rm -f "${dest_runtime}/runtime/database/bazi/bazi.db"
 fi
 
-if [[ -f "${skill_root}/scripts/fatecat_runtime/AGENTS.md" ]]; then
-  cp "${skill_root}/scripts/fatecat_runtime/AGENTS.md" "${dest_runtime}/AGENTS.md"
+if [[ -f "${runtime_root}/AGENTS.md" ]]; then
+  cp "${runtime_root}/AGENTS.md" "${dest_runtime}/AGENTS.md"
 fi
 
 echo "导出完成: ${dest_skill}"

@@ -2,10 +2,10 @@
 
 ## Phase 1: 仓库内可运行的 skill 外壳
 
-- 创建 `skills/fatecat/`
+- 创建 `skills/fatecat/` 作为 skill 外壳
 - 提供 `SKILL.md`、参考文档、包装脚本
-- 复制 `skills/fatecat/scripts/fatecat_runtime/` 作为嵌入式镜像
-- 未 bootstrap 镜像前，包装脚本回退到仓库根 runtime
+- 把 FateCat 项目整体迁入 `skills/fatecat/scripts/fatecat_runtime/`
+- 让包装脚本只依赖 skill 内部源码根
 
 ## Phase 2: 导出独立 bundle
 
@@ -41,6 +41,5 @@
 
 ## 风险
 
-- 镜像包体积很大，因为 `assets/vendor/` 是运行时依赖的一部分
-- 若忘记执行 `sync-runtime.sh`，嵌入式 runtime 可能落后于根仓库源码
-- 若未来路径发现逻辑变化，包装脚本、同步脚本与导出脚本需要一起更新
+- 包体积仍然很大，因为 `assets/vendor/` 是运行时依赖的一部分
+- 若未来路径发现逻辑变化，包装脚本与导出脚本需要一起更新

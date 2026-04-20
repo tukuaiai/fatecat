@@ -22,15 +22,16 @@ done
 
 cd "${runtime_root}"
 
-if [[ ! -d .venv ]]; then
+if [[ ! -x .venv/bin/python ]]; then
+  rm -rf .venv
   python3 -m venv .venv
 fi
 
-.venv/bin/pip install -q --upgrade pip
+.venv/bin/python -m pip install -q --upgrade pip
 if [[ "${with_dev}" == "1" ]]; then
-  .venv/bin/pip install -q -e '.[dev]'
+  .venv/bin/python -m pip install -q -e '.[dev]'
 else
-  .venv/bin/pip install -q -e .
+  .venv/bin/python -m pip install -q -e .
 fi
 
 echo "FateCat runtime 已准备完成: ${runtime_root}"

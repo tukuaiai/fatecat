@@ -1,8 +1,0 @@
-.idea/
-vendor/
-composer.lock
-composer.phar
-.phpunit.result.cache
-.DS_Store
-package.xml
-build-standalone.php

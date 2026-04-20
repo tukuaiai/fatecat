@@ -10,7 +10,7 @@
 
 ## Reading Order
 
-1. 先看 `architecture.md`，理解嵌入式 `fatecat_runtime/` 与源仓库之间的边界
+1. 先看 `architecture.md`，理解 `fatecat_runtime/` 作为当前源码根的边界
 2. 再看 `commands.md`，直接执行纯分析、健康检查与交付命令
 3. 需要对接上层系统时，看 `io-contract.md`
 4. 要做独立 skill 分发时，看 `migration-plan.md`

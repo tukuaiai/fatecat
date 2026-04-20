@@ -1,6 +1,0 @@
-classes= 2
-train  = train.txt
-valid  = test.txt
-names  = ../models/text.names
-backup = backup
-

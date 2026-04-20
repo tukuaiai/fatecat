@@ -1,2 +1,0 @@
-This file is to protect the build script from writing files to this directory.
-

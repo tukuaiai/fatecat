@@ -1,7 +1,0 @@
-{
-    "usingComponents": {
-        "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
-        "mp-indexList": "@miniprogram-component-plus/index-list"
-    },
-    "navigationBarTitleText": "Acronym"
-}

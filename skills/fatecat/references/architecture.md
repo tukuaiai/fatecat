@@ -13,21 +13,15 @@ skills/fatecat/
 ├── assets/                 # 示例与模板
 └── scripts/                # 包装脚本与导出脚本
      ├── *.sh               # 直接调用 FateCat CLI
-     ├── fatecat_runtime/   # 嵌入式运行时镜像
+     ├── fatecat_runtime/   # FateCat 真实源码根
      └── export-runtime.sh  # 物化独立 runtime
 ```
 
 ## 当前运行策略
 
-- `skills/fatecat/scripts/fatecat_runtime/` 已包含一份 FateCat 运行时镜像。
-- 为了避免刚复制出来时没有 `.venv` 导致脚本不可用，包装脚本会在“镜像未 bootstrap”时回退到源仓库。
-- 当嵌入式 runtime 完成 bootstrap 后，包装脚本会优先使用它。
-
-## 为什么仍然要保留同步脚本
-
-- 根仓库仍然是真相源，嵌入式 runtime 只是 skill 封装所需镜像。
-- 手工复制不可持续，必须有 `sync-runtime.sh` 统一刷新。
-- 导出独立 bundle 时，也需要基于同样的排除规则控制 `.env`、`.db`、`.venv` 与 `.git`。
+- `skills/fatecat/scripts/fatecat_runtime/` 已经承载 FateCat 的真实源码、运行时目录与项目元数据。
+- 包装脚本只从这一个位置解析 runtime root，不再回退到 skill 外层根目录。
+- `bootstrap.sh` 负责在这个 runtime 内补齐 `.venv`，导出脚本负责按同样边界生成可分发 bundle。
 
 ## 依赖边界
 
@@ -35,4 +29,4 @@ skills/fatecat/
 - 交付层：`modules/telegram/`
 - 配置、profile、schema、vendor：`assets/`
 - 运行态数据：`runtime/`
-- skill 外壳不重写业务逻辑，只包装入口、镜像同步与迁移路径
+- skill 外壳不重写业务逻辑，只包装入口与迁移路径
