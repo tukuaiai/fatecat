@@ -1,6 +1,6 @@
 # AGENTS.md - FateCat 开发指南
 
-> AI Agent 操作手册 | 最后更新: 2026-04-14
+> AI Agent 操作手册 | 最后更新: 2026-04-20
 
 ## 项目概述
 
@@ -10,6 +10,7 @@ FateCat 是命理分析仓库，定位为：
 - `runtime/`：运行态数据
 - `modules/fate_core/`：纯命理分析内核
 - `modules/telegram/`：Telegram / API 交付层
+- `skills/`：面向 Agent 的可复用技能封装层
 
 本仓库已经移除旧的 `libs/`、顶层 `docs/`、顶层 `deploy/` 组织方式。
 
@@ -46,6 +47,9 @@ fatecat/
 │       ├── scripts/
 │       ├── output/
 │       └── start.py
+├── skills/
+│   ├── AGENTS.md
+│   └── fatecat/                   # FateCat skill 外壳与导出脚本
 ├── .venv/bin/fatecat              # 安装后可用的统一 CLI
 ├── scripts/
 └── tests/
@@ -113,6 +117,13 @@ FATE_SERVICE_PORT=8001
 - 负责 Bot / API / 报告交付
 - 允许调用 `fate_core` 与外部成熟仓库
 - 不负责定义字段 profile 真相源
+
+### `skills/`
+
+- 负责把 FateCat 能力封装成 Agent 可消费的 skill 入口
+- `skills/fatecat/SKILL.md` 只承载触发规则、边界、命令模式与引用导航
+- `skills/fatecat/scripts/` 放包装脚本与导出脚本，不在仓库内复制整份运行时代码
+- 如需独立分发 skill，优先通过导出脚本物化 `fatecat_runtime/`，避免在源仓库里自嵌套复制
 
 ---
 
@@ -183,6 +194,7 @@ sys.path.insert(0, "/path/to/project/assets/vendor")
 - 交付层接口：进入 `modules/telegram/`
 - 输出字段配置：先改 `assets/fate/`
 - 部署变更：改 `assets/deploy/`
+- Skill 封装与 Agent 入口：进入 `skills/fatecat/`
 
 ---
 
@@ -242,3 +254,9 @@ cat modules/telegram/output/logs/nohup.out
   - `runtime/database/`
 - 配置统一收敛到 `assets/config/`
 - 路径真相源修正为仓库内自洽，不再指向外部 TradeCat 目录
+
+### 2026-04-20
+
+- 新增顶层 `skills/` 作为 Agent 技能封装层
+- 新增 `skills/fatecat/`，用 skill 外壳包装 FateCat 能力
+- 当前阶段不在源仓库内复制整份 `fatecat_runtime/`，改为包装脚本 + 导出脚本路线
