@@ -19,8 +19,14 @@ fatecat/
 │       ├── packs/
 │       └── templates/
 ├── references/
-│   └── execution-playbook.md
+│   ├── commands.md
+│   ├── execution-playbook.md
+│   └── troubleshooting.md
 ├── scripts/
+│   ├── acceptance.sh
+│   ├── clean-runtime.sh
+│   ├── delivery-smoke.sh
+│   ├── export-runtime.sh
 │   └── preflight.sh
 └── project/
     ├── AGENTS.md
@@ -37,7 +43,7 @@ fatecat/
 - `SKILL.md`：标准 skill 入口说明。
 - `assets/`：生命周期模板、治理资产与可沉淀的 agent 运维材料。
 - `references/`：长文档、阶段门禁、输入输出契约、迁移与排障材料；其中 `execution-playbook.md` 是统一执行顺序真相源。
-- `scripts/`：skill 包装脚本、生命周期脚手架与导出脚本；其中 `preflight.sh` 是默认预检入口。
+- `scripts/`：skill 包装脚本、生命周期脚手架与导出脚本；其中 `preflight.sh` 是默认预检入口，`acceptance.sh` 是发布门禁入口，`delivery-smoke.sh` 负责可回收启动验证。
 - `project/`：FateCat 项目的真实源码根、运行时骨架与项目文档真相源。
 
 ## 依赖方向
@@ -45,5 +51,5 @@ fatecat/
 - `README.md -> SKILL.md + assets/* + references/*`
 - `assets/* -> scripts/* + references/*`
 - `scripts/* -> project/*`
-- `SKILL.md -> scripts/preflight.sh + references/execution-playbook.md`
+- `SKILL.md -> scripts/preflight.sh + scripts/delivery-smoke.sh + references/execution-playbook.md`
 - 禁止在根目录重新散落与 `project/` 平行的第二套业务源码目录

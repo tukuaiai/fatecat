@@ -98,7 +98,7 @@ fi
 
 runtime_root="$(resolve_runtime_root)"
 
-if [[ "${do_bootstrap}" == "1" || "${with_dev}" == "1" ]] || ! fatecat_entrypoint_healthy "${runtime_root}"; then
+if [[ "${do_bootstrap}" == "1" || "${with_dev}" == "1" ]] || runtime_bootstrap_required "${runtime_root}"; then
   bootstrap_args=()
   if [[ "${with_dev}" == "1" ]]; then
     bootstrap_args+=(--with-dev)

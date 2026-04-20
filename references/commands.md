@@ -19,6 +19,12 @@ bash scripts/preflight.sh \
   --pretty
 ```
 
+### 仓库总验收
+
+```bash
+bash scripts/acceptance.sh
+```
+
 ### 初始化生命周期包
 
 ```bash
@@ -62,6 +68,7 @@ bash scripts/pure-analysis.sh \
 
 ```bash
 bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target api
 bash scripts/serve-api.sh
 ```
 
@@ -69,7 +76,16 @@ bash scripts/serve-api.sh
 
 ```bash
 bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target bot --startup-timeout 8
 bash scripts/serve-bot.sh
+```
+
+说明：Bot smoke 走 dry-run，不依赖真实 Telegram 连接。
+
+### 清理本地缓存
+
+```bash
+bash scripts/clean-runtime.sh
 ```
 
 ### 采集 agent 运维包
@@ -81,13 +97,13 @@ bash scripts/collect-ops-bundle.sh --output /tmp/fatecat-ops-bundle
 ## 导出独立 bundle
 
 ```bash
-bash scripts/export-runtime.sh --output /tmp/export-full/fatecat --mode full
+bash scripts/export-runtime.sh --output-parent /tmp/export-full --mode full
 ```
 
 ## 导出轻量 bundle
 
 ```bash
-bash scripts/export-runtime.sh --output /tmp/export-lite/fatecat --mode lite
+bash scripts/export-runtime.sh --output-parent /tmp/export-lite --mode lite
 ```
 
 导出后的目录再执行：

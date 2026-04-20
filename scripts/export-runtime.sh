@@ -5,18 +5,19 @@ script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "${script_dir}/common.sh"
 
 output_dir=""
+output_parent=""
 bundle_mode="full"
 expected_skill_dir_name="fatecat"
 
 usage() {
   cat <<'EOF'
 用法:
-  bash scripts/export-runtime.sh --output <dir> [--mode full|lite]
+  bash scripts/export-runtime.sh (--output <dir> | --output-parent <dir>) [--mode full|lite]
 
 说明:
   - full: 导出完整单-skill 仓库骨架，保留 lifecycle templates 与 packs
   - lite: 导出运行与交付必需骨架，排除根级 assets/lifecycle/packs 历史沉淀
-  - 若后续要通过 strict skill 校验，导出目录 basename 应为 fatecat
+  - 若传入 --output-parent，会自动导出到 <dir>/fatecat，便于 strict skill 校验
 EOF
 }
 
@@ -25,6 +26,11 @@ while [[ $# -gt 0 ]]; do
     --output)
       [[ $# -ge 2 ]] || usage_error "--output 缺少参数"
       output_dir="$2"
+      shift 2
+      ;;
+    --output-parent)
+      [[ $# -ge 2 ]] || usage_error "--output-parent 缺少参数"
+      output_parent="$2"
       shift 2
       ;;
     --mode)
@@ -42,7 +48,11 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -z "${output_dir}" ]]; then
+if [[ -n "${output_dir}" && -n "${output_parent}" ]]; then
+  usage_error "--output 与 --output-parent 只能二选一"
+fi
+
+if [[ -z "${output_dir}" && -z "${output_parent}" ]]; then
   usage >&2
   exit 2
 fi
@@ -54,6 +64,10 @@ case "${bundle_mode}" in
     usage_error "--mode 只支持 full 或 lite"
     ;;
 esac
+
+if [[ -n "${output_parent}" ]]; then
+  output_dir="${output_parent}/${expected_skill_dir_name}"
+fi
 
 dest_root="$(mkdir -p "${output_dir}" && cd "${output_dir}" && pwd)"
 case "${dest_root}" in

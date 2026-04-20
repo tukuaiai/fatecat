@@ -50,6 +50,7 @@ bash scripts/preflight.sh \
 
 ```bash
 bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target api
 bash scripts/serve-api.sh
 ```
 
@@ -57,12 +58,15 @@ bash scripts/serve-api.sh
 
 ```bash
 bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target bot --startup-timeout 8
 bash scripts/serve-bot.sh
 ```
 
 验收：
 - `delivery` 模式健康检查通过
 - 入口命令启动时不再卡在缺依赖或缺配置
+- API smoke 通过 `/health` 探测
+- Bot smoke 至少通过 dry-run 装配验证
 
 ## 决策规则
 
@@ -71,6 +75,7 @@ bash scripts/serve-bot.sh
 - 首次接手仓库
 - `.venv/bin/fatecat` 不存在
 - `.venv/bin/fatecat` 指向旧路径
+- `.venv/bin/pytest`、`pip` 等入口仍指向旧路径
 - 需要补装 `dev` 依赖
 
 ### 什么时候直接用 `preflight.sh`
@@ -88,6 +93,7 @@ bash scripts/serve-bot.sh
 
 - 你明确不想生成样例文件
 - 你当前只想判断 pure / delivery 是否具备下一步条件
+- 你还没准备做 API/Bot 的真实启动验证
 
 ## 输入策略
 
@@ -111,6 +117,15 @@ bash scripts/serve-bot.sh
 
 ```bash
 bash scripts/preflight.sh --mode pure --bootstrap --pretty
+```
+
+### `.venv/bin/pytest` 指向旧路径
+
+处理：
+
+```bash
+bash scripts/bootstrap.sh --with-dev
+bash scripts/acceptance.sh --with-dev
 ```
 
 ### 纯分析缺字段

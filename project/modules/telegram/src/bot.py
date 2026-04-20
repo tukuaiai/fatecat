@@ -33,6 +33,7 @@ startup_check()
 load_dotenv(get_env_file())
 ADMIN_CHAT_ID = (os.getenv("FATE_ADMIN_USER_IDS") or "").split(",")[0] or None
 BOT_PROXY_URL = (os.getenv("FATE_BOT_PROXY_URL") or "").strip() or None
+BOT_DRY_RUN = (os.getenv("FATE_BOT_DRY_RUN") or "").strip().lower() in {"1", "true", "yes", "on"}
 
 from bazi_calculator import BaziCalculator
 from report_generator import generate_full_report
@@ -966,11 +967,11 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ConversationHandler.END
 
 
-def main():
+def main() -> int:
     token = os.getenv("FATE_BOT_TOKEN")
     if not token:
         print(_with_branding_text("错误: 未设置 FATE_BOT_TOKEN (请在 assets/config/.env 中配置)", compact=True))
-        return
+        return 1
     
     async def post_init(app: Application):
         await app.bot.set_my_commands([
@@ -1050,6 +1051,11 @@ def main():
     
     app.add_handler(conv)
     app.add_handler(CommandHandler("help", help_cmd))
+
+    if BOT_DRY_RUN:
+        print("Bot dry-run 初始化成功，未连接 Telegram。")
+        logger.info("Bot dry-run 初始化成功，跳过 run_polling")
+        return 0
     
     print("Bot 启动中...")
     app.run_polling(
@@ -1058,9 +1064,10 @@ def main():
         # 禁止信号处理：由外层守护/脚本负责进程生命周期，避免 event loop/signal 交互导致的异常退出
         stop_signals=(),
     )
+    return 0
 
 
-def run_with_retry():
+def run_with_retry() -> int:
     """带自动重连的启动函数"""
     retry_delay = 5
     max_delay = 60
@@ -1070,20 +1077,25 @@ def run_with_retry():
             import asyncio
             asyncio.set_event_loop(asyncio.new_event_loop())
             logger.info("🤖 启动 Bot...")
-            main()
+            exit_code = main()
+            if BOT_DRY_RUN:
+                return exit_code
             # run_polling 理论上不会“正常返回”；一旦返回视为异常退出
             raise RuntimeError("Bot 主循环意外退出（run_polling 已返回）")
         except KeyboardInterrupt:
             logger.info("👋 Bot 已停止")
-            break
+            return 0
         except BaseException as e:
             logger.exception(f"❌ Bot 异常退出: {e}")
+            if BOT_DRY_RUN:
+                return 1
             logger.info(f"⏳ {retry_delay}秒后重连...")
             time.sleep(retry_delay)
             retry_delay = min(retry_delay * 2, max_delay)
         else:
             retry_delay = 5
+    return 0
 
 
 if __name__ == "__main__":
-    run_with_retry()
+    raise SystemExit(run_with_retry())

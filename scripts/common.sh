@@ -29,8 +29,85 @@ ensure_parent_dir() {
   mkdir -p "${target_dir}"
 }
 
+path_is_within() {
+  local target="$1"
+  local parent="$2"
+  case "${target}" in
+    "${parent}"|"${parent}/"*)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+python_entrypoint_healthy() {
+  local runtime_root="$1"
+  local python_bin="${runtime_root}/.venv/bin/python"
+
+  if [[ ! -x "${python_bin}" ]]; then
+    return 1
+  fi
+
+  local prefix
+  prefix="$("${python_bin}" -c 'import sys; print(sys.prefix)' 2>/dev/null || true)"
+  [[ "${prefix}" == "${runtime_root}/.venv" ]]
+}
+
+venv_entrypoint_stale() {
+  local entrypoint="$1"
+  local runtime_root="$2"
+  local shebang
+  local interpreter
+
+  [[ -f "${entrypoint}" ]] || return 1
+  if ! grep -Iq . "${entrypoint}" 2>/dev/null; then
+    return 1
+  fi
+  IFS= read -r shebang < "${entrypoint}" || true
+  [[ "${shebang}" == '#!'/* ]] || return 1
+  interpreter="${shebang#\#!}"
+
+  case "${interpreter}" in
+    */.venv/bin/*)
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+
+  [[ -x "${interpreter}" ]] || return 0
+  path_is_within "${interpreter}" "${runtime_root}/.venv/bin" || return 0
+  return 1
+}
+
+venv_has_stale_entrypoints() {
+  local runtime_root="$1"
+  local bin_dir="${runtime_root}/.venv/bin"
+  local entrypoint
+
+  [[ -d "${bin_dir}" ]] || return 1
+
+  while IFS= read -r -d '' entrypoint; do
+    if venv_entrypoint_stale "${entrypoint}" "${runtime_root}"; then
+      return 0
+    fi
+  done < <(find "${bin_dir}" -maxdepth 1 -type f -perm /111 -print0 2>/dev/null)
+
+  return 1
+}
+
+runtime_bootstrap_required() {
+  local runtime_root="$1"
+
+  ! python_entrypoint_healthy "${runtime_root}" \
+    || ! fatecat_entrypoint_healthy "${runtime_root}" \
+    || venv_has_stale_entrypoints "${runtime_root}"
+}
+
 project_ready() {
-  [[ -f "${project_root}/pyproject.toml" && -x "${project_root}/.venv/bin/fatecat" ]]
+  [[ -f "${project_root}/pyproject.toml" ]] && ! runtime_bootstrap_required "${project_root}"
 }
 
 project_exists() {
@@ -86,10 +163,17 @@ fatecat_entrypoint_healthy() {
   fi
 
   local shebang
+  local interpreter
   shebang="$(head -n 1 "${bin_path}" 2>/dev/null || true)"
   if [[ "${shebang}" == '#!'/* ]]; then
-    [[ -x "${shebang#\#!}" ]]
-    return $?
+    interpreter="${shebang#\#!}"
+    case "${interpreter}" in
+      */.venv/bin/*)
+        [[ -x "${interpreter}" ]] || return 1
+        path_is_within "${interpreter}" "${runtime_root}/.venv/bin"
+        return $?
+        ;;
+    esac
   fi
 
   return 0

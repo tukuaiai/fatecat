@@ -17,7 +17,12 @@ bash scripts/preflight.sh --mode pure --with-dev --pretty
 ## `strict skill 校验失败，提示目录名不匹配`
 
 - 原因：`SKILL.md` frontmatter 里的 `name` 是 `fatecat`，但你把 bundle 导出到了别的 basename，例如 `fatecat-skill-bundle`
-- 处理：重新导出到 basename 为 `fatecat` 的目录，例如 `bash scripts/export-runtime.sh --output /tmp/fatecat --mode lite`
+- 处理：优先使用 `bash scripts/export-runtime.sh --output-parent /tmp/export-lite --mode lite`，让脚本自动创建 `/tmp/export-lite/fatecat`
+
+## `.venv/bin/pytest` 或 `pip` 仍指向旧路径`
+
+- 原因：仓库被移动过路径，旧虚拟环境脚本残留；单看 `.venv/bin/python` 仍可能“像是活着”
+- 处理：执行 `bash scripts/bootstrap.sh --with-dev`，它会重建含旧 shebang 的虚拟环境；然后再跑 `bash scripts/acceptance.sh --with-dev`
 
 ## `配置文件不存在`
 
@@ -27,7 +32,7 @@ bash scripts/preflight.sh --mode pure --with-dev --pretty
 ## `未设置 FATE_BOT_TOKEN`
 
 - 原因：你在执行 `delivery` 检查或启动 Bot，但没有配置 token
-- 处理：补齐 `project/assets/config/.env` 后再执行 `health --mode delivery`
+- 处理：补齐 `project/assets/config/.env` 后再执行 `bash scripts/preflight.sh --mode delivery --bootstrap --pretty`
 
 ## `缺少必需依赖`
 
@@ -52,7 +57,7 @@ bash scripts/preflight.sh --mode pure --with-dev --pretty
 ## `bundle 体积过大`
 
 - 原因：使用了完整导出模式，或根级 `assets/lifecycle/packs/` 已累积大量历史沉淀
-- 处理：优先改用 `bash scripts/export-runtime.sh --output <dir> --mode lite`
+- 处理：优先改用 `bash scripts/export-runtime.sh --output-parent /tmp/export-lite --mode lite`
 
 ## `未发现生命周期包`
 
@@ -63,6 +68,16 @@ bash scripts/preflight.sh --mode pure --with-dev --pretty
 
 - 原因：还没有执行 `bootstrap.sh`，或者 `.venv/bin/fatecat` 已失效
 - 处理：先执行 `bash scripts/bootstrap.sh`，再重新运行 `collect-ops-bundle.sh`
+
+## `delivery` 说通过了，但 API/Bot 一启动就挂
+
+- 原因：`health --mode delivery` 只能证明配置和文件存在，不等于启动链路一定可起
+- 处理：在真正上线前追加 `bash scripts/delivery-smoke.sh --target api`，或对 Bot 执行 `bash scripts/delivery-smoke.sh --target bot --startup-timeout 8`
+
+## `delivery-smoke` 为什么会临时创建 `.env`
+
+- 原因：项目把 `project/assets/config/.env` 设为 delivery 硬前提，但本地 smoke 不应该逼你把真实密钥写进仓库
+- 处理：脚本会在缺少真实配置时自动生成一份临时 smoke `.env`，用于 delivery preflight 和 API/Bot smoke；脚本结束后自动删除
 
 ## `自动救活没有真正启用`
 

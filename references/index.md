@@ -15,9 +15,9 @@
 ## Reading Order
 
 1. 先看 `architecture.md`，理解 `assets/` 作为生命周期治理层、`project/` 作为源码根的边界
-2. 再看 `execution-playbook.md`，按统一顺序执行 `bootstrap -> preflight -> analysis/serve`
+2. 再看 `execution-playbook.md`，按统一顺序执行 `bootstrap -> preflight -> delivery-smoke -> analysis/serve`
 3. 需要判断是否能进入下一阶段时，看 `stage-gates.md`
-4. 要直接执行命令时，看 `commands.md`
+4. 要直接执行命令或发布验收时，看 `commands.md`
 5. 需要对接上层系统时，看 `io-contract.md`
 6. 要理解需求到退役的阶段链条时，看 `lifecycle.md`
 7. 要做独立 skill 分发时，看 `migration-plan.md`

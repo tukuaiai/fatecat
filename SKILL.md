@@ -77,6 +77,12 @@ bash scripts/preflight.sh --mode delivery --bootstrap --pretty
 bash scripts/health.sh --mode delivery --json --pretty
 ```
 
+### 4.5 执行完整 skill 验收
+
+```bash
+bash scripts/acceptance.sh
+```
+
 ### 5. 用 JSON 字符串直接执行排盘
 
 ```bash
@@ -100,16 +106,22 @@ bash scripts/pure-analysis.sh \
 ### 7. 启动 API 前先做 delivery 检查
 
 ```bash
-bash scripts/health.sh --mode delivery --json --pretty
+bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target api
 bash scripts/serve-api.sh
 ```
+
+如果当前仓库里还没有真实 `project/assets/config/.env`，`delivery-smoke.sh` 会自动注入一份临时 smoke 配置，脚本退出后自动删除。
 
 ### 8. 启动 Bot 前先做 delivery 检查
 
 ```bash
-bash scripts/health.sh --mode delivery --json --pretty
+bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+bash scripts/delivery-smoke.sh --target bot --startup-timeout 8
 bash scripts/serve-bot.sh
 ```
+
+说明：Bot smoke 默认走 dry-run 装配验证，证明 import、配置加载、handler 挂载和 CLI 启动链路全部可用，但不会真的连接 Telegram。
 
 ## Execution Logic
 
@@ -119,6 +131,7 @@ bash scripts/serve-bot.sh
 1. 确认当前目录是 skill 根目录，且 `project/pyproject.toml` 存在。
 2. 执行 `bash scripts/bootstrap.sh`。
 3. 执行 `project/.venv/bin/fatecat --help`，确认 CLI 入口健康。
+4. 若仓库刚迁移过路径或执行器报错，再执行 `bash scripts/acceptance.sh` 做一次全链路验收。
 
 更推荐直接执行：
 
@@ -203,8 +216,9 @@ bash scripts/preflight.sh \
 1. `bash scripts/bootstrap.sh`
 2. `bash scripts/preflight.sh --mode pure --bootstrap --smoke --output-file output/preflight-sample.json --pretty`
 3. `bash scripts/pure-analysis.sh ... --output-file ...`
-4. 若要上线交付层：`bash scripts/health.sh --mode delivery --json --pretty`
-5. `bash scripts/serve-api.sh` 或 `bash scripts/serve-bot.sh`
+4. 若要上线交付层：`bash scripts/preflight.sh --mode delivery --bootstrap --pretty`
+5. `bash scripts/delivery-smoke.sh --target api`
+6. `bash scripts/serve-api.sh` 或 `bash scripts/serve-bot.sh`
 
 ## Common Patterns
 
@@ -224,6 +238,12 @@ bash scripts/preflight.sh --mode pure --bootstrap --pretty
 
 ```bash
 bash scripts/preflight.sh --mode delivery --bootstrap --pretty
+```
+
+### Pattern 3.5. 交付层烟雾验证
+
+```bash
+bash scripts/delivery-smoke.sh --target api
 ```
 
 ### Pattern 4. 直接落文件
@@ -258,6 +278,7 @@ project/.venv/bin/fatecat pure-analysis \
 - Input: 一个刚拉下来的 FateCat skill 仓库，需要先确认能不能跑
 - Steps:
   1. 执行 `bash scripts/preflight.sh --mode pure --bootstrap --pretty`
+  2. 若仓库刚迁移过目录，再执行 `bash scripts/acceptance.sh`
   2. 必要时再执行 `project/.venv/bin/fatecat --help`
 - Expected output / acceptance:
   - 虚拟环境成功创建

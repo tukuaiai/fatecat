@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 import sys
 from typing import Optional
 
@@ -6,14 +7,23 @@ from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from dotenv import load_dotenv
 from zoneinfo import ZoneInfo
 
-from _paths import FATE_CORE_SRC_DIR
+from _paths import FATE_CORE_SRC_DIR, get_env_file
 from branding import attach_branding, get_branding_payload, get_disclaimer_payload
 from utils.timezone import now_cn
 
 if str(FATE_CORE_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(FATE_CORE_SRC_DIR))
+
+try:
+    load_dotenv(get_env_file(), override=False)
+except FileNotFoundError:
+    pass
+
+SERVICE_HOST = os.getenv("FATE_SERVICE_HOST", "0.0.0.0")
+SERVICE_PORT = int(os.getenv("FATE_SERVICE_PORT", "8001"))
 
 from models import (
     BaziRequest,
@@ -271,4 +281,4 @@ def delete_record(record_id: int):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host=SERVICE_HOST, port=SERVICE_PORT)

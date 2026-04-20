@@ -5,7 +5,12 @@ import subprocess
 from pathlib import Path
 
 
-def main():
+def _run_subprocess(command: list[str]) -> int:
+    completed = subprocess.run(command, check=False)
+    return completed.returncode
+
+
+def main() -> int:
     src_dir = Path(__file__).parent / "src"
     if str(src_dir) not in sys.path:
         sys.path.insert(0, str(src_dir))
@@ -20,27 +25,28 @@ def main():
         print("  python start.py bot     # 启动 Telegram Bot")
         print("  python start.py api     # 启动 FastAPI 接口")
         print("  python start.py both    # 同时启动 Bot 和 API")
-        return
+        return 2
 
     mode = sys.argv[1]
 
     if mode == "bot":
         print("🤖 启动 Telegram Bot...")
-        subprocess.run([sys.executable, str(src_dir / "bot.py")])
+        return _run_subprocess([sys.executable, str(src_dir / "bot.py")])
 
     elif mode == "api":
         print("🚀 启动 FastAPI 接口...")
-        subprocess.run([sys.executable, str(src_dir / "main.py")])
+        return _run_subprocess([sys.executable, str(src_dir / "main.py")])
 
     elif mode == "both":
         print("🚀 同时启动 Bot 和 API...")
         import threading
+        results = {"bot": 0, "api": 0}
 
         def run_bot():
-            subprocess.run([sys.executable, str(src_dir / "bot.py")])
+            results["bot"] = _run_subprocess([sys.executable, str(src_dir / "bot.py")])
 
         def run_api():
-            subprocess.run([sys.executable, str(src_dir / "main.py")])
+            results["api"] = _run_subprocess([sys.executable, str(src_dir / "main.py")])
 
         bot_thread = threading.Thread(target=run_bot)
         api_thread = threading.Thread(target=run_api)
@@ -50,9 +56,11 @@ def main():
 
         bot_thread.join()
         api_thread.join()
+        return max(results.values())
 
     else:
         print(f"❌ 未知模式: {mode}")
+        return 2
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

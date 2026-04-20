@@ -7,7 +7,9 @@
 ## 当前仓库已经提供什么
 
 - 健康检查入口：`bash scripts/health.sh --mode pure --json`
+- 标准验收入口：`bash scripts/acceptance.sh`
 - 启动入口：`bash scripts/serve-api.sh`、`bash scripts/serve-bot.sh`
+- 交付层烟雾入口：`bash scripts/delivery-smoke.sh --target api`
 - 生命周期状态入口：`bash scripts/lifecycle-status.sh`
 - 运维包采集：`bash scripts/collect-ops-bundle.sh --output <dir>`
 
@@ -31,12 +33,14 @@
 ### 本地或单机
 
 - 用 `bootstrap.sh` 保证环境一致
-- 用 `health.sh` 作为巡检入口
+- 用 `preflight.sh` 作为默认巡检入口
+- 用 `acceptance.sh` 作为发布前验收入口
 - 用 `collect-ops-bundle.sh` 固化每次发布或事故后的证据
 
 ### 服务化交付
 
 - 用 `serve-api.sh` 或 `serve-bot.sh` 作为启动命令
+- 在上线前先跑一次 `delivery-smoke.sh`
 - 把健康检查接进外部守护器
 - 把运维包放进发布记录或事故记录
 
