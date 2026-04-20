@@ -2,6 +2,92 @@
 
 ## Bug
 
+- 标题：`weakStrong` 强弱口径退化为二档，导致历史样本被误判为“全部偏强”
+- 症状：安装后的排盘结果里，身强弱不再输出五档（`身弱 / 中和偏弱 / 中和 / 中和偏强 / 身强`），而是只剩 `身强 / 身弱`；用户反馈实际结果明显偏向“全部身强”
+- 首次发现位置 / 时间：线上安装包反馈，2026-04-20
+
+## Environment
+
+- 仓库 / 模块：`fatecat/project/modules/telegram`
+- 关键文件：`src/bazi_calculator.py`
+- 上游参照：`project/assets/vendor/github/bazi-1-master/bazi.py`
+
+## Reproduction
+
+1. 用 `BaziCalculator(...)._calc_wuxing_scores()` 直接计算四柱五行分数
+2. 观察 `weakStrong`
+3. 对 2013-01-01 09:19（北京）样本，旧实现输出 `身强`
+
+## Observations
+
+- O1: 当前 `_calc_wuxing_scores()` 只返回 `\"身强\" if not weak else \"身弱\"`，实现上已经不可能产出五档
+- O2: `models.py` 的 `DayMaster.strength` 历史上设计为五档口径，说明展示层原本就期待细粒度强弱
+- O3: 上游 `bazi-1` 同时给出 `weak` 布尔值和 `strong` 原始分数；README 明确标注“通常 >29 为强，需要参考月份、坐支等”
+- O4: 历史故障样本 `2013-01-01 09:19` 的 raw `strongScore` 为 `25`，旧实现却因为存在一个 `帝` 直接落成 `身强`
+
+## Hypotheses
+
+### H1: （ROOT HYPOTHESIS）
+- Supports: 现实现把上游原始强弱信息压扁成二档，展示层因此失去五档能力
+- Conflicts: 无
+- Test: 恢复上游 `strong` 原始分数，并基于上游经验线做五档归一
+
+### H2:
+- Supports: 只看 `weak` 布尔值会把边界样本误推到“身强”
+- Conflicts: 无
+- Test: 用 `strongScore=25` 的历史样本回归验证，修复后应落到 `中和偏弱`
+
+## Experiments
+
+### E1
+- Hypothesis: 当前实现已经退化成二档输出
+- Change: 直接检查 `project/modules/telegram/src/bazi_calculator.py`
+- Expected: `weakStrong` 只会返回 `身强/身弱`
+- Result: 确认存在
+- Verdict: confirmed
+- Revert: 无
+
+### E2
+- Hypothesis: 历史故障样本的 raw score 不支持“身强”
+- Change: 用内部方法直算 2013-01-01 09:19（北京）样本
+- Expected: `strongScore` 落在 29 以下
+- Result: `strongScore = 25`，旧实现仍输出 `身强`
+- Verdict: confirmed
+- Revert: 无
+
+### E3
+- Hypothesis: 只按 `strongScore` 做五档映射，会与上游 `weak` 布尔值冲突
+- Change: 抽查 2001-01-01 12:00（北京）样本
+- Expected: 若 `weak=True`，标签不应落入偏强侧
+- Result: 样本出现 `weak=True` 且 `strongScore = 32` 的组合，说明“只看分数”会导致标签与上游原始判定打架
+- Verdict: confirmed
+- Revert: 无
+
+## Root Cause
+
+- 根因不是用户安装问题，也不是上游 `bazi-1` 自身故障，而是 FateCat 本地胶水层把上游强弱结果退化成了二档展示：
+  - 保留了 `weak` 布尔判定
+  - 丢失了上游 `strong` 原始分数
+  - 于是所有边界样本都会被粗暴压到 `身强/身弱`
+
+## Fix
+
+- 在 `_calc_wuxing_scores()` 中补回上游 `strongScore`
+- 保留上游 `weak` 原始布尔值，作为原始诊断字段输出
+- 五档映射改为“先尊重 `weak`，再用 `strongScore` 细分”：
+  - `weak=True`: `<=20 -> 身弱`，`21-28 -> 中和偏弱`，`>=29 -> 中和`
+  - `weak=False`: `<=25 -> 中和偏弱`，`26-33 -> 中和`，`34-37 -> 中和偏强`，`>=38 -> 身强`
+
+## Regression Evidence
+
+- 新增测试：`project/tests/test_strength_mapping.py`
+- 验证点：
+  - 五档阈值边界可用
+  - 历史故障样本 `2013-01-01 09:19` 回归到 `中和偏弱`
+  - `weak=True` 的边界样本不会被错误落到偏强侧
+
+## Bug
+
 - 标题：iztro 原生算法模块入口缺失
 - 症状：Bot 排盘时报错 `ziwei failed: iztro原生算法执行失败`
 - 首次发现位置 / 时间：`/paipan` 链路，2026-04-15

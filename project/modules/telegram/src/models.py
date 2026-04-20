@@ -98,7 +98,17 @@ class DayMaster(BaseModel):
     stem: str
     element: str
     yinYang: Literal["阳", "阴"]
-    strength: Literal["旺", "偏旺", "中和", "偏弱", "弱"]
+    strength: Literal[
+        "身强",
+        "中和偏强",
+        "中和",
+        "中和偏弱",
+        "身弱",
+        "旺",
+        "偏旺",
+        "偏弱",
+        "弱",
+    ]
 
 
 class MajorFortunePillar(BaseModel):

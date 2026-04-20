@@ -259,7 +259,7 @@ class BaziCalculator:
         zhi_rel = self._calc_zhi_relations(four_pillars)
         climate = self._calc_climate_scores(four_pillars)
         
-        # 日主强弱（与五行分数口径统一，完全使用 bazi-1 weak 判定）
+        # 日主强弱（与五行分数口径统一：保留 bazi-1 weak/strong 原始字段，再归一为五档展示）
         day_elem = STEM_ELEM[ec.getDayGan()]
         strength = wx_scores.get("weakStrong")
         
@@ -1209,7 +1209,7 @@ class BaziCalculator:
     def _calc_wuxing_scores(self, pillars: Dict) -> Dict:
         """
         五行分数、天干分数、身强判断
-        对齐 bazi-1-master/bazi.py 的 scores / gan_scores / weak 计算思路
+        对齐 bazi-1-master/bazi.py 的 scores / gan_scores / weak / strong 计算思路
         """
         scores = {"金": 0, "木": 0, "水": 0, "火": 0, "土": 0}
         gan_scores = {k: 0 for k in "甲乙丙丁戊己庚辛壬癸"}
@@ -1240,6 +1240,15 @@ class BaziCalculator:
             if me_status.count("库") + sum(1 for g in stems if ten_deities[day_stem][g] in ("比", "劫")) > 2:
                 weak = False
 
+        # bazi-1 原生 raw score：比/劫/枭/印 四项总和
+        me_attrs = ten_deities[day_stem].inverse
+        strong_score = (
+            gan_scores[me_attrs["比"]]
+            + gan_scores[me_attrs["劫"]]
+            + gan_scores[me_attrs["枭"]]
+            + gan_scores[me_attrs["印"]]
+        )
+
         def _status_summary(seq):
             if not seq:
                 return ""
@@ -1247,13 +1256,42 @@ class BaziCalculator:
             score = sum(1 for s in seq if s in fav)
             return f"强势位{score}处 / 共{len(seq)}处"
 
+        strength_label = self._map_strength_label(weak=weak, strong_score=strong_score)
+
         return {
             "fiveElementScore": scores,
             "ganScore": gan_scores,
-            "weakStrong": "身强" if not weak else "身弱",
+            "weak": weak,
+            "strongScore": strong_score,
+            "weakStrong": strength_label,
             "statusDetail": me_status,
             "statusSummary": _status_summary(me_status),
         }
+
+    @staticmethod
+    def _map_strength_label(*, weak: bool, strong_score: int) -> str:
+        """
+        将 bazi-1 原生 strong score 归一到五档展示口径。
+
+        归一策略：
+        1. 先尊重 bazi-1 原生 weak 布尔值，避免出现“weak=True 但标签偏强”的矛盾。
+        2. 再用 strong score 细分到五档展示口径。
+        3. 上游 README 中“通常 >29 为强”仅作为分带经验线，不覆盖 weak 的最终判定。
+        """
+        if weak:
+            if strong_score <= 20:
+                return "身弱"
+            if strong_score <= 28:
+                return "中和偏弱"
+            return "中和"
+
+        if strong_score <= 25:
+            return "中和偏弱"
+        if strong_score <= 33:
+            return "中和"
+        if strong_score <= 37:
+            return "中和偏强"
+        return "身强"
 
     def _calc_wuxing_contrib(self, gan: str, zhi: str) -> Dict:
         """
